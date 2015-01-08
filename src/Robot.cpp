@@ -7,13 +7,15 @@ class Robot: public IterativeRobot
 	Joystick stick; // only joystick
 	LiveWindow *lw;
 	int autoLoopCounter;
+	Solenoid mySole;
 
 public:
 	Robot() :
 		myRobot(0, 1),	// these must be initialized in the same order
 		stick(1),		// as they are declared above.
 		lw(NULL),
-		autoLoopCounter(0)
+		autoLoopCounter(0),
+		mySole(1)
 	{
 		myRobot.SetExpiration(0.1);
 	}
@@ -48,6 +50,15 @@ private:
 	void TeleopPeriodic()
 	{
 		myRobot.ArcadeDrive(stick); // drive with arcade style (use right stick)
+
+		while (IsOperatorControl() && IsEnabled()){
+			if(stick.GetTrigger()){
+				mySole.Set(true);
+			}
+			else{
+				mySole.Set(false);
+			}
+		}
 	}
 
 	void TestPeriodic()
