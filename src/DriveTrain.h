@@ -8,9 +8,9 @@ class DriveTrain
     public:
         DriveTrain();
         ~DriveTrain();
+        void ozDrive(Joystick *stick);
 
     private:
-        RobotDrive ozDrive(Joystick *stick);
         SpeedController *frontLeft;
         SpeedController *rearLeft;
         SpeedController *frontRight;
