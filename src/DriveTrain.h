@@ -10,7 +10,7 @@ class DriveTrain
         ~DriveTrain();
 
     private:
-        RobotDrive ozDrive;
+        RobotDrive ozDrive(Joystick *stick);
         SpeedController *frontLeft;
         SpeedController *rearLeft;
         SpeedController *frontRight;
