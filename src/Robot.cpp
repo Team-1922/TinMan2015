@@ -1,9 +1,9 @@
 #include "WPILib.h"
+#include "DriveTrain.h"
 
 class Robot: public IterativeRobot
 {
-
-    RobotDrive myRobot; // robot drive system
+    DriveTrain myRobot; // robot drive system
     Joystick stick; // only joystick
     LiveWindow *lw;
     int autoLoopCounter;
@@ -11,13 +11,13 @@ class Robot: public IterativeRobot
 
 public:
     Robot():
-        myRobot(0, 1),    // these must be initialized in the same order
-        stick(1),        // as they are declared above.
-        lw(NULL),
+        myRobot(0, 1, 2, 3),    // these must be initialized in the same order
+        stick(1),               // as they are declared above.
+        lw(nullptr),
         autoLoopCounter(0),
         mySole(1)
     {
-        myRobot.SetExpiration(0.1);
+        //myRobot.SetExpiration(0.1);
     }
 
 private:
@@ -35,12 +35,12 @@ private:
     {
         if(autoLoopCounter < 100) //Check if we've completed 100 loops (approximately 2 seconds)
         {
-            myRobot.Drive(-0.5f, 0.0f);     // drive forwards half speed
+            myRobot.Drive(-0.5f);     // drive forwards half speed
             autoLoopCounter++;
         }
         else 
         {
-            myRobot.Drive(0.0f, 0.0f);     // stop robot
+            myRobot.Drive(0.0f);      // stop robot
         }
     }
 
@@ -55,14 +55,7 @@ private:
 
         while (IsOperatorControl() && IsEnabled())
         {
-            if(stick.GetTrigger())
-            {
-                mySole.Set(true);
-            }
-            else
-            {
-                mySole.Set(false);
-            }
+            mySole.Set(stick.GetTrigger());
         }
     }
 

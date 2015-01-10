@@ -7,9 +7,14 @@
 class DriveTrain
 {
     public:
-        DriveTrain();
+        DriveTrain(uint32_t _frontLeft, uint32_t _rearLeft, uint32_t _frontRight, uint32_t _rearRight);
         ~DriveTrain();
-        void ozDrive(Joystick *stick);
+        void ArcadeDrive(Joystick& stick); //reference to avoid nullptr possibility
+
+        void Drive(float magnitude);
+        void Drive(float leftMag, float rightMag);
+
+        void TurnInPlace(float rotSpeed);
 
     private:
         std::shared_ptr<SpeedController> frontLeft;
