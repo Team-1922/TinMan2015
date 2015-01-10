@@ -2,33 +2,31 @@
 
 DriveTrain::DriveTrain()
 {
-    frontLeft  = new Talon(0);
-    rearLeft   = new Talon(1);
-    frontRight = new Talon(2);
-    rearRight  = new Talon(3);
+    frontLeft  = std::shared_ptr<SpeedController>(new Talon(0));
+    rearLeft   = std::shared_ptr<SpeedController>(new Talon(1));
+    frontRight = std::shared_ptr<SpeedController>(new Talon(2));
+    rearRight  = std::shared_ptr<SpeedController>(new Talon(3));
 }
 
 DriveTrain::~DriveTrain()
 {
-    delete frontLeft;
-    delete rearLeft;
-    delete frontRight;
-    delete rearRight;
+    //no explicit deconstructors with smart pointers
 }
 
-void DriveTrain :: ozDrive(Joystick* stick){
-//put the stick values in a couple floats
-float xVal =stick->GetX();
-float yVal= stick->GetY();
+void DriveTrain :: ozDrive(Joystick* stick)
+{
+    //put the stick values in a couple floats
+    float xVal = stick->GetX();
+    float yVal = stick->GetY();
 
-//arcade drive
-float leftMotor = yVal + xVal;
-float rightMotor = yVal - xVal;
+    //arcade drive
+    float leftMotor  = yVal + xVal;
+    float rightMotor = yVal - xVal;
 
-frontLeft->Set(leftMotor);
-rearLeft->Set(leftMotor);
+    frontLeft->Set(leftMotor);
+    rearLeft->Set(leftMotor);
 
-frontRight->Set(rightMotor);
-rearRight->Set(rightMotor);
+    frontRight->Set(rightMotor);
+    rearRight->Set(rightMotor);
 
 }

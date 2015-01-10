@@ -2,6 +2,7 @@
 #define DRIVE_TRAIN_H
 
 #include "WPILib.h"
+#include <memory>
 
 class DriveTrain
 {
@@ -11,10 +12,10 @@ class DriveTrain
         void ozDrive(Joystick *stick);
 
     private:
-        SpeedController *frontLeft;
-        SpeedController *rearLeft;
-        SpeedController *frontRight;
-        SpeedController *rearRight;
+        std::shared_ptr<SpeedController> frontLeft;
+        std::shared_ptr<SpeedController> rearLeft;
+        std::shared_ptr<SpeedController> frontRight;
+        std::shared_ptr<SpeedController> rearRight;
 };
 
 #endif
