@@ -18,7 +18,6 @@ public:
         mySole(1)
     {
         myRobot.SetExpiration(0.1);
-        //myRobot.InvertDrive();
     }
 
 private:

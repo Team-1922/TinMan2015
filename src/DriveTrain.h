@@ -12,21 +12,10 @@ class DriveTrain
         void ArcadeDrive(Joystick& stick); //reference to avoid nullptr possibility
 
         void Drive(float magnitude, float curve);
-        //void Drive(float leftMag, float rightMag);
-        void InvertDrive(bool newVal = false);
-
-        //void TurnInPlace(float rotSpeed);
 
         void SetExpiration(float val){ drive.SetExpiration(val); }
 
     private:
-        //std::shared_ptr<SpeedController> frontLeft;
-        //std::shared_ptr<SpeedController> rearLeft;
-        //std::shared_ptr<SpeedController> frontRight;
-        //std::shared_ptr<SpeedController> rearRight;
-        
-        //true = positive, false = negative
-        bool motorSign; 
 
         RobotDrive drive;
 };
