@@ -8,15 +8,20 @@ class Robot: public IterativeRobot
     LiveWindow *lw;
     int autoLoopCounter;
     Solenoid mySole;
+    Compressor myComp;
 
 public:
-    Robot():
+    Robot() :
         myRobot(0, 1, 2, 3),    // these must be initialized in the same order
         stick(1),               // as they are declared above.
         lw(nullptr),
         autoLoopCounter(0),
-        mySole(1)
+        mySole(1),
+        myComp(1)
     {
+        //start once and forget
+        myComp.Start();
+
         myRobot.SetExpiration(0.1);
     }
 
