@@ -26,7 +26,7 @@ void DriveTrain::ArcadeDrive(Joystick& stick)
 
     Drive(leftMotor, rightMotor);*/
 
-    drive.ArcadeDrive(-yVal, xVal);
+    drive.ArcadeDrive(-yVal, -xVal);
 }
 
 void DriveTrain::InvertDrive(bool newVal)
@@ -53,7 +53,7 @@ void DriveTrain::Drive(float magnitude, float curve)
     rearRight->Set(rightMag);
 }*/
 
-void DriveTrain::TurnInPlace(float rotSpeed)
+/*void DriveTrain::TurnInPlace(float rotSpeed)
 {
     Drive(rotSpeed, -rotSpeed);
-}
+}*/
