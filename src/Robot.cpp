@@ -18,7 +18,7 @@ public:
         mySole(1)
     {
         //myRobot.SetExpiration(0.1);
-        myRobot.InvertDrive();
+        //myRobot.InvertDrive();
     }
 
 private:
@@ -54,7 +54,7 @@ private:
     {
         myRobot.ArcadeDrive(stick); // drive with arcade style (use right stick)
 
-        while (IsOperatorControl() && IsEnabled())
+        if (IsOperatorControl() && IsEnabled())
         {
             mySole.Set(stick.GetTrigger());
         }

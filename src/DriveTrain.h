@@ -15,7 +15,7 @@ class DriveTrain
         //void Drive(float leftMag, float rightMag);
         void InvertDrive(bool newVal = false);
 
-        void TurnInPlace(float rotSpeed);
+        //void TurnInPlace(float rotSpeed);
 
 
     private:
