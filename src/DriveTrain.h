@@ -4,6 +4,14 @@
 #include "WPILib.h"
 #include <memory>
 
+enum MotorLocation
+{
+    FRONT_LEFT = 0,
+    REAR_LEFT = 1,
+    FRONT_RIGHT = 2,
+    REAR_RIGHT = 3
+};
+
 class DriveTrain : public MotorSafety, public ErrorBase
 {
     public:
@@ -21,14 +29,17 @@ class DriveTrain : public MotorSafety, public ErrorBase
 
         //Motor Safety
         virtual void SetExpiration(float timeout = DEFAULT_SAFETY_EXPIRATION);
-        virtual float GetExpiration()               { return expiration; }
+        virtual float GetExpiration();
         virtual bool IsAlive();
         virtual void StopMotor();
-        virtual void SetSafetyEnabled(bool enabled) { safetyEnabled = enabled; }
-        virtual bool IsSafetyEnabled()              { return safetyEnabled; }
-        virtual void GetDescription(char *desc)     { memcpy(desc, name, sizeof(name)); }
+        virtual void SetSafetyEnabled(bool enabled);
+        virtual bool IsSafetyEnabled();
+        virtual void GetDescription(char *desc);
 
     private:
+
+        void SetMotor(MotorLocation loc, float value);
+
         std::shared_ptr<SpeedController> frontLeft;
         std::shared_ptr<SpeedController> rearLeft;
         std::shared_ptr<SpeedController> frontRight;
@@ -40,6 +51,7 @@ class DriveTrain : public MotorSafety, public ErrorBase
         //Motor Safety
         float expiration;
         bool safetyEnabled;
+        bool motorStopped;
         const char* name = "Team 1922 Drive Train";
 };
 

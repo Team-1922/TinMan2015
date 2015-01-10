@@ -4,6 +4,7 @@ DriveTrain::DriveTrain(uint32_t _frontLeft, uint32_t _rearLeft, uint32_t _frontR
 {
     expiration = DEFAULT_SAFETY_EXPIRATION;
     safetyEnabled = true;
+    motorStopped = false;
 
     frontLeft  = std::shared_ptr<SpeedController>(new Talon(_frontLeft));
     rearLeft   = std::shared_ptr<SpeedController>(new Talon(_rearLeft));
@@ -46,11 +47,11 @@ void DriveTrain::Drive(float leftMag, float rightMag)
     leftMag  = motorSign ? leftMag  : -leftMag;
     rightMag = motorSign ? rightMag : -rightMag;
 
-    frontLeft->Set(leftMag);
-    rearLeft->Set(leftMag);
+    SetMotor(FRONT_LEFT, leftMag);
+    SetMotor(REAR_LEFT, leftMag);
 
-    frontRight->Set(rightMag);
-    rearRight->Set(rightMag);
+    SetMotor(FRONT_RIGHT, rightMag);
+    SetMotor(REAR_RIGHT, rightMag);
 }
 
 void DriveTrain::TurnInPlace(float rotSpeed)
@@ -58,6 +59,27 @@ void DriveTrain::TurnInPlace(float rotSpeed)
     Drive(rotSpeed, -rotSpeed);
 }
 
+void DriveTrain::SetMotor(MotorLocation loc, float value)
+{
+    if (motorStopped)
+        return;
+
+    switch (loc)
+    {
+    case FRONT_LEFT:
+        frontLeft->Set(value);
+        break;
+    case REAR_LEFT:
+        rearLeft->Set(value);
+        break;
+    case FRONT_RIGHT:
+        frontRight->Set(value);
+        break;
+    case REAR_RIGHT:
+        rearRight->Set(value);
+        break;
+    }
+}
 
 //motor safety functions
 void DriveTrain::SetExpiration(float timeout)
@@ -70,3 +92,37 @@ float DriveTrain::GetExpiration()
     return expiration;
 }
 
+bool DriveTrain::IsAlive()
+{
+    //if any of the motors are getting power
+    return (frontLeft->Get()  || 
+            rearLeft->Get()   || 
+            frontRight->Get() || 
+            rearRight->Get()  ||
+            !motorStopped);
+}
+
+void DriveTrain::StopMotor()
+{
+    frontLeft->Set(0);
+    rearLeft->Set(0);
+    frontRight->Set(0);
+    rearRight->Set(0);
+
+    motorStopped = true;
+}
+
+void DriveTrain::SetSafetyEnabled(bool enabled)
+{
+    safetyEnabled = enabled;
+}
+
+bool DriveTrain::IsSafetyEnabled()
+{
+    return safetyEnabled;
+}
+
+void DriveTrain::GetDescription(char* desc)
+{
+    memcpy(desc, name, sizeof(name));
+}
