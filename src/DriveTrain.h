@@ -17,16 +17,25 @@ class DriveTrain : public MotorSafety, public ErrorBase
     public:
         DriveTrain(uint32_t _frontLeft, uint32_t _rearLeft, uint32_t _frontRight, uint32_t _rearRight);
         ~DriveTrain();
+
+        //Same as RobotDrive in WPILib Doc.
         void ArcadeDrive(Joystick& stick); //reference to avoid nullptr possibility
+        void TankDrive(Joystick& leftStick, Joystick& rightStick);
 
+        //set forward speed
         void Drive(float magnitude);
-        void Drive(float leftMag, float rightMag);
-        void InvertDrive(bool newVal = false);
 
+        //set forward speed separately left and right
+        void Drive(float leftMag, float rightMag);
+
+        //invert the x and y axis controls for inerted motors
+        void InvertDrive(bool newVal = false);
+        bool IsInverted();
+
+        //rotate in place
         void TurnInPlace(float rotSpeed);
 
         //inherited functions
-
         //Motor Safety
         virtual void SetExpiration(float timeout = DEFAULT_SAFETY_EXPIRATION);
         virtual float GetExpiration();
@@ -52,7 +61,7 @@ class DriveTrain : public MotorSafety, public ErrorBase
         float expiration;
         bool safetyEnabled;
         bool motorStopped;
-        const char* name = "Team 1922 Drive Train";
+        const char* name = "Team 1922 2015 Drive Train";
 };
 
 #endif

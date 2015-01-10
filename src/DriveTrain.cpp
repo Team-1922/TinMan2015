@@ -30,9 +30,20 @@ void DriveTrain::ArcadeDrive(Joystick& stick)
     Drive(leftMotor, rightMotor);
 }
 
+void DriveTrain::TankDrive(Joystick& leftStick, Joystick& rightStick)
+{
+    //a thin wrapper
+    Drive(leftStick.GetY(), rightStick.GetY());
+}
+
 void DriveTrain::InvertDrive(bool newVal)
 {
     motorSign = newVal;
+}
+
+bool DriveTrain::IsInverted()
+{
+    return motorSign;
 }
 
 void DriveTrain::Drive(float magnitude)
@@ -42,11 +53,6 @@ void DriveTrain::Drive(float magnitude)
 
 void DriveTrain::Drive(float leftMag, float rightMag)
 {
-    
-    //invert motor if necessary
-    leftMag  = motorSign ? leftMag  : -leftMag;
-    rightMag = motorSign ? rightMag : -rightMag;
-
     SetMotor(FRONT_LEFT, leftMag);
     SetMotor(REAR_LEFT, leftMag);
 
@@ -63,6 +69,9 @@ void DriveTrain::SetMotor(MotorLocation loc, float value)
 {
     if (motorStopped)
         return;
+
+    //invert the value
+    value = motorSign ? value : -value;
 
     switch (loc)
     {
