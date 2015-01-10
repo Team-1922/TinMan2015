@@ -1,12 +1,14 @@
 #include "DriveTrain.h"
 
-DriveTrain::DriveTrain(uint32_t _frontLeft, uint32_t _rearLeft, uint32_t _frontRight, uint32_t _rearRight) : 
-        drive(_frontLeft, _rearLeft, _frontRight, _rearRight)
+DriveTrain::DriveTrain(uint32_t _frontLeft, uint32_t _rearLeft, uint32_t _frontRight, uint32_t _rearRight)
 {
-    //frontLeft  = std::shared_ptr<SpeedController>(new Talon(_frontLeft));
-    //rearLeft   = std::shared_ptr<SpeedController>(new Talon(_rearLeft));
-    //frontRight = std::shared_ptr<SpeedController>(new Talon(_frontRight));
-    //rearRight  = std::shared_ptr<SpeedController>(new Talon(_rearRight));
+    expiration = DEFAULT_SAFETY_EXPIRATION;
+    safetyEnabled = true;
+
+    frontLeft  = std::shared_ptr<SpeedController>(new Talon(_frontLeft));
+    rearLeft   = std::shared_ptr<SpeedController>(new Talon(_rearLeft));
+    frontRight = std::shared_ptr<SpeedController>(new Talon(_frontRight));
+    rearRight  = std::shared_ptr<SpeedController>(new Talon(_rearRight));
 }
 
 DriveTrain::~DriveTrain()
@@ -21,12 +23,10 @@ void DriveTrain::ArcadeDrive(Joystick& stick)
     float yVal = stick.GetY();
 
     //arcade drive
-    /*float leftMotor  = yVal + xVal;
+    float leftMotor  = yVal + xVal;
     float rightMotor = yVal - xVal;
 
-    Drive(leftMotor, rightMotor);*/
-
-    drive.ArcadeDrive(-yVal, xVal);
+    Drive(leftMotor, rightMotor);
 }
 
 void DriveTrain::InvertDrive(bool newVal)
@@ -34,12 +34,12 @@ void DriveTrain::InvertDrive(bool newVal)
     motorSign = newVal;
 }
 
-void DriveTrain::Drive(float magnitude, float curve)
+void DriveTrain::Drive(float magnitude)
 {
-    drive.Drive(magnitude, curve);
+    Drive(magnitude, magnitude);
 }
 
-/*void DriveTrain::Drive(float leftMag, float rightMag)
+void DriveTrain::Drive(float leftMag, float rightMag)
 {
     
     //invert motor if necessary
@@ -51,9 +51,22 @@ void DriveTrain::Drive(float magnitude, float curve)
 
     frontRight->Set(rightMag);
     rearRight->Set(rightMag);
-}*/
+}
 
 void DriveTrain::TurnInPlace(float rotSpeed)
 {
     Drive(rotSpeed, -rotSpeed);
 }
+
+
+//motor safety functions
+void DriveTrain::SetExpiration(float timeout)
+{
+    expiration = timeout;
+}
+
+float DriveTrain::GetExpiration()
+{
+    return expiration;
+}
+
