@@ -17,7 +17,7 @@ public:
         lw(nullptr),
         autoLoopCounter(0),
         mySole(1),
-        myComp(1)
+        myComp(0)
     {
         //start once and forget
         myComp.Start();
