@@ -17,6 +17,7 @@ class DriveTrain
 
         //void TurnInPlace(float rotSpeed);
 
+        void SetExpiration(float val){ drive.SetExpiration(val); }
 
     private:
         //std::shared_ptr<SpeedController> frontLeft;
