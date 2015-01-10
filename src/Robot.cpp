@@ -18,6 +18,7 @@ public:
         mySole(1)
     {
         //myRobot.SetExpiration(0.1);
+        myRobot.InvertDrive();
     }
 
 private:
@@ -35,12 +36,12 @@ private:
     {
         if(autoLoopCounter < 100) //Check if we've completed 100 loops (approximately 2 seconds)
         {
-            myRobot.Drive(-0.5f);     // drive forwards half speed
+            myRobot.Drive(-0.5f, 0.0f);     // drive forwards half speed
             autoLoopCounter++;
         }
         else 
         {
-            myRobot.Drive(0.0f);      // stop robot
+            myRobot.Drive(0.0f, 0.0f);      // stop robot
         }
     }
 
