@@ -1,64 +1,52 @@
 #include "WPILib.h"
+#include "Commands/Command.h"
+#include "Commands/CommandFlat.h"
+#include "CommandBase.h"
 
 class Robot: public IterativeRobot
 {
-
-	RobotDrive myRobot; // robot drive system
-	Joystick stick; // only joystick
-	LiveWindow *lw;
-	int autoLoopCounter;
-	Solenoid mySole;
-
-public:
-	Robot() :
-		myRobot(0, 1),	// these must be initialized in the same order
-		stick(1),		// as they are declared above.
-		lw(NULL),
-		autoLoopCounter(0),
-		mySole(1)
-	{
-		myRobot.SetExpiration(0.1);
-	}
-
 private:
+	//Command *autonomousCommand;
+	LiveWindow *lw;
+
 	void RobotInit()
 	{
+		CommandBase::init();
+		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
+	}
+	
+	void DisabledPeriodic()
+	{
+		Scheduler::GetInstance()->Run();
 	}
 
 	void AutonomousInit()
 	{
-		autoLoopCounter = 0;
+		//do nothing for now
+
+		//if (autonomousCommand != NULL)
+		//	autonomousCommand->Start();
 	}
 
 	void AutonomousPeriodic()
 	{
-		if(autoLoopCounter < 100) //Check if we've completed 100 loops (approximately 2 seconds)
-		{
-			myRobot.Drive(-0.5, 0.0); 	// drive forwards half speed
-			autoLoopCounter++;
-			} else {
-			myRobot.Drive(0.0, 0.0); 	// stop robot
-		}
+		Scheduler::GetInstance()->Run();
 	}
 
 	void TeleopInit()
 	{
-
+		// This makes sure that the autonomous stops running when
+		// teleop starts running. If you want the autonomous to 
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+		//if (autonomousCommand != NULL)
+		//	autonomousCommand->Cancel();
 	}
 
 	void TeleopPeriodic()
 	{
-		myRobot.ArcadeDrive(stick); // drive with arcade style (use right stick)
-
-		while (IsOperatorControl() && IsEnabled()){
-			if(stick.GetTrigger()){
-				mySole.Set(true);
-			}
-			else{
-				mySole.Set(false);
-			}
-		}
+		Scheduler::GetInstance()->Run();
 	}
 
 	void TestPeriodic()
@@ -68,3 +56,4 @@ private:
 };
 
 START_ROBOT_CLASS(Robot);
+
