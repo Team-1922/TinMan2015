@@ -1,5 +1,5 @@
-#ifndef COMMANDRAISE_H
-#define COMMANDRAISE
+#ifndef COMMAND_RACK_RAISE_H
+#define COMMAND_RACK_RAISE_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"

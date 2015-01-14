@@ -1,5 +1,5 @@
-#ifndef CommandRackDoNothing_H
-#define CommandRackDoNothing_H
+#ifndef COMMAND_RACK_DO_NOTHING_H
+#define COMMAND_RACK_DO_NOTHING_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
