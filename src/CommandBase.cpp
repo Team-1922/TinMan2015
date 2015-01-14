@@ -1,6 +1,7 @@
 #include "CommandBase.h"
 #include "Subsystems/RackMotor.h"
 #include "Commands/Scheduler.h"
+#include "Utilities.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
 RackMotor* CommandBase::rackMotor = NULL;
@@ -15,6 +16,12 @@ CommandBase::CommandBase() :
 		Command()
 {
 
+}
+
+CommandBase::~CommandBase()
+{
+	SAFE_DELETE(rackMotor);
+	SAFE_DELETE(oi);
 }
 
 void CommandBase::init()
