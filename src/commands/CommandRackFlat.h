@@ -1,13 +1,13 @@
-#ifndef COMMANDEXTEND_H
-#define COMMANDEXTEND_H
+#ifndef COMMAND_RACK_FLAT_H
+#define COMMAND_RACK_FLAT_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class CommandExtend: public CommandBase
+class CommandRackFlat: public CommandBase
 {
 public:
-	CommandExtend();
+	CommandRackFlat();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

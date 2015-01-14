@@ -3,18 +3,19 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class rackMotor: public Subsystem {
+class RackMotor: public Subsystem {
 
 private:
-SpeedController* motor;
-AnalogPotentiometer* potentiometer;
+	SpeedController* motor;
+	AnalogPotentiometer* potentiometer;
 
 public:
-rackMotor();
-void InitDefaultCommand() {}
+	RackMotor();
+	void InitDefaultCommand() {}
 
-void setMotor(float level);
-float getPotentiometer();
+	void doNothing(){}
+	void setMotor(float level);
+	float getPotentiometer();
 
 
 }

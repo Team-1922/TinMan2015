@@ -1,9 +1,9 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
+#include <subsystems/RackMotor.h>
 #include <string>
 #include "Commands/Command.h"
-#include "Subsystems/RackMotor.h"
 #include "OI.h"
 #include "WPILib.h"
 

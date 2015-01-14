@@ -1,54 +1,43 @@
-#include "CommandFlat.h"
+#include <commands/CommandRackFlat.h>
 
-CommandExtend::CommandExtend() :
-	CommandBase("CommandExtend")
+CommandRackFlat::CommandRackFlat() :
+	CommandBase("CommandFlat")
 {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(rackMotor);
-
-	//testing before potentiometer
-	//SetTimeout(3);
 }
 
 // Called just before this Command runs the first time
-void CommandExtend::Initialize()
+void CommandRackFlat::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void CommandExtend::Execute()
+void CommandRackFlat::Execute()
 {
 	//start at half speed just in case
-	rackMotor->setMotor(.5);
+	rackMotor->setMotor(-.5);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool CommandExtend::IsFinished()
+bool CommandRackFlat::IsFinished()
 {
-
-	//test before potentiometer
-	/*if(IsTimedOut())
-		return true;
-	else
-		return false;*/
-
-
-	if(rackMotor->getPotentiometer() >= 180)
+	if( rackMotor->getPotentiometer() <= 0)
 		return true;
 	else
 		return false;
 }
 
 // Called once after isFinished returns true
-void CommandExtend::End()
+void CommandRackFlat::End()
 {
 	rackMotor->setMotor(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void CommandExtend::Interrupted()
+void CommandRackFlat::Interrupted()
 {
 	End();
 }

@@ -1,21 +1,21 @@
-#include "CommandFlat.h"
+#include <commands/CommandRackFlat.h>
 #include "../Utilities.h"
 
-CommandRaise::CommandRaise() :
-	CommandBase("CommandRaise")
+CommandRackRaise::CommandRackRaise() :
+	CommandBase("CommandRackRaise")
 {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(rackMotor);
 }
 
 // Called just before this Command runs the first time
-void CommandRaise::Initialize()
+void CommandRackRaise::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void CommandRaise::Execute()
+void CommandRackRaise::Execute()
 {
 
 	float angle = rackMotor->getPotentiometer();
@@ -33,7 +33,7 @@ void CommandRaise::Execute()
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool CommandRaise::IsFinished()
+bool CommandRackRaise::IsFinished()
 {
 	float angle = rackMotor->getPotentiometer();
 
@@ -45,14 +45,14 @@ bool CommandRaise::IsFinished()
 }
 
 // Called once after isFinished returns true
-void CommandRaise::End()
+void CommandRackRaise::End()
 {
 	rackMotor->setMotor(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void CommandRaise::Interrupted()
+void CommandRackRaise::Interrupted()
 {
 	End();
 }

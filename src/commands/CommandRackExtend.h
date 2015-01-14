@@ -1,13 +1,13 @@
-#ifndef COMMANDRAISE_H
-#define COMMANDRAISE
+#ifndef COMMAND_RACK_EXTEND_H
+#define COMMAND_RACK_EXTEND_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class CommandRaise: public CommandBase
+class CommandRackExtend: public CommandBase
 {
 public:
-	CommandRaise();
+	CommandRackExtend();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

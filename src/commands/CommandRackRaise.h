@@ -1,13 +1,13 @@
-#ifndef COMMANDFLAT_H
-#define COMMANDFLAT_H
+#ifndef COMMANDRAISE_H
+#define COMMANDRAISE
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class CommandFlat: public CommandBase
+class CommandRackRaise: public CommandBase
 {
 public:
-	CommandFlat();
+	CommandRackRaise();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

@@ -1,16 +1,19 @@
-#include "Subsystems/rackMotor.h"
+#include <subsystems/RackMotor.h>
 
-rackMotor::rackMotor() : Subsystem("rackMotor"){
+RackMotor::RackMotor() : Subsystem("rackMotor")
+{
 	motor = new Jaguar(1);
 	potentiometer = new AnalogPotentiometer(1,270.0,135.0);
 }
 
-void rackMotor::setMotor(float level) {
+void RackMotor::setMotor(float level)
+{
 	motor->Set(level);
 }
 
-float rackMotor::getPotentiometer(){
-  float potVal = potentiometer->Get();
+float RackMotor::getPotentiometer()
+{
+	float potVal = potentiometer->Get();
 
-return (potVal);
+	return (potVal);
 }

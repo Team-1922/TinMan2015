@@ -1,6 +1,6 @@
+#include <commands/CommandRackFlat.h>
 #include "WPILib.h"
 #include "Commands/Command.h"
-#include "Commands/CommandFlat.h"
 #include "CommandBase.h"
 
 class Robot: public IterativeRobot
