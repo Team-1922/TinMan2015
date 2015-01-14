@@ -1,4 +1,4 @@
-#include <commands/CommandRackFlat.h>
+#include "CommandRackRaise.h"
 #include "../Utilities.h"
 
 CommandRackRaise::CommandRackRaise() :
@@ -38,7 +38,7 @@ bool CommandRackRaise::IsFinished()
 	float angle = rackMotor->getPotentiometer();
 
 	//within a 5 degree threshold
-	if(Utilities::isEqual(90, angle, 5))
+	if(Utilities::isEqual(90.0f, angle, 5.0f))
 		return true;
 	else
 		return false;

@@ -12,9 +12,9 @@
 
 #include "OI.h"
 
-#include "Commands/CommandExtend.h"
-#include "Commands/CommandFlat.h"
-#include "Commands/CommandRaise.h"
+#include "Commands/CommandRackExtend.h"
+#include "Commands/CommandRackFlat.h"
+#include "Commands/CommandRackRaise.h"
 
 
 OI::OI() {
@@ -28,9 +28,9 @@ OI::OI() {
 
 
     // Connect the buttons to commands
-  buttonA->WhenPressed(new CommandExtend());
-  buttonB->WhenPressed(new CommandRaise());
-  buttonC->WhenPressed(new CommandFlat());
+  buttonA->WhenPressed(new CommandRackExtend());
+  buttonB->WhenPressed(new CommandRackRaise());
+  buttonC->WhenPressed(new CommandRackFlat());
 }
 
 

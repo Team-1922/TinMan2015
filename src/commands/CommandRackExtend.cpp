@@ -1,4 +1,4 @@
-#include <commands/CommandRackFlat.h>
+#include "CommandRackExtend.h"
 
 CommandRackExtend::CommandRackExtend() :
 	CommandBase("CommandExtend")
