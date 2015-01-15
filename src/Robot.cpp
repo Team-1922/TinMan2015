@@ -3,6 +3,8 @@
 #include "Commands/Command.h"
 #include "CommandBase.h"
 
+#include "Utilities.h"
+
 class Robot: public IterativeRobot
 {
 private:
@@ -14,6 +16,7 @@ private:
 		CommandBase::init();
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
+
 	}
 	
 	void DisabledPeriodic()
@@ -47,6 +50,9 @@ private:
 	void TeleopPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
+
+		SmartDashboard::PutNumber("PotentiometerValueAngle", CommandBase::rackMotor->getPotentiometer());
+		SmartDashboard::PutNumber("PotentiometerValueRaw",   CommandBase::rackMotor->getPotentiometerRaw());
 	}
 
 	void TestPeriodic()

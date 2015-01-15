@@ -23,7 +23,7 @@ void CommandRackFlat::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool CommandRackFlat::IsFinished()
 {
-	if( rackMotor->getPotentiometer() <= 0)
+	if( rackMotor->getPotentiometer() <= 2)
 		return true;
 	else
 		return false;

@@ -4,7 +4,6 @@
 namespace Utilities
 {
 
-
 //if val is within a given epsilon of test (threshold)
 bool isEqual(float test, float val, float epsilon)
 {
