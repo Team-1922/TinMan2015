@@ -11,6 +11,8 @@
 namespace RobotMap
 {
 
+namespace Rack
+{
 //the number of turns
 extern const float potentiometerTurnCount;
 
@@ -22,6 +24,22 @@ extern const float potentiometerMaxVal;
 
 //the range of the two above values
 extern const float potentiometerRange;
+
+//the location of the rack motor
+extern const int motorLoc;
+}
+
+//the drive train constants
+namespace DriveTrain
+{
+
+//the locations of the motors
+extern const int frontLeft;
+extern const int rearLeft;
+extern const int frontRight;
+extern const int rearRight;
+
+}
 }
 
 
