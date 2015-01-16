@@ -1,5 +1,6 @@
 #include "DriveTrain.h"
 #include "../RobotMap.h"
+#include "../Commands/CommandArcadeDrive.h"
 
 DriveTrain::DriveTrain() :
 		Subsystem("DriveTrainSubsystem"),
@@ -14,7 +15,7 @@ DriveTrain::DriveTrain() :
 void DriveTrain::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new CommandArcadeDrive());
 }
 
 // Put methods for controlling this subsystem
@@ -26,7 +27,8 @@ void DriveTrain::ArcadeDrive(Joystick* stick)
 	robDrive.ArcadeDrive(stick);
 }
 
-void DriveTrain::stopMotors(){
+void DriveTrain::StopMotors()
+{
 	robDrive.StopMotor();
 
 }

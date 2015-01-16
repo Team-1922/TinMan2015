@@ -8,36 +8,34 @@
 #include "CommandArcadeDrive.h"
 
 
-CommandArcadeDrive::CommandArcadeDrive (){
-
+CommandArcadeDrive::CommandArcadeDrive ()
+{
 	Requires(driveTrain);
-
-
 }
 
-void CommandArcadeDrive::Initialize() {
-
-
+void CommandArcadeDrive::Initialize()
+{
 }
 
-void CommandArcadeDrive::Execute(){
+void CommandArcadeDrive::Execute()
+{
 	driveTrain->ArcadeDrive(oi->GetJoystick());
 
 }
 
-void CommandArcadeDrive::Interrupted(){
-
-	driveTrain->stopMotors();
-
+void CommandArcadeDrive::Interrupted()
+{
+	End();
 }
 
-bool CommandArcadeDrive::IsFinished() {
+bool CommandArcadeDrive::IsFinished()
+{
 	return (false);
 
 }
 
-void CommandArcadeDrive::End(){
-	driveTrain->stopMotors();
-
+void CommandArcadeDrive::End()
+{
+	driveTrain->StopMotors();
 
 }

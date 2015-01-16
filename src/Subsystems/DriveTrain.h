@@ -14,7 +14,8 @@ private:
 public:
 	DriveTrain();
 	void InitDefaultCommand();
-	void stopMotors();
+
+	void StopMotors();
 	void ArcadeDrive(Joystick* stick);
 };
 
