@@ -25,3 +25,8 @@ void DriveTrain::ArcadeDrive(Joystick* stick)
 {
 	robDrive.ArcadeDrive(stick);
 }
+
+void DriveTrain::stopMotors(){
+	robDrive.StopMotor();
+
+}
