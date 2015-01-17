@@ -1,5 +1,7 @@
 #ifndef RACK_MOTOR_H
 #define RACK_MOTOR_H
+
+#include "../OzPotentiometer.h"
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
@@ -8,7 +10,7 @@ class RackMotor: public Subsystem
 
 private:
 	SpeedController* motor;
-	AnalogPotentiometer* potentiometer;
+	OzPotentiometer* potentiometer;
 
 public:
 	RackMotor();

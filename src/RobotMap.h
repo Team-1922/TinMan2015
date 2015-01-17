@@ -17,6 +17,11 @@ namespace Controls
 extern const int raiseRack;
 extern const int extendRack;
 extern const int flatRack;
+
+//the controls for the three shovel positions
+extern const int groundShovel;
+extern const int humanShovel;
+extern const int dumpShovel;
 }
 
 namespace Rack
@@ -35,6 +40,8 @@ extern const float potentiometerRange;
 
 //the location of the rack motor
 extern const int motorLoc;
+
+extern const int potentiometerLoc;
 }
 
 //the drive train constants
@@ -65,6 +72,8 @@ extern const float potentiometerMaxVal;
 
 //the range of the two above values
 extern const float potentiometerRange;
+
+extern const int potentiometerLoc;
 }
 }
 

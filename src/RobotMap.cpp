@@ -16,6 +16,10 @@ namespace Controls
 	const int raiseRack = 5;
 	const int extendRack= 6;
 	const int flatRack  = 7;
+
+	const int groundShovel = 8;
+	const int humanShovel  = 9;
+	const int dumpShovel   = 10;
 }
 namespace Rack
 {
@@ -24,6 +28,7 @@ namespace Rack
 	const float potentiometerMaxVal 	= 223.2f;
 	const float potentiometerRange		= fabs(potentiometerMaxVal - potentiometerMinVal);
 	const int   motorLoc = 4;
+	const int   potentiometerLoc = 1;
 }
 
 namespace DriveTrain
@@ -37,11 +42,12 @@ namespace DriveTrain
 }
 namespace Shovel
 {
-const int motorLoc = 5;
-const float potentiometerTurnCount;//TODO: get these values
-const float potentiometerMinVal;
-const float potentiometerMaxVal;
-const float potentiometerRange = fabs(potentiometerMaxVal - potentiometerMinVal);;
+	const int motorLoc = 5;
+	const float potentiometerTurnCount  = 0;//TODO: get these values
+	const float potentiometerMinVal 	= 0;
+	const float potentiometerMaxVal 	= 0;
+	const float potentiometerRange = fabs(potentiometerMaxVal - potentiometerMinVal);;
+	const int   potentiometerLoc = 2;
 }
 
 }
