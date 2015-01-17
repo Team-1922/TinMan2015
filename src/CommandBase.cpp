@@ -7,6 +7,7 @@
 RackMotor* CommandBase::rackMotor = NULL;
 OI* CommandBase::oi = NULL;
 DriveTrain* CommandBase::driveTrain = NULL;
+Shovel* CommandBase::shovel = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -24,6 +25,7 @@ CommandBase::~CommandBase()
 	SAFE_DELETE(rackMotor);
 	SAFE_DELETE(oi);
 	SAFE_DELETE(driveTrain);
+	SAFE_DELETE(shovel);
 }
 
 void CommandBase::init()
@@ -32,5 +34,6 @@ void CommandBase::init()
 	// line should be repeated for each subsystem in the project.
 	rackMotor = new RackMotor();
 	driveTrain = new DriveTrain();
+	shovel = new Shovel();
 	oi = new OI();
 }

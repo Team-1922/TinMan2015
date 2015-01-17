@@ -3,6 +3,7 @@
 
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/RackMotor.h"
+#include "Subsystems/Shovel.h"
 #include <string>
 #include "Commands/Command.h"
 #include "OI.h"
@@ -23,6 +24,7 @@ public:
 
 	static void init();
 	// Create a single static instance of all of your subsystems
+	static Shovel *shovel;
 	static RackMotor *rackMotor;
 	static OI *oi;
 	static DriveTrain *driveTrain;
