@@ -7,12 +7,17 @@
 class DriveTrain: public Subsystem
 {
 private:
-	RobotDrive robDrive;
+
+	SpeedController* frontLeft;
+	SpeedController* rearLeft;
+	SpeedController* frontRight;
+	SpeedController* rearRight;
 
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
 	DriveTrain();
+	~DriveTrain();
 	void InitDefaultCommand();
 
 	void StopMotors();
