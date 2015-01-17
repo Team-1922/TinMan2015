@@ -17,6 +17,9 @@ private:
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 
+		CameraServer::GetInstance()->SetQuality(50);
+		//the camera name (ex "cam0") can be found through the roborio web interface
+		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 	}
 	
 	void DisabledPeriodic()
