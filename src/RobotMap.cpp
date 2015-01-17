@@ -10,6 +10,13 @@
 
 namespace RobotMap
 {
+namespace Controls
+{
+//TODO: change these locations (they suck)
+	const int raiseRack = 5;
+	const int extendRack= 6;
+	const int flatRack  = 7;
+}
 namespace Rack
 {
 	const float potentiometerTurnCount 	= 0.75f;

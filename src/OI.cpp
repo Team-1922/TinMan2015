@@ -22,9 +22,9 @@ OI::OI() {
 
 
     // Create some buttons
-    JoystickButton* buttonA = new JoystickButton(stick, 5); //***change channels***
-    JoystickButton* buttonB= new JoystickButton(stick, 6);
-    JoystickButton* buttonC= new JoystickButton(stick, 7);
+    JoystickButton* buttonA = new JoystickButton(stick, RobotMap::Controls::extendRack);
+    JoystickButton* buttonB= new JoystickButton(stick, RobotMap::Controls::raiseRack);
+    JoystickButton* buttonC= new JoystickButton(stick, RobotMap::Controls::flatRack);
 
 
     // Connect the buttons to commands

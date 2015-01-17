@@ -11,6 +11,14 @@
 namespace RobotMap
 {
 
+namespace Controls
+{
+//The control for rasing, extending, and "flatting" the rack
+extern const int raiseRack;
+extern const int extendRack;
+extern const int flatRack;
+}
+
 namespace Rack
 {
 //the number of turns
