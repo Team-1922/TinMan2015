@@ -35,6 +35,14 @@ namespace DriveTrain
 	const int rearRight  = 3;
 
 }
+namespace Shovel
+{
+const int motorLoc = 5;
+const float potentiometerTurnCount;//TODO: get these values
+const float potentiometerMinVal;
+const float potentiometerMaxVal;
+const float potentiometerRange = fabs(potentiometerMaxVal - potentiometerMinVal);;
+}
 
 }
 

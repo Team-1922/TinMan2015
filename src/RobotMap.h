@@ -48,6 +48,24 @@ extern const int frontRight;
 extern const int rearRight;
 
 }
+
+namespace Shovel
+{
+//the motor location for the shovel
+extern const int motorLoc;
+
+//the number of turns
+extern const float potentiometerTurnCount;
+
+//the minimum bound of potentiometer
+extern const float potentiometerMinVal;
+
+//the maximum bound of potentiometer
+extern const float potentiometerMaxVal;
+
+//the range of the two above values
+extern const float potentiometerRange;
+}
 }
 
 

@@ -28,9 +28,9 @@ OI::OI() {
 
 
     // Connect the buttons to commands
-  buttonA->WhenPressed(new CommandRackExtend());
-  buttonB->WhenPressed(new CommandRackRaise());
-  buttonC->WhenPressed(new CommandRackFlat());
+	buttonA->WhenPressed(new CommandRackExtend());
+	buttonB->WhenPressed(new CommandRackRaise());
+	buttonC->WhenPressed(new CommandRackFlat());
 }
 
 

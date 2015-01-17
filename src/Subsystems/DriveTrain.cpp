@@ -8,7 +8,7 @@ DriveTrain::DriveTrain() :
 		frontLeft(new Talon(RobotMap::DriveTrain::frontLeft)),
 		rearLeft(new Talon(RobotMap::DriveTrain::rearLeft)),
 		frontRight(new Talon(RobotMap::DriveTrain::frontRight)),
-		rearRight(new Talon(RobotMap::DriveTrain::rearLeft))
+		rearRight(new Talon(RobotMap::DriveTrain::rearRight))
 {
 
 }

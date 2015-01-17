@@ -1,25 +1,25 @@
-#ifndef RACK_MOTOR_H
-#define RACK_MOTOR_H
+#ifndef Shovel_H
+#define Shovel_H
+
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class RackMotor: public Subsystem
+class Shovel: public Subsystem
 {
-
 private:
+
 	SpeedController* motor;
 	AnalogPotentiometer* potentiometer;
 
+	// It's desirable that everything possible under private except
+	// for methods that implement subsystem capabilities
 public:
-	RackMotor();
+	Shovel();
 	void InitDefaultCommand();
 
-	void doNothing(){}
-	void setMotor(float level);
 	float getPotentiometer();
 	float getPotentiometerRaw();
-
-
+	void  setMotor(float val);
 };
 
 #endif

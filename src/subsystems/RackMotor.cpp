@@ -1,4 +1,5 @@
 #include "RackMotor.h"
+#include "../Commands/CommandRackDoNothing.h"
 #include "../RobotMap.h"
 
 RackMotor::RackMotor() :
@@ -11,6 +12,11 @@ RackMotor::RackMotor() :
 void RackMotor::setMotor(float level)
 {
 	motor->Set(level);
+}
+
+void RackMotor::InitDefaultCommand()
+{
+	SetDefaultCommand(new CommandRackDoNothing());
 }
 
 float RackMotor::getPotentiometer()
