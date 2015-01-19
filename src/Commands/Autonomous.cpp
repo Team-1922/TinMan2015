@@ -12,5 +12,5 @@
 #include <iostream>
 
 Autonomous::Autonomous() : CommandGroup("Autonomous") {
-	AddSequential(new CommandRackDoNothing())
+	AddSequential(new CommandRackDoNothing());
 }
