@@ -36,16 +36,17 @@ void DriveTrain::InitDefaultCommand()
 
 void DriveTrain::ArcadeDrive(Joystick* stick)
 {
-	float xAxis = stick->GetX();
-	float yAxis = stick->GetY();
+	//flip the axes
+	float yAxis = stick->GetX();
+	float xAxis = stick->GetY();
 
 	//manual arcade drive control
 	float left = yAxis + xAxis;
 	float right = yAxis - xAxis;
 
-	//invert the arcade drive values
-	left = -left;
-	right = -right;
+	//invert the motors
+	//left = -left;
+	//right = -right;
 
 	//set the motors
 	frontLeft->Set(left);
