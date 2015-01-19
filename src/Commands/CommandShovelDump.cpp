@@ -19,7 +19,7 @@ void CommandShovelDump::Execute()
 {
 	float potAngle = shovel->getPotentiometer();
 
-	if(potAngle < RobotMap::Shovel::dumpAngle)
+	if(potAngle > RobotMap::Shovel::dumpAngle)
 		shovel->setMotor(-.5);
 	else
 		shovel->setMotor(.5);
