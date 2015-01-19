@@ -8,6 +8,7 @@ RackMotor* CommandBase::rackMotor = NULL;
 OI* CommandBase::oi = NULL;
 DriveTrain* CommandBase::driveTrain = NULL;
 Shovel* CommandBase::shovel = NULL;
+Camera* CommandBase::camera = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -26,6 +27,7 @@ CommandBase::~CommandBase()
 	SAFE_DELETE(oi);
 	SAFE_DELETE(driveTrain);
 	SAFE_DELETE(shovel);
+	SAFE_DELETE(camera);
 }
 
 void CommandBase::init()
@@ -35,5 +37,6 @@ void CommandBase::init()
 	rackMotor = new RackMotor();
 	driveTrain = new DriveTrain();
 	shovel = new Shovel();
+	camera = new Camera();
 	oi = new OI();
 }

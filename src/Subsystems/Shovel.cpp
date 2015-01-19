@@ -1,5 +1,6 @@
 #include "Shovel.h"
 #include "../RobotMap.h"
+#include "../Commands/CommandShovelDoNothing.h"
 
 Shovel::Shovel() :
 		Subsystem("ExampleSubsystem"),
@@ -15,7 +16,8 @@ Shovel::Shovel() :
 void Shovel::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new CommandShovelDoNothing());
+	//TODO: default command
 }
 
 // Put methods for controlling this subsystem
