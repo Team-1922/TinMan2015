@@ -1,5 +1,6 @@
 #include "CommandShovelHuman.h"
 #include "../Utilities.h"
+#include "../RobotMap.h"
 
 CommandShovelHuman::CommandShovelHuman()
 {
@@ -20,7 +21,7 @@ void CommandShovelHuman::Execute()
 	float angle = shovel->getPotentiometer();
 
 
-	if(angle > 45) //past top
+	if(angle > RobotMap::Shovel::humanAngle) //past top
 	{
 		//start at half speed just in case
 		shovel->setMotor(-.5);
@@ -38,7 +39,7 @@ bool CommandShovelHuman::IsFinished()
 	float angle = shovel->getPotentiometer();
 
 	//within a 5 degree threshold
-	if(Utilities::isEqual(45.0f, angle, 2.0f))
+	if(Utilities::isEqual(RobotMap::Shovel::humanAngle, angle, 2.0f))
 		return true;
 	else
 		return false;

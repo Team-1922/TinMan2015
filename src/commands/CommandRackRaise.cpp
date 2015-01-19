@@ -1,5 +1,6 @@
 #include "CommandRackRaise.h"
 #include "../Utilities.h"
+#include "../RobotMap.h"
 
 CommandRackRaise::CommandRackRaise() :
 	CommandBase("CommandRackRaise")
@@ -21,7 +22,7 @@ void CommandRackRaise::Execute()
 	float angle = rackMotor->getPotentiometer();
 
 
-	if(angle > 90) //past top
+	if(angle > RobotMap::Rack::raiseAngle) //past top
 	{
 		//start at half speed just in case
 		rackMotor->setMotor(-.5);
@@ -38,7 +39,7 @@ bool CommandRackRaise::IsFinished()
 	float angle = rackMotor->getPotentiometer();
 
 	//within a 5 degree threshold
-	if(Utilities::isEqual(90.0f, angle, 5.0f))
+	if(Utilities::isEqual(RobotMap::Rack::raiseAngle, angle, 5.0f))
 		return true;
 	else
 		return false;

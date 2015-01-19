@@ -1,4 +1,6 @@
 #include "CommandRackFlat.h"
+#include "../Utilities.h"
+#include "../RobotMap.h"
 
 CommandRackFlat::CommandRackFlat() :
 	CommandBase("CommandFlat")
@@ -16,14 +18,28 @@ void CommandRackFlat::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void CommandRackFlat::Execute()
 {
-	//start at half speed just in case
-	rackMotor->setMotor(-.5);
+
+	float angle = rackMotor->getPotentiometer();
+
+
+	if(angle > RobotMap::Rack::flatAngle) //past top
+	{
+		//start at half speed just in case
+		rackMotor->setMotor(-.5);
+	}
+	else //before top
+	{
+		rackMotor->setMotor(.5);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool CommandRackFlat::IsFinished()
 {
-	if( rackMotor->getPotentiometer() <= 2)
+	float angle = rackMotor->getPotentiometer();
+
+	//within a 5 degree threshold
+	if(Utilities::isEqual(RobotMap::Rack::flatAngle, angle, 5.0f))
 		return true;
 	else
 		return false;

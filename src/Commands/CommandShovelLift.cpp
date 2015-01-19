@@ -1,5 +1,6 @@
 #include "CommandShovelLift.h"
 #include "../Utilities.h"
+#include "../RobotMap.h"
 
 CommandShovelLift::CommandShovelLift()
 {
@@ -20,7 +21,7 @@ void CommandShovelLift::Execute()
 	float angle = shovel->getPotentiometer();
 
 
-	if(angle > 1) //past top
+	if(angle > RobotMap::Shovel::liftAngle) //past top
 	{
 		//start at half speed just in case
 		shovel->setMotor(-.5);
@@ -38,7 +39,7 @@ bool CommandShovelLift::IsFinished()
 	float angle = shovel->getPotentiometer();
 
 	//within a 5 degree threshold
-	if(Utilities::isEqual(1, angle, 2.0f))
+	if(Utilities::isEqual(RobotMap::Shovel::liftAngle, angle, 2.0f))
 		return true;
 	else
 		return false;

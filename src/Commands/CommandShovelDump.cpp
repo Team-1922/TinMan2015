@@ -1,5 +1,6 @@
 #include "CommandShovelDump.h"
 #include "../Utilities.h"
+#include "../RobotMap.h"
 
 CommandShovelDump::CommandShovelDump()
 {
@@ -18,7 +19,7 @@ void CommandShovelDump::Execute()
 {
 	float potAngle = shovel->getPotentiometer();
 
-	if(potAngle < 90)
+	if(potAngle < RobotMap::Shovel::dumpAngle)
 		shovel->setMotor(-.5);
 	else
 		shovel->setMotor(.5);
@@ -27,7 +28,7 @@ void CommandShovelDump::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool CommandShovelDump::IsFinished()
 {
-	if(Utilities::isEqual(90, shovel->getPotentiometer(), 2))
+	if(Utilities::isEqual(RobotMap::Shovel::dumpAngle, shovel->getPotentiometer(), 2))
 		return true;
 	else
 		return false;

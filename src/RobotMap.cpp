@@ -23,6 +23,10 @@ namespace Controls
 }
 namespace Rack
 {
+	const float extendAngle = 135;
+	const float raiseAngle  = 90;
+	const float flatAngle   = 0;
+
 	const float potentiometerTurnCount 	= 0.75f;
 	const float potentiometerMinVal 	= 145.776f;
 	const float potentiometerMaxVal 	= 223.2f;
@@ -42,13 +46,18 @@ namespace DriveTrain
 }
 namespace Shovel
 {
+	const float dumpAngle   = 90;
+	const float groundAngle = 0;
+	const float humanAngle  = 45;
+	const float liftAngle   = -30;
+	const float storeAngle  = 135;
+
 	const int motorLoc = 5;
 	const float potentiometerTurnCount  = 0;//TODO: get these values
 	const float potentiometerMinVal 	= 0;
 	const float potentiometerMaxVal 	= 0;
 	const float potentiometerRange = fabs(potentiometerMaxVal - potentiometerMinVal);;
 	const int   potentiometerLoc = 2;
-	const float potentiometerLiftAngle = -30.f;
 }
 
 }

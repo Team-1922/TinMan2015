@@ -1,5 +1,6 @@
 #include "CommandShovelGround.h"
 #include "../Utilities.h"
+#include "../RobotMap.h"
 
 CommandShovelGround::CommandShovelGround()
 {
@@ -18,7 +19,7 @@ void CommandShovelGround::Execute()
 {
 	float potAngle = shovel->getPotentiometer();
 
-	if(potAngle < 0)
+	if(potAngle < RobotMap::Shovel::groundAngle)
 		shovel->setMotor(-.5);
 	else
 		shovel->setMotor(.5);
@@ -27,7 +28,7 @@ void CommandShovelGround::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool CommandShovelGround::IsFinished()
 {
-	if(Utilities::isEqual(0, shovel->getPotentiometer(), 2))
+	if(Utilities::isEqual(RobotMap::Shovel::groundAngle, shovel->getPotentiometer(), 2))
 		return true;
 	else
 		return false;

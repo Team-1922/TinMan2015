@@ -28,7 +28,7 @@ float Shovel::getPotentiometer()
 	float potVal = potentiometer->GetAngle();
 
 	//subtract the offset defined by the 'lift' position
-	return potVal - RobotMap::Shovel::potentiometerLiftAngle;
+	return potVal - RobotMap::Shovel::liftAngle;
 }
 
 float Shovel::getPotentiometerRaw()

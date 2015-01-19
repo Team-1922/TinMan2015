@@ -26,6 +26,11 @@ extern const int dumpShovel;
 
 namespace Rack
 {
+//the angles of each of the positions in degrees
+extern const float extendAngle;
+extern const float raiseAngle;
+extern const float flatAngle;
+
 //the number of turns
 extern const float potentiometerTurnCount;
 
@@ -58,6 +63,14 @@ extern const int rearRight;
 
 namespace Shovel
 {
+//the angles of each of the positions in degrees
+extern const float dumpAngle;
+extern const float groundAngle;
+extern const float humanAngle;
+extern const float liftAngle;
+extern const float storeAngle;
+
+
 //the motor location for the shovel
 extern const int motorLoc;
 
@@ -74,9 +87,6 @@ extern const float potentiometerMaxVal;
 extern const float potentiometerRange;
 
 extern const int potentiometerLoc;
-
-//this gives the angle for position 5(lift the robot up), where the potentiometer will be 0
-extern const float potentiometerLiftAngle;
 }
 }
 
