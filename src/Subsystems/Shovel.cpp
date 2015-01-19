@@ -24,7 +24,11 @@ void Shovel::InitDefaultCommand()
 
 float Shovel::getPotentiometer()
 {
-	return potentiometer->GetAngle();
+	//get the angle
+	float potVal = potentiometer->GetAngle();
+
+	//subtract the offset defined by the 'lift' position
+	return potVal - RobotMap::Shovel::potentiometerLiftAngle;
 }
 
 float Shovel::getPotentiometerRaw()

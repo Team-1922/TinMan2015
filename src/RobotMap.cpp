@@ -48,6 +48,7 @@ namespace Shovel
 	const float potentiometerMaxVal 	= 0;
 	const float potentiometerRange = fabs(potentiometerMaxVal - potentiometerMinVal);;
 	const int   potentiometerLoc = 2;
+	const float potentiometerLiftAngle = -30.f;
 }
 
 }

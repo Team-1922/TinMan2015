@@ -74,6 +74,9 @@ extern const float potentiometerMaxVal;
 extern const float potentiometerRange;
 
 extern const int potentiometerLoc;
+
+//this gives the angle for position 5(lift the robot up), where the potentiometer will be 0
+extern const float potentiometerLiftAngle;
 }
 }
 

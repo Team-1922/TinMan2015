@@ -15,6 +15,9 @@
 #include "Commands/CommandRackExtend.h"
 #include "Commands/CommandRackFlat.h"
 #include "Commands/CommandRackRaise.h"
+#include "Commands/CommandShovelDump.h"
+#include "Commands/CommandShovelGround.h"
+#include "Commands/CommandShovelHuman.h"
 
 #include "RobotMap.h"
 
@@ -36,9 +39,9 @@ OI::OI() {
 	buttonA->WhenPressed(new CommandRackExtend());
 	buttonB->WhenPressed(new CommandRackRaise());
 	buttonC->WhenPressed(new CommandRackFlat());
-	//buttonA->WhenPressed(new CommandShovelGround());
-	//buttonB->WhenPressed(new CommandShovelHuman());
-	//buttonC->WhenPressed(new CommandShovelDump());
+	buttonD->WhenPressed(new CommandShovelGround());
+	buttonE->WhenPressed(new CommandShovelHuman());
+	buttonF->WhenPressed(new CommandShovelDump());
 }
 
 
