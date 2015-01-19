@@ -5,6 +5,7 @@
 #include "Subsystems/RackMotor.h"
 #include "Subsystems/Shovel.h"
 #include "Subsystems/Camera.h"
+#include "Subsystems/TestPneumatics.h"
 #include <string>
 #include "Commands/Command.h"
 #include "OI.h"
@@ -29,6 +30,7 @@ public:
 	static RackMotor *rackMotor;
 	static OI *oi;
 	static DriveTrain *driveTrain;
+	static TestPneumatics* pneumatics;
 	static Camera* camera;
 };
 

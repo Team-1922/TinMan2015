@@ -45,8 +45,8 @@ void DriveTrain::ArcadeDrive(Joystick* stick)
 	float right = yAxis - xAxis;
 
 	//invert the motors
-	//left = -left;
-	//right = -right;
+	left = -left;
+	right = -right;
 
 	//set the motors
 	frontLeft->Set(left);

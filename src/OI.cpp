@@ -18,6 +18,7 @@
 #include "Commands/CommandShovelDump.h"
 #include "Commands/CommandShovelGround.h"
 #include "Commands/CommandShovelHuman.h"
+#include "Commands/CommandTestPneumatics.h"
 
 #include "RobotMap.h"
 
@@ -33,6 +34,9 @@ OI::OI() {
     JoystickButton* buttonD = new JoystickButton(stick, RobotMap::Controls::groundShovel);
     JoystickButton* buttonE = new JoystickButton(stick, RobotMap::Controls::humanShovel);
     JoystickButton* buttonF = new JoystickButton(stick, RobotMap::Controls::dumpShovel);
+
+    JoystickButton* buttonTest = new JoystickButton(stick, 12);
+    buttonTest->WhenPressed(new CommandTestPneumatics());
 
 
     // Connect the buttons to commands
