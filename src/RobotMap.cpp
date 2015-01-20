@@ -53,11 +53,11 @@ namespace Shovel
 	const float storeAngle  = 135;
 
 	const int motorLoc = 5;
-	const float potentiometerTurnCount  = 0;//TODO: get these values
-	const float potentiometerMinVal 	= 0;
-	const float potentiometerMaxVal 	= 0;
-	const float potentiometerRange = fabs(potentiometerMaxVal - potentiometerMinVal);;
-	const int   potentiometerLoc = 2;
+	const float potentiometerTurnCount 	= 0.75f;//TODO: get real values for a different potentiometer
+	const float potentiometerMinVal 	= 145.776f;
+	const float potentiometerMaxVal 	= 223.2f;
+	const float potentiometerRange		= fabs(potentiometerMaxVal - potentiometerMinVal);
+	const int   potentiometerLoc = 1;
 }
 
 }

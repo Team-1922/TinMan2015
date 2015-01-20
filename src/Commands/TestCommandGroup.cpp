@@ -10,6 +10,7 @@
 #include "CommandShovelStore.h"
 #include "CommandShovelHuman.h"
 #include "CommandTestPneumatics.h"
+#include "CommandDriveStraight.h"
 
 #include <iostream>
 
