@@ -12,13 +12,6 @@ CommandRackFlat::CommandRackFlat() :
 // Called just before this Command runs the first time
 void CommandRackFlat::Initialize()
 {
-
-}
-
-// Called repeatedly when this Command is scheduled to run
-void CommandRackFlat::Execute()
-{
-
 	float angle = rackMotor->getPotentiometer();
 
 
@@ -31,6 +24,11 @@ void CommandRackFlat::Execute()
 	{
 		rackMotor->setMotor(.5);
 	}
+}
+
+// Called repeatedly when this Command is scheduled to run
+void CommandRackFlat::Execute()
+{
 }
 
 // Make this return true when this Command no longer needs to run execute()

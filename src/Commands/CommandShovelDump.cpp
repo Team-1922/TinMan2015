@@ -11,18 +11,17 @@ CommandShovelDump::CommandShovelDump()
 // Called just before this Command runs the first time
 void CommandShovelDump::Initialize()
 {
-
-}
-
-// Called repeatedly when this Command is scheduled to run
-void CommandShovelDump::Execute()
-{
 	float potAngle = shovel->getPotentiometer();
 
 	if(potAngle > RobotMap::Shovel::dumpAngle)
 		shovel->setMotor(-.5);
 	else
 		shovel->setMotor(.5);
+}
+
+// Called repeatedly when this Command is scheduled to run
+void CommandShovelDump::Execute()
+{
 }
 
 // Make this return true when this Command no longer needs to run execute()

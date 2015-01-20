@@ -12,12 +12,6 @@ CommandShovelLift::CommandShovelLift()
 void CommandShovelLift::Initialize()
 {
 
-}
-
-// Called repeatedly when this Command is scheduled to run
-void CommandShovelLift::Execute()
-{
-
 	float angle = shovel->getPotentiometer();
 
 
@@ -30,6 +24,11 @@ void CommandShovelLift::Execute()
 	{
 		shovel->setMotor(.5);
 	}
+}
+
+// Called repeatedly when this Command is scheduled to run
+void CommandShovelLift::Execute()
+{
 }
 
 

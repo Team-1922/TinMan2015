@@ -16,12 +16,6 @@ CommandRackExtend::CommandRackExtend() :
 void CommandRackExtend::Initialize()
 {
 
-}
-
-// Called repeatedly when this Command is scheduled to run
-void CommandRackExtend::Execute()
-{
-
 	float angle = rackMotor->getPotentiometer();
 
 
@@ -34,6 +28,11 @@ void CommandRackExtend::Execute()
 	{
 		rackMotor->setMotor(.5);
 	}
+}
+
+// Called repeatedly when this Command is scheduled to run
+void CommandRackExtend::Execute()
+{
 }
 
 // Make this return true when this Command no longer needs to run execute()

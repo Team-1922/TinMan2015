@@ -12,12 +12,6 @@ CommandShovelStore::CommandShovelStore()
 void CommandShovelStore::Initialize()
 {
 
-}
-
-// Called repeatedly when this Command is scheduled to run
-void CommandShovelStore::Execute()
-{
-
 	float angle = shovel->getPotentiometer();
 
 
@@ -30,6 +24,11 @@ void CommandShovelStore::Execute()
 	{
 		shovel->setMotor(.5);
 	}
+}
+
+// Called repeatedly when this Command is scheduled to run
+void CommandShovelStore::Execute()
+{
 }
 
 

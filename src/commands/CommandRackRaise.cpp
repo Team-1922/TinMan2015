@@ -13,12 +13,6 @@ CommandRackRaise::CommandRackRaise() :
 void CommandRackRaise::Initialize()
 {
 
-}
-
-// Called repeatedly when this Command is scheduled to run
-void CommandRackRaise::Execute()
-{
-
 	float angle = rackMotor->getPotentiometer();
 
 
@@ -31,6 +25,11 @@ void CommandRackRaise::Execute()
 	{
 		rackMotor->setMotor(.5);
 	}
+}
+
+// Called repeatedly when this Command is scheduled to run
+void CommandRackRaise::Execute()
+{
 }
 
 // Make this return true when this Command no longer needs to run execute()

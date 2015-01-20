@@ -12,12 +12,6 @@ CommandShovelHuman::CommandShovelHuman()
 void CommandShovelHuman::Initialize()
 {
 
-}
-
-// Called repeatedly when this Command is scheduled to run
-void CommandShovelHuman::Execute()
-{
-
 	float angle = shovel->getPotentiometer();
 
 
@@ -30,6 +24,11 @@ void CommandShovelHuman::Execute()
 	{
 		shovel->setMotor(.5);
 	}
+}
+
+// Called repeatedly when this Command is scheduled to run
+void CommandShovelHuman::Execute()
+{
 }
 
 

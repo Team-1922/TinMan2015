@@ -9,8 +9,8 @@ CommandCameraStream::CommandCameraStream()
 // Called just before this Command runs the first time
 void CommandCameraStream::Initialize()
 {
-	//TODO: is this where the camera initialization code goes?
-
+    // acquire images
+	IMAQdxStartAcquisition(session);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -21,8 +21,6 @@ void CommandCameraStream::Execute()
 	Image *frame 			= camera->getFrame();
 	IMAQdxError imaqError	= camera->getError();
 
-    // acquire images
-	IMAQdxStartAcquisition(session);
 
     // grab an image, draw the circle, and provide it for the camera server which will
     // in turn send it to the dashboard.

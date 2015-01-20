@@ -11,18 +11,17 @@ CommandShovelGround::CommandShovelGround()
 // Called just before this Command runs the first time
 void CommandShovelGround::Initialize()
 {
-
-}
-
-// Called repeatedly when this Command is scheduled to run
-void CommandShovelGround::Execute()
-{
 	float potAngle = shovel->getPotentiometer();
 
 	if(potAngle > RobotMap::Shovel::groundAngle)
 		shovel->setMotor(-.5);
 	else
 		shovel->setMotor(.5);
+}
+
+// Called repeatedly when this Command is scheduled to run
+void CommandShovelGround::Execute()
+{
 }
 
 // Make this return true when this Command no longer needs to run execute()
