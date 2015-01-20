@@ -62,3 +62,14 @@ void DriveTrain::StopMotors()
 	frontRight->Set(0);
 	rearRight->Set(0);
 }
+
+void DriveTrain::DriveStraight(float motorVal){
+
+	frontLeft->Set(motorVal);
+		rearLeft->Set(motorVal);
+		frontRight->Set(motorVal);
+		rearRight->Set(motorVal);
+
+
+
+}

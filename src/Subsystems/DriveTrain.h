@@ -22,6 +22,7 @@ public:
 
 	void StopMotors();
 	void ArcadeDrive(Joystick* stick);
+	void DriveStraight(float motorVal);
 };
 
 #endif

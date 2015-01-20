@@ -9,6 +9,9 @@
 #include "CommandShovelLift.h"
 #include "CommandShovelStore.h"
 #include "CommandShovelHuman.h"
+#include "CommandTestPneumatics.h"
+
+#include <iostream>
 
 TestCommandGroup::TestCommandGroup()
 {
@@ -29,7 +32,12 @@ TestCommandGroup::TestCommandGroup()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 
-	AddParallel(ArcadeDrive)
+
+
+	AddParallel(new CommandTestPneumatics());
+	AddParallel(new CommandDriveStraight());
+	AddParallel(new CommandRackExtend());
+
 
 
 
