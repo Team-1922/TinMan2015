@@ -10,7 +10,7 @@ CommandCameraStream::CommandCameraStream()
 void CommandCameraStream::Initialize()
 {
     // acquire images
-	IMAQdxStartAcquisition(session);
+	IMAQdxStartAcquisition(camera->getSession());
 }
 
 // Called repeatedly when this Command is scheduled to run
