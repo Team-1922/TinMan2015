@@ -8,86 +8,86 @@
 #ifndef ROBOTMAP_H_
 #define ROBOTMAP_H_
 
+#include <cmath>
+
 namespace RobotMap
 {
+	namespace Controls
+	{
+		//TODO: Change these locations
+		//The control for rasing, extending, and "flatting" the rack
+		const int raiseRack = 5;
+		const int extendRack= 6;
+		const int flatRack  = 7;
 
-namespace Controls
-{
-//The control for rasing, extending, and "flatting" the rack
-extern const int raiseRack;
-extern const int extendRack;
-extern const int flatRack;
+		//the controls for the three shovel positions
+		const int groundShovel = 8;
+		const int humanShovel  = 9;
+		const int dumpShovel   = 10;
+	}
 
-//the controls for the three shovel positions
-extern const int groundShovel;
-extern const int humanShovel;
-extern const int dumpShovel;
-}
+	namespace Rack
+	{
+		//the angles of each of the positions in degrees
+		const float extendAngle = 135;
+		const float raiseAngle  = 90;
+		const float flatAngle   = 0;
 
-namespace Rack
-{
-//the angles of each of the positions in degrees
-extern const float extendAngle;
-extern const float raiseAngle;
-extern const float flatAngle;
+		//the number of turns
+		const float potentiometerTurnCount 	= 0.75f;
 
-//the number of turns
-extern const float potentiometerTurnCount;
+		//the minimum bound of potentiometer
+		const float potentiometerMinVal 	= 145.776f;
 
-//the minimum bound of potentiometer
-extern const float potentiometerMinVal;
+		//the maximum bound of potentiometer
+		const float potentiometerMaxVal 	= 223.2f;
 
-//the maximum bound of potentiometer
-extern const float potentiometerMaxVal;
+		//the range of the two above values
+		const float potentiometerRange		= fabs(potentiometerMaxVal - potentiometerMinVal);
 
-//the range of the two above values
-extern const float potentiometerRange;
+		//the location of the rack motor
+		const int   motorLoc = 4;
+		const int   potentiometerLoc = 1;
+	}
 
-//the location of the rack motor
-extern const int motorLoc;
+	//the drive train constants
+	namespace DriveTrain
+	{
 
-extern const int potentiometerLoc;
-}
+		//the locations of the motors
+		const int frontLeft  = 0;
+		const int rearLeft   = 1;
+		const int frontRight = 2;
+		const int rearRight  = 3;
 
-//the drive train constants
-namespace DriveTrain
-{
+	}
 
-//the locations of the motors
-extern const int frontLeft;
-extern const int rearLeft;
-extern const int frontRight;
-extern const int rearRight;
+	namespace Shovel
+	{
+		//the angles of each of the positions in degrees
+		const float dumpAngle   = 90;
+		const float groundAngle = 0;
+		const float humanAngle  = 45;
+		const float liftAngle   = -30;
+		const float storeAngle  = 135;
 
-}
+		//the motor location for the shovel
+		const int motorLoc = 5;
 
-namespace Shovel
-{
-//the angles of each of the positions in degrees
-extern const float dumpAngle;
-extern const float groundAngle;
-extern const float humanAngle;
-extern const float liftAngle;
-extern const float storeAngle;
+		//the number of turns
+		const float potentiometerTurnCount 	= 0.75f;//TODO: get real values for a different potentiometer
 
+		//the minimum bound of potentiometer
+		const float potentiometerMinVal 	= 145.776f;
 
-//the motor location for the shovel
-extern const int motorLoc;
+		//the maximum bound of potentiometer
+		const float potentiometerMaxVal 	= 223.2f;
 
-//the number of turns
-extern const float potentiometerTurnCount;
+		//the range of the two above values
+		const float potentiometerRange		= fabs(potentiometerMaxVal - potentiometerMinVal);
 
-//the minimum bound of potentiometer
-extern const float potentiometerMinVal;
-
-//the maximum bound of potentiometer
-extern const float potentiometerMaxVal;
-
-//the range of the two above values
-extern const float potentiometerRange;
-
-extern const int potentiometerLoc;
-}
+		const int   potentiometerLoc = 1;
+	}
 }
 
 
