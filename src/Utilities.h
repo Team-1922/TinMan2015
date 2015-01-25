@@ -18,6 +18,14 @@ namespace Utilities
 //if val is within a given epsilon of test (threshold)
 bool isEqual(float test, float val, float epsilon);
 
+
+//true = positive
+template<typename T>
+inline bool getSign(T num)
+{
+	return (T >= 0.0f);
+}
+
 }
 
 #endif /* SRC_UTILITIES_H_ */

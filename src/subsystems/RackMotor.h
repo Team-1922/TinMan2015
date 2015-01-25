@@ -18,6 +18,7 @@ public:
 
 	void doNothing(){}
 	void setMotor(float level);
+	float getMotor(){return motor->Get();}
 	float getPotentiometer();
 	float getPotentiometerRaw();
 

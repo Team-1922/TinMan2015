@@ -40,11 +40,18 @@ bool CommandRackExtend::IsFinished()
 {
 	float angle = rackMotor->getPotentiometer();
 
-	//within a 5 degree threshold
-	if(Utilities::isEqual(RobotMap::Rack::extendAngle, angle, 5.0f))
-		return true;
-	else
-		return false;
+	//if the rack is coming in towards the positive direction, then make sure it hasn't gone too far
+	// but if the rack is coming towards the negative direction, make sure it hasn't gone too far in that direction
+	if(angle > RobotMap::Rack::extendAngle)//the potentiometer is too far in the positive direction
+		if(Utilities::getSign(rackMotor->getMotor()))//the motor is going in the positive direction
+			return true;//therefore stop
+		else
+			return false;
+	else //the potentiometer is too far in the negative direction
+		if(!Utilities::getSign(rackMotor->getMotor()))//the motor is going in the negative direction
+			return true;//therefore stop
+		else
+			return false;
 }
 
 // Called once after isFinished returns true
