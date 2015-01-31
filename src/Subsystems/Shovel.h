@@ -3,6 +3,7 @@
 
 #include "Commands/Subsystem.h"
 #include "../OzPotentiometer.h"
+#include "../RobotMap.h"
 #include "WPILib.h"
 
 class Shovel: public Subsystem
@@ -17,6 +18,8 @@ private:
 	// for methods that implement subsystem capabilities
 public:
 	Shovel();
+	~Shovel();
+
 	void InitDefaultCommand();
 
 	void  doNothing(){}
@@ -25,11 +28,11 @@ public:
 	void  setMotor(float val);
 	float getAngle();
 
-	float degreesOffOfDump() { return RobotMap::Shovel::dumpAngle - getAngle(); }
+	float degreesOffOfDump()   { return RobotMap::Shovel::dumpAngle   - getAngle(); }
 	float degreesOffOfGround() { return RobotMap::Shovel::groundAngle - getAngle(); }
-	float degreesOffOfHuman() { return RobotMap::Shovel::humanAngle - getAngle(); }
-	float degreesOffOfLift() { return RobotMap::Shovel::liftAngle - getAngle(); }
-	float degreesOffOfStore() { return RobotMap::Shovel::storeAngle - getAngle(); }
+	float degreesOffOfHuman()  { return RobotMap::Shovel::humanAngle  - getAngle(); }
+	float degreesOffOfLift()   { return RobotMap::Shovel::liftAngle   - getAngle(); }
+	float degreesOffOfStore()  { return RobotMap::Shovel::storeAngle  - getAngle(); }
 
 
 
@@ -39,8 +42,8 @@ public:
 private:
 	void setSolenoid(bool setting);
 
-	void retractShelf();
-	void extendShelf();
+	//void retractShelf();
+	//void extendShelf();
 
 };
 

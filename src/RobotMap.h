@@ -48,6 +48,20 @@ namespace RobotMap
 		//the location of the rack motor
 		const int   motorLoc = 4;
 		const int   potentiometerLoc = 1;
+
+		//encoder locations (There are two of them)
+		const int encoderLoc1 = 1;//TODO: what are these
+		const int encoderLoc2 = 2;
+
+		//this is the type of encoder, maybe 4X is not what we want, but for now
+		const Encoder::EncodingType encodingType = Encoder::k4X;
+
+		//DistancePerPulse; this is directly related to the gearing ratio, potentially if we
+		//	want to account for that in our usage
+		const float encoderDPP = 0;//we are not currently using this
+
+		//this is an encoder value to tell the robot when to consider the motor "stopped" when the speed is so low
+		const float encoderMinRate = 1;//RPM
 	}
 
 	//the drive train constants

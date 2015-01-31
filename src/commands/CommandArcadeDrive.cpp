@@ -19,7 +19,7 @@ void CommandArcadeDrive::Initialize()
 
 void CommandArcadeDrive::Execute()
 {
-	driveTrain->ArcadeDrive(oi->GetJoystick());
+	driveTrain->ArcadeDrive(oi->GetDriverJoystick());
 
 }
 

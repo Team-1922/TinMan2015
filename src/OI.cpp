@@ -32,7 +32,7 @@ m_pOperatorStick (NULL)
 	m_pOperatorStick = new Joystick(1);
 
     // Create some buttons
-    JoystickButton* buttonA = new JoystickButton(m_pDriverStick, RobotMap::Controls::extendRack);
+    /*JoystickButton* buttonA = new JoystickButton(m_pDriverStick, RobotMap::Controls::extendRack);
     JoystickButton* buttonB= new JoystickButton(m_pDriverStick, RobotMap::Controls::raiseRack);
     JoystickButton* buttonC= new JoystickButton(m_pDriverStick, RobotMap::Controls::flatRack);
     JoystickButton* buttonD = new JoystickButton(m_pDriverStick, RobotMap::Controls::groundShovel);
@@ -52,15 +52,17 @@ m_pOperatorStick (NULL)
 	buttonC->WhenPressed(new CommandRackFlat());
 	buttonD->WhenPressed(new CommandShovelGround());
 	buttonE->WhenPressed(new CommandShovelHuman());
-	buttonF->WhenPressed(new CommandShovelDump());
+	buttonF->WhenPressed(new CommandShovelDump());*/
 }
 
 
-Joystick* OI::GetDriverJoystick() {
+Joystick* OI::GetDriverJoystick()
+{
 	return m_pDriverStick;
 }
 
-Joystick* OI::GetOperatorJoystick() {
+Joystick* OI::GetOperatorJoystick()
+{
 	return m_pOperatorStick;
 }
 
