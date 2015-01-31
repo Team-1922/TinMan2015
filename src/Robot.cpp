@@ -2,6 +2,7 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "CommandBase.h"
+#include "Commands/Autonomous.h"
 
 #include "Utilities.h"
 
@@ -11,7 +12,7 @@ private:
 	Command *autonomousCommand;
 	LiveWindow *lw;
 
-	SendableChooser Chooser;
+	SendableChooser *Chooser;
 
 	void RobotInit()
 	{
@@ -24,8 +25,8 @@ private:
 		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 		//Initializes a chooser item in the SmartDashboard to select the Autonomous Mode for the round
 		Chooser = new SendableChooser();
-		Chooser.AddDefault("Default Program", new Autonomous);
-		Chooser.AddObject("Other Autonomous", new Autonomous);
+		Chooser->AddDefault("Default Program", new Autonomous);
+		Chooser->AddObject("Other Autonomous", new Autonomous);
 		SmartDashboard::PutData("Autonomous Mode", Chooser);
 	}
 	
@@ -37,7 +38,7 @@ private:
 	void AutonomousInit()
 	{
 		//Retrieves selected Autonomous mode from SmartDashboard
-		autonomousCommand =(Command) Chooser.GetSelected();
+		autonomousCommand =(Command*) Chooser->GetSelected();
 		autonomousCommand->Start();
 		//if (autonomousCommand != NULL)
 		//	autonomousCommand->Start();
