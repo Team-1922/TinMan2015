@@ -23,7 +23,7 @@ bool isEqual(float test, float val, float epsilon);
 template<typename T>
 inline bool getSign(T num)
 {
-	return (T >= 0.0f);
+	return (num >= 0.0f);
 }
 
 }
