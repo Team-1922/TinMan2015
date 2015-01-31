@@ -26,7 +26,7 @@ private:
 		//Initializes a chooser item in the SmartDashboard to select the Autonomous Mode for the round
 		Chooser = new SendableChooser();
 		Chooser->AddDefault("Default Program", new Autonomous);
-		Chooser->AddObject("Other Autonomous", new Autonomous);
+		Chooser->AddObject("Other Autonomous", new AutonomousV2);
 		SmartDashboard::PutData("Autonomous Mode", Chooser);
 	}
 	
