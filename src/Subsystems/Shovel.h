@@ -11,6 +11,7 @@ private:
 
 	SpeedController* motor;
 	OzPotentiometer* potentiometer;
+	Solenoid solenoid;
 
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -22,6 +23,10 @@ public:
 	float getPotentiometer();
 	float getPotentiometerRaw();
 	void  setMotor(float val);
+
+	void retractShelf();
+	void extendShelf();
+
 };
 
 #endif

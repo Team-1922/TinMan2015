@@ -8,7 +8,8 @@ Shovel::Shovel() :
 		potentiometer(new OzPotentiometer(RobotMap::Shovel::potentiometerLoc,
 										RobotMap::Shovel::potentiometerMinVal,
 										RobotMap::Shovel::potentiometerMaxVal,
-										RobotMap::Shovel::potentiometerTurnCount))
+										RobotMap::Shovel::potentiometerTurnCount)),
+										solenoid(0)
 {
 
 }
@@ -41,4 +42,13 @@ float Shovel::getPotentiometerRaw()
 void  Shovel::setMotor(float val)
 {
 	motor->Set(val);
+}
+
+void Shovel::extendShelf()
+{
+}
+
+void Shovel::retractShelf()
+{
+
 }
