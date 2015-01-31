@@ -1,4 +1,4 @@
-#include "Autonomous.h"
+#include "AutonomousV2.h"
 #include "CommandRackDoNothing.h"
 #include "CommandRackExtend.h"
 #include "CommandRackFlat.h"
@@ -11,8 +11,8 @@
 
 #include <iostream>
 
-Autonomous::Autonomous() : CommandGroup("Autonomous")
+AutonomousV2::AutonomousV2() : CommandGroup("AutonomousV2")
 {
-	AddSequential(new CommandRackFlat());
-	AddSequential(new CommandRackDoNothing());
+	AddSequential(new CommandRackRaise);
+	AddSequential(new CommandRackDoNothing);
 }
