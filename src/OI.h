@@ -11,10 +11,12 @@
 class OI {
 public:
 	OI();
-	Joystick* GetJoystick();
+	Joystick* GetDriverJoystick();
+	Joystick* GetOperatorJoystick();
 
 private:
-	Joystick* stick;
+	Joystick* m_pDriverStick;
+	Joystick* m_pOperatorStick;
 };
 
 #endif /* OI_H_ */

@@ -9,7 +9,7 @@ Shovel::Shovel() :
 										RobotMap::Shovel::potentiometerMinVal,
 										RobotMap::Shovel::potentiometerMaxVal,
 										RobotMap::Shovel::potentiometerTurnCount)),
-										solenoid(0)
+										m_solenoid(RobotMap::Shovel::solenoidId)
 {
 
 }
@@ -28,16 +28,23 @@ void Shovel::InitDefaultCommand()
 float Shovel::getPotentiometer()
 {
 	//get the angle
-	float potVal = potentiometer->GetAngle();
-
-	//subtract the offset defined by the 'lift' position
-	return potVal - RobotMap::Shovel::liftAngle;
+	return getAngle();
 }
 
 float Shovel::getPotentiometerRaw()
 {
 	return potentiometer->Get();
 }
+
+float Shovel::getAngle()
+{
+	//get the angle
+	float potVal = potentiometer->GetAngle();
+
+	//subtract the offset defined by the 'lift' position
+	return potVal - RobotMap::Shovel::liftAngle;
+}
+
 
 void  Shovel::setMotor(float val)
 {
@@ -46,9 +53,10 @@ void  Shovel::setMotor(float val)
 
 void Shovel::extendShelf()
 {
+	m_solenoid.Set(true);
 }
 
 void Shovel::retractShelf()
 {
-
+	m_solenoid.Set(false);
 }

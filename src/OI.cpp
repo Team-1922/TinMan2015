@@ -24,22 +24,25 @@
 #include "RobotMap.h"
 
 
-OI::OI() {
-	stick= new Joystick(0);
-
+OI::OI():
+m_pDriverStick (NULL),
+m_pOperatorStick (NULL)
+{
+	m_pDriverStick = new Joystick(0);
+	m_pOperatorStick = new Joystick(1);
 
     // Create some buttons
-    JoystickButton* buttonA = new JoystickButton(stick, RobotMap::Controls::extendRack);
-    JoystickButton* buttonB= new JoystickButton(stick, RobotMap::Controls::raiseRack);
-    JoystickButton* buttonC= new JoystickButton(stick, RobotMap::Controls::flatRack);
-    JoystickButton* buttonD = new JoystickButton(stick, RobotMap::Controls::groundShovel);
-    JoystickButton* buttonE = new JoystickButton(stick, RobotMap::Controls::humanShovel);
-    JoystickButton* buttonF = new JoystickButton(stick, RobotMap::Controls::dumpShovel);
+    JoystickButton* buttonA = new JoystickButton(m_pDriverStick, RobotMap::Controls::extendRack);
+    JoystickButton* buttonB= new JoystickButton(m_pDriverStick, RobotMap::Controls::raiseRack);
+    JoystickButton* buttonC= new JoystickButton(m_pDriverStick, RobotMap::Controls::flatRack);
+    JoystickButton* buttonD = new JoystickButton(m_pDriverStick, RobotMap::Controls::groundShovel);
+    JoystickButton* buttonE = new JoystickButton(m_pDriverStick, RobotMap::Controls::humanShovel);
+    JoystickButton* buttonF = new JoystickButton(m_pDriverStick, RobotMap::Controls::dumpShovel);
 
-    JoystickButton* buttonTest = new JoystickButton(stick, 12);
+    JoystickButton* buttonTest = new JoystickButton(m_pDriverStick, 12);
     buttonTest->WhenPressed(new CommandTestPneumatics());
 
-    JoystickButton* buttonBigTest = new JoystickButton(stick, 1);
+    JoystickButton* buttonBigTest = new JoystickButton(m_pDriverStick, 1);
     buttonBigTest->WhenPressed(new TestCommandGroup());
 
 
@@ -53,8 +56,12 @@ OI::OI() {
 }
 
 
-Joystick* OI::GetJoystick() {
-	return stick;
+Joystick* OI::GetDriverJoystick() {
+	return m_pDriverStick;
+}
+
+Joystick* OI::GetOperatorJoystick() {
+	return m_pOperatorStick;
 }
 
 

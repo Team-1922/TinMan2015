@@ -65,11 +65,11 @@ namespace RobotMap
 	namespace Shovel
 	{
 		//the angles of each of the positions in degrees
-		const float dumpAngle   = 90;
-		const float groundAngle = 0;
-		const float humanAngle  = 45;
-		const float liftAngle   = -30;
-		const float storeAngle  = 135;
+		const float dumpAngle   = 90;  // dump onto the rack
+		const float groundAngle = 0;   // when the shovel is flat on the ground in front of the robot
+		const float humanAngle  = 45;  // target angle of the shovel for collecting from the human station
+		const float liftAngle   = -30; // angle below the ground, used for when the robot is trying to place the totes on the stack and needs to adjust the flat to below the ground plane
+		const float storeAngle  = 135; // for putting the shovel away (tucked along the side of the robot)
 
 		//the motor location for the shovel
 		const int motorLoc = 5;
@@ -87,6 +87,9 @@ namespace RobotMap
 		const float potentiometerRange		= fabs(potentiometerMaxVal - potentiometerMinVal);
 
 		const int   potentiometerLoc = 1;
+
+		const int	solenoidId = 0;
+
 	}
 }
 
