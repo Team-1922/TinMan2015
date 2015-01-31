@@ -8,8 +8,10 @@
 class Robot: public IterativeRobot
 {
 private:
-	//Command *autonomousCommand;
+	Command *autonomousCommand;
 	LiveWindow *lw;
+
+	SendableChooser Chooser;
 
 	void RobotInit()
 	{
@@ -20,6 +22,11 @@ private:
 		CameraServer::GetInstance()->SetQuality(50);
 		//the camera name (ex "cam0") can be found through the roborio web interface
 		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
+		//Initializes a chooser item in the SmartDashboard to select the Autonomous Mode for the round
+		Chooser = new SendableChooser();
+		Chooser.AddDefault("Default Program", new Autonomous);
+		Chooser.AddObject("Other Autonomous", new Autonomous);
+		SmartDashboard::PutData("Autonomous Mode", Chooser);
 	}
 	
 	void DisabledPeriodic()
@@ -29,8 +36,9 @@ private:
 
 	void AutonomousInit()
 	{
-		//do nothing for now
-
+		//Retrieves selected Autonomous mode from SmartDashboard
+		autonomousCommand =(Command) Chooser.GetSelected();
+		autonomousCommand->Start();
 		//if (autonomousCommand != NULL)
 		//	autonomousCommand->Start();
 	}
