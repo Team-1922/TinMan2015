@@ -24,6 +24,9 @@ namespace RobotMap
 		const int groundShovel = 8;
 		const int humanShovel  = 9;
 		const int dumpShovel   = 10;
+
+		const int deployRack = 3;
+		const int retractRack = 4;
 	}
 
 	namespace Rack

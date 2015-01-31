@@ -20,6 +20,8 @@
 #include "Commands/CommandShovelHuman.h"
 #include "Commands/CommandTestPneumatics.h"
 #include "Commands/TestCommandGroup.h"
+#include "Commands/RackDeploy.h"
+#include "Commands/RackRetract.h"
 
 #include "RobotMap.h"
 
@@ -53,6 +55,11 @@ m_pOperatorStick (NULL)
 	buttonD->WhenPressed(new CommandShovelGround());
 	buttonE->WhenPressed(new CommandShovelHuman());
 	buttonF->WhenPressed(new CommandShovelDump());*/
+
+	JoystickButton* buttonDeploy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::deployRack);
+	buttonDeploy->WhenActive(new RackDeploy());
+	JoystickButton* buttonRetract = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
+	buttonRetract->WhenActive(new RackRetract());
 }
 
 

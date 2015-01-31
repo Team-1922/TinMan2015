@@ -65,6 +65,10 @@ private:
 
 		SmartDashboard::PutNumber("PotentiometerValueAngle", CommandBase::rackMotor->getPotentiometer());
 		SmartDashboard::PutNumber("PotentiometerValueRaw",   CommandBase::rackMotor->getPotentiometerRaw());
+		SmartDashboard::PutNumber("EncoderTurnCount", CommandBase::rackMotor->getEncCount());
+		SmartDashboard::PutBoolean("EncoderDirection", CommandBase::rackMotor->getEncDirection());
+		SmartDashboard::PutNumber("EncoderRate", CommandBase::rackMotor->getEncRate());
+		SmartDashboard::PutBoolean("EncoderStopped", CommandBase::rackMotor->getEncStopped());
 	}
 
 	void TestPeriodic()
