@@ -9,8 +9,8 @@ class Shovel: public Subsystem
 {
 private:
 
-	SpeedController* motor;
-	OzPotentiometer* potentiometer;
+	SpeedController* m_pMotor;
+	OzPotentiometer* m_pPotentiometer;
 	Solenoid m_solenoid;
 
 	// It's desirable that everything possible under private except
@@ -33,6 +33,11 @@ public:
 
 
 
+	void extendShelf() { setSolenoid(true); }
+	void retractShelf() { setSolenoid(false); }
+
+private:
+	void setSolenoid(bool setting);
 
 	void retractShelf();
 	void extendShelf();

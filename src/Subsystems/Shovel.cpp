@@ -1,17 +1,24 @@
 #include "Shovel.h"
 #include "../RobotMap.h"
 #include "../Commands/CommandShovelDoNothing.h"
+#include "utilities.h"
 
 Shovel::Shovel() :
 		Subsystem("ExampleSubsystem"),
-		motor(new Talon(RobotMap::Shovel::motorLoc)),
-		potentiometer(new OzPotentiometer(RobotMap::Shovel::potentiometerLoc,
+		m_pMotor(new Talon(RobotMap::Shovel::motorLoc)),
+		m_pPotentiometer(new OzPotentiometer(RobotMap::Shovel::potentiometerLoc,
 										RobotMap::Shovel::potentiometerMinVal,
 										RobotMap::Shovel::potentiometerMaxVal,
 										RobotMap::Shovel::potentiometerTurnCount)),
 										m_solenoid(RobotMap::Shovel::solenoidId)
 {
 
+}
+
+Shovel::~Shovel()
+{
+	SAFE_DELETE(m_pMotor);
+	SAFE_DELETE(m_pPotentiometer);
 }
 
 void Shovel::InitDefaultCommand()
@@ -33,13 +40,13 @@ float Shovel::getPotentiometer()
 
 float Shovel::getPotentiometerRaw()
 {
-	return potentiometer->Get();
+	return m_pPotentiometer->Get();
 }
 
 float Shovel::getAngle()
 {
 	//get the angle
-	float potVal = potentiometer->GetAngle();
+	float potVal = m_pPotentiometer->GetAngle();
 
 	//subtract the offset defined by the 'lift' position
 	return potVal - RobotMap::Shovel::liftAngle;
@@ -48,15 +55,17 @@ float Shovel::getAngle()
 
 void  Shovel::setMotor(float val)
 {
-	motor->Set(val);
+	m_pMotor->Set(val);
 }
 
-void Shovel::extendShelf()
+
+void Shovel::setSolenoid(bool setting)
 {
-	m_solenoid.Set(true);
+	if (!m_solenoid.IsBlackListed()) {  // isBlackListed() == true means that the solenoid is shorted/not working properly
+		m_solenoid.Set(setting);
+	}
+	else {
+		// TODO: dump a message to the driver station so the operator/driver knows there is a problem
+	}
 }
 
-void Shovel::retractShelf()
-{
-	m_solenoid.Set(false);
-}
