@@ -4,6 +4,7 @@
 #include "CommandBase.h"
 #include "Commands/Autonomous.h"
 #include "Commands/AutonomousV2.h"
+#include "Commands/TestCommandGroup.h"
 
 #include "Utilities.h"
 
@@ -70,7 +71,7 @@ private:
 		SmartDashboard::PutBoolean("EncoderDirection", CommandBase::rackMotor->getEncDirection());
 		SmartDashboard::PutNumber("EncoderRate", CommandBase::rackMotor->getEncRate());
 		SmartDashboard::PutBoolean("EncoderStopped", CommandBase::rackMotor->getEncStopped());
-		SmartDashboard::PutData("ShovelLift", new CommandShovelLift());
+		SmartDashboard::PutData("Test Pneumatics and Drive Train", new TestCommandGroup());
 	}
 
 	void TestPeriodic()
