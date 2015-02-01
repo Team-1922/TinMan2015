@@ -1,19 +1,18 @@
-#ifndef COMMAND_RACK_EXTEND_H
-#define COMMAND_RACK_EXTEND_H
+#ifndef TestPneumatics_com_H
+#define TestPneumatics_com_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class CommandRackExtend: public CommandBase
+class TestPneumatics: public CommandBase
 {
 public:
-	CommandRackExtend();
+	TestPneumatics();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 };
-
 
 #endif

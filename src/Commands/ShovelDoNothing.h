@@ -1,13 +1,13 @@
-#ifndef COMMAND_RACK_DO_NOTHING_H
-#define COMMAND_RACK_DO_NOTHING_H
+#ifndef ShovelDoNothing_H
+#define ShovelDoNothing_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class CommandRackDoNothing: public CommandBase
+class ShovelDoNothing: public CommandBase
 {
 public:
-	CommandRackDoNothing();
+	ShovelDoNothing();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

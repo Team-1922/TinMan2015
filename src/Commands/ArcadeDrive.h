@@ -6,15 +6,15 @@
  */
 
 
-#ifndef COMMANDARCADEDRIVE_H_
-#define COMMANDARCADEDRIVE_H_
+#ifndef ArcadeDrive_H_
+#define ArcadeDrive_H_
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class CommandArcadeDrive: public CommandBase {
+class ArcadeDrive: public CommandBase {
 public:
-	CommandArcadeDrive();
+	ArcadeDrive();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

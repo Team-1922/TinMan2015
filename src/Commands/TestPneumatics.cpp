@@ -1,41 +1,42 @@
-#include "CommandDriveStraight.h"
+#include "TestPneumatics.h"
 
-CommandDriveStraight::CommandDriveStraight()
+TestPneumatics::TestPneumatics()
 {
 	// Use Requires() here to declare subsystem dependencies
-	 Requires(driveTrain);
-	 SetTimeout(5);
+	Requires(pneumatics);
+
+	SetTimeout(3);
 }
 
 // Called just before this Command runs the first time
-void CommandDriveStraight::Initialize()
+void TestPneumatics::Initialize()
 {
+	pneumatics->setSolenoid(1);
 
+	SmartDashboard::PutBoolean("TestSolnoidSoftware", true);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void CommandDriveStraight::Execute()
+void TestPneumatics::Execute()
 {
-	driveTrain->DriveStraight(0.5);
-
-
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool CommandDriveStraight::IsFinished()
+bool TestPneumatics::IsFinished()
 {
 	return IsTimedOut();
 }
 
 // Called once after isFinished returns true
-void CommandDriveStraight::End()
+void TestPneumatics::End()
 {
-	driveTrain->StopMotors();
+	pneumatics->setSolenoid(0);
+	SmartDashboard::PutBoolean("TestSolnoidSoftware", false);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void CommandDriveStraight::Interrupted()
+void TestPneumatics::Interrupted()
 {
 	End();
 }

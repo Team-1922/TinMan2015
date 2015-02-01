@@ -1,18 +1,18 @@
-#include "TestPneumatics.h"
+#include "Subsystems/Pneumatics.h"
 #include "../RobotMap.h"
-#include "../Commands/CommandTestPneumatics.h"
+#include "../Commands/TestPneumatics.h"
 
-TestPneumatics::TestPneumatics() :
+Pneumatics::Pneumatics() :
 		Subsystem("ExampleSubsystem"),
 		solenoid(0)//channel 0 to test
 {
 
 }
 
-void TestPneumatics::InitDefaultCommand()
+void Pneumatics::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new CommandTestPneumatics());
+	//SetDefaultCommand(new TestPneumatics());
 }
 
 // Put methods for controlling this subsystem

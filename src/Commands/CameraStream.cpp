@@ -1,20 +1,20 @@
-#include "CommandCameraStream.h"
+#include "CameraStream.h"
 
-CommandCameraStream::CommandCameraStream()
+CameraStream::CameraStream()
 {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(camera);
 }
 
 // Called just before this Command runs the first time
-void CommandCameraStream::Initialize()
+void CameraStream::Initialize()
 {
     // acquire images
 	IMAQdxStartAcquisition(camera->getSession());
 }
 
 // Called repeatedly when this Command is scheduled to run
-void CommandCameraStream::Execute()
+void CameraStream::Execute()
 {
 
 	IMAQdxSession session 	= camera->getSession();
@@ -35,13 +35,13 @@ void CommandCameraStream::Execute()
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool CommandCameraStream::IsFinished()
+bool CameraStream::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void CommandCameraStream::End()
+void CameraStream::End()
 {
     // stop image acquisition
 	IMAQdxStopAcquisition(camera->getSession());
@@ -49,7 +49,7 @@ void CommandCameraStream::End()
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void CommandCameraStream::Interrupted()
+void CameraStream::Interrupted()
 {
 
 }

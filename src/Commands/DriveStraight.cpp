@@ -1,38 +1,41 @@
-#include "CommandShovelDoNothing.h"
+#include "DriveStraight.h"
 
-CommandShovelDoNothing::CommandShovelDoNothing()
+DriveStraight::DriveStraight()
 {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(camera);
+	 Requires(driveTrain);
+	 SetTimeout(5);
 }
 
 // Called just before this Command runs the first time
-void CommandShovelDoNothing::Initialize()
+void DriveStraight::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void CommandShovelDoNothing::Execute()
+void DriveStraight::Execute()
 {
+	driveTrain->DriveStraight(0.5);
+
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool CommandShovelDoNothing::IsFinished()
+bool DriveStraight::IsFinished()
 {
-	return false;
+	return IsTimedOut();
 }
 
 // Called once after isFinished returns true
-void CommandShovelDoNothing::End()
+void DriveStraight::End()
 {
-
+	driveTrain->StopMotors();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void CommandShovelDoNothing::Interrupted()
+void DriveStraight::Interrupted()
 {
-
+	End();
 }

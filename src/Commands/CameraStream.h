@@ -1,13 +1,13 @@
-#ifndef CommandCameraStream_H
-#define CommandCameraStream_H
+#ifndef CameraStream_H
+#define CameraStream_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class CommandCameraStream: public CommandBase
+class CameraStream: public CommandBase
 {
 public:
-	CommandCameraStream();
+	CameraStream();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

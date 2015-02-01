@@ -21,7 +21,7 @@ public:
 	void InitDefaultCommand();
 
 	void StopMotors();
-	void ArcadeDrive(Joystick* stick);
+	void ArcadeDrivePeriodic(Joystick* stick);
 	void DriveStraight(float motorVal);
 };
 

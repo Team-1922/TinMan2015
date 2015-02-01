@@ -9,7 +9,7 @@ OI* CommandBase::oi = NULL;
 DriveTrain* CommandBase::driveTrain = NULL;
 Shovel* CommandBase::shovel = NULL;
 Camera* CommandBase::camera = NULL;
-TestPneumatics* CommandBase::pneumatics = NULL;
+Pneumatics* CommandBase::pneumatics = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -40,6 +40,6 @@ void CommandBase::init()
 	driveTrain = new DriveTrain();
 	shovel = new Shovel();
 	camera = new Camera();
-	pneumatics = new TestPneumatics();
+	pneumatics = new Pneumatics();
 	oi = new OI();
 }

@@ -1,13 +1,13 @@
-#ifndef CommandDriveStraight_H
-#define CommandDriveStraight_H
+#ifndef COMMAND_RACK_DO_NOTHING_H
+#define COMMAND_RACK_DO_NOTHING_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class CommandDriveStraight: public CommandBase
+class RackDoNothing: public CommandBase
 {
 public:
-	CommandDriveStraight();
+	RackDoNothing();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

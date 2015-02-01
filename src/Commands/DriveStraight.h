@@ -1,19 +1,18 @@
-#ifndef COMMAND_RACK_RAISE_H
-#define COMMAND_RACK_RAISE_H
+#ifndef DriveStraight_H
+#define DriveStraight_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class CommandRackRaise: public CommandBase
+class DriveStraight: public CommandBase
 {
 public:
-	CommandRackRaise();
+	DriveStraight();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 };
-
 
 #endif

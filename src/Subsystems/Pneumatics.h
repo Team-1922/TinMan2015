@@ -1,10 +1,10 @@
-#ifndef TestPneumatics_H
-#define TestPneumatics_H
+#ifndef Pneumatics_sys_H
+#define Pneumatics_sys_H
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class TestPneumatics: public Subsystem
+class Pneumatics: public Subsystem
 {
 private:
 	// It's desirable that everything possible under private except
@@ -12,7 +12,7 @@ private:
 	Solenoid solenoid;
 
 public:
-	TestPneumatics();
+	Pneumatics();
 	void InitDefaultCommand();
 
 	//set the solenoid state (true = open, false = closed)

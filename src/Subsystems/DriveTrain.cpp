@@ -1,6 +1,6 @@
 #include "DriveTrain.h"
 #include "../RobotMap.h"
-#include "../Commands/CommandArcadeDrive.h"
+#include "../Commands/ArcadeDrive.h"
 #include "../Utilities.h"
 
 DriveTrain::DriveTrain() :
@@ -27,18 +27,18 @@ DriveTrain::~DriveTrain()
 void DriveTrain::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new CommandArcadeDrive());
+	SetDefaultCommand(new ArcadeDrive());
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
 
-void DriveTrain::ArcadeDrive(Joystick* stick)
+void DriveTrain::ArcadeDrivePeriodic(Joystick* stick)
 {
 	//flip the axes
 	float yAxis = stick->GetX();
-	float xAxis = stick->GetY();
+	float xAxis = -stick->GetY();//INVERT the x axis
 
 	//manual arcade drive control
 	float left = yAxis + xAxis;

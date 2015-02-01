@@ -1,10 +1,9 @@
-#include <commands/CommandRackFlat.h>
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "CommandBase.h"
 #include "Commands/Autonomous.h"
 #include "Commands/AutonomousV2.h"
-#include "Commands/CommandDriveStraight.h"
+#include "Commands/DriveStraight.h"
 
 #include "Utilities.h"
 
@@ -71,7 +70,7 @@ private:
 		SmartDashboard::PutBoolean("EncoderDirection", CommandBase::rackMotor->getEncDirection());
 		SmartDashboard::PutNumber("EncoderRate", CommandBase::rackMotor->getEncRate());
 		SmartDashboard::PutBoolean("EncoderStopped", CommandBase::rackMotor->getEncStopped());
-		SmartDashboard::PutData("Test Pneumatics and Drive Train", new CommandDriveStraight());
+		SmartDashboard::PutData("Test Pneumatics and Drive Train", new DriveStraight());
 		SmartDashboard::PutBoolean("Trigger Pressed", CommandBase::oi->GetOperatorJoystick()->GetButton(Joystick::kTriggerButton));
 	}
 
