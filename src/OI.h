@@ -17,6 +17,7 @@ public:
 private:
 	Joystick* m_pDriverStick;
 	Joystick* m_pOperatorStick;
+	Joystick* m_pDriverController;
 };
 
 #endif /* OI_H_ */

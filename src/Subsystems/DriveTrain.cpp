@@ -38,7 +38,7 @@ void DriveTrain::ArcadeDrivePeriodic(Joystick* stick)
 {
 	//flip the axes
 	float yAxis = stick->GetX();
-	float xAxis = -stick->GetY();//INVERT the x axis
+	float xAxis = -stick->GetY();//INVERT the x axis, maybe
 
 	//manual arcade drive control
 	float left = yAxis + xAxis;
@@ -53,6 +53,30 @@ void DriveTrain::ArcadeDrivePeriodic(Joystick* stick)
 	rearLeft->Set(left);
 	frontRight->Set(right);
 	rearRight->Set(right);
+}
+
+void DriveTrain::TankDrivePeriodic(Joystick* stick)
+{
+		//get axes
+		float leftVal = stick->GetRawAxis(1);
+		float rightVal = stick->GetRawAxis(5);
+
+
+		//set the motors
+		frontLeft->Set(leftVal);
+		rearLeft->Set(leftVal);
+		frontRight->Set(rightVal);
+		rearRight->Set(rightVal);
+
+
+
+
+
+
+
+
+
+
 }
 
 void DriveTrain::StopMotors()
