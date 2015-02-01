@@ -19,7 +19,7 @@ void ArcadeDrive::Initialize()
 
 void ArcadeDrive::Execute()
 {
-	driveTrain->ArcadeDrivePeriodic(oi->GetDriverJoystick());
+	driveTrain->RaceDrivePeriodic(oi->GetDriverJoystick());
 
 }
 

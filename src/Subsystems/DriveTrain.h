@@ -22,7 +22,7 @@ public:
 
 	void StopMotors();
 	void ArcadeDrivePeriodic(Joystick* stick);
-	void TankDrivePeriodic(Joystick* stick);
+	void RaceDrivePeriodic(Joystick* stick);
 	void DriveStraight(float motorVal);
 };
 

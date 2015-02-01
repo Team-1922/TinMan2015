@@ -55,27 +55,25 @@ void DriveTrain::ArcadeDrivePeriodic(Joystick* stick)
 	rearRight->Set(right);
 }
 
-void DriveTrain::TankDrivePeriodic(Joystick* stick)
+void DriveTrain::RaceDrivePeriodic(Joystick* stick)
 {
-		//get axes
-		float leftVal = stick->GetRawAxis(1);
-		float rightVal = stick->GetRawAxis(5);
 
+	//get axes
+	float forwardVal = stick->GetRawAxis(3); //right trig
+	float reverseVal = stick->GetRawAxis(2); //left trig
+	float turnVal = stick->GetRawAxis(4); //right x axis
 
-		//set the motors
-		frontLeft->Set(leftVal);
-		rearLeft->Set(leftVal);
-		frontRight->Set(rightVal);
-		rearRight->Set(rightVal);
+	float throttleFactored = RobotMap::Controls::throttleFactor * (forwardVal - reverseVal);
+	float turnValFactored = RobotMap::Controls::stearingFactor * turnVal;
 
+	float left  = (throttleFactored + turnValFactored);
+	float right = -(throttleFactored - turnValFactored);
 
-
-
-
-
-
-
-
+	//set the motors
+	frontLeft->Set(left);
+	rearLeft->Set(left);
+	frontRight->Set(right);
+	rearRight->Set(right);
 
 }
 

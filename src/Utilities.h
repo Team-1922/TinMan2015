@@ -8,6 +8,8 @@
 #ifndef SRC_UTILITIES_H_
 #define SRC_UTILITIES_H_
 
+#include <vector>
+
 #define SAFE_DELETE(x) {if(NULL != x){delete x; x = NULL;}}
 
 //Global utilities for use around robot code
@@ -25,6 +27,10 @@ inline bool getSign(T num)
 {
 	return (num >= 0.0f);
 }
+
+//takes a list of numbers, and a list of weights to apply to each of these numbers in a weighted average
+//UNTESTED
+float weightAverage(std::vector<float> numbers, std::vector<float> weights);
 
 }
 

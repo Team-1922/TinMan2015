@@ -27,6 +27,11 @@ namespace RobotMap
 
 		const int deployRack = 3;
 		const int retractRack = 4;
+
+
+		//these two MUST add up to 1.0f
+		const float throttleFactor = 0.8f;//how much the throttle affects speed
+		const float stearingFactor = 0.2f;//how much stearing direction affects speed
 	}
 
 	namespace Rack

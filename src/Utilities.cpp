@@ -13,4 +13,27 @@ bool isEqual(float test, float val, float epsilon)
 		return true;
 }
 
+
+float weightAverage(std::vector<float> numbers, std::vector<float> weights)
+{
+	if(weights.size() != numbers.size())
+		return 0.0f;
+
+	float ret = 0.0f;//weighted sum
+	float wSum = 0.0f;//sum of the weights
+
+	auto wIt = weights.begin();
+	for(auto it : numbers)
+	{
+		ret += it * *wIt;
+		wSum += *wIt;
+
+		++wIt;
+	}
+
+	ret /= wSum;
+
+	return ret;
+}
+
 }
