@@ -69,6 +69,7 @@ private:
 		SmartDashboard::PutBoolean("EncoderDirection", CommandBase::rackMotor->getEncDirection());
 		SmartDashboard::PutNumber("EncoderRate", CommandBase::rackMotor->getEncRate());
 		SmartDashboard::PutBoolean("EncoderStopped", CommandBase::rackMotor->getEncStopped());
+		SmartDashboard::PutData("ShovelLift", new CommandShovelLift());
 	}
 
 	void TestPeriodic()
