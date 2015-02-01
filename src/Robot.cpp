@@ -3,6 +3,7 @@
 #include "Commands/Command.h"
 #include "CommandBase.h"
 #include "Commands/Autonomous.h"
+#include "Commands/AutonomousV2.h"
 
 #include "Utilities.h"
 

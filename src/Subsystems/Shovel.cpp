@@ -1,11 +1,11 @@
 #include "Shovel.h"
 #include "../RobotMap.h"
-#include "../Commands/CommandShovelDoNothing.h"
+#include "../Commands/ShovelJoyControlled.h"
 #include "utilities.h"
 
 Shovel::Shovel() :
 		Subsystem("ExampleSubsystem"),
-		m_pMotor(new Talon(RobotMap::Shovel::motorLoc)),
+		m_pMotor(new Jaguar(RobotMap::Shovel::motorLoc)),
 		m_pPotentiometer(new OzPotentiometer(RobotMap::Shovel::potentiometerLoc,
 										RobotMap::Shovel::potentiometerMinVal,
 										RobotMap::Shovel::potentiometerMaxVal,
@@ -24,7 +24,7 @@ Shovel::~Shovel()
 void Shovel::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new CommandShovelDoNothing());
+	SetDefaultCommand(new ShovelJoyControlled());
 	//TODO: default command
 }
 
