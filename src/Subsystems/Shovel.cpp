@@ -10,7 +10,7 @@ Shovel::Shovel() :
 										RobotMap::Shovel::potentiometerMinVal,
 										RobotMap::Shovel::potentiometerMaxVal,
 										RobotMap::Shovel::potentiometerTurnCount)),
-										m_solenoid(RobotMap::Shovel::solenoidId)
+	    m_solenoid(RobotMap::Shovel::solenoidId)
 {
 
 }

@@ -35,7 +35,7 @@ TestCommandGroup::TestCommandGroup()
 
 
 
-	AddParallel(new CommandTestPneumatics());
+	//AddParallel(new CommandTestPneumatics());
 	AddParallel(new CommandDriveStraight());
 	//AddParallel(new CommandRackExtend());
 

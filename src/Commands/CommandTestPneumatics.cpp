@@ -12,6 +12,8 @@ CommandTestPneumatics::CommandTestPneumatics()
 void CommandTestPneumatics::Initialize()
 {
 	pneumatics->setSolenoid(1);
+
+	SmartDashboard::PutBoolean("TestSolnoidSoftware", true);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -29,6 +31,7 @@ bool CommandTestPneumatics::IsFinished()
 void CommandTestPneumatics::End()
 {
 	pneumatics->setSolenoid(0);
+	SmartDashboard::PutBoolean("TestSolnoidSoftware", false);
 }
 
 // Called when another command which requires one or more of the same

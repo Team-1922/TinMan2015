@@ -60,6 +60,8 @@ m_pOperatorStick (NULL)
 	buttonDeploy->WhenActive(new RackDeploy());
 	JoystickButton* buttonRetract = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
 	buttonRetract->WhenActive(new RackRetract());
+    JoystickButton* buttonTest = new JoystickButton(m_pOperatorStick, Joystick::kDefaultTriggerButton);
+    buttonTest->WhenPressed(new CommandTestPneumatics());
 }
 
 

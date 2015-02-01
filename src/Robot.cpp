@@ -4,7 +4,7 @@
 #include "CommandBase.h"
 #include "Commands/Autonomous.h"
 #include "Commands/AutonomousV2.h"
-#include "Commands/TestCommandGroup.h"
+#include "Commands/CommandDriveStraight.h"
 
 #include "Utilities.h"
 
@@ -71,7 +71,8 @@ private:
 		SmartDashboard::PutBoolean("EncoderDirection", CommandBase::rackMotor->getEncDirection());
 		SmartDashboard::PutNumber("EncoderRate", CommandBase::rackMotor->getEncRate());
 		SmartDashboard::PutBoolean("EncoderStopped", CommandBase::rackMotor->getEncStopped());
-		SmartDashboard::PutData("Test Pneumatics and Drive Train", new TestCommandGroup());
+		SmartDashboard::PutData("Test Pneumatics and Drive Train", new CommandDriveStraight());
+		SmartDashboard::PutBoolean("Trigger Pressed", CommandBase::oi->GetOperatorJoystick()->GetButton(Joystick::kTriggerButton));
 	}
 
 	void TestPeriodic()

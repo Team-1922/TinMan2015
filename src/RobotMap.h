@@ -105,7 +105,7 @@ namespace RobotMap
 
 		const int   potentiometerLoc = 1;
 
-		const int	solenoidId = 0;
+		const int	solenoidId = 1;
 
 	}
 }
