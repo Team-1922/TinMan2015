@@ -3,13 +3,13 @@
 RackRetract::RackRetract()
 {
 	// Use Requires() here to declare subsystem dependencies
-	//Requires(rackMotor);
+	Requires(rack);
 }
 
 // Called just before this Command runs the first time
 void RackRetract::Initialize()
 {
-	//rackMotor->setMotor(-.5);
+	//Rack->setMotor(-.5);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -27,7 +27,7 @@ bool RackRetract::IsFinished()
 // Called once after isFinished returns true
 void RackRetract::End()
 {
-	//rackMotor->setMotor(.5);
+	//Rack->setMotor(.5);
 }
 
 // Called when another command which requires one or more of the same

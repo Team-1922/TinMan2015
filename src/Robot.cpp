@@ -75,10 +75,10 @@ private:
 		Scheduler::GetInstance()->Run();
 
 		SmartDashboard::PutNumber("Shovel Potentiometer", CommandBase::shovel->getPotentiometer());
-		SmartDashboard::PutNumber("EncoderTurnCount", CommandBase::rackMotor->getEncCount());
-		SmartDashboard::PutBoolean("EncoderDirection", CommandBase::rackMotor->getEncDirection());
-		SmartDashboard::PutNumber("EncoderRate", CommandBase::rackMotor->getEncRate());
-		SmartDashboard::PutBoolean("EncoderStopped", CommandBase::rackMotor->getEncStopped());
+		SmartDashboard::PutNumber("EncoderTurnCount", CommandBase::rack->getEncCount());
+		SmartDashboard::PutBoolean("EncoderDirection", CommandBase::rack->getEncDirection());
+		SmartDashboard::PutNumber("EncoderRate", CommandBase::rack->getEncRate());
+		SmartDashboard::PutBoolean("EncoderStopped", CommandBase::rack->getEncStopped());
 		SmartDashboard::PutData("Test Pneumatics and Drive Train", new DriveStraight());
 		SmartDashboard::PutBoolean("Trigger Pressed", CommandBase::oi->GetOperatorJoystick()->GetButton(Joystick::kTriggerButton));
 	}

@@ -2,8 +2,8 @@
 #define COMMAND_BASE_H
 
 #include <Subsystems/Pneumatics.h>
+#include <Subsystems/Rack.h>
 #include "Subsystems/DriveTrain.h"
-#include "Subsystems/RackMotor.h"
 #include "Subsystems/Shovel.h"
 #include "Subsystems/Camera.h"
 #include <string>
@@ -27,7 +27,7 @@ public:
 	static void init();
 	// Create a single static instance of all of your subsystems
 	static Shovel *shovel;
-	static RackMotor *rackMotor;
+	static Rack *rack;
 	static OI *oi;
 	static DriveTrain *driveTrain;
 	static Pneumatics* pneumatics;

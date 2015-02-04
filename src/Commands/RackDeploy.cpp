@@ -3,13 +3,13 @@
 RackDeploy::RackDeploy()
 {
 	// Use Requires() here to declare subsystem dependencies
-	//Requires(rackMotor);
+	Requires(rack);
 }
 
 // Called just before this Command runs the first time
 void RackDeploy::Initialize()
 {
-	//rackMotor->setMotor(.5);
+	//Rack->setMotor(.5);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -27,7 +27,7 @@ bool RackDeploy::IsFinished()
 // Called once after isFinished returns true
 void RackDeploy::End()
 {
-	//rackMotor->setMotor(0);
+	//Rack->setMotor(0);
 }
 
 // Called when another command which requires one or more of the same

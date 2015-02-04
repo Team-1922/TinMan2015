@@ -5,7 +5,7 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class RackMotor: public Subsystem
+class Rack: public Subsystem
 {
 
 private:
@@ -13,8 +13,8 @@ private:
 	Encoder* 		 m_pEncoder;
 
 public:
-	RackMotor();
-	~RackMotor();
+	Rack();
+	~Rack();
 
 	void InitDefaultCommand();
 

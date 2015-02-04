@@ -173,11 +173,11 @@ namespace RobotMap
 	namespace Rack
 	{
 		const int rackPivotMotor = 5;//CIM Motor (PWM)
-		const int rackExtendRackMotor = 7;//(PWM)
+		const int rackExtendRack = 7;//(PWM)
 		const int rackClawSolenoid = 1;//(SOL)
 		const int rackMotLimSwitch = 5;//(DI)
-		const int rackMotorEncChannelA = 6;//(DI)
-		const int rackMotorEncChannelB = 7;//(DI)
+		const int RackEncChannelA = 6;//(DI)
+		const int RackEncChannelB = 7;//(DI)
 
 		//not quite sure if this is right, but this is what was used in the exampled
 		const Encoder::EncodingType encodingType = Encoder::k4X;
