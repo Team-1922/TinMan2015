@@ -1,13 +1,13 @@
-#ifndef ArcadeDrive_H
-#define ArcadeDrive_H
+#ifndef RaceDrive_H
+#define RaceDrive_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class ArcadeDrive: public CommandBase
+class RaceDrive: public CommandBase
 {
 public:
-	ArcadeDrive();
+	RaceDrive();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

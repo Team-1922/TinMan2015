@@ -4,13 +4,12 @@
 #include "utilities.h"
 
 Shovel::Shovel() :
-		Subsystem("ExampleSubsystem"),
-		m_pMotor(new Jaguar(RobotMap::Shovel::motorLoc)),
-		m_pPotentiometer(new OzPotentiometer(RobotMap::Shovel::potentiometerLoc,
-										RobotMap::Shovel::potentiometerMinVal,
-										RobotMap::Shovel::potentiometerMaxVal,
-										RobotMap::Shovel::potentiometerTurnCount)),
-	    m_solenoid(RobotMap::Shovel::solenoidId)
+		Subsystem("Shovel"),
+		m_pMotor(new Talon(RobotMap::Shovel::shovelPivotMotor)),
+		m_pPotentiometer(new AnalogPotentiometer(RobotMap::Shovel::potentiometer,
+				RobotMap::Shovel::potDegree/5.0,
+				-(RobotMap::Shovel::potDegree-30))),
+	    m_solenoid(RobotMap::Shovel::shovelWidthSol)
 {
 
 }
@@ -35,22 +34,17 @@ void Shovel::InitDefaultCommand()
 float Shovel::getPotentiometer()
 {
 	//get the angle
-	return getAngle();
-}
-
-float Shovel::getPotentiometerRaw()
-{
 	return m_pPotentiometer->Get();
 }
 
-float Shovel::getAngle()
+/*float Shovel::getAngle()
 {
 	//get the angle
 	float potVal = m_pPotentiometer->GetAngle();
 
 	//subtract the offset defined by the 'lift' position
 	return potVal - RobotMap::Shovel::liftAngle;
-}
+}*/
 
 
 void  Shovel::setMotor(float val)

@@ -1,6 +1,6 @@
+#include "Commands/RaceDrive.h"
 #include "DriveTrain.h"
 #include "../RobotMap.h"
-#include "../Commands/ArcadeDrive.h"
 #include "../Utilities.h"
 
 DriveTrain::DriveTrain() :
@@ -27,7 +27,7 @@ DriveTrain::~DriveTrain()
 void DriveTrain::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new ArcadeDrive());
+	SetDefaultCommand(new RaceDrive());
 }
 
 // Put methods for controlling this subsystem
@@ -75,6 +75,18 @@ void DriveTrain::RaceDrivePeriodic(Joystick* stick)
 	frontRight->Set(right);
 	rearRight->Set(right);
 
+}
+
+void DriveTrain::TankDrivePeriodic(Joystick* stick1, Joystick* stick2)
+{
+	//TODO: these might not need to be inverted
+	float rightValues = -stick1->GetY();
+	float leftValues = -stick2->GetY();
+
+	frontLeft->Set(leftValues);
+	rearLeft->Set(leftValues);
+	frontRight->Set(rightValues);
+	rearRight->Set(rightValues);
 }
 
 void DriveTrain::StopMotors()

@@ -21,11 +21,15 @@
 
 
 OI::OI():
-m_pDriverStick (NULL),
-m_pOperatorStick (NULL)
+m_pDriverStick1 (NULL),
+m_pDriverStick2(NULL),
+m_pOperatorStick (NULL),
+m_pDriverController(NULL)
 {
-	m_pDriverStick = new Joystick(0);
-	m_pOperatorStick = new Joystick(1);
+	m_pDriverStick1 = new Joystick(RobotMap::Controls::driverJoy1);
+	m_pDriverStick2 = new Joystick(RobotMap::Controls::driverJoy2);
+	m_pOperatorStick = new Joystick(RobotMap::Controls::operatorJoy);
+	m_pDriverController = new Joystick(RobotMap::Controls::controller);
 
     // Create some buttons
     /*JoystickButton* buttonA = new JoystickButton(m_pDriverStick, RobotMap::Controls::extendRack);
@@ -59,14 +63,24 @@ m_pOperatorStick (NULL)
 }
 
 
-Joystick* OI::GetDriverJoystick()
+Joystick* OI::GetDriverJoystick1()
 {
-	return m_pDriverStick;
+	return m_pDriverStick1;
+}
+
+Joystick* OI::GetDriverJoystick2()
+{
+	return m_pDriverStick2;
 }
 
 Joystick* OI::GetOperatorJoystick()
 {
 	return m_pOperatorStick;
+}
+
+Joystick* OI::GetDriverController()
+{
+	return m_pDriverController;
 }
 
 

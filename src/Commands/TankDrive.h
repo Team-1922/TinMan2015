@@ -1,13 +1,13 @@
-#ifndef ArcadeDrive_H
-#define ArcadeDrive_H
+#ifndef TankDrive_H
+#define TankDrive_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class ArcadeDrive: public CommandBase
+class TankDrive: public CommandBase
 {
 public:
-	ArcadeDrive();
+	TankDrive();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

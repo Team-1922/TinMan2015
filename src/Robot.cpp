@@ -4,6 +4,9 @@
 #include "Commands/Autonomous.h"
 #include "Commands/AutonomousV2.h"
 #include "Commands/DriveStraight.h"
+#include "Commands/ArcadeDrive.h"
+#include "Commands/RaceDrive.h"
+#include "Commands/TankDrive.h"
 
 #include "Utilities.h"
 
@@ -14,6 +17,7 @@ private:
 	LiveWindow *lw;
 
 	SendableChooser *Chooser;
+	SendableChooser *driveModeChooser;
 
 	void RobotInit()
 	{
@@ -29,6 +33,12 @@ private:
 		Chooser->AddDefault("Default Program", new Autonomous);
 		Chooser->AddObject("Other Autonomous", new AutonomousV2);
 		SmartDashboard::PutData("Autonomous Mode", Chooser);
+
+		//this is for switchible drive modes
+		driveModeChooser = new SendableChooser();
+		driveModeChooser->AddDefault("Controller Drive", new RaceDrive);
+		driveModeChooser->AddObject("Arcade Drive", new ArcadeDrive);
+		driveModeChooser->AddObject("Tank Drive", new TankDrive);
 	}
 	
 	void DisabledPeriodic()
@@ -64,8 +74,7 @@ private:
 	{
 		Scheduler::GetInstance()->Run();
 
-		SmartDashboard::PutNumber("PotentiometerValueAngle", CommandBase::rackMotor->getPotentiometer());
-		SmartDashboard::PutNumber("PotentiometerValueRaw",   CommandBase::rackMotor->getPotentiometerRaw());
+		SmartDashboard::PutNumber("Shovel Potentiometer", CommandBase::shovel->getPotentiometer());
 		SmartDashboard::PutNumber("EncoderTurnCount", CommandBase::rackMotor->getEncCount());
 		SmartDashboard::PutBoolean("EncoderDirection", CommandBase::rackMotor->getEncDirection());
 		SmartDashboard::PutNumber("EncoderRate", CommandBase::rackMotor->getEncRate());

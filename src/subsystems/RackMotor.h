@@ -10,7 +10,6 @@ class RackMotor: public Subsystem
 
 private:
 	SpeedController* m_pMotor;
-	OzPotentiometer* m_pPotentiometer;
 	Encoder* 		 m_pEncoder;
 
 public:
@@ -22,13 +21,10 @@ public:
 	void doNothing(){}
 	void setMotor(float level);
 	float getMotor(){return m_pMotor->Get();}
-	float getPotentiometer();
-	float getPotentiometerRaw();
 
 	/*
 	 * Encoder Control Functions
 	 */
-
 	void resetEncoder(){m_pEncoder->Reset();}
 
 	/*

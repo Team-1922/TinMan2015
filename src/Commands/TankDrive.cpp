@@ -1,37 +1,37 @@
-#include "ArcadeDrive.h"
+#include "TankDrive.h"
 
-ArcadeDrive::ArcadeDrive()
+TankDrive::TankDrive()
 {
 	Requires(driveTrain);
 }
 
 // Called just before this Command runs the first time
-void ArcadeDrive::Initialize()
+void TankDrive::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArcadeDrive::Execute()
+void TankDrive::Execute()
 {
-	driveTrain->ArcadeDrivePeriodic(oi->GetDriverJoystick1());
+	driveTrain->TankDrivePeriodic(oi->GetDriverJoystick1(), oi->GetDriverJoystick2());
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArcadeDrive::IsFinished()
+bool TankDrive::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ArcadeDrive::End()
+void TankDrive::End()
 {
-	driveTrain->StopMotors();
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ArcadeDrive::Interrupted()
+void TankDrive::Interrupted()
 {
-	End();
+
 }

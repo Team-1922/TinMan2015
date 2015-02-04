@@ -10,20 +10,21 @@
 
 #include <cmath>
 
+//uncomment this to use the locations from the test robot
+//#define TEST_ROBOT
+
+
+#ifdef TEST_ROBOT
+
 namespace RobotMap
 {
 	namespace Controls
 	{
-		//TODO: Change these locations
-		//The control for rasing, extending, and "flatting" the rack
-		const int raiseRack = 5;
-		const int extendRack= 6;
-		const int flatRack  = 7;
-
-		//the controls for the three shovel positions
-		const int groundShovel = 8;
-		const int humanShovel  = 9;
-		const int dumpShovel   = 10;
+		//the locations of the controllers and joysticks
+		const int driverJoy1 = 0;
+		const int driverJoy2 = 1;
+		const int operatorJoy = 2;
+		const int controller = 3;
 
 		const int deployRack = 3;
 		const int retractRack = 4;
@@ -115,6 +116,73 @@ namespace RobotMap
 	}
 }
 
+#else
+namespace RobotMap
+{
+	namespace Controls
+	{
+		//the locations of the controllers and joysticks
+		const int driverJoy1 = 0;
+		const int driverJoy2 = 1;
+		const int operatorJoy = 2;
+		const int controller = 3;
 
+		const int deployRack = 3;
+		const int retractRack = 4;
+
+
+		//these two MUST add up to 1.0f
+		const float throttleFactor = 0.8f;//how much the throttle affects speed
+		const float stearingFactor = 0.2f;//how much stearing direction affects speed
+	}
+
+	//the drive train constants
+	namespace DriveTrain
+	{
+
+		//the locations of the motors
+		const int frontLeft  = 0;
+		const int rearLeft   = 1;
+		const int frontRight = 2;
+		const int rearRight  = 3;
+
+		//motor encoders
+		const int leftEncA = 0;
+		const int leftEncB = 1;
+		const int rightEncA = 2;
+		const int rightEncB = 3;
+
+		//solnoids for lifting the chassis up
+		const int chassisLiftSol = 0;//SOL
+
+	}
+
+	namespace Shovel
+	{
+		const int potentiometer = 0;//potentiometer(AI)
+		const int shovelPivotMotor = 4;//Motor (PWM)
+		const int shovelWideRight = 8;//limit switch (DI)
+		const int shovelWideLeft = 9;//limit switch (DI)
+		const int shovelPivotLimSwitch = 4;//limit switch (DI)
+		const int shovelWidthSol = 2;//solenoid (SOL)
+
+		const int potTurnCount = 1;
+		const int potDegree = 360 * potTurnCount;
+	}
+
+	namespace Rack
+	{
+		const int rackPivotMotor = 5;//CIM Motor (PWM)
+		const int rackExtendRackMotor = 7;//(PWM)
+		const int rackClawSolenoid = 1;//(SOL)
+		const int rackMotLimSwitch = 5;//(DI)
+		const int rackMotorEncChannelA = 6;//(DI)
+		const int rackMotorEncChannelB = 7;//(DI)
+
+		//not quite sure if this is right, but this is what was used in the exampled
+		const Encoder::EncodingType encodingType = Encoder::k4X;
+	}
+}
+#endif
 
 #endif /* ROBOTMAP_H_ */
