@@ -49,7 +49,8 @@ public:
 	 * Encoder Accessor Functions
 	 */
 
-	double	getEncCount()		{return double(m_pEncoder->Get()) / 500.0;  }
+	//This will be in Degrees/s
+	double	getEncCount()		{return double(m_pEncoder->Get());  		}
 	int		getEncRawCount()	{return m_pEncoder->GetRaw();				}
 	double 	getEncDistance()	{return m_pEncoder->GetDistance();			}
 	double 	getEncRate()		{return m_pEncoder->GetRate()/500.0;		}

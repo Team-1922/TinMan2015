@@ -18,6 +18,11 @@ private:
 	DigitalInput* m_pShovelWideLeft;
 	DigitalInput* m_pShovelPivotLim;
 
+	//information for potentiometer rate
+	float m_CurrSpeed = 0.0f;
+	float m_LastTick = 0.0f;
+	float m_LastAngle = 0.0f;
+
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
@@ -27,17 +32,32 @@ public:
 	void InitDefaultCommand();
 
 	void  doNothing(){}
+
+	/*
+	 * Potentiometer Control
+	 */
+
+	//returns the current angle of the potentiometer relative to shovel in down (flat) position
 	float getPotentiometer();
+
+	//returns the speed of the shovel movement in degrees/s (signed)
+	float getTurnRate();
+
+	// this is used to get rate information from the potentiometer, call this once per cycle
+	void tickPotentiometer();
+
+
+
+	/*
+	 * Motor Control
+	 */
+
 	void  setMotor(float val);
-	//float getAngle();
-
-	//float degreesOffOfDump()   { return RobotMap::Shovel::dumpAngle   - getAngle(); }
-	//float degreesOffOfGround() { return RobotMap::Shovel::groundAngle - getAngle(); }
-	//float degreesOffOfHuman()  { return RobotMap::Shovel::humanAngle  - getAngle(); }
-	//float degreesOffOfLift()   { return RobotMap::Shovel::liftAngle   - getAngle(); }
-	//float degreesOffOfStore()  { return RobotMap::Shovel::storeAngle  - getAngle(); }
 
 
+	/*
+	 * Solenoid Control
+	 */
 
 	void extendShelf() { setSolenoid(true); }
 	void retractShelf() { setSolenoid(false); }

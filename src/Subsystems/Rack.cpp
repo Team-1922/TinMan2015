@@ -1,4 +1,4 @@
-#include <Subsystems/Rack.h>
+#include "Subsystems/Rack.h"
 #include "../Commands/RackJoyControlled.h"
 #include "../RobotMap.h"
 #include "../Utilities.h"
@@ -15,7 +15,7 @@ Rack::Rack() :
 							RobotMap::Rack::rackEncChannelB, true,
 							RobotMap::Rack::encodingType);
 
-	m_pEncoder->SetMaxPeriod(1);
+	m_pEncoder->SetMinRate(0.1);
 }
 
 Rack::~Rack()

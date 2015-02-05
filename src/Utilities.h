@@ -32,6 +32,12 @@ inline bool getSign(T num)
 //UNTESTED
 float weightAverage(std::vector<float> numbers, std::vector<float> weights);
 
+//call this ONCE in the begging of the application
+void startTimer();
+
+//this gets the time in seconds since the begging of the application running; this IS multithreaded
+float getTime();
+
 }
 
 #endif /* SRC_UTILITIES_H_ */

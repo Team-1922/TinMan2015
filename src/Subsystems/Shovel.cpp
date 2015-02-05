@@ -16,6 +16,10 @@ Shovel::Shovel():
 	m_pShovelWideLeft = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
 	m_pShovelPivotLim = new DigitalInput(RobotMap::Shovel::shovelPivotLimSwitch);
 
+	//setup the potentiometer for rate
+	m_LastTick = Utilities::getTime();
+	m_LastAngle = getPotentiometer();
+	tickPotentiometer();
 }
 
 Shovel::~Shovel()
@@ -43,6 +47,29 @@ float Shovel::getPotentiometer()
 {
 	//get the angle
 	return m_pPotentiometer->Get();
+}
+
+
+//
+void Shovel::tickPotentiometer()
+{
+	float currTime = Utilities::getTime();
+
+	//don't tick too often
+	if (currTime - m_LastTick < RobotMap::Shovel::minPollWait)
+		return;
+
+	float currAngle = getPotentiometer();
+
+	//this is in degrees per second
+	m_CurrSpeed = (currAngle - m_LastAngle) /
+			/*	  --------------------------		*/
+				  (currTime - m_LastTick);
+
+	//this would be: change in angle divided by change in time = degrees/s
+
+	//finally update the last tick time
+	m_LastTick = currTime;
 }
 
 /*float Shovel::getAngle()

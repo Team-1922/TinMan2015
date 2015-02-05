@@ -1,5 +1,6 @@
 #include "Utilities.h"
 #include <cmath>
+#include <time.h>
 
 namespace Utilities
 {
@@ -34,6 +35,26 @@ float weightAverage(std::vector<float> numbers, std::vector<float> weights)
 	ret /= wSum;
 
 	return ret;
+}
+
+
+//global values
+time_t g_Timer;
+
+
+void startTimer()
+{
+	//get the time at when the application started
+	time(&g_Timer);
+}
+float getTime()
+{
+	//get the current time
+	time_t timer;
+	time(&timer);
+
+	//return the difference
+	return difftime(timer, g_Timer);
 }
 
 }

@@ -21,6 +21,7 @@ private:
 
 	void RobotInit()
 	{
+		Utilities::startTimer();
 		CommandBase::init();
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();

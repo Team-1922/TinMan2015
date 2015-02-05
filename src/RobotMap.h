@@ -8,14 +8,13 @@
 #ifndef ROBOTMAP_H_
 #define ROBOTMAP_H_
 
-#include <cmath>
-
 //uncomment this to use the locations from the test robot
 //#define TEST_ROBOT
 
 
 #ifdef TEST_ROBOT
 
+#include <cmath>
 namespace RobotMap
 {
 	namespace Controls
@@ -127,13 +126,23 @@ namespace RobotMap
 		const int operatorJoy = 2;
 		const int controller = 3;
 
-		const int deployRack = 3;
-		const int retractRack = 4;
-
-
 		//these two MUST add up to 1.0f
 		const float throttleFactor = 0.8f;//how much the throttle affects speed
 		const float stearingFactor = 0.2f;//how much stearing direction affects speed
+
+		//the controls on the operator joystick
+		//TODO: get these optimal positions
+
+		//these extend or retract the rack, NOTE: these are to be held to adjust the rack
+		const int extendRack = 5;
+		const int retractRack = 6;
+
+		//these are for selecting which subsystem the joystick is controlling
+		const int rackJoyControlled = 7;
+		const int shovelJoyControlled = 8;
+		const int rackShovelCombined = 9;
+
+
 	}
 
 	//the drive train constants
@@ -175,6 +184,9 @@ namespace RobotMap
 
 		const int potTurnCount = 1;
 		const int potDegree = 360 * potTurnCount;
+
+		//polling rate of the potentiometer
+		const float minPollWait = 0.5;//0.5 seconds
 	}
 
 	namespace Rack
@@ -186,8 +198,13 @@ namespace RobotMap
 		const int rackEncChannelA = 6;//(DI)
 		const int rackEncChannelB = 7;//(DI)
 
-		//not quite sure if this is right, but this is what was used in the exampled
+		//not quite sure if this is right, but this is what was used in the example
 		const Encoder::EncodingType encodingType = Encoder::k4X;
+		namespace Encoder
+		{
+			//this contains information for the encoder to get useful information i.e. degrees per second
+
+		}
 	}
 }
 #endif
