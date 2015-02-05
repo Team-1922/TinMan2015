@@ -42,6 +42,11 @@ private:
 		driveModeChooser->AddObject("Tank Drive", new TankDrive);
 	}
 	
+	void UniversalPeriodic()
+	{
+		CommandBase::shovel->tickPotentiometer();
+	}
+
 	void DisabledPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
@@ -51,13 +56,16 @@ private:
 	{
 		//Retrieves selected Autonomous mode from SmartDashboard
 		autonomousCommand =(Command*) Chooser->GetSelected();
-		autonomousCommand->Start();
+		if(autonomousCommand)//just to be sure
+			autonomousCommand->Start();
 		//if (autonomousCommand != NULL)
 		//	autonomousCommand->Start();
 	}
 
 	void AutonomousPeriodic()
 	{
+		//update this BEFORE running commands
+		UniversalPeriodic();
 		Scheduler::GetInstance()->Run();
 	}
 
@@ -73,15 +81,46 @@ private:
 
 	void TeleopPeriodic()
 	{
+		//update this BEFORE running commands
+		UniversalPeriodic();
 		Scheduler::GetInstance()->Run();
 
-		SmartDashboard::PutNumber("Shovel Potentiometer", CommandBase::shovel->getPotentiometer());
-		SmartDashboard::PutNumber("EncoderTurnCount", CommandBase::rack->getEncCount());
-		SmartDashboard::PutBoolean("EncoderDirection", CommandBase::rack->getEncDirection());
-		SmartDashboard::PutNumber("EncoderRate", CommandBase::rack->getEncRate());
-		SmartDashboard::PutBoolean("EncoderStopped", CommandBase::rack->getEncStopped());
-		SmartDashboard::PutData("Test Pneumatics and Drive Train", new DriveStraight());
-		SmartDashboard::PutBoolean("Trigger Pressed", CommandBase::oi->GetOperatorJoystick()->GetButton(Joystick::kTriggerButton));
+		//display all potentially useful information to the user
+
+
+		/*
+		 * Drive Train information
+		 */
+		SmartDashboard::PutNumber("Left Motor (RPM)",
+				CommandBase::driveTrain->getEncRateLeft() *
+				(CommandBase::driveTrain->getEncDirectionLeft() ? 1 : -1));
+		SmartDashboard::PutNumber("Right Motor (RPM)",
+				CommandBase::driveTrain->getEncRateRight() *
+				(CommandBase::driveTrain->getEncDirectionRight() ? 1 : -1));
+		SmartDashboard::PutNumber("Left Motor (-1 to 1)",
+				CommandBase::driveTrain->getLeft());
+		SmartDashboard::PutNumber("Right Motor (-1 to 1)",
+				CommandBase::driveTrain->getRight());
+
+		/*
+		 * Shovel Information
+		 */
+		SmartDashboard::PutNumber("Shovel Angle", CommandBase::shovel->getPotentiometer());
+		SmartDashboard::PutNumber("Shovel Motor (Deg/s)", CommandBase::shovel->getTurnRate());
+
+
+		/*
+		 * Rack Information
+		 */
+		SmartDashboard::PutNumber("Rack Angle", CommandBase::rack->getEncDistance());
+		SmartDashboard::PutNumber("Rack Motor (Deg/s)", CommandBase::rack->getEncRate());
+
+
+		/*
+		 * Chassis
+		 */
+		SmartDashboard::PutBoolean("Chassis Solenoid", CommandBase::chassis->getSolenoid());
+
 	}
 
 	void TestPeriodic()

@@ -10,6 +10,7 @@ DriveTrain* CommandBase::driveTrain = NULL;
 Shovel* CommandBase::shovel = NULL;
 Camera* CommandBase::camera = NULL;
 Pneumatics* CommandBase::pneumatics = NULL;
+Chassis* CommandBase::chassis = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -30,6 +31,7 @@ CommandBase::~CommandBase()
 	SAFE_DELETE(shovel);
 	SAFE_DELETE(camera);
 	SAFE_DELETE(pneumatics);
+	SAFE_DELETE(chassis);
 }
 
 void CommandBase::init()
@@ -42,4 +44,5 @@ void CommandBase::init()
 	camera = new Camera();
 	pneumatics = new Pneumatics();
 	oi = new OI();
+	chassis = new Chassis();
 }

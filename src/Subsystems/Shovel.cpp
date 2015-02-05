@@ -72,6 +72,11 @@ void Shovel::tickPotentiometer()
 	m_LastTick = currTime;
 }
 
+float Shovel::getTurnRate()
+{
+	return m_CurrSpeed;
+}
+
 /*float Shovel::getAngle()
 {
 	//get the angle

@@ -13,8 +13,9 @@ Rack::Rack() :
 
 	m_pEncoder = new Encoder(RobotMap::Rack::rackEncChannelA,
 							RobotMap::Rack::rackEncChannelB, true,
-							RobotMap::Rack::encodingType);
+							RobotMap::Rack::Encoder::encodingType);
 
+	m_pEncoder->SetDistancePerPulse(RobotMap::Rack::Encoder::distancePerPulse);
 	m_pEncoder->SetMinRate(0.1);
 }
 

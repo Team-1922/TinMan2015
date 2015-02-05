@@ -13,11 +13,19 @@ DriveTrain::DriveTrain() :
 	m_pLeftEncoder = new Encoder(
 			RobotMap::DriveTrain::leftEncA,
 			RobotMap::DriveTrain::leftEncB, true,
-			RobotMap::DriveTrain::encodingType);
+			RobotMap::DriveTrain::Encoder::encodingType);
 	m_pRightEncoder = new Encoder(
 			RobotMap::DriveTrain::rightEncA,
 			RobotMap::DriveTrain::rightEncB, true,
-			RobotMap::DriveTrain::encodingType);
+			RobotMap::DriveTrain::Encoder::encodingType);
+
+	//setup the left encoder
+	m_pLeftEncoder->SetDistancePerPulse(RobotMap::DriveTrain::Encoder::distancePerPulse);
+	m_pLeftEncoder->SetMinRate(0.1);//0.1 RPM's
+
+	//setup the right encoder
+	m_pRightEncoder->SetDistancePerPulse(RobotMap::DriveTrain::Encoder::distancePerPulse);
+	m_pRightEncoder->SetMinRate(0.1);//0.1 RPM's
 }
 
 DriveTrain::~DriveTrain()

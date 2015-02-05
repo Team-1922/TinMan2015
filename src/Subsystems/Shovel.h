@@ -19,9 +19,9 @@ private:
 	DigitalInput* m_pShovelPivotLim;
 
 	//information for potentiometer rate
-	float m_CurrSpeed = 0.0f;
-	float m_LastTick = 0.0f;
-	float m_LastAngle = 0.0f;
+	float m_CurrSpeed = 0.0f;//deg/s
+	float m_LastTick = 0.0f;//s
+	float m_LastAngle = 0.0f;//deg
 
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities

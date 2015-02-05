@@ -54,12 +54,14 @@ m_pDriverController(NULL)
 	buttonE->WhenPressed(new CommandShovelHuman());
 	buttonF->WhenPressed(new CommandShovelDump());*/
 
-	JoystickButton* buttonDeploy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::deployRack);
+	JoystickButton* buttonDeploy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::extendRack);
 	buttonDeploy->WhenActive(new RackDeploy());
 	JoystickButton* buttonRetract = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
 	buttonRetract->WhenActive(new RackRetract());
     JoystickButton* buttonTest = new JoystickButton(m_pOperatorStick, Joystick::kDefaultTriggerButton);
     buttonTest->WhenPressed(new TestPneumatics());
+
+    //TODO: setup all of the commands that take controls
 }
 
 

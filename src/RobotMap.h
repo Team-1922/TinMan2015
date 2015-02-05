@@ -8,6 +8,8 @@
 #ifndef ROBOTMAP_H_
 #define ROBOTMAP_H_
 
+#include "WPILib.h"
+
 //uncomment this to use the locations from the test robot
 //#define TEST_ROBOT
 
@@ -161,9 +163,18 @@ namespace RobotMap
 		const int rightEncA = 2;
 		const int rightEncB = 3;
 
-		//not quite sure if this is right, but this is what was used in the exampled
-		const Encoder::EncodingType encodingType = Encoder::k4X;
 
+		namespace Encoder
+		{
+			//information to give encoders
+
+			//not quite sure if this is right, but this is what was used in the exampled
+			const ::Encoder::EncodingType encodingType = ::Encoder::k4X;
+
+			//the gearing of the encoders (I will assume both gearings are the same), converts pulses to RPM
+			//GEARING IS AS FOLLOWED TODO:
+			const float distancePerPulse = 1.0f;
+		}
 
 	}
 
@@ -187,6 +198,8 @@ namespace RobotMap
 
 		//polling rate of the potentiometer
 		const float minPollWait = 0.5;//0.5 seconds
+
+		//GEARING: 480:1 if anyone cares
 	}
 
 	namespace Rack
@@ -197,13 +210,16 @@ namespace RobotMap
 		const int rackMotLimSwitch = 5;//(DI)
 		const int rackEncChannelA = 6;//(DI)
 		const int rackEncChannelB = 7;//(DI)
-
-		//not quite sure if this is right, but this is what was used in the example
-		const Encoder::EncodingType encodingType = Encoder::k4X;
 		namespace Encoder
 		{
 			//this contains information for the encoder to get useful information i.e. degrees per second
 
+			//not quite sure if this is right, but this is what was used in the example
+			const ::Encoder::EncodingType encodingType = ::Encoder::k4X;
+
+			//This converts the pulses to degrees per second
+			//GEARING IS AS FOLLOWS TODO:
+			const float distancePerPulse = 1.0f;
 		}
 	}
 }

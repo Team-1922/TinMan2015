@@ -23,7 +23,16 @@ public:
 	~DriveTrain();
 	void InitDefaultCommand();
 
+	/*
+	 * Motor Accessors
+	 */
 	void StopMotors();
+	float getLeft(){return m_pFrontLeft->Get();}
+	float getRight(){return m_pFrontRight->Get();}
+
+	/*
+	 * Driving Commands
+	 */
 	void ArcadeDrivePeriodic(Joystick* stick);
 	void RaceDrivePeriodic(Joystick* stick);
 	void TankDrivePeriodic(Joystick* stick1, Joystick* stick2);
@@ -39,19 +48,19 @@ public:
 	 * Encoder Accessor Functions
 	 */
 
-	//This will be in RPM
+	//NOTE: to get the rotations, use getEncDistance, or getEncRate
+
 	double	getEncCountLeft()		{return double(m_pLeftEncoder->Get());			}
 	int		getEncRawCountLeft()	{return m_pLeftEncoder->GetRaw();				}
 	double 	getEncDistanceLeft()	{return m_pLeftEncoder->GetDistance();			}
-	double 	getEncRateLeft()		{return m_pLeftEncoder->GetRate()/500.0;		}
+	double 	getEncRateLeft()		{return m_pLeftEncoder->GetRate();				}
 	bool 	getEncDirectionLeft()	{return m_pLeftEncoder->GetDirection();			}
 	bool 	getEncStoppedLeft()		{return m_pLeftEncoder->GetStopped();			}
 
-	//This will be in RPM
 	double	getEncCountRight()		{return double(m_pRightEncoder->Get());			}
 	int		getEncRawCountRight()	{return m_pRightEncoder->GetRaw();				}
 	double 	getEncDistanceRight()	{return m_pRightEncoder->GetDistance();			}
-	double 	getEncRateRight()		{return m_pRightEncoder->GetRate()/500.0;		}
+	double 	getEncRateRight()		{return m_pRightEncoder->GetRate();				}
 	bool 	getEncDirectionRight()	{return m_pRightEncoder->GetDirection();		}
 	bool 	getEncStoppedRight()	{return m_pRightEncoder->GetStopped();			}
 };

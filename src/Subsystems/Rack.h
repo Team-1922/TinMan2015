@@ -9,9 +9,11 @@ class Rack: public Subsystem
 {
 
 private:
+	//the motor that rotates the rack
 	SpeedController* m_pRotate;
 	Encoder* 		 m_pEncoder;
 
+	//the motor that extends and retracts the rack
 	SpeedController* m_pExtendRetract;
 
 	Solenoid*        m_pClaw;
@@ -49,11 +51,12 @@ public:
 	 * Encoder Accessor Functions
 	 */
 
-	//This will be in Degrees/s
+	//NOTE: to get this in degrees or degrees/s use getEncDistance and getEncRate
+
 	double	getEncCount()		{return double(m_pEncoder->Get());  		}
 	int		getEncRawCount()	{return m_pEncoder->GetRaw();				}
 	double 	getEncDistance()	{return m_pEncoder->GetDistance();			}
-	double 	getEncRate()		{return m_pEncoder->GetRate()/500.0;		}
+	double 	getEncRate()		{return m_pEncoder->GetRate();				}
 	bool 	getEncDirection()	{return m_pEncoder->GetDirection();			}
 	bool 	getEncStopped()		{return m_pEncoder->GetStopped();			}
 
