@@ -152,9 +152,16 @@ namespace RobotMap
 		const int rightEncA = 2;
 		const int rightEncB = 3;
 
+		//not quite sure if this is right, but this is what was used in the exampled
+		const Encoder::EncodingType encodingType = Encoder::k4X;
+
+
+	}
+
+	namespace Chassis
+	{
 		//solnoids for lifting the chassis up
 		const int chassisLiftSol = 0;//SOL
-
 	}
 
 	namespace Shovel
@@ -176,8 +183,8 @@ namespace RobotMap
 		const int rackExtendRack = 7;//(PWM)
 		const int rackClawSolenoid = 1;//(SOL)
 		const int rackMotLimSwitch = 5;//(DI)
-		const int RackEncChannelA = 6;//(DI)
-		const int RackEncChannelB = 7;//(DI)
+		const int rackEncChannelA = 6;//(DI)
+		const int rackEncChannelB = 7;//(DI)
 
 		//not quite sure if this is right, but this is what was used in the exampled
 		const Encoder::EncodingType encodingType = Encoder::k4X;

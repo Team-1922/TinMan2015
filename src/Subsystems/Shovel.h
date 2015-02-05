@@ -10,9 +10,13 @@ class Shovel: public Subsystem
 {
 private:
 
-	SpeedController* m_pMotor;
+	SpeedController* m_pRotate;
 	AnalogPotentiometer* m_pPotentiometer;
-	Solenoid m_solenoid;
+	Solenoid* m_pWidthSolenoid;
+
+	DigitalInput* m_pShovelWideRight;
+	DigitalInput* m_pShovelWideLeft;
+	DigitalInput* m_pShovelPivotLim;
 
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities

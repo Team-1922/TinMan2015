@@ -6,10 +6,13 @@
 Rack::Rack() :
 	Subsystem("Rack")
 {
-	m_pMotor = new Jaguar(RobotMap::Rack::rackPivotMotor);
+	m_pClaw = new Solenoid(RobotMap::Rack::rackClawSolenoid);
+	m_pLimitBackStop = new DigitalInput(RobotMap::Rack::rackMotLimSwitch);
+	m_pRotate = new Talon(RobotMap::Rack::rackPivotMotor);
+	m_pExtendRetract = new Talon(RobotMap::Rack::rackExtendRack);
 
-	m_pEncoder = new Encoder(RobotMap::Rack::RackEncChannelA,
-							RobotMap::Rack::RackEncChannelB, true,
+	m_pEncoder = new Encoder(RobotMap::Rack::rackEncChannelA,
+							RobotMap::Rack::rackEncChannelB, true,
 							RobotMap::Rack::encodingType);
 
 	m_pEncoder->SetMaxPeriod(1);
@@ -18,12 +21,20 @@ Rack::Rack() :
 Rack::~Rack()
 {
 	SAFE_DELETE(m_pEncoder);
-	SAFE_DELETE(m_pMotor);
+	SAFE_DELETE(m_pExtendRetract);
+	SAFE_DELETE(m_pRotate);
+	SAFE_DELETE(m_pLimitBackStop);
+	SAFE_DELETE(m_pClaw);
 }
 
 void Rack::setMotor(float level)
 {
-	m_pMotor->Set(level);
+	m_pRotate->Set(level);
+}
+
+void Rack::setExtendMotor(float level)
+{
+	m_pExtendRetract->Set(level);
 }
 
 void Rack::InitDefaultCommand()

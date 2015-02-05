@@ -4,13 +4,20 @@
 #include "../Utilities.h"
 
 DriveTrain::DriveTrain() :
-		Subsystem("DriveTrainSubsystem"),
-		frontLeft(new Talon(RobotMap::DriveTrain::frontLeft)),
-		rearLeft(new Talon(RobotMap::DriveTrain::rearLeft)),
-		frontRight(new Talon(RobotMap::DriveTrain::frontRight)),
-		rearRight(new Talon(RobotMap::DriveTrain::rearRight))
+		Subsystem("DriveTrain")
 {
-
+	m_pFrontLeft = new Talon(RobotMap::DriveTrain::frontLeft);
+	m_pRearLeft = new Talon(RobotMap::DriveTrain::rearLeft);
+	m_pFrontRight = new Talon(RobotMap::DriveTrain::frontRight);
+	m_pRearRight = new Talon(RobotMap::DriveTrain::rearRight);
+	m_pLeftEncoder = new Encoder(
+			RobotMap::DriveTrain::leftEncA,
+			RobotMap::DriveTrain::leftEncB, true,
+			RobotMap::DriveTrain::encodingType);
+	m_pRightEncoder = new Encoder(
+			RobotMap::DriveTrain::rightEncA,
+			RobotMap::DriveTrain::rightEncB, true,
+			RobotMap::DriveTrain::encodingType);
 }
 
 DriveTrain::~DriveTrain()
@@ -18,10 +25,13 @@ DriveTrain::~DriveTrain()
 	//make sure the motors are off before destroying;
 	StopMotors();
 
-	SAFE_DELETE(frontLeft);
-	SAFE_DELETE(rearLeft);
-	SAFE_DELETE(frontRight);
-	SAFE_DELETE(rearRight);
+	SAFE_DELETE(m_pFrontLeft);
+	SAFE_DELETE(m_pRearLeft);
+	SAFE_DELETE(m_pFrontRight);
+	SAFE_DELETE(m_pRearRight);
+
+	SAFE_DELETE(m_pLeftEncoder);
+	SAFE_DELETE(m_pRightEncoder);
 }
 
 void DriveTrain::InitDefaultCommand()
@@ -49,10 +59,10 @@ void DriveTrain::ArcadeDrivePeriodic(Joystick* stick)
 	right = -right;
 
 	//set the motors
-	frontLeft->Set(left);
-	rearLeft->Set(left);
-	frontRight->Set(right);
-	rearRight->Set(right);
+	m_pFrontLeft->Set(left);
+	m_pRearLeft->Set(left);
+	m_pFrontRight->Set(right);
+	m_pRearRight->Set(right);
 }
 
 void DriveTrain::RaceDrivePeriodic(Joystick* stick)
@@ -70,40 +80,37 @@ void DriveTrain::RaceDrivePeriodic(Joystick* stick)
 	float right = -(throttleFactored - turnValFactored);
 
 	//set the motors
-	frontLeft->Set(left);
-	rearLeft->Set(left);
-	frontRight->Set(right);
-	rearRight->Set(right);
+	m_pFrontLeft->Set(left);
+	m_pRearLeft->Set(left);
+	m_pFrontRight->Set(right);
+	m_pRearRight->Set(right);
 
 }
 
 void DriveTrain::TankDrivePeriodic(Joystick* stick1, Joystick* stick2)
 {
 	//TODO: these might not need to be inverted
-	float rightValues = -stick1->GetY();
-	float leftValues = -stick2->GetY();
+	float right = -stick1->GetY();
+	float left = -stick2->GetY();
 
-	frontLeft->Set(leftValues);
-	rearLeft->Set(leftValues);
-	frontRight->Set(rightValues);
-	rearRight->Set(rightValues);
+	m_pFrontLeft->Set(left);
+	m_pRearLeft->Set(left);
+	m_pFrontRight->Set(right);
+	m_pRearRight->Set(right);
 }
 
 void DriveTrain::StopMotors()
 {
-	frontLeft->Set(0);
-	rearLeft->Set(0);
-	frontRight->Set(0);
-	rearRight->Set(0);
+	m_pFrontLeft->Set(0);
+	m_pRearLeft->Set(0);
+	m_pFrontRight->Set(0);
+	m_pRearRight->Set(0);
 }
 
-void DriveTrain::DriveStraight(float motorVal){
-
-	frontLeft->Set(motorVal);
-		rearLeft->Set(motorVal);
-		frontRight->Set(motorVal);
-		rearRight->Set(motorVal);
-
-
-
+void DriveTrain::DriveStraight(float motorVal)
+{
+	m_pFrontLeft->Set(motorVal);
+	m_pRearLeft->Set(motorVal);
+	m_pFrontRight->Set(motorVal);
+	m_pRearRight->Set(motorVal);
 }

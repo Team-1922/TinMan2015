@@ -9,8 +9,13 @@ class Rack: public Subsystem
 {
 
 private:
-	SpeedController* m_pMotor;
+	SpeedController* m_pRotate;
 	Encoder* 		 m_pEncoder;
+
+	SpeedController* m_pExtendRetract;
+
+	Solenoid*        m_pClaw;
+	DigitalInput*    m_pLimitBackStop;
 
 public:
 	Rack();
@@ -19,8 +24,21 @@ public:
 	void InitDefaultCommand();
 
 	void doNothing(){}
+
+	/*
+	 * Motor and Limit Switch Accessor Functions
+	 */
+
 	void setMotor(float level);
-	float getMotor(){return m_pMotor->Get();}
+	float getMotor(){return m_pRotate->Get();}
+
+	void setExtendMotor(float level);
+	float getExtendMotor(){return m_pExtendRetract->Get();}
+
+	bool getBackStop(){return m_pLimitBackStop->Get();}
+
+	void setClaw(bool on){return m_pClaw->Set(on);}
+	bool getClaw(){return m_pClaw->Get();}
 
 	/*
 	 * Encoder Control Functions
@@ -33,7 +51,7 @@ public:
 
 	double	getEncCount()		{return double(m_pEncoder->Get()) / 500.0;  }
 	int		getEncRawCount()	{return m_pEncoder->GetRaw();				}
-	//double 	getEncDistance()	{return m_pEncoder->GetDistance();	}
+	double 	getEncDistance()	{return m_pEncoder->GetDistance();			}
 	double 	getEncRate()		{return m_pEncoder->GetRate()/500.0;		}
 	bool 	getEncDirection()	{return m_pEncoder->GetDirection();			}
 	bool 	getEncStopped()		{return m_pEncoder->GetStopped();			}
