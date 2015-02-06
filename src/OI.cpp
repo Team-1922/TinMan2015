@@ -17,6 +17,14 @@
 #include "Commands/RackDeploy.h"
 #include "Commands/RackRetract.h"
 
+#include "Commands/SwitchJoyCombined.h"
+#include "Commands/SwitchJoyRack.h"
+#include "Commands/SwitchJoyShovel.h"
+
+#include "Commands/ShovelCloseWidth.h"
+#include "Commands/ShovelOpenWidth.h"
+
+
 #include "RobotMap.h"
 
 
@@ -54,12 +62,25 @@ m_pDriverController(NULL)
 	buttonE->WhenPressed(new CommandShovelHuman());
 	buttonF->WhenPressed(new CommandShovelDump());*/
 
-	JoystickButton* buttonDeploy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::extendRack);
+	/*JoystickButton* buttonDeploy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::extendRack);
 	buttonDeploy->WhenActive(new RackDeploy());
 	JoystickButton* buttonRetract = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
 	buttonRetract->WhenActive(new RackRetract());
     JoystickButton* buttonTest = new JoystickButton(m_pOperatorStick, Joystick::kDefaultTriggerButton);
-    buttonTest->WhenPressed(new TestPneumatics());
+    buttonTest->WhenPressed(new TestPneumatics());*/
+
+    JoystickButton* buttonShovelJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelJoyControlled);
+    JoystickButton* buttonRackJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackJoyControlled);
+    JoystickButton* buttonBothJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackShovelCombined);
+    JoystickButton* buttonOpenShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelWidthOpen);
+    JoystickButton* buttonCloseShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelWidthClose);
+
+
+    buttonShovelJoy->WhenPressed(new SwitchJoyShovel());
+    buttonRackJoy->WhenPressed(new SwitchJoyRack());
+    buttonBothJoy->WhenPressed(new SwitchJoyCombined());
+    buttonOpenShovel->WhenPressed(new ShovelOpenWidth());
+    buttonCloseShovel->WhenPressed(new ShovelCloseWidth());
 
     //TODO: setup all of the commands that take controls
 }

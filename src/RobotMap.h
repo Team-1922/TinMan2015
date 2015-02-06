@@ -118,6 +118,13 @@ namespace RobotMap
 }
 
 #else
+
+enum OperatorMode
+{
+	kRack = 0,
+	kShovel = 1,
+	kBoth = 2
+};
 namespace RobotMap
 {
 	namespace Controls
@@ -143,6 +150,13 @@ namespace RobotMap
 		const int rackJoyControlled = 7;
 		const int shovelJoyControlled = 8;
 		const int rackShovelCombined = 9;
+
+		//controls for changing the width of the shovel
+		const int shovelWidthOpen = 10;
+		const int shovelWidthClose = 11;
+
+		//the current mode
+		extern OperatorMode currOpMode;// = kRack;
 
 
 	}
@@ -171,9 +185,15 @@ namespace RobotMap
 			//not quite sure if this is right, but this is what was used in the exampled
 			const ::Encoder::EncodingType encodingType = ::Encoder::k4X;
 
+			//the number of encoder pulses per rotation TODO:
+			const int pulsesPerRotation = 500;
+
+			//GEARING TODO:
+			const int gearing = 1;//this is if the encoder is attached to the wheel axle
+
 			//the gearing of the encoders (I will assume both gearings are the same), converts pulses to RPM
 			//GEARING IS AS FOLLOWED TODO:
-			const float distancePerPulse = 1.0f;
+			const float distancePerPulse = 1.0f/float(pulsesPerRotation*gearing);
 		}
 
 	}
@@ -199,7 +219,13 @@ namespace RobotMap
 		//polling rate of the potentiometer
 		const float minPollWait = 0.5;//0.5 seconds
 
-		//GEARING: 480:1 if anyone cares
+		//GEARING: 48:1  TODO:?
+		const int gearing = 48;
+
+		//shovel rpm (Free)
+		const int shovelMotorRPM = 133;
+
+		const int shovelMotorMaxSpeed = 30;//degrees/s
 	}
 
 	namespace Rack
@@ -210,6 +236,15 @@ namespace RobotMap
 		const int rackMotLimSwitch = 5;//(DI)
 		const int rackEncChannelA = 6;//(DI)
 		const int rackEncChannelB = 7;//(DI)
+
+		//GEARING: TODO:
+		const int gearing = 1;
+
+		//the speed of the motor (Free)
+		const float rackMotorRPM = 5310;
+
+		const int rackMotorMaxSpeed = 15;//degrees/s
+
 		namespace Encoder
 		{
 			//this contains information for the encoder to get useful information i.e. degrees per second
@@ -217,9 +252,11 @@ namespace RobotMap
 			//not quite sure if this is right, but this is what was used in the example
 			const ::Encoder::EncodingType encodingType = ::Encoder::k4X;
 
+			//the number of encoder pulses per rotation TODO:
+			const int pulsesPerRotation = 500;
+
 			//This converts the pulses to degrees per second
-			//GEARING IS AS FOLLOWS TODO:
-			const float distancePerPulse = 1.0f;
+			const float distancePerPulse = 1.0f/float(gearing*pulsesPerRotation);
 		}
 	}
 }

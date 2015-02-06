@@ -53,6 +53,7 @@ public:
 	 */
 
 	void  setMotor(float val);
+	void  setMotorRate(float degPerSecond);
 
 
 	/*

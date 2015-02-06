@@ -92,6 +92,27 @@ void  Shovel::setMotor(float val)
 	m_pRotate->Set(val);
 }
 
+void  Shovel::setMotorRate(float degPerSecond)
+{
+	float currSpeedDPS = getTurnRate();
+	if(Utilities::isEqual(0.0f, currSpeedDPS, .5f))
+		currSpeedDPS = degPerSecond;
+
+	//use formula derived with dimensional analysis to convert DPS to RPM of our gearbox
+	float desiredSpeedRPM = (degPerSecond*RobotMap::Shovel::gearing)/60;
+	float currSpeedRPM = (currSpeedDPS*RobotMap::Shovel::gearing)/60;
+
+	//take the RPM we need to give the motor to increase the speed to what we want
+	float requiredRPM = desiredSpeedRPM - currSpeedRPM;
+	float neededPercentageOfDesired = requiredRPM / desiredSpeedRPM;
+
+	float totalNeededRPM = (1.0f + neededPercentageOfDesired) * desiredSpeedRPM;
+
+	//divide by the rpm to get a value between -1 and 1;
+	float normalisedValue = totalNeededRPM / RobotMap::Shovel::shovelMotorRPM;
+	setMotor(normalisedValue);
+}
+
 
 void Shovel::setSolenoid(bool setting)
 {

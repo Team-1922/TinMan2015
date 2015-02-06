@@ -15,7 +15,11 @@ void RackJoyControlled::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void RackJoyControlled::Execute()
 {
-	rack->setMotor(oi->GetOperatorJoystick()->GetY());
+	//in either case, the max rate is limited by the rack
+	if(RobotMap::Controls::currOpMode == kRack || RobotMap::Controls::currOpMode == kBoth)
+	{
+		rack->setMotorRate(oi->GetOperatorJoystick()->GetY() * (float)RobotMap::Rack::rackMotorMaxSpeed);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

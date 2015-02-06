@@ -14,7 +14,15 @@ void ShovelJoyControlled::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShovelJoyControlled::Execute()
 {
-	shovel->setMotor(oi->GetOperatorJoystick()->GetZ());
+	if(RobotMap::Controls::currOpMode == kShovel)
+	{
+		shovel->setMotorRate(oi->GetOperatorJoystick()->GetY() * (float)RobotMap::Shovel::shovelMotorMaxSpeed);
+	}
+	else if(RobotMap::Controls::currOpMode == kBoth)
+	{
+		//when using both, make sure to set the limit to the one with the lower max speed
+		shovel->setMotorRate(oi->GetOperatorJoystick()->GetY() * (float)RobotMap::Rack::rackMotorMaxSpeed);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

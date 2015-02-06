@@ -7,6 +7,9 @@
 #include "Commands/ArcadeDrive.h"
 #include "Commands/RaceDrive.h"
 #include "Commands/TankDrive.h"
+#include "Commands/SwitchJoyCombined.h"
+#include "Commands/SwitchJoyRack.h"
+#include "Commands/SwitchJoyShovel.h"
 
 #include "Utilities.h"
 
@@ -18,6 +21,7 @@ private:
 
 	SendableChooser *Chooser;
 	SendableChooser *driveModeChooser;
+	SendableChooser *operatorJoyControl;
 
 	void RobotInit()
 	{
@@ -40,6 +44,12 @@ private:
 		driveModeChooser->AddDefault("Controller Drive", new RaceDrive);
 		driveModeChooser->AddObject("Arcade Drive", new ArcadeDrive);
 		driveModeChooser->AddObject("Tank Drive", new TankDrive);
+
+		//this is for switching which thing the joystick operator is controlling
+		operatorJoyControl = new SendableChooser();
+		operatorJoyControl->AddDefault("Control Rack", new SwitchJoyRack());
+		operatorJoyControl->AddObject("Control Shovel", new SwitchJoyShovel());
+		operatorJoyControl->AddObject("Control Both", new SwitchJoyCombined());
 	}
 	
 	void UniversalPeriodic()
@@ -130,4 +140,14 @@ private:
 };
 
 START_ROBOT_CLASS(Robot);
+
+
+//part of ROBOTMAP
+namespace RobotMap
+{
+namespace Controls
+{
+	OperatorMode currOpMode = kRack;
+}
+}
 

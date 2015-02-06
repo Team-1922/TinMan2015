@@ -33,6 +33,27 @@ void Rack::setMotor(float level)
 	m_pRotate->Set(level);
 }
 
+void Rack::setMotorRate(float degPerSecond)
+{
+	float currSpeedDPS = getEncRate();
+	if(Utilities::isEqual(0.0f, currSpeedDPS, .5f))
+		currSpeedDPS = degPerSecond;
+
+	//use formula derived with dimensional analysis to convert DPS to RPM of our gearbox
+	float desiredSpeedRPM = (degPerSecond*RobotMap::Rack::gearing)/60;
+	float currSpeedRPM = (currSpeedDPS*RobotMap::Rack::gearing)/60;
+
+	//take the RPM we need to give the motor to increase the speed to what we want
+	float requiredRPM = desiredSpeedRPM - currSpeedRPM;
+	float neededPercentageOfDesired = requiredRPM / desiredSpeedRPM;
+
+	float totalNeededRPM = (1.0f + neededPercentageOfDesired) * desiredSpeedRPM;
+
+	//divide by the rpm to get a value between -1 and 1;
+	float normalisedValue = totalNeededRPM / RobotMap::Rack::rackMotorRPM;
+	setMotor(normalisedValue);
+}
+
 void Rack::setExtendMotor(float level)
 {
 	m_pExtendRetract->Set(level);

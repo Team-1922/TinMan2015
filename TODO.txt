@@ -1,1 +1,1 @@
-Fix Shovel Commands
+Make how much power we give the motor based on how fast it is going (to keep a consistand speed) FOR BOTH the rack and the shovel

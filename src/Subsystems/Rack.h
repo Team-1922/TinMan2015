@@ -32,6 +32,7 @@ public:
 	 */
 
 	void setMotor(float level);
+	void setMotorRate(float degPerSecond);
 	float getMotor(){return m_pRotate->Get();}
 
 	void setExtendMotor(float level);
