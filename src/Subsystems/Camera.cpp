@@ -1,6 +1,6 @@
 #include "Camera.h"
 #include "../RobotMap.h"
-#include "../Commands/CommandCameraStream.h"
+#include "../Commands/CameraStream.h"
 
 Camera::Camera() :
 		Subsystem("ExampleSubsystem")
@@ -25,7 +25,7 @@ Camera::~Camera()
 void Camera::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new CommandCameraStream());
+	SetDefaultCommand(new CameraStream());
 }
 
 // Put methods for controlling this subsystem

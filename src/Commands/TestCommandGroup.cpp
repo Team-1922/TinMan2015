@@ -1,16 +1,7 @@
 #include "TestCommandGroup.h"
-#include "CommandArcadeDrive.h"
-#include "CommandRackDoNothing.h"
-#include "CommandRackExtend.h"
-#include "CommandRackFlat.h"
-#include "CommandRackRaise.h"
-#include "CommandShovelDump.h"
-#include "CommandShovelGround.h"
-#include "CommandShovelLift.h"
-#include "CommandShovelStore.h"
-#include "CommandShovelHuman.h"
-#include "CommandTestPneumatics.h"
-#include "CommandDriveStraight.h"
+#include "RackDoNothing.h"
+#include "TestPneumatics.h"
+#include "DriveStraight.h"
 
 #include <iostream>
 
@@ -35,8 +26,8 @@ TestCommandGroup::TestCommandGroup()
 
 
 
-	AddParallel(new CommandTestPneumatics());
-	AddParallel(new CommandDriveStraight());
+	//AddParallel(new TestPneumatics());
+	AddParallel(new DriveStraight());
 	//AddParallel(new CommandRackExtend());
 
 

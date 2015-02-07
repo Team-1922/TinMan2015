@@ -10,9 +10,18 @@ class Shovel: public Subsystem
 {
 private:
 
-	SpeedController* m_pMotor;
-	OzPotentiometer* m_pPotentiometer;
-	Solenoid m_solenoid;
+	SpeedController* m_pRotate;
+	AnalogPotentiometer* m_pPotentiometer;
+	Solenoid* m_pWidthSolenoid;
+
+	DigitalInput* m_pShovelWideRight;
+	DigitalInput* m_pShovelWideLeft;
+	DigitalInput* m_pShovelPivotLim;
+
+	//information for potentiometer rate
+	float m_CurrSpeed = 0.0f;//deg/s
+	float m_LastTick = 0.0f;//s
+	float m_LastAngle = 0.0f;//deg
 
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -23,18 +32,33 @@ public:
 	void InitDefaultCommand();
 
 	void  doNothing(){}
+
+	/*
+	 * Potentiometer Control
+	 */
+
+	//returns the current angle of the potentiometer relative to shovel in down (flat) position
 	float getPotentiometer();
-	float getPotentiometerRaw();
+
+	//returns the speed of the shovel movement in degrees/s (signed)
+	float getTurnRate();
+
+	// this is used to get rate information from the potentiometer, call this once per cycle
+	void tickPotentiometer();
+
+
+
+	/*
+	 * Motor Control
+	 */
+
 	void  setMotor(float val);
-	float getAngle();
-
-	float degreesOffOfDump()   { return RobotMap::Shovel::dumpAngle   - getAngle(); }
-	float degreesOffOfGround() { return RobotMap::Shovel::groundAngle - getAngle(); }
-	float degreesOffOfHuman()  { return RobotMap::Shovel::humanAngle  - getAngle(); }
-	float degreesOffOfLift()   { return RobotMap::Shovel::liftAngle   - getAngle(); }
-	float degreesOffOfStore()  { return RobotMap::Shovel::storeAngle  - getAngle(); }
+	void  setMotorRate(float degPerSecond);
 
 
+	/*
+	 * Solenoid Control
+	 */
 
 	void extendShelf() { setSolenoid(true); }
 	void retractShelf() { setSolenoid(false); }

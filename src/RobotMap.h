@@ -8,25 +8,32 @@
 #ifndef ROBOTMAP_H_
 #define ROBOTMAP_H_
 
-#include <cmath>
+#include "WPILib.h"
 
+//uncomment this to use the locations from the test robot
+//#define TEST_ROBOT
+
+
+#ifdef TEST_ROBOT
+
+#include <cmath>
 namespace RobotMap
 {
 	namespace Controls
 	{
-		//TODO: Change these locations
-		//The control for rasing, extending, and "flatting" the rack
-		const int raiseRack = 5;
-		const int extendRack= 6;
-		const int flatRack  = 7;
-
-		//the controls for the three shovel positions
-		const int groundShovel = 8;
-		const int humanShovel  = 9;
-		const int dumpShovel   = 10;
+		//the locations of the controllers and joysticks
+		const int driverJoy1 = 0;
+		const int driverJoy2 = 1;
+		const int operatorJoy = 2;
+		const int controller = 3;
 
 		const int deployRack = 3;
 		const int retractRack = 4;
+
+
+		//these two MUST add up to 1.0f
+		const float throttleFactor = 0.8f;//how much the throttle affects speed
+		const float stearingFactor = 0.2f;//how much stearing direction affects speed
 	}
 
 	namespace Rack
@@ -105,11 +112,157 @@ namespace RobotMap
 
 		const int   potentiometerLoc = 1;
 
-		const int	solenoidId = 0;
+		const int	solenoidId = 1;
 
 	}
 }
 
+#else
 
+enum OperatorMode
+{
+	kRack = 0,
+	kShovel = 1,
+	kBoth = 2
+};
+namespace RobotMap
+{
+	namespace Controls
+	{
+		//the locations of the controllers and joysticks
+		const int driverJoy1 = 0;
+		const int driverJoy2 = 1;
+		const int operatorJoy = 2;
+		const int controller = 3;
+
+		//these two MUST add up to 1.0f
+		const float throttleFactor = 0.8f;//how much the throttle affects speed
+		const float stearingFactor = 0.2f;//how much stearing direction affects speed
+
+		//the controls on the operator joystick
+		//TODO: get these optimal positions
+
+		//these extend or retract the rack, NOTE: these are to be held to adjust the rack
+		const int extendRack = 5;
+		const int retractRack = 6;
+
+		//these are for selecting which subsystem the joystick is controlling
+		const int rackJoyControlled = 7;
+		const int shovelJoyControlled = 8;
+		const int rackShovelCombined = 9;
+
+		//controls for changing the width of the shovel
+		const int shovelWidthOpen = 10;
+		const int shovelWidthClose = 11;
+
+		//the current mode
+		extern OperatorMode currOpMode;// = kRack;
+
+
+	}
+
+	//the drive train constants
+	namespace DriveTrain
+	{
+
+		//the locations of the motors
+		const int frontLeft  = 0;
+		const int rearLeft   = 1;
+		const int frontRight = 2;
+		const int rearRight  = 3;
+
+		//motor encoders
+		const int leftEncA = 0;
+		const int leftEncB = 1;
+		const int rightEncA = 2;
+		const int rightEncB = 3;
+
+
+		namespace Encoder
+		{
+			//information to give encoders
+
+			//not quite sure if this is right, but this is what was used in the exampled
+			const ::Encoder::EncodingType encodingType = ::Encoder::k4X;
+
+			//the number of encoder pulses per rotation TODO:
+			const int pulsesPerRotation = 500;
+
+			//GEARING TODO:
+			const int gearing = 1;//this is if the encoder is attached to the wheel axle
+
+			//the gearing of the encoders (I will assume both gearings are the same), converts pulses to RPM
+			//GEARING IS AS FOLLOWED TODO:
+			const float distancePerPulse = 1.0f/float(pulsesPerRotation*gearing);
+		}
+
+	}
+
+	namespace Chassis
+	{
+		//solnoids for lifting the chassis up
+		const int chassisLiftSol = 0;//SOL
+	}
+
+	namespace Shovel
+	{
+		const int potentiometer = 0;//potentiometer(AI)
+		const int shovelPivotMotor = 4;//Motor (PWM)
+		const int shovelWideRight = 8;//limit switch (DI)
+		const int shovelWideLeft = 9;//limit switch (DI)
+		const int shovelPivotLimSwitch = 4;//limit switch (DI)
+		const int shovelWidthSol = 2;//solenoid (SOL)
+
+		const int potTurnCount = 1;
+		const int potDegree = 360 * potTurnCount;
+
+		//polling rate of the potentiometer
+		const float minPollWait = 0.5;//0.5 seconds
+
+		//GEARING: 48:1  TODO:?
+		const int gearing = 48;
+
+		//shovel rpm (Free)
+		const int shovelMotorRPM = 133;
+
+		const int shovelMotorMaxSpeed = 30;//degrees/s
+	}
+
+	namespace Rack
+	{
+		const int rackPivotMotor = 5;//CIM Motor (PWM)
+		const int rackExtendRack = 7;//(PWM)
+		const int rackClawSolenoid = 1;//(SOL)
+		const int rackMotLimSwitch = 5;//(DI)
+		const int rackEncChannelA = 6;//(DI)
+		const int rackEncChannelB = 7;//(DI)
+
+		//GEARING: TODO:
+		const int gearing = 1;
+
+		//the speed of the motor (Free)
+		const float rackMotorRPM = 5310;
+
+		const int rackMotorMaxSpeed = 15;//degrees/s
+
+		namespace Encoder
+		{
+			//this contains information for the encoder to get useful information i.e. degrees per second
+
+			//not quite sure if this is right, but this is what was used in the example
+			const ::Encoder::EncodingType encodingType = ::Encoder::k4X;
+
+			//the number of encoder pulses per rotation TODO:
+			const int pulsesPerRotation = 500;
+
+			//This converts the pulses to degrees per second
+			const float distancePerPulse = 1.0f/float(gearing*pulsesPerRotation);
+		}
+	}
+
+	//the maximum percentage change of the velocity of the rack or shovel in a cycle
+	const float maxRPMDelta = 0.015;//1.5%
+}
+#endif
 
 #endif /* ROBOTMAP_H_ */

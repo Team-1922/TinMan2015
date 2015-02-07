@@ -12,26 +12,32 @@
 
 #include "OI.h"
 
-#include "Commands/CommandRackExtend.h"
-#include "Commands/CommandRackFlat.h"
-#include "Commands/CommandRackRaise.h"
-#include "Commands/CommandShovelDump.h"
-#include "Commands/CommandShovelGround.h"
-#include "Commands/CommandShovelHuman.h"
-#include "Commands/CommandTestPneumatics.h"
 #include "Commands/TestCommandGroup.h"
+#include "Commands/TestPneumatics.h"
 #include "Commands/RackDeploy.h"
 #include "Commands/RackRetract.h"
+
+#include "Commands/SwitchJoyCombined.h"
+#include "Commands/SwitchJoyRack.h"
+#include "Commands/SwitchJoyShovel.h"
+
+#include "Commands/ShovelCloseWidth.h"
+#include "Commands/ShovelOpenWidth.h"
+
 
 #include "RobotMap.h"
 
 
 OI::OI():
-m_pDriverStick (NULL),
-m_pOperatorStick (NULL)
+m_pDriverStick1 (NULL),
+m_pDriverStick2(NULL),
+m_pOperatorStick (NULL),
+m_pDriverController(NULL)
 {
-	m_pDriverStick = new Joystick(0);
-	m_pOperatorStick = new Joystick(1);
+	m_pDriverStick1 = new Joystick(RobotMap::Controls::driverJoy1);
+	m_pDriverStick2 = new Joystick(RobotMap::Controls::driverJoy2);
+	m_pOperatorStick = new Joystick(RobotMap::Controls::operatorJoy);
+	m_pDriverController = new Joystick(RobotMap::Controls::controller);
 
     // Create some buttons
     /*JoystickButton* buttonA = new JoystickButton(m_pDriverStick, RobotMap::Controls::extendRack);
@@ -42,7 +48,7 @@ m_pOperatorStick (NULL)
     JoystickButton* buttonF = new JoystickButton(m_pDriverStick, RobotMap::Controls::dumpShovel);
 
     JoystickButton* buttonTest = new JoystickButton(m_pDriverStick, 12);
-    buttonTest->WhenPressed(new CommandTestPneumatics());
+    buttonTest->WhenPressed(new TestPneumatics());
 
     JoystickButton* buttonBigTest = new JoystickButton(m_pDriverStick, 1);
     buttonBigTest->WhenPressed(new TestCommandGroup());
@@ -56,21 +62,48 @@ m_pOperatorStick (NULL)
 	buttonE->WhenPressed(new CommandShovelHuman());
 	buttonF->WhenPressed(new CommandShovelDump());*/
 
-	JoystickButton* buttonDeploy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::deployRack);
+	/*JoystickButton* buttonDeploy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::extendRack);
 	buttonDeploy->WhenActive(new RackDeploy());
 	JoystickButton* buttonRetract = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
 	buttonRetract->WhenActive(new RackRetract());
+    JoystickButton* buttonTest = new JoystickButton(m_pOperatorStick, Joystick::kDefaultTriggerButton);
+    buttonTest->WhenPressed(new TestPneumatics());*/
+
+    JoystickButton* buttonShovelJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelJoyControlled);
+    JoystickButton* buttonRackJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackJoyControlled);
+    JoystickButton* buttonBothJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackShovelCombined);
+    JoystickButton* buttonOpenShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelWidthOpen);
+    JoystickButton* buttonCloseShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelWidthClose);
+
+
+    buttonShovelJoy->WhenPressed(new SwitchJoyShovel());
+    buttonRackJoy->WhenPressed(new SwitchJoyRack());
+    buttonBothJoy->WhenPressed(new SwitchJoyCombined());
+    buttonOpenShovel->WhenPressed(new ShovelOpenWidth());
+    buttonCloseShovel->WhenPressed(new ShovelCloseWidth());
+
+    //TODO: setup all of the commands that take controls
 }
 
 
-Joystick* OI::GetDriverJoystick()
+Joystick* OI::GetDriverJoystick1()
 {
-	return m_pDriverStick;
+	return m_pDriverStick1;
+}
+
+Joystick* OI::GetDriverJoystick2()
+{
+	return m_pDriverStick2;
 }
 
 Joystick* OI::GetOperatorJoystick()
 {
 	return m_pOperatorStick;
+}
+
+Joystick* OI::GetDriverController()
+{
+	return m_pDriverController;
 }
 
 

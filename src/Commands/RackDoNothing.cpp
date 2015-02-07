@@ -1,38 +1,40 @@
-#include "RackRetract.h"
+#include "RackDoNothing.h"
 
-RackRetract::RackRetract()
+RackDoNothing::RackDoNothing()
 {
 	// Use Requires() here to declare subsystem dependencies
+	// eg. Requires(chassis);
+
 	Requires(rack);
 }
 
 // Called just before this Command runs the first time
-void RackRetract::Initialize()
+void RackDoNothing::Initialize()
 {
-	//Rack->setMotor(-.5);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void RackRetract::Execute()
+void RackDoNothing::Execute()
 {
-
+	rack->doNothing();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool RackRetract::IsFinished()
+bool RackDoNothing::IsFinished()
 {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true
-void RackRetract::End()
+void RackDoNothing::End()
 {
-	//Rack->setMotor(.5);
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void RackRetract::Interrupted()
+void RackDoNothing::Interrupted()
 {
-	//End();
+
 }

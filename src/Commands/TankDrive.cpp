@@ -1,38 +1,37 @@
-#include "RackRetract.h"
+#include "TankDrive.h"
 
-RackRetract::RackRetract()
+TankDrive::TankDrive()
 {
-	// Use Requires() here to declare subsystem dependencies
-	Requires(rack);
+	Requires(driveTrain);
 }
 
 // Called just before this Command runs the first time
-void RackRetract::Initialize()
+void TankDrive::Initialize()
 {
-	//Rack->setMotor(-.5);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void RackRetract::Execute()
+void TankDrive::Execute()
 {
-
+	driveTrain->TankDrivePeriodic(oi->GetDriverJoystick1(), oi->GetDriverJoystick2());
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool RackRetract::IsFinished()
+bool TankDrive::IsFinished()
 {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true
-void RackRetract::End()
+void TankDrive::End()
 {
-	//Rack->setMotor(.5);
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void RackRetract::Interrupted()
+void TankDrive::Interrupted()
 {
-	//End();
+
 }
