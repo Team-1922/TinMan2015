@@ -14,5 +14,4 @@
 AutonomousV2::AutonomousV2() : CommandGroup("AutonomousV2")
 {
 	AddSequential(new CommandRackRaise);
-	AddSequential(new CommandRackDoNothing);
 }
