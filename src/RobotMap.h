@@ -259,6 +259,9 @@ namespace RobotMap
 			const float distancePerPulse = 1.0f/float(gearing*pulsesPerRotation);
 		}
 	}
+
+	//the maximum percentage change of the velocity of the rack or shovel in a cycle
+	const float maxRPMDelta = 0.015;//1.5%
 }
 #endif
 

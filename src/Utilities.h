@@ -28,6 +28,15 @@ inline bool getSign(T num)
 	return (num >= 0.0f);
 }
 
+//takes a value, and makes sure it is between min and max; if it is above max, it returns max, same for min
+template<typename T>
+inline T clamp(T val, T min, T max)
+{
+	//for a better explanation, see: https://www.opengl.org/sdk/docs/man/html/clamp.xhtml
+	//takes the large of the two numbers, the minimum value or the value, then takes the minimum of the returned value or the max value
+	return std::min(std::max(val, min), max);
+}
+
 //takes a list of numbers, and a list of weights to apply to each of these numbers in a weighted average
 //UNTESTED
 float weightAverage(std::vector<float> numbers, std::vector<float> weights);

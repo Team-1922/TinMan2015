@@ -36,8 +36,8 @@ void Rack::setMotor(float level)
 void Rack::setMotorRate(float degPerSecond)
 {
 	float currSpeedDPS = getEncRate();
-	if(Utilities::isEqual(0.0f, currSpeedDPS, .5f))
-		currSpeedDPS = degPerSecond;
+	//if(Utilities::isEqual(0.0f, currSpeedDPS, .5f))
+	//	currSpeedDPS = degPerSecond;
 
 	//use formula derived with dimensional analysis to convert DPS to RPM of our gearbox
 	float desiredSpeedRPM = (degPerSecond*RobotMap::Rack::gearing)/60;
@@ -46,6 +46,10 @@ void Rack::setMotorRate(float degPerSecond)
 	//take the RPM we need to give the motor to increase the speed to what we want
 	float requiredRPM = desiredSpeedRPM - currSpeedRPM;
 	float neededPercentageOfDesired = requiredRPM / desiredSpeedRPM;
+
+	//make sure this percentage is not bigger than 1.5 percent, so it doesn't make drastic changes that cause jerking
+	//  or damage equipment; HOPEFULLY this fixes the problem of stopping too quickly, or putting to much tork on the motor
+	neededPercentageOfDesired = Utilities::clamp<float>(neededPercentageOfDesired, -RobotMap::maxRPMDelta, RobotMap::maxRPMDelta);
 
 	float totalNeededRPM = (1.0f + neededPercentageOfDesired) * desiredSpeedRPM;
 
