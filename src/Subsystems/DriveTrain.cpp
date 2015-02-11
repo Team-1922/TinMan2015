@@ -67,10 +67,8 @@ void DriveTrain::ArcadeDrivePeriodic(Joystick* stick)
 	right = -right;
 
 	//set the motors
-	m_pFrontLeft->Set(left);
-	m_pRearLeft->Set(left);
-	m_pFrontRight->Set(right);
-	m_pRearRight->Set(right);
+	setLeft(left);
+	setRight(right);
 }
 
 void DriveTrain::RaceDrivePeriodic(Joystick* stick)
@@ -88,10 +86,8 @@ void DriveTrain::RaceDrivePeriodic(Joystick* stick)
 	float right = -(throttleFactored - turnValFactored);
 
 	//set the motors
-	m_pFrontLeft->Set(left);
-	m_pRearLeft->Set(left);
-	m_pFrontRight->Set(right);
-	m_pRearRight->Set(right);
+	setLeft(left);
+	setRight(right);
 
 }
 
@@ -101,10 +97,21 @@ void DriveTrain::TankDrivePeriodic(Joystick* stick1, Joystick* stick2)
 	float right = -stick1->GetY();
 	float left = -stick2->GetY();
 
-	m_pFrontLeft->Set(left);
-	m_pRearLeft->Set(left);
-	m_pFrontRight->Set(right);
-	m_pRearRight->Set(right);
+	setLeft(left);
+	setRight(right);
+}
+
+
+void DriveTrain::setLeft(float val)
+{
+	m_pFrontLeft->Set(val);
+	m_pRearLeft->Set(val);
+}
+
+void DriveTrain::setRight(float val)
+{
+	m_pFrontRight->Set(val);
+	m_pRearRight->Set(val);
 }
 
 void DriveTrain::StopMotors()

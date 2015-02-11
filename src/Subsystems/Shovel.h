@@ -11,17 +11,13 @@ class Shovel: public Subsystem
 private:
 
 	SpeedController* m_pRotate;
-	AnalogPotentiometer* m_pPotentiometer;
+	OzPotentiometer* m_pPotentiometer;
 	Solenoid* m_pWidthSolenoid;
 
 	DigitalInput* m_pShovelWideRight;
 	DigitalInput* m_pShovelWideLeft;
 	DigitalInput* m_pShovelPivotLim;
 
-	//information for potentiometer rate
-	float m_CurrSpeed = 0.0f;//deg/s
-	float m_LastTick = 0.0f;//s
-	float m_LastAngle = 0.0f;//deg
 
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities

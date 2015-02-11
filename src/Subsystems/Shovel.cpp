@@ -7,19 +7,15 @@ Shovel::Shovel():
 	Subsystem("Shovel")
 {
 	m_pRotate = new Talon(RobotMap::Shovel::shovelPivotMotor);
-	m_pPotentiometer = new AnalogPotentiometer(
+	m_pPotentiometer = new OzPotentiometer(
 			RobotMap::Shovel::potentiometer,
 			RobotMap::Shovel::potDegree/5.0,
-		  -(RobotMap::Shovel::potDegree-30));
+		  -(RobotMap::Shovel::potDegree-RobotMap::Shovel::potDegreeOffset));
 	m_pWidthSolenoid = new Solenoid(RobotMap::Shovel::shovelWidthSol);
 	m_pShovelWideRight = new DigitalInput(RobotMap::Shovel::shovelWideRight);
 	m_pShovelWideLeft = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
 	m_pShovelPivotLim = new DigitalInput(RobotMap::Shovel::shovelPivotLimSwitch);
 
-	//setup the potentiometer for rate
-	m_LastTick = Utilities::getTime();
-	m_LastAngle = getPotentiometer();
-	tickPotentiometer();
 }
 
 Shovel::~Shovel()
@@ -53,28 +49,12 @@ float Shovel::getPotentiometer()
 //
 void Shovel::tickPotentiometer()
 {
-	float currTime = Utilities::getTime();
-
-	//don't tick too often
-	if (currTime - m_LastTick < RobotMap::Shovel::minPollWait)
-		return;
-
-	float currAngle = getPotentiometer();
-
-	//this is in degrees per second
-	m_CurrSpeed = (currAngle - m_LastAngle) /
-			/*	  --------------------------		*/
-				  (currTime - m_LastTick);
-
-	//this would be: change in angle divided by change in time = degrees/s
-
-	//finally update the last tick time
-	m_LastTick = currTime;
+	m_pPotentiometer->Tick();
 }
 
 float Shovel::getTurnRate()
 {
-	return m_CurrSpeed;
+	return m_pPotentiometer->GetTurnRate();
 }
 
 /*float Shovel::getAngle()

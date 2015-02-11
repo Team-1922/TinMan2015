@@ -213,14 +213,13 @@ namespace RobotMap
 		const int shovelPivotLimSwitch = 4;//limit switch (DI)
 		const int shovelWidthSol = 2;//solenoid (SOL)
 
-		const int potTurnCount = 1;
+		const int potTurnCount = 10;
 		const int potDegree = 360 * potTurnCount;
+		const float potDegreeOffset = 30; //degrees off horizontal, aka all the way forwards
 
-		//polling rate of the potentiometer
-		const float minPollWait = 0.5;//0.5 seconds
 
-		//GEARING: 48:1  TODO:?
-		const int gearing = 48;
+		//GEARING: 480:1  TODO:?
+		const int gearing = 480;
 
 		//shovel rpm (Free)
 		const int shovelMotorRPM = 133;
@@ -234,8 +233,9 @@ namespace RobotMap
 		const int rackExtendRack = 7;//(PWM)
 		const int rackClawSolenoid = 1;//(SOL)
 		const int rackMotLimSwitch = 5;//(DI)
-		const int rackEncChannelA = 6;//(DI)
-		const int rackEncChannelB = 7;//(DI)
+		const int potentiometer = 1;//(AI)
+		//const int rackEncChannelA = 6;//(DI)
+		//const int rackEncChannelB = 7;//(DI)
 
 		//GEARING: TODO:
 		const int gearing = 1;
@@ -245,7 +245,12 @@ namespace RobotMap
 
 		const int rackMotorMaxSpeed = 15;//degrees/s
 
-		namespace Encoder
+		const int potTurnCount = 10;
+		const int potDegree = 360 * potTurnCount;
+		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
+
+
+		/*namespace Encoder
 		{
 			//this contains information for the encoder to get useful information i.e. degrees per second
 
@@ -257,11 +262,14 @@ namespace RobotMap
 
 			//This converts the pulses to degrees per second
 			const float distancePerPulse = 1.0f/float(gearing*pulsesPerRotation);
-		}
+		}*/
 	}
 
 	//the maximum percentage change of the velocity of the rack or shovel in a cycle
 	const float maxRPMDelta = 0.015;//1.5%
+
+	//polling rate of the potentiometer
+	const float minPollWait = 0.05;//0.05 seconds
 }
 #endif
 

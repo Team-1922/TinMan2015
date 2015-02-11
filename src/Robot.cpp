@@ -55,6 +55,7 @@ private:
 	void UniversalPeriodic()
 	{
 		CommandBase::shovel->tickPotentiometer();
+		CommandBase::rack->tickPotentiometer();
 	}
 
 	void DisabledPeriodic()
@@ -122,8 +123,8 @@ private:
 		/*
 		 * Rack Information
 		 */
-		SmartDashboard::PutNumber("Rack Angle", CommandBase::rack->getEncDistance());
-		SmartDashboard::PutNumber("Rack Motor (Deg/s)", CommandBase::rack->getEncRate());
+		SmartDashboard::PutNumber("Rack Angle", CommandBase::rack->getPotentiometer());
+		SmartDashboard::PutNumber("Rack Motor (Deg/s)", CommandBase::rack->getTurnRate());
 
 
 		/*

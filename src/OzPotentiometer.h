@@ -13,16 +13,20 @@
 class OzPotentiometer: public AnalogPotentiometer
 {
 
-	float minValue;
-	float maxValue;
-	float turnCount;
-	float range;
+	//information for potentiometer rate
+	float m_CurrSpeed = 0.0f;//deg/s
+	float m_LastTick = 0.0f;//s
+	float m_LastAngle = 0.0f;//deg
+
 public:
-	OzPotentiometer(int channel, float minVal, float maxVal, float turnCnt);
+	OzPotentiometer(int channel, float minVal, float maxVal);
 	virtual ~OzPotentiometer();
 
-	//get the angle in degrees, where 0 degrees is all the way to the right
-	float GetAngle();
+	//returns the rate in degrees per second
+	float GetTurnRate();
+
+	// this is used to get rate information from the potentiometer, call this once per cycle
+	void Tick();
 };
 
 #endif /* OZPOTENTIOMETER_H_ */

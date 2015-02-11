@@ -39,6 +39,12 @@ public:
 	void DriveStraight(float motorVal);
 
 	/*
+	 * Motor Controls
+	 */
+	void setLeft(float val);
+	void setRight(float val);
+
+	/*
 	 * Encoder Control Functions
 	 */
 	void resetEncoderLeft(){m_pLeftEncoder->Reset();}

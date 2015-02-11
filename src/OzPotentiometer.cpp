@@ -6,13 +6,17 @@
  */
 
 #include "OzPotentiometer.h"
+#include "RobotMap.h"
+#include "Utilities.h"
 #include <cmath>
 
-OzPotentiometer::OzPotentiometer(int channel, float minVal, float maxVal, float turnCnt) :
-		AnalogPotentiometer(channel, maxVal, minVal),
-		minValue(minVal), maxValue(maxVal), turnCount(turnCnt)
+OzPotentiometer::OzPotentiometer(int channel, float minVal, float maxVal) :
+		AnalogPotentiometer(channel, maxVal, minVal)
 {
-	range = fabs(maxVal - minVal);
+	//setup the potentiometer for rate
+	m_LastTick = Utilities::getTime();
+	m_LastAngle = Get();
+	Tick();
 }
 
 OzPotentiometer::~OzPotentiometer()
@@ -20,16 +24,28 @@ OzPotentiometer::~OzPotentiometer()
 	// TODO Auto-generated destructor stub
 }
 
-float OzPotentiometer::GetAngle()
+void OzPotentiometer::Tick()
 {
-	float potVal = this->Get();
+	float currTime = Utilities::getTime();
 
-	float maxDegVal = (turnCount * 360.0f);
+	//don't tick too often
+	if (currTime - m_LastTick < RobotMap::minPollWait)
+		return;
 
-	//(currentValue minus minimum value to get rid of offset (min is 0)) / (possibleRange);
-	float percentTurned = fabs(potVal - minValue) / range;
-	//multiplied percentage turned by the degree value get the number of degrees turned
-	float degVal = percentTurned * maxDegVal;
+	float currAngle = Get();
 
-	return (degVal);
+	//this is in degrees per second
+	m_CurrSpeed = (currAngle - m_LastAngle) /
+			/*	  --------------------------		*/
+				  (currTime - m_LastTick);
+
+	//this would be: change in angle divided by change in time = degrees/s
+
+	//finally update the last tick time
+	m_LastTick = currTime;
+}
+
+float OzPotentiometer::GetTurnRate()
+{
+	return m_CurrSpeed;
 }

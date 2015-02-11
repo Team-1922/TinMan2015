@@ -11,17 +11,15 @@ Rack::Rack() :
 	m_pRotate = new Talon(RobotMap::Rack::rackPivotMotor);
 	m_pExtendRetract = new Talon(RobotMap::Rack::rackExtendRack);
 
-	m_pEncoder = new Encoder(RobotMap::Rack::rackEncChannelA,
-							RobotMap::Rack::rackEncChannelB, true,
-							RobotMap::Rack::Encoder::encodingType);
-
-	m_pEncoder->SetDistancePerPulse(RobotMap::Rack::Encoder::distancePerPulse);
-	m_pEncoder->SetMinRate(0.1);
+	m_pPotentiometer = new OzPotentiometer(
+			RobotMap::Rack::potentiometer,
+			RobotMap::Rack::potDegree/5.0,
+		  -(RobotMap::Rack::potDegree-RobotMap::Rack::potDegreeOffset));
 }
 
 Rack::~Rack()
 {
-	SAFE_DELETE(m_pEncoder);
+	SAFE_DELETE(m_pPotentiometer);
 	SAFE_DELETE(m_pExtendRetract);
 	SAFE_DELETE(m_pRotate);
 	SAFE_DELETE(m_pLimitBackStop);
@@ -33,9 +31,26 @@ void Rack::setMotor(float level)
 	m_pRotate->Set(level);
 }
 
+float Rack::getPotentiometer()
+{
+	//get the angle
+	return m_pPotentiometer->Get();
+}
+
+//
+void Rack::tickPotentiometer()
+{
+	m_pPotentiometer->Tick();
+}
+
+float Rack::getTurnRate()
+{
+	return m_pPotentiometer->GetTurnRate();
+}
+
 void Rack::setMotorRate(float degPerSecond)
 {
-	float currSpeedDPS = getEncRate();
+	float currSpeedDPS = getTurnRate();
 	//if(Utilities::isEqual(0.0f, currSpeedDPS, .5f))
 	//	currSpeedDPS = degPerSecond;
 

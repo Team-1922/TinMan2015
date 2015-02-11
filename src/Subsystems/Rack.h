@@ -11,7 +11,7 @@ class Rack: public Subsystem
 private:
 	//the motor that rotates the rack
 	SpeedController* m_pRotate;
-	Encoder* 		 m_pEncoder;
+	OzPotentiometer* m_pPotentiometer;
 
 	//the motor that extends and retracts the rack
 	SpeedController* m_pExtendRetract;
@@ -43,6 +43,7 @@ public:
 	void setClaw(bool on){return m_pClaw->Set(on);}
 	bool getClaw(){return m_pClaw->Get();}
 
+#ifdef RACK_USE_ENCODER
 	/*
 	 * Encoder Control Functions
 	 */
@@ -60,7 +61,20 @@ public:
 	double 	getEncRate()		{return m_pEncoder->GetRate();				}
 	bool 	getEncDirection()	{return m_pEncoder->GetDirection();			}
 	bool 	getEncStopped()		{return m_pEncoder->GetStopped();			}
+#else
+	/*
+	 * Potentiometer Control
+	 */
 
+	//returns the current angle of the potentiometer relative to rack in down (horizontal) position
+	float getPotentiometer();
+
+	//returns the speed of the rack movement in degrees/s (signed)
+	float getTurnRate();
+
+	// this is used to get rate information from the potentiometer, call this once per cycle
+	void tickPotentiometer();
+#endif
 
 };
 
