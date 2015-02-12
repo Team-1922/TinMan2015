@@ -140,6 +140,7 @@ private:
 		SmartDashboard::PutNumber("Shovel Angle", CommandBase::shovel->getPotentiometer());
 		SmartDashboard::PutNumber("Shovel Motor (Deg/s)", CommandBase::shovel->getTurnRate());
 		SmartDashboard::PutNumber("Shovel Motor (-1 to 1)", CommandBase::shovel->getMotor());
+		SmartDashboard::PutNumber("Shovel Solenoid", CommandBase::shovel->getSolenoid());
 
 
 		/*
@@ -148,6 +149,7 @@ private:
 		SmartDashboard::PutNumber("Rack Angle", CommandBase::rack->getPotentiometer());
 		SmartDashboard::PutNumber("Rack Motor (Deg/s)", CommandBase::rack->getTurnRate());
 		SmartDashboard::PutNumber("Rack Motor (-1 to 1)", CommandBase::rack->getMotor());
+		SmartDashboard::PutNumber("Rack Solenoid", CommandBase::rack->getClaw());
 
 
 		/*
