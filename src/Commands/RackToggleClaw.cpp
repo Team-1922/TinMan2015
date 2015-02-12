@@ -1,38 +1,41 @@
-#include "ShovelCloseWidth.h"
+#include "RackToggleClaw.h"
 
-ShovelCloseWidth::ShovelCloseWidth()
+RackToggleClaw::RackToggleClaw()
 {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(shovel);
+	Requires(rack);
 }
 
 // Called just before this Command runs the first time
-void ShovelCloseWidth::Initialize()
+void RackToggleClaw::Initialize()
 {
-	shovel->setSolenoid(false);
+	if(rack->getClaw())
+		rack->setClaw(false);
+	else
+		rack->setClaw(true);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShovelCloseWidth::Execute()
+void RackToggleClaw::Execute()
 {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShovelCloseWidth::IsFinished()
+bool RackToggleClaw::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void ShovelCloseWidth::End()
+void RackToggleClaw::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShovelCloseWidth::Interrupted()
+void RackToggleClaw::Interrupted()
 {
 
 }

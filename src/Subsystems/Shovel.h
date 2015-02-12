@@ -56,11 +56,10 @@ public:
 	 * Solenoid Control
 	 */
 
-	void extendShelf() { setSolenoid(true); }
-	void retractShelf() { setSolenoid(false); }
+	bool getSolenoid() {return m_pWidthSolenoid->Get();}
+	void setSolenoid(bool on);
 
 private:
-	void setSolenoid(bool setting);
 
 	//void retractShelf();
 	//void extendShelf();

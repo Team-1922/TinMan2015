@@ -9,7 +9,7 @@ ShovelOpenWidth::ShovelOpenWidth()
 // Called just before this Command runs the first time
 void ShovelOpenWidth::Initialize()
 {
-	shovel->retractShelf();
+	shovel->setSolenoid(true);
 }
 
 // Called repeatedly when this Command is scheduled to run

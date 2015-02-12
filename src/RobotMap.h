@@ -151,9 +151,9 @@ namespace RobotMap
 		const int shovelJoyControlled = 8;
 		const int rackShovelCombined = 9;
 
-		//controls for changing the width of the shovel
-		const int shovelWidthOpen = 10;
-		const int shovelWidthClose = 11;
+		//controls for changing the width of the shovel and rack
+		const int shovelWidthToggle = 10;
+		const int rackClawToggle = 11;
 
 		//the current mode
 		extern OperatorMode currOpMode;// = kRack;
@@ -237,8 +237,8 @@ namespace RobotMap
 		//const int rackEncChannelA = 6;//(DI)
 		//const int rackEncChannelB = 7;//(DI)
 
-		//GEARING: TODO:
-		const int gearing = 1;
+		//GEARING: 81000:264:
+		const int gearing = 81000/264;
 
 		//the speed of the motor (Free)
 		const float rackMotorRPM = 5310;

@@ -50,6 +50,11 @@ float Rack::getTurnRate()
 
 void Rack::setMotorRate(float degPerSecond)
 {
+
+	setMotor(degPerSecond / (float)RobotMap::Rack::rackMotorMaxSpeed);
+	//short circuit this for now
+	return;
+
 	float currSpeedDPS = getTurnRate();
 	//if(Utilities::isEqual(0.0f, currSpeedDPS, .5f))
 	//	currSpeedDPS = degPerSecond;

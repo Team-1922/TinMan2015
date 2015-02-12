@@ -75,6 +75,11 @@ void  Shovel::setMotor(float val)
 //almost identical to the function of the rack
 void  Shovel::setMotorRate(float degPerSecond)
 {
+
+	setMotor(degPerSecond / (float)RobotMap::Shovel::shovelMotorMaxSpeed);
+	//short circuit this for now
+	return;
+
 	float currSpeedDPS = getTurnRate();
 	//if(Utilities::isEqual(0.0f, currSpeedDPS, .5f))
 	//	currSpeedDPS = degPerSecond;
