@@ -1,4 +1,5 @@
 #include "Utilities.h"
+#include "RobotMap.h"
 #include <cmath>
 #include <time.h>
 
@@ -56,5 +57,30 @@ float getTime()
 	//return the difference
 	return difftime(timer, g_Timer);
 }
+
+float  motorConstSpeed(float rpmDesired, float rpmCurrent, float &rpmCompounded,
+		float gearingRatio, float maxMotorRPM)
+{
+	//convert the rpm of the component to the rpm of the motor
+	float desiredSpeedRPM = rpmDesired * gearingRatio;
+	float currSpeedRPM = rpmCurrent * gearingRatio;
+
+	//take the RPM we need to give the motor to increase the speed to what we want
+	float requiredRPM = desiredSpeedRPM - currSpeedRPM;
+	float neededPercentageOfDesired = requiredRPM / desiredSpeedRPM;
+
+	//make sure this percentage is not bigger than 1.5 percent, so it doesn't make drastic changes that cause jerking
+	//  or damage equipment; HOPEFULLY this fixes the problem of stopping too quickly, or putting to much torque on the motor
+	neededPercentageOfDesired = Utilities::clamp<float>(neededPercentageOfDesired, -RobotMap::maxRPMDelta, RobotMap::maxRPMDelta);
+
+	//the rpm to feed into the normalized value is calculated by adding the neededRPM to the compounded rpm
+	rpmCompounded += neededPercentageOfDesired * desiredSpeedRPM;
+
+	//divide by the rpm to get a value between -1 and 1;
+	float normalizedValue = rpmCompounded / RobotMap::Shovel::shovelMotorRPM;
+
+	return normalizedValue;
+}
+
 
 }

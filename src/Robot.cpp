@@ -21,7 +21,10 @@ private:
 
 	SendableChooser *Chooser;
 	SendableChooser *driveModeChooser;
+	Command* currentDriveMode;
+
 	SendableChooser *operatorJoyControl;
+	Command* currentOperatorJoyMode;
 
 	void RobotInit()
 	{
@@ -44,12 +47,14 @@ private:
 		driveModeChooser->AddDefault("Controller Drive", new RaceDrive);
 		driveModeChooser->AddObject("Arcade Drive", new ArcadeDrive);
 		driveModeChooser->AddObject("Tank Drive", new TankDrive);
+		SmartDashboard::PutData("Drive Mode", driveModeChooser);
 
 		//this is for switching which thing the joystick operator is controlling
 		operatorJoyControl = new SendableChooser();
 		operatorJoyControl->AddDefault("Control Rack", new SwitchJoyRack());
 		operatorJoyControl->AddObject("Control Shovel", new SwitchJoyShovel());
 		operatorJoyControl->AddObject("Control Both", new SwitchJoyCombined());
+		SmartDashboard::PutData("Operator Control Mode", operatorJoyControl);
 	}
 	
 	void UniversalPeriodic()
@@ -96,6 +101,22 @@ private:
 		UniversalPeriodic();
 		Scheduler::GetInstance()->Run();
 
+		//the drive and operator modes
+		Command* curDrive = (Command*)driveModeChooser->GetSelected();
+		if(curDrive != currentDriveMode)
+		{
+			currentDriveMode = curDrive;
+			currentDriveMode->Start();
+		}
+
+		Command* curOp = (Command*)operatorJoyControl->GetSelected();
+		if(curOp != currentOperatorJoyMode)
+		{
+			currentOperatorJoyMode = curOp;
+			currentOperatorJoyMode->Start();
+		}
+
+
 		//display all potentially useful information to the user
 
 
@@ -118,6 +139,7 @@ private:
 		 */
 		SmartDashboard::PutNumber("Shovel Angle", CommandBase::shovel->getPotentiometer());
 		SmartDashboard::PutNumber("Shovel Motor (Deg/s)", CommandBase::shovel->getTurnRate());
+		SmartDashboard::PutNumber("Shovel Motor (-1 to 1)", CommandBase::shovel->getMotor());
 
 
 		/*
@@ -125,6 +147,7 @@ private:
 		 */
 		SmartDashboard::PutNumber("Rack Angle", CommandBase::rack->getPotentiometer());
 		SmartDashboard::PutNumber("Rack Motor (Deg/s)", CommandBase::rack->getTurnRate());
+		SmartDashboard::PutNumber("Rack Motor (-1 to 1)", CommandBase::rack->getMotor());
 
 
 		/*

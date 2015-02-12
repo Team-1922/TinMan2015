@@ -47,6 +47,24 @@ void startTimer();
 //this gets the time in seconds since the begging of the application running; this IS multithreaded
 float getTime();
 
+
+
+/*
+ * This function is the core of the shovel and rack system to keep a constant rotational speed with different
+ * amounts of rotation force on it.  This also allows the rack and the motor to move at the same time at the
+ * same speed.
+ *
+ * Parameters: Desired speed of component (RPM); Current speed of component (RPM); Compounded speed of componet* (RPM);
+ * Gearing ratio of motor (Motor Rotations per component Rotations), Maximum motor sped (RPM)
+ *
+ * Returns: a normalized value to pass to the motor->set(float) function
+ *
+ * *The compounded speed is a feedback function that is stored as part of the subsystem.  This is used to store
+ * 	the old value in order to keep a smooth transition.
+ */
+float  motorConstSpeed(float rpmDesired, float rpmCurrent, float &rpmCompounded, float gearingRatio, float maxMotorRPM);
+
 }
+
 
 #endif /* SRC_UTILITIES_H_ */

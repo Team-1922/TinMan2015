@@ -18,6 +18,9 @@ private:
 	DigitalInput* m_pShovelWideLeft;
 	DigitalInput* m_pShovelPivotLim;
 
+	//keeps track of the current compounded speed (see motorConstSpeed for more information)
+	float m_speedCompounded = 0.0f;
+
 
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -50,6 +53,7 @@ public:
 
 	void  setMotor(float val);
 	void  setMotorRate(float degPerSecond);
+	float getMotor(){return m_pRotate->Get();}
 
 
 	/*

@@ -229,7 +229,8 @@ namespace RobotMap
 
 	namespace Rack
 	{
-		const int rackPivotMotor = 5;//CIM Motor (PWM)
+	//TODO: remember this should be 5
+		const int rackPivotMotor = 7;//CIM Motor (PWM)
 		const int rackExtendRack = 7;//(PWM)
 		const int rackClawSolenoid = 1;//(SOL)
 		const int rackMotLimSwitch = 5;//(DI)
