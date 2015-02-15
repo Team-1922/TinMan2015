@@ -76,7 +76,14 @@ void  Shovel::setMotor(float val)
 void  Shovel::setMotorRate(float degPerSecond)
 {
 
-	setMotor(degPerSecond / (float)RobotMap::Shovel::shovelMotorMaxSpeed);
+	if(RobotMap::Controls::currOpMode == kBoth)
+	{
+		setMotor(degPerSecond / (float)RobotMap::Rack::rackMotorMaxSpeed);
+	}
+	else
+	{
+		setMotor(degPerSecond / (float)RobotMap::Shovel::shovelMotorMaxSpeed);
+	}
 	//short circuit this for now
 	return;
 
