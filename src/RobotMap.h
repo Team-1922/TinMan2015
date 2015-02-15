@@ -207,7 +207,7 @@ namespace RobotMap
 	namespace Shovel
 	{
 		const int potentiometer = 0;//potentiometer(AI)
-		const int shovelPivotMotor = 4;//Motor (PWM)
+		const int shovelPivotMotor = 4;//(4)Motor (PWM)
 		const int shovelWideRight = 8;//limit switch (DI)
 		const int shovelWideLeft = 9;//limit switch (DI)
 		const int shovelPivotLimSwitch = 4;//limit switch (DI)
@@ -230,7 +230,7 @@ namespace RobotMap
 	namespace Rack
 	{
 	//TODO: remember this should be 5
-		const int rackPivotMotor = 7;//CIM Motor (PWM)
+		const int rackPivotMotor = 5;//CIM Motor (PWM)
 		const int rackExtendRack = 7;//(PWM)
 		const int rackClawSolenoid = 1;//(SOL)
 		const int rackMotLimSwitch = 5;//(DI)
