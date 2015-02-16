@@ -161,8 +161,16 @@ private:
 
 	void TestPeriodic()
 	{
+		Solenoid* pShovelSolenoid = new Solenoid(RobotMap::Shovel::shovelWidthSol);
+		ShovelController* pShovelControler = new Talon(RobotMap::Shovel::shovelPivotMotor);
+		lw->addActuator("Shovel", "Solenoid", pShovelSolenoid);
+		lw->addController("Shovel", "Motor", pShovelController);
 		lw->Run();
+
+
 	}
+
+
 };
 
 START_ROBOT_CLASS(Robot);
