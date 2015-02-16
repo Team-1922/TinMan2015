@@ -11,6 +11,8 @@
 #include "Commands/SwitchJoyRack.h"
 #include "Commands/SwitchJoyShovel.h"
 
+#include "Commands/ShovelToggleWidth.h"
+
 #include "Utilities.h"
 
 class Robot: public IterativeRobot

@@ -13,7 +13,7 @@
 #include "OI.h"
 
 #include "Commands/TestCommandGroup.h"
-#include "Commands/TestPneumatics.h"
+//#include "Commands/TestPneumatics.h"
 #include "Commands/RackDeploy.h"
 #include "Commands/RackRetract.h"
 
@@ -29,10 +29,10 @@
 
 
 OI::OI():
-m_pDriverStick1 (NULL),
-m_pDriverStick2(NULL),
-m_pOperatorStick (1),
-m_pDriverController(NULL)
+m_pDriverStick1 (nullptr),
+m_pDriverStick2(nullptr),
+m_pOperatorStick (nullptr),
+m_pDriverController(nullptr)
 {
 	m_pDriverStick1 = new Joystick(RobotMap::Controls::driverJoy1);
 	m_pDriverStick2 = new Joystick(RobotMap::Controls::driverJoy2);
@@ -67,8 +67,8 @@ m_pDriverController(NULL)
 	buttonDeploy->WhenActive(new RackDeploy());
 	JoystickButton* buttonRetract = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
 	buttonRetract->WhenActive(new RackRetract());*/
-    JoystickButton* buttonTest = new JoystickButton(m_pOperatorStick, Joystick::kDefaultTriggerButton);
-    buttonTest->WhenPressed(new TestPneumatics());
+    //JoystickButton* buttonTest = new JoystickButton(m_pOperatorStick, Joystick::kDefaultTriggerButton);
+    //buttonTest->WhenPressed(new TestPneumatics());
 
     JoystickButton* buttonShovelJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelJoyControlled);
     JoystickButton* buttonRackJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackJoyControlled);

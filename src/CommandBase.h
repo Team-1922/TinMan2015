@@ -1,7 +1,7 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
-#include <Subsystems/Pneumatics.h>
+//#include <Subsystems/Pneumatics.h>
 #include <Subsystems/Rack.h>
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/Shovel.h"
@@ -31,7 +31,7 @@ public:
 	static Rack *rack;
 	static OI *oi;
 	static DriveTrain *driveTrain;
-	static Pneumatics* pneumatics;
+	//static Pneumatics* pneumatics;
 	static Camera* camera;
 	static Chassis* chassis;
 };
