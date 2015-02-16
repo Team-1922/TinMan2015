@@ -12,7 +12,7 @@ Pneumatics::Pneumatics() :
 void Pneumatics::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new TestPneumatics());
+	SetDefaultCommand(new TestPneumatics());
 }
 
 // Put methods for controlling this subsystem

@@ -12,8 +12,6 @@
 
 //uncomment this to use the locations from the test robot
 //#define TEST_ROBOT
-
-
 #ifdef TEST_ROBOT
 
 #include <cmath>

@@ -42,6 +42,8 @@ private:
 		Chooser->AddObject("Other Autonomous", new AutonomousV2);
 		SmartDashboard::PutData("Autonomous Mode", Chooser);
 
+		SmartDashboard::PutData("Shovel Width Toggle", new ShovelToggleWidth());
+
 		//this is for switchible drive modes
 		driveModeChooser = new SendableChooser();
 		driveModeChooser->AddDefault("Controller Drive", new RaceDrive);
