@@ -9,7 +9,7 @@ RackOpenClaw::RackOpenClaw()
 // Called just before this Command runs the first time
 void RackOpenClaw::Initialize()
 {
-	rack->setClaw(false);
+	rack->setClaw(true);
 }
 
 // Called repeatedly when this Command is scheduled to run
