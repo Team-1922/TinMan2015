@@ -152,6 +152,7 @@ namespace RobotMap
 		//controls for changing the width of the shovel and rack
 		extern const int shovelWidthToggle;
 		extern const int rackClawToggle;
+		extern const int chassisLiftToggle;
 
 		//the current mode
 		extern OperatorMode currOpMode;// = kRack;

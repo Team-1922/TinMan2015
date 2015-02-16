@@ -18,18 +18,19 @@ namespace RobotMap
 		//the controls on the operator joystick
 		//TODO: get these optimal positions
 
-		//these extend or retract the rack, NOTE: these are to be held to adjust the rack
+		//The lengthening and shortening of the rack are controlled by the thumbpad
 		const int extendRack = 5;
 		const int retractRack = 6;
 
 		//these are for selecting which subsystem the joystick is controlling
 		const int rackJoyControlled = 7;
-		const int shovelJoyControlled = 8;
-		const int rackShovelCombined = 9;
+		const int shovelJoyControlled = 9;
+		const int rackShovelCombined = 11;
 
 		//controls for changing the width of the shovel and rack
-		const int shovelWidthToggle = 10;
-		const int rackClawToggle = 11;
+		const int shovelWidthToggle = 8;
+		const int rackClawToggle = 10;
+		const int chassisLiftToggle = 12;
 
 		//the current mode
 		OperatorMode currOpMode = kRack;
