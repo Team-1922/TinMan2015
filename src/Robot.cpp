@@ -175,13 +175,3 @@ private:
 
 START_ROBOT_CLASS(Robot);
 
-
-//part of ROBOTMAP
-namespace RobotMap
-{
-namespace Controls
-{
-	OperatorMode currOpMode = kRack;
-}
-}
-

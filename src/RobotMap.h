@@ -130,30 +130,30 @@ namespace RobotMap
 	namespace Controls
 	{
 		//the locations of the controllers and joysticks
-		const int driverJoy1 = 0;
-		const int driverJoy2 = 1;
-		const int operatorJoy = 2;
-		const int controller = 3;
+		extern const int driverJoy1;
+		extern const int driverJoy2;
+		extern const int operatorJoy;
+		extern const int controller;
 
 		//these two MUST add up to 1.0f
-		const float throttleFactor = 0.8f;//how much the throttle affects speed
-		const float stearingFactor = 0.2f;//how much stearing direction affects speed
+		extern const float throttleFactor;//how much the throttle affects speed
+		extern const float stearingFactor;//how much stearing direction affects speed
 
 		//the controls on the operator joystick
 		//TODO: get these optimal positions
 
 		//these extend or retract the rack, NOTE: these are to be held to adjust the rack
-		const int extendRack = 5;
-		const int retractRack = 6;
+		extern const int extendRack;
+		extern const int retractRack;
 
 		//these are for selecting which subsystem the joystick is controlling
-		const int rackJoyControlled = 7;
-		const int shovelJoyControlled = 8;
-		const int rackShovelCombined = 9;
+		extern const int rackJoyControlled;
+		extern const int shovelJoyControlled;
+		extern const int rackShovelCombined;
 
 		//controls for changing the width of the shovel and rack
-		const int shovelWidthToggle = 10;
-		const int rackClawToggle = 11;
+		extern const int shovelWidthToggle;
+		extern const int rackClawToggle;
 
 		//the current mode
 		extern OperatorMode currOpMode;// = kRack;
@@ -166,16 +166,16 @@ namespace RobotMap
 	{
 
 		//the locations of the motors
-		const int frontLeft  = 0;
-		const int rearLeft   = 1;
-		const int frontRight = 2;
-		const int rearRight  = 3;
+		extern const int frontLeft;
+		extern const int rearLeft;
+		extern const int frontRight;
+		extern const int rearRight;
 
 		//motor encoders
-		const int leftEncA = 0;
-		const int leftEncB = 1;
-		const int rightEncA = 2;
-		const int rightEncB = 3;
+		extern const int leftEncA;
+		extern const int leftEncB;
+		extern const int rightEncA;
+		extern const int rightEncB;
 
 
 		namespace Encoder
@@ -183,17 +183,17 @@ namespace RobotMap
 			//information to give encoders
 
 			//not quite sure if this is right, but this is what was used in the exampled
-			const ::Encoder::EncodingType encodingType = ::Encoder::k4X;
+			extern const ::Encoder::EncodingType encodingType;
 
 			//the number of encoder pulses per rotation TODO:
-			const int pulsesPerRotation = 500;
+			extern const int pulsesPerRotation;
 
 			//GEARING TODO:
-			const int gearing = 1;//this is if the encoder is attached to the wheel axle
+			extern const int gearing;//this is if the encoder is attached to the wheel axle
 
 			//the gearing of the encoders (I will assume both gearings are the same), converts pulses to RPM
 			//GEARING IS AS FOLLOWED TODO:
-			const float distancePerPulse = 1.0f/float(pulsesPerRotation*gearing);
+			extern const float distancePerPulse;
 		}
 
 	}
@@ -201,54 +201,54 @@ namespace RobotMap
 	namespace Chassis
 	{
 		//solnoids for lifting the chassis up
-		const int chassisLiftSol = 0;//SOL
+		extern const int chassisLiftSol;//SOL
 	}
 
 	namespace Shovel
 	{
-		const int potentiometer = 0;//potentiometer(AI)
-		const int shovelPivotMotor = 4;//(4)Motor (PWM)
-		const int shovelWideRight = 8;//limit switch (DI)
-		const int shovelWideLeft = 9;//limit switch (DI)
-		const int shovelPivotLimSwitch = 4;//limit switch (DI)
-		const int shovelWidthSol = 2;//solenoid (SOL)
+		extern const int potentiometer;//potentiometer(AI)
+		extern const int shovelPivotMotor;//(4)Motor (PWM)
+		extern const int shovelWideRight;//limit switch (DI)
+		extern const int shovelWideLeft;//limit switch (DI)
+		extern const int shovelPivotLimSwitch;//limit switch (DI)
+		extern const int shovelWidthSol;//solenoid (SOL)
 
-		const int potTurnCount = 10;
-		const int potDegree = 360 * potTurnCount;
-		const float potDegreeOffset = 30; //degrees off horizontal, aka all the way forwards
+		extern const int potTurnCoun;
+		extern const int potDegree;
+		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
 
 
 		//GEARING: 480:1  TODO:?
-		const int gearing = 480;
+		extern const int gearing;
 
 		//shovel rpm (Free)
-		const int shovelMotorRPM = 133;
+		extern const int shovelMotorRPM;
 
-		const int shovelMotorMaxSpeed = 30;//degrees/s
+		extern const int shovelMotorMaxSpeed;//degrees/s
 	}
 
 	namespace Rack
 	{
 	//TODO: remember this should be 5
-		const int rackPivotMotor = 5;//CIM Motor (PWM)
-		const int rackExtendRack = 7;//(PWM)
-		const int rackClawSolenoid = 1;//(SOL)
-		const int rackMotLimSwitch = 5;//(DI)
-		const int potentiometer = 1;//(AI)
+		extern const int rackPivotMotor;//CIM Motor (PWM)
+		extern const int rackExtendRack;//(PWM)
+		extern const int rackClawSolenoid;//(SOL)
+		extern const int rackMotLimSwitch;//(DI)
+		extern const int potentiometer;//(AI)
 		//const int rackEncChannelA = 6;//(DI)
 		//const int rackEncChannelB = 7;//(DI)
 
 		//GEARING: 81000:264:
-		const int gearing = 81000/264;
+		extern const int gearing;
 
 		//the speed of the motor (Free)
-		const float rackMotorRPM = 5310;
+		extern const float rackMotorRPM;
 
-		const int rackMotorMaxSpeed = 15;//degrees/s
+		extern const int rackMotorMaxSpeed;//degrees/s
 
-		const int potTurnCount = 10;
-		const int potDegree = 360 * potTurnCount;
-		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
+		extern const int potTurnCount;
+		extern const int potDegree;
+		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
 
 
 		/*namespace Encoder
@@ -267,10 +267,10 @@ namespace RobotMap
 	}
 
 	//the maximum percentage change of the velocity of the rack or shovel in a cycle
-	const float maxRPMDelta = 0.015;//1.5%
+	extern const float maxRPMDelta;//1.5%
 
 	//polling rate of the potentiometer
-	const float minPollWait = 0.05;//0.05 seconds
+	extern const float minPollWait;//0.05 seconds
 }
 #endif
 
