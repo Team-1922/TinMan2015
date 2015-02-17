@@ -1,22 +1,19 @@
-#ifndef RackPIDController_H
-#define RackPIDController_H
+#ifndef ShovelRotation_H
+#define ShovelRotation_H
 
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
 #include "OzPotentiometer.h"
 
-class RackRotation: public PIDSubsystem
+class ShovelRotation: public PIDSubsystem
 {
-
-private:
-	//the motor that rotates the rack
+	//the motor that rotates the shovel
 	SpeedController* m_pMotor;
 	OzPotentiometer* m_pPot;
 
-
 public:
-	RackRotation();
-	~RackRotation();
+	ShovelRotation();
+	~ShovelRotation();
 
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);

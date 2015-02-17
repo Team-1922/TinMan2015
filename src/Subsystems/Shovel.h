@@ -10,8 +10,8 @@ class Shovel: public Subsystem
 {
 private:
 
-	SpeedController* m_pRotate;
-	OzPotentiometer* m_pPotentiometer;
+	//SpeedController* m_pRotate;
+	//OzPotentiometer* m_pPotentiometer;
 	Solenoid* m_pWidthSolenoid;
 
 	DigitalInput* m_pShovelWideRight;
@@ -30,20 +30,18 @@ public:
 
 	void InitDefaultCommand();
 
-	void  doNothing(){}
-
 	/*
 	 * Potentiometer Control
 	 */
 
 	//returns the current angle of the potentiometer relative to shovel in down (flat) position
-	float getPotentiometer();
+	/*float getPotentiometer();
 
 	//returns the speed of the shovel movement in degrees/s (signed)
 	float getTurnRate();
 
 	// this is used to get rate information from the potentiometer, call this once per cycle
-	void tickPotentiometer();
+	void tickPotentiometer();*/
 
 
 
@@ -51,9 +49,9 @@ public:
 	 * Motor Control
 	 */
 
-	void  setMotor(float val);
+	/*void  setMotor(float val);
 	void  setMotorRate(float degPerSecond);
-	float getMotor(){return m_pRotate->Get();}
+	float getMotor(){return m_pRotate->Get();}*/
 
 
 	/*

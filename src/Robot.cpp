@@ -63,7 +63,7 @@ private:
 	
 	void UniversalPeriodic()
 	{
-		CommandBase::shovel->tickPotentiometer();
+		CommandBase::shovelRotation->TickPotentiometer();
 		CommandBase::rackRotation->TickPotentiometer();
 	}
 
@@ -141,9 +141,10 @@ private:
 		/*
 		 * Shovel Information
 		 */
-		SmartDashboard::PutNumber("Shovel Angle", CommandBase::shovel->getPotentiometer());
-		SmartDashboard::PutNumber("Shovel Motor (Deg/s)", CommandBase::shovel->getTurnRate());
-		SmartDashboard::PutNumber("Shovel Motor (-1 to 1)", CommandBase::shovel->getMotor());
+		//SmartDashboard::PutNumber("Shovel Angle", CommandBase::shovel->getPotentiometer());
+		//SmartDashboard::PutNumber("Shovel Motor (Deg/s)", CommandBase::shovel->getTurnRate());
+		//SmartDashboard::PutNumber("Shovel Motor (-1 to 1)", CommandBase::shovel->getMotor());
+		SmartDashboard::PutNumber("Shovel Voltage", CommandBase::shovelRotation->GetPotVoltage());
 		SmartDashboard::PutNumber("Shovel Solenoid", CommandBase::shovel->getSolenoid());
 
 
@@ -153,7 +154,7 @@ private:
 		//SmartDashboard::PutNumber("Rack Angle", CommandBase::rack->getPotentiometer());
 		//SmartDashboard::PutNumber("Rack Potentiometer Rate", CommandBase::rack->getTurnRate());
 		//SmartDashboard::PutNumber("Rack Motor (-1 to 1)", CommandBase::rack->getMotor());
-		SmartDashboard::PutNumber("Potentiometer Angle", CommandBase::rackRotation->GetPotVoltage());
+		SmartDashboard::PutNumber("Rack Voltage", CommandBase::rackRotation->GetPotVoltage());
 		SmartDashboard::PutNumber("Rack Solenoid", CommandBase::rack->getClaw());
 
 

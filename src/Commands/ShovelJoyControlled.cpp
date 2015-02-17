@@ -14,6 +14,7 @@ void ShovelJoyControlled::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShovelJoyControlled::Execute()
 {
+#if 0
 	if(RobotMap::Controls::currOpMode == kShovel)
 	{
 		shovel->setMotorRate(oi->GetOperatorJoystick()->GetY() * (float)RobotMap::Shovel::shovelMotorMaxSpeed);
@@ -22,6 +23,15 @@ void ShovelJoyControlled::Execute()
 	{
 		//when using both, make sure to set the limit to the one with the lower max speed
 		shovel->setMotorRate(oi->GetOperatorJoystick()->GetY() * (float)RobotMap::Rack::rackMotorMaxSpeed);
+	}
+#endif
+
+	// compute the amount of change that the operator is trying to making (a lot or a little).
+	// then set the relative position forward
+	if(RobotMap::Controls::currOpMode == kShovel || RobotMap::Controls::currOpMode == kBoth)
+	{
+		double targetDelta = oi->GetOperatorJoystick()->GetY() * 0.25;
+		shovelRotation->SetSetpointRelative(targetDelta);
 	}
 }
 
@@ -34,7 +44,7 @@ bool ShovelJoyControlled::IsFinished()
 // Called once after isFinished returns true
 void ShovelJoyControlled::End()
 {
-	shovel->setMotor(0.0f);
+	shovelRotation->Disable();
 }
 
 // Called when another command which requires one or more of the same

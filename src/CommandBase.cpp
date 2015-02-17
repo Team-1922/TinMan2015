@@ -12,6 +12,7 @@ Camera* CommandBase::camera = NULL;
 //Pneumatics* CommandBase::pneumatics = NULL;
 Chassis* CommandBase::chassis = NULL;
 RackRotation* CommandBase::rackRotation = NULL;
+ShovelRotation* CommandBase::shovelRotation = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -33,6 +34,8 @@ CommandBase::~CommandBase()
 	SAFE_DELETE(camera);
 	//SAFE_DELETE(pneumatics);
 	SAFE_DELETE(chassis);
+	SAFE_DELETE(rackRotation);
+	SAFE_DELETE(shovelRotation);
 }
 
 void CommandBase::init()
@@ -46,4 +49,6 @@ void CommandBase::init()
 	//pneumatics = new Pneumatics();
 	oi = new OI();
 	chassis = new Chassis();
+	rackRotation = new RackRotation();
+	shovelRotation = new ShovelRotation();
 }

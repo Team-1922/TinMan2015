@@ -6,11 +6,11 @@
 Shovel::Shovel():
 	Subsystem("Shovel")
 {
-	m_pRotate = new Talon(RobotMap::Shovel::shovelPivotMotor);
+	/*m_pRotate = new Talon(RobotMap::Shovel::shovelPivotMotor);
 	m_pPotentiometer = new OzPotentiometer(
 			RobotMap::Shovel::potentiometer,
 			RobotMap::Shovel::potDegree,
-		    RobotMap::Shovel::potDegreeOffset);
+		    RobotMap::Shovel::potDegreeOffset);*/
 	m_pWidthSolenoid = new Solenoid(RobotMap::Shovel::shovelWidthSol);
 	m_pShovelWideRight = new DigitalInput(RobotMap::Shovel::shovelWideRight);
 	m_pShovelWideLeft = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
@@ -20,8 +20,8 @@ Shovel::Shovel():
 
 Shovel::~Shovel()
 {
-	SAFE_DELETE(m_pRotate);
-	SAFE_DELETE(m_pPotentiometer);
+	//SAFE_DELETE(m_pRotate);
+	//SAFE_DELETE(m_pPotentiometer);
 	SAFE_DELETE(m_pWidthSolenoid);
 	SAFE_DELETE(m_pShovelWideRight);
 	SAFE_DELETE(m_pShovelWideLeft);
@@ -38,7 +38,7 @@ void Shovel::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-
+/*
 float Shovel::getPotentiometer()
 {
 	//get the angle
@@ -57,14 +57,14 @@ float Shovel::getTurnRate()
 	return m_pPotentiometer->GetTurnRate();
 }
 
-/*float Shovel::getAngle()
+float Shovel::getAngle()
 {
 	//get the angle
 	float potVal = m_pPotentiometer->GetAngle();
 
 	//subtract the offset defined by the 'lift' position
 	return potVal - RobotMap::Shovel::liftAngle;
-}*/
+}
 
 
 void  Shovel::setMotor(float val)
@@ -101,7 +101,7 @@ void  Shovel::setMotorRate(float degPerSecond)
 
 	setMotor(normalizedValue);
 }
-
+*/
 
 void Shovel::setSolenoid(bool setting)
 {

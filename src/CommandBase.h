@@ -8,6 +8,7 @@
 #include "Subsystems/Shovel.h"
 #include "Subsystems/Camera.h"
 #include "Subsystems/Chassis.h"
+#include "Subsystems/ShovelRotation.h"
 #include <string>
 #include "Commands/Command.h"
 #include "OI.h"
@@ -36,6 +37,7 @@ public:
 	static Camera* camera;
 	static Chassis* chassis;
 	static RackRotation* rackRotation; // this is a PID system
+	static ShovelRotation* shovelRotation;
 };
 
 #endif

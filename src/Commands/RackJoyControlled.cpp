@@ -26,9 +26,11 @@ void RackJoyControlled::Execute()
 
 	// compute the amount of change that the operator is trying to making (a lot or a little).
 	// then set the relative position forward
-	double targetDelta = oi->GetOperatorJoystick()->GetY() * 0.25;
-	rackRotation->SetSetpointRelative(targetDelta);
-
+	if(RobotMap::Controls::currOpMode == kRack || RobotMap::Controls::currOpMode == kBoth)
+	{
+		double targetDelta = oi->GetOperatorJoystick()->GetY() * 0.25;
+		rackRotation->SetSetpointRelative(targetDelta);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
