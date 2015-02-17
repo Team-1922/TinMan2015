@@ -23,6 +23,7 @@
 
 #include "Commands/ShovelToggleWidth.h"
 #include "Commands/RackToggleClaw.h"
+#include "Commands/ChassisToggleLift.h"
 
 
 #include "RobotMap.h"
@@ -88,6 +89,7 @@ m_pDriverController(nullptr)
     buttonBothJoy->WhenPressed(new SwitchJoyCombined());
     buttonToggleShovel->WhenPressed(new ShovelToggleWidth());
     buttonToggleRack->WhenPressed(new RackToggleClaw());
+    buttonToggleChassis->WhenPressed(new ChassisToggleLift());
 
     //TODO: setup all of the commands that take controls
 }
