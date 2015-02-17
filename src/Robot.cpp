@@ -151,7 +151,7 @@ private:
 		 * Rack Information
 		 */
 		SmartDashboard::PutNumber("Rack Angle", CommandBase::rack->getPotentiometer());
-		SmartDashboard::PutNumber("Rack Motor (Deg/s)", CommandBase::rack->getTurnRate());
+		SmartDashboard::PutNumber("Rack Potentiometer Rate", CommandBase::rack->getTurnRate());
 		SmartDashboard::PutNumber("Rack Motor (-1 to 1)", CommandBase::rack->getMotor());
 		SmartDashboard::PutNumber("Rack Solenoid", CommandBase::rack->getClaw());
 

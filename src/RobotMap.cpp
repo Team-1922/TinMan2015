@@ -90,9 +90,8 @@ namespace RobotMap
 		const int shovelPivotLimSwitch = 4;//limit switch (DI)
 		const int shovelWidthSol = 2;//solenoid (SOL)
 
-		const int potTurnCount = 10;
-		const int potDegree = 360 * potTurnCount;
-		const float potDegreeOffset = 30; //degrees off horizontal, aka all the way forwards
+		const int potDegree = 360;
+		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
 
 
 		//GEARING: 480:1  TODO:?
@@ -123,9 +122,8 @@ namespace RobotMap
 
 		const int rackMotorMaxSpeed = 15;//degrees/s
 
-		const int potTurnCount = 10;
-		const int potDegree = 360 * potTurnCount;
-		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
+		const int potDegree = 360;
+		const float potDegreeOffset = -180; //degrees off horizontal, aka all the way forwards
 
 
 		/*namespace Encoder
@@ -147,5 +145,5 @@ namespace RobotMap
 	const float maxRPMDelta = 0.015;//1.5%
 
 	//polling rate of the potentiometer
-	const float minPollWait = 0.05;//0.05 seconds
+	const float minPollWait = 0.025;//0.025 seconds
 }

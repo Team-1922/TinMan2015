@@ -10,8 +10,8 @@
 #include "Utilities.h"
 #include <cmath>
 
-OzPotentiometer::OzPotentiometer(int channel, float minVal, float maxVal) :
-		AnalogPotentiometer(channel, maxVal, minVal)
+OzPotentiometer::OzPotentiometer(int channel, float fullRange, float offset) :
+		AnalogPotentiometer(channel, fullRange, offset)
 {
 	//setup the potentiometer for rate
 	m_LastTick = Utilities::getTime();

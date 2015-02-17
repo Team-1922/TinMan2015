@@ -19,7 +19,7 @@ class OzPotentiometer: public AnalogPotentiometer
 	float m_LastAngle = 0.0f;//deg
 
 public:
-	OzPotentiometer(int channel, float minVal, float maxVal);
+	OzPotentiometer(int channel, float fullRange, float offset);
 	virtual ~OzPotentiometer();
 
 	//returns the rate in degrees per second

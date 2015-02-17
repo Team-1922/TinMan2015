@@ -13,8 +13,8 @@ Rack::Rack() :
 
 	m_pPotentiometer = new OzPotentiometer(
 			RobotMap::Rack::potentiometer,
-			RobotMap::Rack::potDegree/5.0,
-		  -(RobotMap::Rack::potDegree-RobotMap::Rack::potDegreeOffset));
+			RobotMap::Rack::potDegree,
+		    RobotMap::Rack::potDegreeOffset);
 }
 
 Rack::~Rack()
@@ -51,9 +51,9 @@ float Rack::getTurnRate()
 void Rack::setMotorRate(float degPerSecond)
 {
 
-	setMotor(degPerSecond / (float)RobotMap::Rack::rackMotorMaxSpeed);
+	/*setMotor(degPerSecond / (float)RobotMap::Rack::rackMotorMaxSpeed);
 	//short circuit this for now
-	return;
+	return;*/
 
 	float currSpeedDPS = getTurnRate();
 	//if(Utilities::isEqual(0.0f, currSpeedDPS, .5f))

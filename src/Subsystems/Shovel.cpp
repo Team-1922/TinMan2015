@@ -9,8 +9,8 @@ Shovel::Shovel():
 	m_pRotate = new Talon(RobotMap::Shovel::shovelPivotMotor);
 	m_pPotentiometer = new OzPotentiometer(
 			RobotMap::Shovel::potentiometer,
-			RobotMap::Shovel::potDegree/5.0,
-		  -(RobotMap::Shovel::potDegree-RobotMap::Shovel::potDegreeOffset));
+			RobotMap::Shovel::potDegree,
+		    RobotMap::Shovel::potDegreeOffset);
 	m_pWidthSolenoid = new Solenoid(RobotMap::Shovel::shovelWidthSol);
 	m_pShovelWideRight = new DigitalInput(RobotMap::Shovel::shovelWideRight);
 	m_pShovelWideLeft = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
