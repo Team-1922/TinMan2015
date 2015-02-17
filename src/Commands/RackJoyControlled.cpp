@@ -3,22 +3,32 @@
 RackJoyControlled::RackJoyControlled()
 {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(rack);
+	Requires(rackRotation);
 }
 
 // Called just before this Command runs the first time
 void RackJoyControlled::Initialize()
 {
+	rackRotation->SetSetpoint(rackRotation->getPotVoltage()); // try to hold it where it is current located (hopefully in the stored location)
+	rackRotation->Enable();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void RackJoyControlled::Execute()
 {
+#if 0  // just try to get the rack rotating correctly at this time
 	//in either case, the max rate is limited by the rack
 	if(RobotMap::Controls::currOpMode == kRack || RobotMap::Controls::currOpMode == kBoth)
 	{
 		rack->setMotorRate(oi->GetOperatorJoystick()->GetY() * (float)RobotMap::Rack::rackMotorMaxSpeed);
 	}
+#endif
+
+	// compute the amount of change that the operator is trying to making (a lot or a little).
+	// then set the relative position forward
+	double targetDelta = oi->GetOperatorJoystick()->GetY() * 0.25;
+	rackRotation->SetSetpointRelative(targetDelta);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -32,7 +42,8 @@ bool RackJoyControlled::IsFinished()
 // Called once after isFinished returns true
 void RackJoyControlled::End()
 {
-	rack->setMotor(0.0f);
+	// rack->setMotor(0.0f);
+	rackRotation->Disable();
 }
 
 // Called when another command which requires one or more of the same

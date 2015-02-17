@@ -34,6 +34,7 @@ public:
 	//static Pneumatics* pneumatics;
 	static Camera* camera;
 	static Chassis* chassis;
+	static RackRotation* m_pRackRotation; // this is a PID system
 };
 
 #endif
