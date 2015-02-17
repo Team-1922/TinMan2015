@@ -3,6 +3,7 @@
 
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
+#include "OzPotentiometer.h"
 
 class RackRotation: public PIDSubsystem
 {
@@ -20,7 +21,10 @@ public:
 	void InitDefaultCommand();
 
 	// current Potentiometer reading
-	float getPotVoltage ();
+	float GetPotVoltage();
+
+	//tick the potentiometer
+	void TickPotentiometer();
 };
 
 #endif

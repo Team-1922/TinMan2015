@@ -2,7 +2,8 @@
 #define COMMAND_BASE_H
 
 //#include <Subsystems/Pneumatics.h>
-#include <Subsystems/Rack.h>
+#include "Subsystems/Rack.h"
+#include "Subsystems/RackRotation.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/Shovel.h"
 #include "Subsystems/Camera.h"
@@ -34,7 +35,7 @@ public:
 	//static Pneumatics* pneumatics;
 	static Camera* camera;
 	static Chassis* chassis;
-	static RackRotation* m_pRackRotation; // this is a PID system
+	static RackRotation* rackRotation; // this is a PID system
 };
 
 #endif

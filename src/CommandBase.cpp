@@ -11,6 +11,7 @@ Shovel* CommandBase::shovel = NULL;
 Camera* CommandBase::camera = NULL;
 //Pneumatics* CommandBase::pneumatics = NULL;
 Chassis* CommandBase::chassis = NULL;
+RackRotation* CommandBase::rackRotation = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)

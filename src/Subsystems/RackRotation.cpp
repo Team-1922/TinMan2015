@@ -2,6 +2,7 @@
 #include "../RobotMap.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "LiveWindow/LiveWindow.h"
+#include "../Commands/RackJoyControlled.h"
 
 RackRotation::RackRotation() :
 		PIDSubsystem("RackRotation", 1.0, 0.0, 0.0)
@@ -36,17 +37,21 @@ void RackRotation::UsePIDOutput(double output)
 {
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
-	m_pMotor->set(output);
+	m_pMotor->Set(output);
 }
 
 void RackRotation::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	setDefaultCommand(new RackJoyControlled());
+	SetDefaultCommand(new RackJoyControlled());
 }
 
-double RackRotation::getPotVoltage()
+float RackRotation::GetPotVoltage()
 {
 	return m_pPot->PIDGet();
 }
 
+void RackRotation::TickPotentiometer()
+{
+	m_pPot->Tick();
+}

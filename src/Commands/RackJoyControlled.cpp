@@ -9,7 +9,7 @@ RackJoyControlled::RackJoyControlled()
 // Called just before this Command runs the first time
 void RackJoyControlled::Initialize()
 {
-	rackRotation->SetSetpoint(rackRotation->getPotVoltage()); // try to hold it where it is current located (hopefully in the stored location)
+	rackRotation->SetSetpoint(rackRotation->GetPotVoltage()); // try to hold it where it is current located (hopefully in the stored location)
 	rackRotation->Enable();
 }
 
