@@ -6,15 +6,15 @@
 #include "../Utilities.h"
 
 RackRotation::RackRotation() :
-		PIDSubsystem("RackRotation", 1.0, 0.0, 0.0)
+		PIDSubsystem("RackRotation", 15.0, 0.0, 0.0)
 {
 
 	m_pMotor = new Talon(RobotMap::Rack::rackPivotMotor);
 	m_pPot = new OzPotentiometer(
-			RobotMap::Rack::potentiometer, 1.0, 0.0); // stick with voltage readout for right now
+			RobotMap::Rack::potentiometer, 5.0f, 0.0f); // stick with voltage readout for right now
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
-	SetOutputRange(-1.0, 1.0); // start with the motor range
+	SetOutputRange(-0.25, 0.25); // start with the motor range
 
 //			RobotMap::Rack::potDegree,
 //		    RobotMap::Rack::potDegreeOffset);
@@ -23,6 +23,7 @@ RackRotation::RackRotation() :
 	// SetSetpoint() -  Sets where the PID controller should move the system
 	//                  to
 	// Enable() - Enables the PID controller.
+	LiveWindow::GetInstance()->AddActuator("Rack", "PID", GetPIDController());
 }
 
 RackRotation::~RackRotation()
@@ -36,7 +37,7 @@ double RackRotation::ReturnPIDInput()
 	// Return your input value for the PID loop
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;	
-	return m_pPot->PIDGet();
+	return m_pPot->Get();
 
 }
 
@@ -55,7 +56,7 @@ void RackRotation::InitDefaultCommand()
 
 float RackRotation::GetPotVoltage()
 {
-	return m_pPot->PIDGet();
+	return m_pPot->Get();
 }
 
 void RackRotation::TickPotentiometer()

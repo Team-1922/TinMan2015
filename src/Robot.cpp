@@ -12,6 +12,7 @@
 #include "Commands/SwitchJoyShovel.h"
 
 #include "Commands/ShovelToggleWidth.h"
+#include "Subsystems/RackRotation.h"
 
 #include "Utilities.h"
 
@@ -167,9 +168,11 @@ private:
 
 	void TestPeriodic()
 	{
-		Solenoid* pShovelSolenoid = new Solenoid(RobotMap::Shovel::shovelWidthSol);
-		lw->AddActuator("Shovel", "Solenoid", pShovelSolenoid);
+		/*Solenoid* pShovelSolenoid = new Solenoid(RobotMap::Shovel::shovelWidthSol);
+		lw->AddActuator("Shovel", "Solenoid", pShovelSolenoid);*/
 		lw->Run();
+
+		SmartDashboard::PutNumber("Rack Voltage", CommandBase::rackRotation->GetPotVoltage());
 
 
 	}
