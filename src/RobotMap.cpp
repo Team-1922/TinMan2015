@@ -93,6 +93,8 @@ namespace RobotMap
 		const int potDegree = 360;
 		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
 
+		//the voltage difference in a 90 degree region; used in slave control TODO
+		const float pot90DegreeVoltage = 1.0f;
 
 		//GEARING: 480:1  TODO:?
 		const int gearing = 480;

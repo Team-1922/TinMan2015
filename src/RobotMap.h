@@ -111,7 +111,7 @@ namespace RobotMap
 		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
 
 		//the voltage difference in a 90 degree region; used in slave control TODO
-		extern const float pot90DegreeVoltage = 1;
+		extern const float pot90DegreeVoltage;
 
 		//GEARING: 480:1  TODO:?
 		extern const int gearing;
