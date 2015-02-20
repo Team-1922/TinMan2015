@@ -6,7 +6,7 @@
 Rack::Rack() :
 	Subsystem("Rack")
 {
-	m_pClaw = new Solenoid(RobotMap::Rack::rackClawSolenoid);
+	m_pClaw = new OzSolenoid(RobotMap::Rack::rackClawSolenoid[0], RobotMap::Rack::rackClawSolenoid[1]);
 	m_pLimitBackStop = new DigitalInput(RobotMap::Rack::rackMotLimSwitch);
 	m_pExtendRetract = new Talon(RobotMap::Rack::rackExtendRack);
 

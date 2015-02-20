@@ -3,6 +3,7 @@
 
 #include "Commands/Subsystem.h"
 #include "../OzPotentiometer.h"
+#include "../OzSolenoid.h"
 #include "../RobotMap.h"
 #include "WPILib.h"
 
@@ -12,7 +13,7 @@ private:
 
 	//SpeedController* m_pRotate;
 	//OzPotentiometer* m_pPotentiometer;
-	Solenoid* m_pWidthSolenoid;
+	OzSolenoid* m_pWidthSolenoid;
 
 	DigitalInput* m_pShovelWideRight;
 	DigitalInput* m_pShovelWideLeft;
