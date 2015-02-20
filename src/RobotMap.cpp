@@ -78,7 +78,8 @@ namespace RobotMap
 	namespace Chassis
 	{
 		//solnoids for lifting the chassis up
-		const int chassisLiftSol = 0;//SOL
+		const int chassisLiftSol[2] = {0,1};//SOL
+		//0: lift; 1:normal
 	}
 
 	namespace Shovel
@@ -88,7 +89,8 @@ namespace RobotMap
 		const int shovelWideRight = 8;//limit switch (DI)
 		const int shovelWideLeft = 9;//limit switch (DI)
 		const int shovelPivotLimSwitch = 4;//limit switch (DI)
-		const int shovelWidthSol = 2;//solenoid (SOL)
+		const int shovelWidthSol[2] = {4,5};//solenoid (SOL)
+		//4: close; 5: open
 
 		const int potDegree = 360;
 		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
@@ -107,10 +109,10 @@ namespace RobotMap
 
 	namespace Rack
 	{
-	//TODO: remember this should be 5
 		const int rackPivotMotor = 5;//CIM Motor (PWM)
 		const int rackExtendRack = 7;//(PWM)
-		const int rackClawSolenoid = 1;//(SOL)
+		const int rackClawSolenoid[2] = {2,3};//(SOL)
+		//2:close; 3:open
 		const int rackMotLimSwitch = 5;//(DI)
 		const int potentiometer = 1;//(AI)
 		//const int rackEncChannelA = 6;//(DI)

@@ -10,6 +10,9 @@
 
 #include "WPILib.h"
 
+//TODO:uncomment this for competition bot
+//#define COMP_BOT
+
 enum OperatorMode
 {
 	kRack = 0,
@@ -94,7 +97,7 @@ namespace RobotMap
 	namespace Chassis
 	{
 		//solnoids for lifting the chassis up
-		extern const int chassisLiftSol;//SOL
+		extern const int chassisLiftSol[2];//SOL
 	}
 
 	namespace Shovel
@@ -104,7 +107,7 @@ namespace RobotMap
 		extern const int shovelWideRight;//limit switch (DI)
 		extern const int shovelWideLeft;//limit switch (DI)
 		extern const int shovelPivotLimSwitch;//limit switch (DI)
-		extern const int shovelWidthSol;//solenoid (SOL)
+		extern const int shovelWidthSol[2];//solenoid (SOL)
 
 		extern const int potTurnCoun;
 		extern const int potDegree;
@@ -127,7 +130,7 @@ namespace RobotMap
 	//TODO: remember this should be 5
 		extern const int rackPivotMotor;//CIM Motor (PWM)
 		extern const int rackExtendRack;//(PWM)
-		extern const int rackClawSolenoid;//(SOL)
+		extern const int rackClawSolenoid[2];//(SOL)
 		extern const int rackMotLimSwitch;//(DI)
 		extern const int potentiometer;//(AI)
 		//const int rackEncChannelA = 6;//(DI)
