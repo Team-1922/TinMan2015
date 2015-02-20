@@ -110,14 +110,16 @@ namespace RobotMap
 		extern const int potDegree;
 		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
 
+		//the voltage difference in a 90 degree region; used in slave control TODO
+		extern const float pot90DegreeVoltage = 1;
 
 		//GEARING: 480:1  TODO:?
 		extern const int gearing;
 
 		//shovel rpm (Free)
-		extern const int shovelMotorRPM;
+		//extern const int shovelMotorRPM;
 
-		extern const int shovelMotorMaxSpeed;//degrees/s
+		//extern const int shovelMotorMaxSpeed;//degrees/s
 	}
 
 	namespace Rack
@@ -135,13 +137,14 @@ namespace RobotMap
 		extern const int gearing;
 
 		//the speed of the motor (Free)
-		extern const float rackMotorRPM;
+		//extern const float rackMotorRPM;
 
-		extern const int rackMotorMaxSpeed;//degrees/s
+		//extern const int rackMotorMaxSpeed;//degrees/s
 
 		extern const int potTurnCount;
 		extern const int potDegree;
 		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
+
 
 
 		/*namespace Encoder

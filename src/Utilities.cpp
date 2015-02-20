@@ -77,7 +77,7 @@ float  motorConstSpeed(float rpmDesired, float rpmCurrent, float &rpmCompounded,
 	rpmCompounded += neededPercentageOfDesired * desiredSpeedRPM;
 
 	//divide by the rpm to get a value between -1 and 1;
-	float normalizedValue = rpmCompounded / RobotMap::Shovel::shovelMotorRPM;
+	float normalizedValue = rpmCompounded / maxMotorRPM;
 
 	return normalizedValue;
 }

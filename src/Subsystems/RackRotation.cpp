@@ -37,7 +37,7 @@ double RackRotation::ReturnPIDInput()
 	// Return your input value for the PID loop
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;	
-	return m_pPot->Get();
+	return m_pPot->PIDGet();
 
 }
 

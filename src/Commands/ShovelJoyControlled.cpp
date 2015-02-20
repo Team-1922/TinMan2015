@@ -28,10 +28,15 @@ void ShovelJoyControlled::Execute()
 
 	// compute the amount of change that the operator is trying to making (a lot or a little).
 	// then set the relative position forward
-	if(RobotMap::Controls::currOpMode == kShovel || RobotMap::Controls::currOpMode == kBoth)
+	double targetDelta = oi->GetOperatorJoystick()->GetY() * 0.25;
+	if(RobotMap::Controls::currOpMode == kShovel)
 	{
-		double targetDelta = oi->GetOperatorJoystick()->GetY() * 0.25;
 		shovelRotation->SetSetpointRelative(targetDelta);
+	}
+	else if(RobotMap::Controls::currOpMode == kBoth)
+	{
+		//this is the SLAVE
+		shovelRotation->SetSetpoint(rackRotation->GetPotVoltage() - RobotMap::Shovel::pot90DegreeVoltage);
 	}
 }
 

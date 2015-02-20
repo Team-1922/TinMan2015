@@ -52,7 +52,7 @@ void ShovelRotation::InitDefaultCommand()
 
 float ShovelRotation::GetPotVoltage()
 {
-	return m_pPot->PIDGet();
+	return m_pPot->Get();
 }
 
 void ShovelRotation::TickPotentiometer()
