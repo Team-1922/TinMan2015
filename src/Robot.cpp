@@ -33,6 +33,12 @@ private:
 	{
 		Utilities::startTimer();
 		CommandBase::init();
+
+		//get the voltage offsets for the subsystems; NOTE: this is not really used in teleop, so we can put it here
+		RobotMap::Shovel::voltageOffset = CommandBase::rackRotation->GetPotVoltage();
+		RobotMap::Rack::voltageOffset   = CommandBase::shovelRotation->GetPotVoltage();
+
+
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 
