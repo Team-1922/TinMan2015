@@ -16,6 +16,10 @@ RackRotation::RackRotation() :
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-0.25, 0.25); // start with the motor range
 
+	m_pLimitRotationForward = new DigitalInput(RobotMap::Rack::rackLimitRotationForward);
+	m_pLimitRotationBackward = new DigitalInput(RobotMap::Rack::rackLimitRotationBackward);
+
+
 //			RobotMap::Rack::potDegree,
 //		    RobotMap::Rack::potDegreeOffset);
 
@@ -30,6 +34,8 @@ RackRotation::~RackRotation()
 {
 	SAFE_DELETE(m_pMotor);
 	SAFE_DELETE(m_pPot);
+	SAFE_DELETE(m_pLimitRotationForward);
+	SAFE_DELETE(m_pLimitRotationBackward);
 }
 
 double RackRotation::ReturnPIDInput()

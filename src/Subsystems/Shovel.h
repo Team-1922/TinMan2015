@@ -16,7 +16,6 @@ private:
 
 	DigitalInput* m_pShovelWideRight;
 	DigitalInput* m_pShovelWideLeft;
-	DigitalInput* m_pShovelPivotLim;
 
 	//keeps track of the current compounded speed (see motorConstSpeed for more information)
 	float m_speedCompounded = 0.0f;
@@ -60,6 +59,8 @@ public:
 
 	bool getSolenoid() {return m_pWidthSolenoid->Get();}
 	void setSolenoid(bool on);
+
+	bool isOpen();
 
 private:
 

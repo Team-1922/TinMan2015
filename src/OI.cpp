@@ -76,6 +76,7 @@ m_pDriverController(nullptr)
     JoystickButton* buttonRackJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackJoyControlled);
     JoystickButton* buttonBothJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackShovelCombined);
 
+
     //the three solenoids
     JoystickButton* buttonToggleShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelWidthToggle);
     JoystickButton* buttonToggleRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackClawToggle);

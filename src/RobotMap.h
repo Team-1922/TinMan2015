@@ -105,10 +105,18 @@ namespace RobotMap
 		extern const int shovelWideLeft;//limit switch (DI)
 		extern const int shovelPivotLimSwitch;//limit switch (DI)
 		extern const int shovelWidthSol;//solenoid (SOL)
+		extern const int shovelLimitRotationForward;//(DI)
+		extern const int shovelLimitRotationBackward;//(DI)
+
 
 		extern const int potTurnCoun;
 		extern const int potDegree;
 		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
+		extern const float voltageStack; // voltage for when the shovel is in position for stacking
+		extern const float voltageFlat; // voltage for when the shovel is horizontal
+		extern const float voltageDump; // voltage for when the shovel is placing totes on the rack
+		extern const float voltageStore; // voltage for when the shovel is in the stored position (all the way back)
+
 
 		//the voltage difference in a 90 degree region; used in slave control TODO
 		extern const float pot90DegreeVoltage;
@@ -128,7 +136,10 @@ namespace RobotMap
 		extern const int rackPivotMotor;//CIM Motor (PWM)
 		extern const int rackExtendRack;//(PWM)
 		extern const int rackClawSolenoid;//(SOL)
-		extern const int rackMotLimSwitch;//(DI)
+		extern const int rackMotLimSwitchExtended;//(DI)
+		extern const int rackMotLimSwitchRetracted;//(DI)
+		extern const int rackLimitRotationForward;//(DI)
+		extern const int rackLimitRotationBackward;//(DI)
 		extern const int potentiometer;//(AI)
 		//const int rackEncChannelA = 6;//(DI)
 		//const int rackEncChannelB = 7;//(DI)
@@ -144,6 +155,11 @@ namespace RobotMap
 		extern const int potTurnCount;
 		extern const int potDegree;
 		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
+
+		extern const float voltageStack; // voltage for when the shovel is in position for stacking
+		extern const float voltageVertical; // voltage for when the shovel is horizontal
+		extern const float voltageDump; // voltage for when the shovel is placing totes on the rack
+		extern const float voltagePickContainer; // voltage for when the shovel is in the stored position (all the way back)
 
 
 
@@ -167,6 +183,7 @@ namespace RobotMap
 
 	//polling rate of the potentiometer
 	extern const float minPollWait;//0.05 seconds
+
 }
 
 #endif /* ROBOTMAP_H_ */

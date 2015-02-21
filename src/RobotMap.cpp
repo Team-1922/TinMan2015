@@ -87,8 +87,10 @@ namespace RobotMap
 		const int shovelPivotMotor = 4;//(4)Motor (PWM)
 		const int shovelWideRight = 8;//limit switch (DI)
 		const int shovelWideLeft = 9;//limit switch (DI)
-		const int shovelPivotLimSwitch = 4;//limit switch (DI)
 		const int shovelWidthSol = 2;//solenoid (SOL)
+		const int shovelLimitRotationForward = 4;//(DI)
+		const int shovelLimitRotationBackward = 5;//(DI)
+
 
 		const int potDegree = 360;
 		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
@@ -96,6 +98,17 @@ namespace RobotMap
 		//the voltage difference in a 90 degree region; used in slave control TODO
 		const float pot90DegreeVoltage = 1.0f;
 
+#ifdef COMP_BOT // TinMan X
+		const float voltageStack = 0.0f; // voltage for when the shovel is in position for stacking
+		const float voltageFlat = 0.0f; // voltage for when the shovel is horizontal
+		const float voltageDump = 0.0f; // voltage for when the shovel is placing totes on the rack
+		const float voltageStore = 0.0f; // voltage for when the shovel is in the stored position (all the way back)
+#else // Scarecrow
+		const float voltageStack = 0.0f; // voltage for when the shovel is in position for stacking
+		const float voltageFlat = 0.0f; // voltage for when the shovel is horizontal
+		const float voltageDump = 0.0f; // voltage for when the shovel is placing totes on the rack
+		const float voltageStore = 0.0f; // voltage for when the shovel is in the stored position (all the way back)
+#endif
 		//GEARING: 480:1  TODO:?
 		const int gearing = 480;
 
@@ -111,7 +124,8 @@ namespace RobotMap
 		const int rackPivotMotor = 5;//CIM Motor (PWM)
 		const int rackExtendRack = 7;//(PWM)
 		const int rackClawSolenoid = 1;//(SOL)
-		const int rackMotLimSwitch = 5;//(DI)
+		const int rackMotLimSwitchForward = 5;//(DI)
+		const int rackMotLimSwitchBack = 6;//(DI)
 		const int potentiometer = 1;//(AI)
 		//const int rackEncChannelA = 6;//(DI)
 		//const int rackEncChannelB = 7;//(DI)
@@ -126,6 +140,20 @@ namespace RobotMap
 
 		const int potDegree = 360;
 		const float potDegreeOffset = -180; //degrees off horizontal, aka all the way forwards
+
+
+#ifdef COMP_BOT // TinMan X
+		const float voltageStack = 0.0f; // voltage for when the shovel is in position for stacking
+		const float voltageVertical = 0.0f; // voltage for when the shovel is horizontal
+		const float voltageDump = 0.0f; // voltage for when the shovel is placing totes on the rack
+		const float voltagePickContainer = 0.0f; // voltage for when the shovel is in the stored position (all the way back)
+#else // Scarecrow
+		const float voltageStack = 0.0f; // voltage for when the shovel is in position for stacking
+		const float voltageVertical = 0.0f; // voltage for when the shovel is horizontal
+		const float voltageDump = 0.0f; // voltage for when the shovel is placing totes on the rack
+		const float voltagePickContainer = 0.0f; // voltage for when the shovel is in the stored position (all the way back)
+#endif
+
 
 
 		/*namespace Encoder

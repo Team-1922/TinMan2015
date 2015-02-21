@@ -60,6 +60,8 @@ private:
 		operatorJoyControl->AddObject("Control Shovel", new SwitchJoyShovel());
 		operatorJoyControl->AddObject("Control Both", new SwitchJoyCombined());
 		SmartDashboard::PutData("Operator Control Mode", operatorJoyControl);
+
+
 	}
 	
 	void UniversalPeriodic()
