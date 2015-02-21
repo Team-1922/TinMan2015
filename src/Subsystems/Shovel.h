@@ -3,6 +3,8 @@
 
 #include "Commands/Subsystem.h"
 #include "../OzPotentiometer.h"
+#include "../OzSolenoid.h"
+#include "../OzLimitSwitch.h"
 #include "../RobotMap.h"
 #include "WPILib.h"
 
@@ -12,7 +14,7 @@ private:
 
 	//SpeedController* m_pRotate;
 	//OzPotentiometer* m_pPotentiometer;
-	Solenoid* m_pWidthSolenoid;
+	OzSolenoid* m_pWidthSolenoid;
 
 	DigitalInput* m_pShovelWideRight;
 	DigitalInput* m_pShovelWideLeft;
@@ -28,6 +30,9 @@ public:
 	~Shovel();
 
 	void InitDefaultCommand();
+
+	bool GetShovelWideRight(){return m_pShovelWideRight->Get();}
+	bool GetShovelWideLeft(){return m_pShovelWideLeft->Get();}
 
 	/*
 	 * Potentiometer Control

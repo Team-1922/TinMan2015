@@ -4,7 +4,7 @@
 Chassis::Chassis() :
 		Subsystem("Chassis")
 {
-	m_pLiftSolenoid = new Solenoid(RobotMap::Chassis::chassisLiftSol);
+	m_pLiftSolenoid = new OzSolenoid(RobotMap::Chassis::chassisLiftSol[0], RobotMap::Chassis::chassisLiftSol[1]);
 }
 
 void Chassis::InitDefaultCommand()

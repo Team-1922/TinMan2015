@@ -82,7 +82,9 @@ m_pDriverController(nullptr)
     JoystickButton* buttonToggleRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackClawToggle);
     JoystickButton* buttonToggleChassis = new JoystickButton(m_pOperatorStick, RobotMap::Controls::chassisLiftToggle);
 
-
+    //the two buttons for extending/retracting the rack
+    JoystickButton* buttonExtendRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::extendRack);
+    JoystickButton* buttonRetractRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
 
 
     buttonShovelJoy->WhenPressed(new SwitchJoyShovel());
@@ -91,6 +93,10 @@ m_pDriverController(nullptr)
     buttonToggleShovel->WhenPressed(new ShovelToggleWidth());
     buttonToggleRack->WhenPressed(new RackToggleClaw());
     buttonToggleChassis->WhenPressed(new ChassisToggleLift());
+
+    //have these call repeatedly when held down
+    buttonExtendRack->WhileHeld(new RackExtend());
+    buttonRetractRack->WhileHeld(new RackRetract());
 
     //TODO: setup all of the commands that take controls
 }

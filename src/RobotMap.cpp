@@ -19,8 +19,8 @@ namespace RobotMap
 		//TODO: get these optimal positions
 
 		//The lengthening and shortening of the rack are controlled by the thumbpad
-		const int extendRack = 5;
-		const int retractRack = 6;
+		const int extendRack = 6;
+		const int retractRack = 4;
 
 		//these are for selecting which subsystem the joystick is controlling
 		const int rackJoyControlled = 7;
@@ -78,7 +78,8 @@ namespace RobotMap
 	namespace Chassis
 	{
 		//solnoids for lifting the chassis up
-		const int chassisLiftSol = 0;//SOL
+		const int chassisLiftSol[2] = {0,1};//SOL
+		//0: lift; 1:normal
 	}
 
 	namespace Shovel
@@ -87,10 +88,11 @@ namespace RobotMap
 		const int shovelPivotMotor = 4;//(4)Motor (PWM)
 		const int shovelWideRight = 8;//limit switch (DI)
 		const int shovelWideLeft = 9;//limit switch (DI)
-		const int shovelWidthSol = 2;//solenoid (SOL)
 		const int shovelLimitRotationForward = 4;//(DI)
 		const int shovelLimitRotationBackward = 5;//(DI)
 
+		const int shovelWidthSol[2] = {4,5};//solenoid (SOL)
+		//4: close; 5: open
 
 		const int potDegree = 360;
 		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
@@ -120,12 +122,12 @@ namespace RobotMap
 
 	namespace Rack
 	{
-	//TODO: remember this should be 5
 		const int rackPivotMotor = 5;//CIM Motor (PWM)
 		const int rackExtendRack = 7;//(PWM)
-		const int rackClawSolenoid = 1;//(SOL)
 		const int rackMotLimSwitchForward = 5;//(DI)
 		const int rackMotLimSwitchBack = 6;//(DI)
+		const int rackClawSolenoid[2] = {2,3};//(SOL)
+		//2:close; 3:open
 		const int potentiometer = 1;//(AI)
 		//const int rackEncChannelA = 6;//(DI)
 		//const int rackEncChannelB = 7;//(DI)

@@ -11,10 +11,9 @@ Shovel::Shovel():
 			RobotMap::Shovel::potentiometer,
 			RobotMap::Shovel::potDegree,
 		    RobotMap::Shovel::potDegreeOffset);*/
-	m_pWidthSolenoid = new Solenoid(RobotMap::Shovel::shovelWidthSol);
+	m_pWidthSolenoid = new OzSolenoid(RobotMap::Shovel::shovelWidthSol[0], RobotMap::Shovel::shovelWidthSol[1]);
 	m_pShovelWideRight = new DigitalInput(RobotMap::Shovel::shovelWideRight);
 	m_pShovelWideLeft = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
-
 
 }
 

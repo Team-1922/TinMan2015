@@ -45,7 +45,7 @@ bool RackJoyControlled::IsFinished()
 void RackJoyControlled::End()
 {
 	// rack->setMotor(0.0f);
-	rackRotation->Disable();
+	rackRotation->SetSetpointRelative(0);//stop moving, but don't fall
 }
 
 // Called when another command which requires one or more of the same
