@@ -121,6 +121,8 @@ namespace RobotMap
 		extern const float voltageStore; // voltage for when the shovel is in the stored position (all the way back)
 
 
+		extern float voltageOffset;//this is the voltage value when the shovel is in store position
+
 		//the voltage difference in a 90 degree region; used in slave control TODO
 		extern const float pot90DegreeVoltage;
 
@@ -166,6 +168,7 @@ namespace RobotMap
 		extern const float voltagePickContainer; // voltage for when the shovel is in the stored position (all the way back)
 
 
+		extern float voltageOffset;//this is the voltage value when the rack is in store position
 
 		/*namespace Encoder
 		{

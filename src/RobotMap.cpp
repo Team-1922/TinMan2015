@@ -16,7 +16,6 @@ namespace RobotMap
 		const float stearingFactor = 0.2f;//how much stearing direction affects speed
 
 		//the controls on the operator joystick
-		//TODO: get these optimal positions
 
 		//The lengthening and shortening of the rack are controlled by the thumbpad
 		const int extendRack = 6;
@@ -65,11 +64,11 @@ namespace RobotMap
 			//the number of encoder pulses per rotation TODO:
 			const int pulsesPerRotation = 500;
 
-			//GEARING TODO:
+			//GEARING
 			const int gearing = 1;//this is if the encoder is attached to the wheel axle
 
 			//the gearing of the encoders (I will assume both gearings are the same), converts pulses to RPM
-			//GEARING IS AS FOLLOWED TODO:
+			//GEARING IS AS FOLLOWED
 			const float distancePerPulse = 1.0f/float(pulsesPerRotation*gearing);
 		}
 
@@ -100,18 +99,24 @@ namespace RobotMap
 		//the voltage difference in a 90 degree region; used in slave control TODO
 		const float pot90DegreeVoltage = 1.0f;
 
+
+		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET
 #ifdef COMP_BOT // TinMan X
-		const float voltageStack = 0.0f; // voltage for when the shovel is in position for stacking
-		const float voltageFlat = 0.0f; // voltage for when the shovel is horizontal
-		const float voltageDump = 0.0f; // voltage for when the shovel is placing totes on the rack
-		const float voltageStore = 0.0f; // voltage for when the shovel is in the stored position (all the way back)
+		//TODO:
+		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
+		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
+		const float voltageFlat 			= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
+		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
 #else // Scarecrow
-		const float voltageStack = 0.0f; // voltage for when the shovel is in position for stacking
-		const float voltageFlat = 0.0f; // voltage for when the shovel is horizontal
-		const float voltageDump = 0.0f; // voltage for when the shovel is placing totes on the rack
-		const float voltageStore = 0.0f; // voltage for when the shovel is in the stored position (all the way back)
+		//TODO:
+		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
+		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
+		const float voltageFlat 			= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
+		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
 #endif
-		//GEARING: 480:1  TODO:?
+		//GEARING: 480:1
 		const int gearing = 480;
 
 		//shovel rpm (Free)
@@ -144,18 +149,22 @@ namespace RobotMap
 		const float potDegreeOffset = -180; //degrees off horizontal, aka all the way forwards
 
 
+		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET
 #ifdef COMP_BOT // TinMan X
-		const float voltageStack = 0.0f; // voltage for when the shovel is in position for stacking
-		const float voltageVertical = 0.0f; // voltage for when the shovel is horizontal
-		const float voltageDump = 0.0f; // voltage for when the shovel is placing totes on the rack
-		const float voltagePickContainer = 0.0f; // voltage for when the shovel is in the stored position (all the way back)
+		//TODO:
+		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
+		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
+		const float voltageVertical 		= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
+		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
 #else // Scarecrow
-		const float voltageStack = 0.0f; // voltage for when the shovel is in position for stacking
-		const float voltageVertical = 0.0f; // voltage for when the shovel is horizontal
-		const float voltageDump = 0.0f; // voltage for when the shovel is placing totes on the rack
-		const float voltagePickContainer = 0.0f; // voltage for when the shovel is in the stored position (all the way back)
+		//TODO:
+		float voltageOffset 				= 0.0f + voltageOffset;//this is the voltage value when the rack is in store position
+		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
+		const float voltageVertical 		= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
+		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
 #endif
-
 
 
 		/*namespace Encoder
