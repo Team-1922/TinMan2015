@@ -116,6 +116,7 @@ private:
 			currentDriveMode->Start();
 		}
 
+		//TODO: this will be changed with buttons, and will not reflect back upon this radio box
 		Command* curOp = (Command*)operatorJoyControl->GetSelected();
 		if(curOp != currentOperatorJoyMode)
 		{
@@ -125,6 +126,12 @@ private:
 
 
 		//display all potentially useful information to the user
+
+		/*
+		 * Controls
+		 */
+
+		SmartDashboard::PutNumber("Operator Control Mode", RobotMap::Controls::currOpMode);
 
 
 		/*
