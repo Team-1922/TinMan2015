@@ -161,7 +161,8 @@ private:
 		SmartDashboard::PutBoolean("Shovel Wide Left", CommandBase::shovel->GetShovelWideLeft());
 		//this is only going to affect the practice bot
 #ifndef COMP_BOT
-		SmartDashboard::PutBoolean("Shovel Rotate Stop", CommandBase::shovelRotation->GetBackLimSwitch());
+		SmartDashboard::PutBoolean("Shovel Rotate Stop Backward", CommandBase::shovelRotation->GetLimRotationBackward());
+		SmartDashboard::PutBoolean("Shovel Rotate Stop Forward", CommandBase::shovelRotation->GetLimRotationForward());
 #endif
 
 		/*
@@ -172,10 +173,11 @@ private:
 		//SmartDashboard::PutNumber("Rack Motor (-1 to 1)", CommandBase::rack->getMotor());
 		SmartDashboard::PutNumber("Rack Setpoint", CommandBase::rackRotation->GetSetpoint());
 		SmartDashboard::PutNumber("Rack Voltage", CommandBase::rackRotation->GetPotVoltage());
-		SmartDashboard::PutNumber("Rack Solenoid", CommandBase::rack->getClaw());
+		SmartDashboard::PutNumber("Claw Solenoid", CommandBase::rack->getClaw());
 		//this is only going to affect the practice bot
 #ifndef COMP_BOT
-		SmartDashboard::PutBoolean("Rack Rotate Stop", CommandBase::rackRotation->GetBackLimSwitch());
+		SmartDashboard::PutBoolean("Rack Rotate Stop Backward", CommandBase::rackRotation->GetLimRotationBackward());
+		SmartDashboard::PutBoolean("Rack Rotate Stop Forward", CommandBase::rackRotation->GetLimRotationForward());
 #endif
 
 

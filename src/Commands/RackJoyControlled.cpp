@@ -31,6 +31,10 @@ void RackJoyControlled::Execute()
 		double targetDelta = oi->GetOperatorJoystick()->GetY() * 0.25;
 		rackRotation->SetSetpointRelative(targetDelta);
 	}
+	else
+	{
+		rackRotation->SetSetpointRelative(0);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

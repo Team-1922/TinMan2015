@@ -21,13 +21,14 @@ void ShovelRotate::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool ShovelRotate::IsFinished()
 {
+	return true;//is this right
 //	return shovelRotation->onTarget();
 }
 
 // Called once after isFinished returns true
 void ShovelRotate::End()
 {
-	shovelRotation->Disable();
+	shovelRotation->SetSetpointRelative(0);
 }
 
 // Called when another command which requires one or more of the same

@@ -37,13 +37,15 @@ void ShovelJoyControlled::Execute()
 	}
 	else if(RobotMap::Controls::currOpMode == kRack)
 	{
-		rackRotation->SetSetpointRelative(targetDelta);
+		rackRotation->SetSetpointRelative(0);
 	}
 	else if(RobotMap::Controls::currOpMode == kBoth)
 	{
 		//this is the SLAVE
-		rackRotation->SetSetpointRelative(targetDelta);
-		shovelRotation->SetSetpoint(rackRotation->GetPotVoltage() - RobotMap::Shovel::pot90DegreeVoltage);
+		//rackRotation->SetSetpointRelative(targetDelta);
+
+		//flip the sign because the potentiometers are going opposite directions
+		shovelRotation->SetSetpoint(rackRotation->GetPotVoltage() + RobotMap::Shovel::pot90DegreeVoltage);
 	}
 }
 

@@ -13,7 +13,7 @@ private:
 	//the motor that rotates the rack
 	SpeedController* m_pMotor;
 	OzPotentiometer* m_pPot;
-	OzLimitSwitch*   m_pLimitBackStop;
+	//OzLimitSwitch*   m_pLimitBackStop;
 
 	OzLimitSwitch*    m_pLimitRotationForward;
 	OzLimitSwitch*    m_pLimitRotationBackward;
@@ -32,7 +32,8 @@ public:
 	float GetPotVoltage();
 
 	//get the limit switch state for the practice bot
-	bool GetBackLimSwitch(){return m_pLimitBackStop->Get();}
+	bool GetLimRotationForward(){return m_pLimitRotationForward->Get();}
+	bool GetLimRotationBackward(){return m_pLimitRotationBackward->Get();}
 
 
 	//tick the potentiometer

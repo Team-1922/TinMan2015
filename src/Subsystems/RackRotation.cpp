@@ -21,8 +21,6 @@ RackRotation::RackRotation() :
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-0.25, 0.25); // start with the motor range
 
-	m_pLimitRotationForward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationForward);
-	m_pLimitRotationBackward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationBackward);
 
 
 //			RobotMap::Rack::potDegree,
@@ -58,7 +56,11 @@ void RackRotation::UsePIDOutput(double output)
 	// e.g. yourMotor->Set(output);
 
 	//mind limit switches, NOTE: this only matters on the practice bot
-	if(m_pLimitBackStop->Get() && output < 0.0f)
+	if(m_pLimitRotationBackward->Get() && output > 0.0f)
+		return;
+
+	//since rotating backwards is actually the forwards direction of the motor, change the inequality
+	if(m_pLimitRotationForward->Get() && output < 0.0f)
 		return;
 
 	m_pMotor->Set(output);
