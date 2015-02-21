@@ -4,6 +4,7 @@
 #include "Commands/Subsystem.h"
 #include "../OzPotentiometer.h"
 #include "../OzSolenoid.h"
+#include "../OzLimitSwitch.h"
 #include "../RobotMap.h"
 #include "WPILib.h"
 
@@ -15,9 +16,9 @@ private:
 	//OzPotentiometer* m_pPotentiometer;
 	OzSolenoid* m_pWidthSolenoid;
 
-	DigitalInput* m_pShovelWideRight;
-	DigitalInput* m_pShovelWideLeft;
-	DigitalInput* m_pShovelPivotLim;
+	OzLimitSwitch* m_pShovelWideRight;
+	OzLimitSwitch* m_pShovelWideLeft;
+	OzLimitSwitch* m_pShovelPivotLim;
 
 	//keeps track of the current compounded speed (see motorConstSpeed for more information)
 	float m_speedCompounded = 0.0f;

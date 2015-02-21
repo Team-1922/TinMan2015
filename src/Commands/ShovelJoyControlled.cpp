@@ -49,7 +49,7 @@ bool ShovelJoyControlled::IsFinished()
 // Called once after isFinished returns true
 void ShovelJoyControlled::End()
 {
-	shovelRotation->Disable();
+	shovelRotation->SetSetpointRelative(0);//stop moving, but don't fall
 }
 
 // Called when another command which requires one or more of the same

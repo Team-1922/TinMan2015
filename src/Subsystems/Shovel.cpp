@@ -12,9 +12,9 @@ Shovel::Shovel():
 			RobotMap::Shovel::potDegree,
 		    RobotMap::Shovel::potDegreeOffset);*/
 	m_pWidthSolenoid = new OzSolenoid(RobotMap::Shovel::shovelWidthSol[0], RobotMap::Shovel::shovelWidthSol[1]);
-	m_pShovelWideRight = new DigitalInput(RobotMap::Shovel::shovelWideRight);
-	m_pShovelWideLeft = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
-	m_pShovelPivotLim = new DigitalInput(RobotMap::Shovel::shovelPivotLimSwitch);
+	m_pShovelWideRight = new OzLimitSwitch(RobotMap::Shovel::shovelWideRight);
+	m_pShovelWideLeft = new OzLimitSwitch(RobotMap::Shovel::shovelWideLeft);
+	m_pShovelPivotLim = new OzLimitSwitch(RobotMap::Shovel::shovelPivotLimSwitch);
 
 }
 
