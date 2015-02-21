@@ -16,7 +16,6 @@ private:
 	SpeedController* m_pExtendRetract;
 
 	OzSolenoid*        m_pClaw;
-	OzLimitSwitch*    m_pLimitBackStop;
 
 	//keeps track of the current compounded speed (see motorConstSpeed for more information)
 	float m_speedCompounded = 0.0f;
@@ -37,8 +36,6 @@ public:
 
 	void setExtendMotor(float level);
 	float getExtendMotor(){return m_pExtendRetract->Get();}
-
-	bool getBackStop(){return m_pLimitBackStop->Get();}
 
 	void setClaw(bool on){return m_pClaw->Set(on);}
 	bool getClaw(){return m_pClaw->Get();}

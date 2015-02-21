@@ -3,13 +3,15 @@
 
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
-#include "OzPotentiometer.h"
+#include "../OzPotentiometer.h"
+#include "../OzLimitSwitch.h"
 
 class ShovelRotation: public PIDSubsystem
 {
 	//the motor that rotates the shovel
 	SpeedController* m_pMotor;
 	OzPotentiometer* m_pPot;
+	OzLimitSwitch*   m_pShovelPivotLim;
 
 public:
 	ShovelRotation();
@@ -21,6 +23,9 @@ public:
 
 	// current Potentiometer reading
 	float GetPotVoltage();
+
+	//get the limit switch state for the practice bot
+	bool GetBackLimSwitch(){return m_pShovelPivotLim->Get();}
 
 	//tick the potentiometer
 	void TickPotentiometer();

@@ -7,7 +7,6 @@ Rack::Rack() :
 	Subsystem("Rack")
 {
 	m_pClaw = new OzSolenoid(RobotMap::Rack::rackClawSolenoid[0], RobotMap::Rack::rackClawSolenoid[1]);
-	m_pLimitBackStop = new OzLimitSwitch(RobotMap::Rack::rackMotLimSwitch);
 	m_pExtendRetract = new Talon(RobotMap::Rack::rackExtendRack);
 
 }
@@ -15,7 +14,6 @@ Rack::Rack() :
 Rack::~Rack()
 {
 	SAFE_DELETE(m_pExtendRetract);
-	SAFE_DELETE(m_pLimitBackStop);
 	SAFE_DELETE(m_pClaw);
 }
 

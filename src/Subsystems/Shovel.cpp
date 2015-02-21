@@ -12,9 +12,8 @@ Shovel::Shovel():
 			RobotMap::Shovel::potDegree,
 		    RobotMap::Shovel::potDegreeOffset);*/
 	m_pWidthSolenoid = new OzSolenoid(RobotMap::Shovel::shovelWidthSol[0], RobotMap::Shovel::shovelWidthSol[1]);
-	m_pShovelWideRight = new OzLimitSwitch(RobotMap::Shovel::shovelWideRight);
-	m_pShovelWideLeft = new OzLimitSwitch(RobotMap::Shovel::shovelWideLeft);
-	m_pShovelPivotLim = new OzLimitSwitch(RobotMap::Shovel::shovelPivotLimSwitch);
+	m_pShovelWideRight = new DigitalInput(RobotMap::Shovel::shovelWideRight);
+	m_pShovelWideLeft = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
 
 }
 
@@ -25,7 +24,6 @@ Shovel::~Shovel()
 	SAFE_DELETE(m_pWidthSolenoid);
 	SAFE_DELETE(m_pShovelWideRight);
 	SAFE_DELETE(m_pShovelWideLeft);
-	SAFE_DELETE(m_pShovelPivotLim);
 }
 
 void Shovel::InitDefaultCommand()

@@ -16,9 +16,8 @@ private:
 	//OzPotentiometer* m_pPotentiometer;
 	OzSolenoid* m_pWidthSolenoid;
 
-	OzLimitSwitch* m_pShovelWideRight;
-	OzLimitSwitch* m_pShovelWideLeft;
-	OzLimitSwitch* m_pShovelPivotLim;
+	DigitalInput* m_pShovelWideRight;
+	DigitalInput* m_pShovelWideLeft;
 
 	//keeps track of the current compounded speed (see motorConstSpeed for more information)
 	float m_speedCompounded = 0.0f;
@@ -31,6 +30,9 @@ public:
 	~Shovel();
 
 	void InitDefaultCommand();
+
+	bool GetShovelWideRight(){return m_pShovelWideRight->Get();}
+	bool GetShovelWideLeft(){return m_pShovelWideLeft->Get();}
 
 	/*
 	 * Potentiometer Control

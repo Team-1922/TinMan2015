@@ -13,6 +13,8 @@ RackRotation::RackRotation() :
 	m_pPot = new OzPotentiometer(
 			RobotMap::Rack::potentiometer, 5.0f, 0.0f); // stick with voltage readout for right now
 
+	m_pLimitBackStop = new OzLimitSwitch(RobotMap::Rack::rackMotLimSwitch);
+
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-0.25, 0.25); // start with the motor range
 
@@ -30,6 +32,7 @@ RackRotation::~RackRotation()
 {
 	SAFE_DELETE(m_pMotor);
 	SAFE_DELETE(m_pPot);
+	SAFE_DELETE(m_pLimitBackStop);
 }
 
 double RackRotation::ReturnPIDInput()
@@ -45,6 +48,11 @@ void RackRotation::UsePIDOutput(double output)
 {
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
+
+	//mind limit switches, NOTE: this only matters on the practice bot
+	if(m_pLimitBackStop->Get() && output < 0.0f)
+		return;
+
 	m_pMotor->Set(output);
 }
 

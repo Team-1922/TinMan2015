@@ -11,6 +11,7 @@ ShovelRotation::ShovelRotation() :
 	m_pMotor = new Talon(RobotMap::Shovel::shovelPivotMotor);
 	m_pPot = new OzPotentiometer(
 			RobotMap::Shovel::potentiometer, 5.0, 0.0); // stick with voltage readout for right now
+	m_pShovelPivotLim = new OzLimitSwitch(RobotMap::Shovel::shovelPivotLimSwitch);
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-0.25, 0.25); // start with the motor range
@@ -26,6 +27,7 @@ ShovelRotation::~ShovelRotation()
 {
 	SAFE_DELETE(m_pMotor);
 	SAFE_DELETE(m_pPot);
+	SAFE_DELETE(m_pShovelPivotLim);
 }
 
 double ShovelRotation::ReturnPIDInput()
@@ -40,6 +42,11 @@ void ShovelRotation::UsePIDOutput(double output)
 {
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
+
+	//this only matters on the practice bot
+	if(m_pShovelPivotLim->Get() && output < 0.0f)
+		return;
+
 	m_pMotor->Set(output);
 }
 
