@@ -1,38 +1,39 @@
-#include "RackRetract.h"
+#include "RackExtend.h"
 
-RackRetract::RackRetract()
+RackExtend::RackExtend()
 {
 	// Use Requires() here to declare subsystem dependencies
+	// eg. Requires(chassis);
 	Requires(rack);
 }
 
 // Called just before this Command runs the first time
-void RackRetract::Initialize()
+void RackExtend::Initialize()
 {
-	rack->setExtendMotor(-0.5);
+	rack->setExtendMotor(0.5f);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void RackRetract::Execute()
+void RackExtend::Execute()
 {
-	//monitor limit switches
+	//monitor limit switch?
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool RackRetract::IsFinished()
+bool RackExtend::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void RackRetract::End()
+void RackExtend::End()
 {
 	rack->setExtendMotor(0.0f);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void RackRetract::Interrupted()
+void RackExtend::Interrupted()
 {
 	End();
 }

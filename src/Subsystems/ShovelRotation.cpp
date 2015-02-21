@@ -47,7 +47,8 @@ void ShovelRotation::UsePIDOutput(double output)
 	if(m_pShovelPivotLim->Get() && output < 0.0f)
 		return;
 
-	m_pMotor->Set(output);
+	//since the potentiometer goes the opposite direction, invert this value
+	m_pMotor->Set(-output);
 }
 
 void ShovelRotation::InitDefaultCommand()

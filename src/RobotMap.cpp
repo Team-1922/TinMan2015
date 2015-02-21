@@ -19,8 +19,8 @@ namespace RobotMap
 		//TODO: get these optimal positions
 
 		//The lengthening and shortening of the rack are controlled by the thumbpad
-		const int extendRack = 5;
-		const int retractRack = 6;
+		const int extendRack = 6;
+		const int retractRack = 4;
 
 		//these are for selecting which subsystem the joystick is controlling
 		const int rackJoyControlled = 7;

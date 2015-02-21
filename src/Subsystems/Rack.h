@@ -17,8 +17,6 @@ private:
 
 	OzSolenoid*        m_pClaw;
 
-	//keeps track of the current compounded speed (see motorConstSpeed for more information)
-	float m_speedCompounded = 0.0f;
 
 public:
 	Rack();
