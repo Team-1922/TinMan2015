@@ -11,10 +11,10 @@ ShovelRotation::ShovelRotation() :
 	m_pMotor = new Talon(RobotMap::Shovel::shovelPivotMotor);
 	m_pPot = new OzPotentiometer(
 			RobotMap::Shovel::potentiometer, 5.0, 0.0); // stick with voltage readout for right now
-	m_pShovelPivotLim = new OzLimitSwitch(RobotMap::Shovel::shovelPivotLimSwitch);
+	//m_pShovelPivotLim = new OzLimitSwitch(RobotMap::Shovel::shovelPivotLimSwitch);
 
-	m_pShovelLimitRotationForward = new DigitalInput(RobotMap::Shovel::shovelLimitRotationForward);
-	m_pShovelLimitRotationBackward = new DigitalInput(RobotMap::Shovel::shovelLimitRotationBackward);
+	m_pShovelLimitRotationForward = new OzLimitSwitch(RobotMap::Shovel::shovelLimitRotationForward);
+	m_pShovelLimitRotationBackward = new OzLimitSwitch(RobotMap::Shovel::shovelLimitRotationBackward);
 
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer

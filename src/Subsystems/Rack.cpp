@@ -9,8 +9,6 @@ Rack::Rack() :
 	m_pClaw = new OzSolenoid(RobotMap::Rack::rackClawSolenoid[0], RobotMap::Rack::rackClawSolenoid[1]);
 	m_pExtendRetract = new Talon(RobotMap::Rack::rackExtendRack);
 
-	m_pLimitBackStopExtended = new DigitalInput(RobotMap::Rack::rackMotLimSwitchExtended);
-	m_pLimitBackStopRetracted = new DigitalInput(RobotMap::Rack::rackMotLimSwitchRetracted);
 }
 
 Rack::~Rack()
@@ -18,8 +16,6 @@ Rack::~Rack()
 	SAFE_DELETE(m_pExtendRetract);
 	SAFE_DELETE(m_pClaw);
 
-	SAFE_DELETE(m_pLimitBackStopExtended);
-	SAFE_DELETE(m_pLimitBackStopRetracted);
 
 }
 

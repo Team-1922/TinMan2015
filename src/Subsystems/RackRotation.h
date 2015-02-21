@@ -15,8 +15,8 @@ private:
 	OzPotentiometer* m_pPot;
 	OzLimitSwitch*   m_pLimitBackStop;
 
-	DigitalInput*    m_pLimitRotationForward;
-	DigitalInput*    m_pLimitRotationBackward;
+	OzLimitSwitch*    m_pLimitRotationForward;
+	OzLimitSwitch*    m_pLimitRotationBackward;
 
 
 public:

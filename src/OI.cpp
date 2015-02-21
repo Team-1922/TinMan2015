@@ -25,6 +25,9 @@
 #include "Commands/RackToggleClaw.h"
 #include "Commands/ChassisToggleLift.h"
 
+#include "Commands/RackExtend.h"
+#include "Commands/RackRetract.h"
+
 
 #include "RobotMap.h"
 

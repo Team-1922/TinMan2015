@@ -5,7 +5,7 @@
  *      Author: Kevin
  */
 
-#include <OzLimitSwitch.h>
+#include "OzLimitSwitch.h"
 
 OzLimitSwitch::OzLimitSwitch(const int loc) :
 	m_DigInput(loc)

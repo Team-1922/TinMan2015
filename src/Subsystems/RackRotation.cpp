@@ -4,6 +4,8 @@
 #include "LiveWindow/LiveWindow.h"
 #include "../Commands/RackJoyControlled.h"
 #include "../Utilities.h"
+#include "../OzLimitSwitch.h"
+
 
 RackRotation::RackRotation() :
 		PIDSubsystem("RackRotation", 15.0, 0.0, 0.0)
@@ -13,13 +15,14 @@ RackRotation::RackRotation() :
 	m_pPot = new OzPotentiometer(
 			RobotMap::Rack::potentiometer, 5.0f, 0.0f); // stick with voltage readout for right now
 
-	m_pLimitBackStop = new OzLimitSwitch(RobotMap::Rack::rackMotLimSwitch);
+	m_pLimitRotationForward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationForward);
+	m_pLimitRotationBackward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationBackward);
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-0.25, 0.25); // start with the motor range
 
-	m_pLimitRotationForward = new DigitalInput(RobotMap::Rack::rackLimitRotationForward);
-	m_pLimitRotationBackward = new DigitalInput(RobotMap::Rack::rackLimitRotationBackward);
+	m_pLimitRotationForward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationForward);
+	m_pLimitRotationBackward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationBackward);
 
 
 //			RobotMap::Rack::potDegree,

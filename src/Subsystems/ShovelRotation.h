@@ -13,8 +13,8 @@ class ShovelRotation: public PIDSubsystem
 	OzPotentiometer* m_pPot;
 	OzLimitSwitch*   m_pShovelPivotLim;
 
-	DigitalInput* m_pShovelLimitRotationForward;
-	DigitalInput* m_pShovelLimitRotationBackward;
+	OzLimitSwitch* m_pShovelLimitRotationForward;
+	OzLimitSwitch* m_pShovelLimitRotationBackward;
 
 public:
 	ShovelRotation();

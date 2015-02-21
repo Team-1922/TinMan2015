@@ -1,5 +1,5 @@
-#ifndef ShovelJoyControlled_H
-#define ShovelJoyControlled_H
+#ifndef ShovelRackRotate_H
+#define ShovelRackRotate_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
@@ -10,7 +10,7 @@ private:
 	double m_setPoint;
 
 public:
-	ShovelRackRotate();
+	ShovelRackRotate(double setPoint);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

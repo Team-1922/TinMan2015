@@ -124,13 +124,13 @@ namespace RobotMap
 	{
 		const int rackPivotMotor = 5;//CIM Motor (PWM)
 		const int rackExtendRack = 7;//(PWM)
-		const int rackMotLimSwitchForward = 5;//(DI)
-		const int rackMotLimSwitchBack = 6;//(DI)
 		const int rackClawSolenoid[2] = {2,3};//(SOL)
 		//2:close; 3:open
 		const int potentiometer = 1;//(AI)
 		//const int rackEncChannelA = 6;//(DI)
 		//const int rackEncChannelB = 7;//(DI)
+		extern const int rackLimitRotationForward = 5;//(DI)
+		extern const int rackLimitRotationBackward = 6;//(DI)
 
 		//GEARING: 81000:264:
 		const int gearing = 81000/264;
