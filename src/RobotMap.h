@@ -123,8 +123,8 @@ namespace RobotMap
 
 		extern float voltageOffset;//this is the voltage value when the shovel is in store position
 
-		//the voltage difference in a 90 degree region; used in slave control TODO
-		extern const float pot90DegreeVoltage;
+		//the voltage difference in a 90 degree region; THIS IS RELATIVE TO THE RACK
+		extern const float pot90DegreeVoltageFromRack;
 
 		//GEARING: 480:1  TODO:?
 		extern const int gearing;

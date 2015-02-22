@@ -23,7 +23,7 @@ void ShovelRackRotate::Execute()
 {
 	// update the shovel position at this location whenever execute is called. this way we slave the shovel to the rack
 	// location - if we don't do it here then one could get ahead of the other
-	shovelRotation->SetSetpoint(rackRotation->GetPotVoltage() - RobotMap::Shovel::pot90DegreeVoltage);
+	shovelRotation->SetSetpoint(rackRotation->GetPotVoltage() - RobotMap::Shovel::pot90DegreeVoltageFromRack);
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -3,7 +3,7 @@
 ShovelDoNothing::ShovelDoNothing()
 {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(camera);
+	Requires(shovel);
 }
 
 // Called just before this Command runs the first time

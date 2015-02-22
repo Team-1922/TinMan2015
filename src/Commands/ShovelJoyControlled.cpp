@@ -29,13 +29,16 @@ void ShovelJoyControlled::Execute()
 
 	// compute the amount of change that the operator is trying to making (a lot or a little).
 	// then set the relative position forward
-	double targetDelta = oi->GetOperatorJoystick()->GetY() * 0.25;
+	double targetDelta = 0;
+	float joyYVal = oi->GetOperatorJoystick()->GetY();
+	if(fabs(joyYVal) > 0.1f)
+		targetDelta = joyYVal * 0.25;
 
-	if(RobotMap::Controls::currOpMode == kShovel)
+	if(RobotMap::Controls::currOpMode == kShovel && fabs(joyYVal) > 0.0f)
 	{
-		shovelRotation->SetSetpointRelative(targetDelta);
+		shovelRotation->SetSetpoint(shovelRotation->GetPotVoltage() + targetDelta);
 	}
-	else if(RobotMap::Controls::currOpMode == kRack)
+	else if(RobotMap::Controls::currOpMode == kRack || fabs(joyYVal) > 0.1f)
 	{
 		rackRotation->SetSetpointRelative(0);
 	}
@@ -44,8 +47,8 @@ void ShovelJoyControlled::Execute()
 		//this is the SLAVE
 		//rackRotation->SetSetpointRelative(targetDelta);
 
-		//flip the sign because the potentiometers are going opposite directions
-		shovelRotation->SetSetpoint(rackRotation->GetPotVoltage() + RobotMap::Shovel::pot90DegreeVoltage);
+		//flip the sign because the potentiometers are going opposite directions; to bring this from rack space to "shovel" space kind of invert the value
+		shovelRotation->SetSetpoint(4.5f - (rackRotation->GetPotVoltage() + RobotMap::Shovel::pot90DegreeVoltageFromRack));
 	}
 }
 

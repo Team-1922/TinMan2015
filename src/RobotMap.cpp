@@ -97,7 +97,7 @@ namespace RobotMap
 		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
 
 		//the voltage difference in a 90 degree region; used in slave control TODO
-		const float pot90DegreeVoltage = 1.0f;
+		const float pot90DegreeVoltageFromRack = 1.15f;
 
 
 		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET

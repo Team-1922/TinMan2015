@@ -6,7 +6,7 @@
 #include "../Utilities.h"
 
 ShovelRotation::ShovelRotation() :
-		PIDSubsystem("ShovelRotation", 1.0, 0.0, 0.0)
+		PIDSubsystem("ShovelRotation", 1.3, 0.0, 0.0)
 {
 	m_pMotor = new Talon(RobotMap::Shovel::shovelPivotMotor);
 	m_pPot = new OzPotentiometer(
@@ -19,7 +19,7 @@ ShovelRotation::ShovelRotation() :
 #endif
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
-	SetOutputRange(-0.25, 0.25); // start with the motor range
+	SetOutputRange(-0.4, 0.4); // start with the motor range
 
 	// Use these to get going:
 	// SetSetpoint() -  Sets where the PID controller should move the system
