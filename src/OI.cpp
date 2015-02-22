@@ -82,7 +82,7 @@ m_pDriverController(nullptr)
 
     //the three solenoids
     JoystickButton* buttonToggleShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelWidthToggle);
-    JoystickButton* buttonToggleRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackClawToggle);
+    JoystickButton* buttonToggleClaw = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackClawToggle);
     JoystickButton* buttonToggleChassis = new JoystickButton(m_pOperatorStick, RobotMap::Controls::chassisLiftToggle);
 
     //the two buttons for extending/retracting the rack
@@ -94,7 +94,7 @@ m_pDriverController(nullptr)
     buttonRackJoy->WhenPressed(new SwitchJoyRack());
     buttonBothJoy->WhenPressed(new SwitchJoyCombined());
     buttonToggleShovel->WhenPressed(new ShovelToggleWidth());
-    buttonToggleRack->WhenPressed(new RackToggleClaw());
+    buttonToggleClaw->WhenPressed(new RackToggleClaw());
     buttonToggleChassis->WhenPressed(new ChassisToggleLift());
 
     //have these call repeatedly when held down
