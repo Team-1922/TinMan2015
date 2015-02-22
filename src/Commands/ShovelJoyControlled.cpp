@@ -36,7 +36,13 @@ void ShovelJoyControlled::Execute()
 
 	if(RobotMap::Controls::currOpMode == kShovel && fabs(joyYVal) > 0.0f)
 	{
-		shovelRotation->SetSetpoint(shovelRotation->GetPotVoltage() + targetDelta);
+		double newRelativeLocation = shovelRotation->GetPotVoltage() + targetDelta;
+
+		// if the operator is trying to move the shovel outside the range then we won't try to change the relative position - sort of a soft limit switch
+		if (RobotMap::Shovel::withinRotationRange(newRelativeLocation)) {
+			shovelRotation->SetSetpoint(shovelRotation->GetPotVoltage() + targetDelta);
+		}
+
 	}
 	else if(RobotMap::Controls::currOpMode == kRack || fabs(joyYVal) > 0.1f)
 	{
@@ -47,8 +53,18 @@ void ShovelJoyControlled::Execute()
 		//this is the SLAVE
 		//rackRotation->SetSetpointRelative(targetDelta);
 
+<<<<<<< HEAD
 		//flip the sign because the potentiometers are going opposite directions; to bring this from rack space to "shovel" space kind of invert the value
 		shovelRotation->SetSetpoint(4.5f - (rackRotation->GetPotVoltage() + RobotMap::Shovel::pot90DegreeVoltageFromRack));
+=======
+		double newLocation = rackRotation->GetPotVoltage() + RobotMap::Shovel::pot90DegreeVoltage;
+
+		if (RobotMap::Shovel::withinRotationRange(newLocation))
+		{
+			//flip the sign because the potentiometers are going opposite directions
+			shovelRotation->SetSetpoint(newLocation);
+		}
+>>>>>>> origin/master
 	}
 }
 

@@ -29,7 +29,13 @@ void RackJoyControlled::Execute()
 	if(RobotMap::Controls::currOpMode == kRack || RobotMap::Controls::currOpMode == kBoth)
 	{
 		double targetDelta = oi->GetOperatorJoystick()->GetY() * 0.25;
-		rackRotation->SetSetpointRelative(targetDelta);
+
+		double newRelativeLocation = rackRotation->GetPotVoltage() + targetDelta;
+
+		// if the operator is trying to move the rack outside the range then we won't try to change the relative position - sort of a soft limit switch
+		if (RobotMap::Rack::withinRotationRange(newRelativeLocation)) {
+			rackRotation->SetSetpointRelative(targetDelta);
+		}
 	}
 	else
 	{

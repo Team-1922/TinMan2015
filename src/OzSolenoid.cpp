@@ -9,43 +9,43 @@
 
 OzSolenoid::OzSolenoid(const int extendChannel, const int retractChannel) :
 #ifdef COMP_BOT
-	m_pSolenoid(extendChannel, retractChannel)
+	m_Solenoid(extendChannel, retractChannel)
 #else
-	m_pSolenoid(extendChannel)
+	m_Solenoid(extendChannel)
 #endif
 {
 	// TODO Auto-generated constructor stub
 #ifdef COMP_BOT
-	m_pSolenoid.Set(DoubleSolenoid::Value::kReverse);
+	m_Solenoid.Set(DoubleSolenoid::Value::kReverse);
 #else
-	m_pSolenoid.Set(false);
+	m_Solenoid.Set(false);
 #endif
 }
 
 void OzSolenoid::Set(bool on)
 {
 #ifdef COMP_BOT
-	m_pSolenoid.Set(on ? DoubleSolenoid::Value::kForward : DoubleSolenoid::Value::kReverse);
+	m_Solenoid.Set(on ? DoubleSolenoid::Value::kForward : DoubleSolenoid::Value::kReverse);
 #else
-	m_pSolenoid.Set(on);
+	m_Solenoid.Set(on);
 #endif
 }
 
 bool OzSolenoid::Get()
 {
 #ifdef COMP_BOT
-	return m_pSolenoid.Get() == DoubleSolenoid::Value::kForward ? true : false;
+	return m_Solenoid.Get() == DoubleSolenoid::Value::kForward ? true : false;
 #else
-	return m_pSolenoid.Get();
+	return m_Solenoid.Get();
 #endif
 }
 
 bool OzSolenoid::IsBlackListed()
 {
 #ifdef COMP_BOT
-	return m_pSolenoid.IsFwdSolenoidBlackListed() || m_pSolenoid.IsRevSolenoidBlackListed();
+	return m_Solenoid.IsFwdSolenoidBlackListed() || m_Solenoid.IsRevSolenoidBlackListed();
 #else
-	return m_pSolenoid.IsBlackListed();
+	return m_Solenoid.IsBlackListed();
 #endif
 }
 
