@@ -32,6 +32,7 @@ ShovelRotation::~ShovelRotation()
 {
 	SAFE_DELETE(m_pMotor);
 	SAFE_DELETE(m_pPot);
+
 #ifndef COMP_BOT
 	SAFE_DELETE(m_pLimitRotationForward);
 	SAFE_DELETE(m_pLimitRotationBackward);
