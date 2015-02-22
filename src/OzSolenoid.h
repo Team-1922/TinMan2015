@@ -14,9 +14,9 @@
 class OzSolenoid
 {
 #ifdef COMP_BOT
-	DoubleSolenoid m_pSolenoid;
+	DoubleSolenoid m_Solenoid;
 #else
-	Solenoid m_pSolenoid;
+	Solenoid m_Solenoid;
 #endif
 
 public:

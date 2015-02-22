@@ -63,6 +63,7 @@ void ShovelRotation::UsePIDOutput(double output)
 		return;
 #endif
 
+
 	//since the potentiometer goes the opposite direction, invert this value
 	m_pMotor->Set(-output);
 }

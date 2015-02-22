@@ -104,18 +104,36 @@ namespace RobotMap
 #ifdef COMP_BOT // TinMan X
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
-		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
-		const float voltageFlat 			= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
-		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
+		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltageFlat 			= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
+		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
+
+
+
 #else // Scarecrow
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
-		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
-		const float voltageFlat 			= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
-		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
+		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltageFlat 			= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
+		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
+
+
+
 #endif
+
+		bool withinRotationRange(float voltage)
+		{
+			if (voltage > voltageOffset && voltage < voltageStack) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+
+
 		//GEARING: 480:1
 		const int gearing = 480;
 
@@ -153,18 +171,33 @@ namespace RobotMap
 #ifdef COMP_BOT // TinMan X
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
-		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
-		const float voltageVertical 		= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
-		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
-		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
+		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the rack is placing totes on the rack
+		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the rack is in position for stacking
+		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
+
+		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
+
+
 #else // Scarecrow
 		//TODO:
 		float voltageOffset 				= 0.0f + voltageOffset;//this is the voltage value when the rack is in store position
-		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
-		const float voltageVertical 		= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
-		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
-		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
+		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the rack is placing totes on the rack
+		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the rack is in position for stacking
+		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
+
+		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
+
 #endif
+
+		bool withinRotationRange(float voltage)
+		{
+			if (voltage > voltageOffset && voltage < voltagePickContainer) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 
 
 		/*namespace Encoder

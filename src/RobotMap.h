@@ -11,7 +11,7 @@
 #include "WPILib.h"
 
 //TODO:uncomment this for competition bot
-//#define COMP_BOT
+// #define COMP_BOT
 
 enum OperatorMode
 {
@@ -114,11 +114,13 @@ namespace RobotMap
 
 		extern const int potTurnCoun;
 		extern const int potDegree;
-		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
-		extern const float voltageStack; // voltage for when the shovel is in position for stacking
-		extern const float voltageFlat; // voltage for when the shovel is horizontal
-		extern const float voltageDump; // voltage for when the shovel is placing totes on the rack
+
 		extern const float voltageStore; // voltage for when the shovel is in the stored position (all the way back)
+		extern const float voltageDump; // voltage for when the shovel is placing totes on the rack
+		extern const float voltageFlat; // voltage for when the shovel is horizontal
+		extern const float voltageStack; // voltage for when the shovel is in position for stacking
+
+		bool withinRotationRange(float voltage);
 
 
 		extern float voltageOffset;//this is the voltage value when the shovel is in store position
@@ -161,11 +163,13 @@ namespace RobotMap
 		extern const int potTurnCount;
 		extern const int potDegree;
 		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
+		extern const float voltageDump; // voltage for when the rack is placing totes on the rack
+		extern const float voltageStack; // voltage for when the rack is in position for stacking
+		extern const float voltagePickContainer; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
-		extern const float voltageStack; // voltage for when the shovel is in position for stacking
-		extern const float voltageVertical; // voltage for when the shovel is horizontal
-		extern const float voltageDump; // voltage for when the shovel is placing totes on the rack
-		extern const float voltagePickContainer; // voltage for when the shovel is in the stored position (all the way back)
+		extern const float dumpEpsilon; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
+
+		bool withinRotationRange(float voltage);
 
 
 		extern float voltageOffset;//this is the voltage value when the rack is in store position

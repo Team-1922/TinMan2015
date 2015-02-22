@@ -70,6 +70,14 @@ void RackRotation::UsePIDOutput(double output)
 		return;
 #endif
 
+	// if the target location is the "dump" location don't try to drive the motor - it could be driven past the store location by weight on the rack and
+	// compressing the spring
+	if (Utilities::isEqual(GetSetpoint(),RobotMap::Rack::voltageDump, RobotMap::Rack::dumpEpsilon) && (GetPotVoltage() < RobotMap::Rack::voltageDump))
+	{
+		// if it is past the dump location and that is where want to be don't try to drive the motors
+		return;
+	}
+
 	m_pMotor->Set(output);
 }
 
