@@ -165,6 +165,7 @@ private:
 		SmartDashboard::PutNumber("Shovel Solenoid", CommandBase::shovel->getSolenoid());
 		SmartDashboard::PutBoolean("Shovel Wide Right", CommandBase::shovel->GetShovelWideRight());
 		SmartDashboard::PutBoolean("Shovel Wide Left", CommandBase::shovel->GetShovelWideLeft());
+
 		//this is only going to affect the practice bot
 #ifndef COMP_BOT
 		SmartDashboard::PutBoolean("Shovel Rotate Stop Backward", CommandBase::shovelRotation->GetLimRotationBackward());
@@ -185,7 +186,6 @@ private:
 		SmartDashboard::PutBoolean("Rack Rotate Stop Backward", CommandBase::rackRotation->GetLimRotationBackward());
 		SmartDashboard::PutBoolean("Rack Rotate Stop Forward", CommandBase::rackRotation->GetLimRotationForward());
 #endif
-
 
 
 		/*

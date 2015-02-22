@@ -13,8 +13,10 @@ class ShovelRotation: public PIDSubsystem
 	OzPotentiometer* m_pPot;
 	//OzLimitSwitch*   m_pShovelPivotLim;
 
+#ifndef COMP_BOT
 	OzLimitSwitch* m_pLimitRotationForward;
 	OzLimitSwitch* m_pLimitRotationBackward;
+#endif
 
 public:
 	ShovelRotation();
@@ -29,8 +31,10 @@ public:
 
 	//get the limit switch state for the practice bot
 	//bool GetBackLimSwitch(){return m_pShovelPivotLim->Get();}
+#ifndef COMP_BOT
 	bool GetLimRotationForward(){return m_pLimitRotationForward->Get();}
 	bool GetLimRotationBackward(){return m_pLimitRotationBackward->Get();}
+#endif
 
 	//tick the potentiometer
 	void TickPotentiometer();

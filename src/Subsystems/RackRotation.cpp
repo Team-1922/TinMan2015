@@ -15,8 +15,10 @@ RackRotation::RackRotation() :
 	m_pPot = new OzPotentiometer(
 			RobotMap::Rack::potentiometer, 5.0f, 0.0f); // stick with voltage readout for right now
 
+#ifndef COMP_BOT
 	m_pLimitRotationForward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationForward);
 	m_pLimitRotationBackward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationBackward);
+#endif
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-0.25, 0.25); // start with the motor range
@@ -37,8 +39,11 @@ RackRotation::~RackRotation()
 {
 	SAFE_DELETE(m_pMotor);
 	SAFE_DELETE(m_pPot);
+
+#ifndef COMP_BOT
 	SAFE_DELETE(m_pLimitRotationForward);
 	SAFE_DELETE(m_pLimitRotationBackward);
+#endif
 }
 
 double RackRotation::ReturnPIDInput()
@@ -55,6 +60,7 @@ void RackRotation::UsePIDOutput(double output)
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
 
+#ifndef COMP_BOT
 	//mind limit switches, NOTE: this only matters on the practice bot
 	if(m_pLimitRotationBackward->Get() && output > 0.0f)
 		return;
@@ -62,6 +68,7 @@ void RackRotation::UsePIDOutput(double output)
 	//since rotating backwards is actually the forwards direction of the motor, change the inequality
 	if(m_pLimitRotationForward->Get() && output < 0.0f)
 		return;
+#endif
 
 	m_pMotor->Set(output);
 }

@@ -13,9 +13,10 @@ ShovelRotation::ShovelRotation() :
 			RobotMap::Shovel::potentiometer, 5.0, 0.0); // stick with voltage readout for right now
 	//m_pShovelPivotLim = new OzLimitSwitch(RobotMap::Shovel::shovelPivotLimSwitch);
 
+#ifndef COMP_BOT
 	m_pLimitRotationForward = new OzLimitSwitch(RobotMap::Shovel::shovelLimitRotationForward);
 	m_pLimitRotationBackward = new OzLimitSwitch(RobotMap::Shovel::shovelLimitRotationBackward);
-
+#endif
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-0.25, 0.25); // start with the motor range
@@ -31,8 +32,11 @@ ShovelRotation::~ShovelRotation()
 {
 	SAFE_DELETE(m_pMotor);
 	SAFE_DELETE(m_pPot);
+#ifndef COMP_BOT
 	SAFE_DELETE(m_pLimitRotationForward);
 	SAFE_DELETE(m_pLimitRotationBackward);
+#endif
+
 }
 
 double ShovelRotation::ReturnPIDInput()

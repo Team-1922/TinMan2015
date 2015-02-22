@@ -15,9 +15,10 @@ private:
 	OzPotentiometer* m_pPot;
 	//OzLimitSwitch*   m_pLimitBackStop;
 
+#ifndef COMP_BOT
 	OzLimitSwitch*    m_pLimitRotationForward;
 	OzLimitSwitch*    m_pLimitRotationBackward;
-
+#endif
 
 public:
 	RackRotation();
@@ -31,10 +32,11 @@ public:
 	// current Potentiometer reading
 	float GetPotVoltage();
 
+#ifndef COMP_BOT
 	//get the limit switch state for the practice bot
 	bool GetLimRotationForward(){return m_pLimitRotationForward->Get();}
 	bool GetLimRotationBackward(){return m_pLimitRotationBackward->Get();}
-
+#endif
 
 	//tick the potentiometer
 	void TickPotentiometer();
