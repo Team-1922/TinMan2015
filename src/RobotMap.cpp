@@ -134,8 +134,8 @@ namespace RobotMap
 		const int potentiometer = 1;//(AI)
 		//const int rackEncChannelA = 6;//(DI)
 		//const int rackEncChannelB = 7;//(DI)
-		extern const int rackLimitRotationForward = 5;//(DI)
-		extern const int rackLimitRotationBackward = 6;//(DI)
+		extern const int rackLimitRotationForward = 6;//(DI)
+		extern const int rackLimitRotationBackward = 7;//(DI)
 
 		//GEARING: 81000:264:
 		const int gearing = 81000/264;

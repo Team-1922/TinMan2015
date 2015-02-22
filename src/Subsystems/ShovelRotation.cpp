@@ -13,8 +13,8 @@ ShovelRotation::ShovelRotation() :
 			RobotMap::Shovel::potentiometer, 5.0, 0.0); // stick with voltage readout for right now
 	//m_pShovelPivotLim = new OzLimitSwitch(RobotMap::Shovel::shovelPivotLimSwitch);
 
-	m_pShovelLimitRotationForward = new OzLimitSwitch(RobotMap::Shovel::shovelLimitRotationForward);
-	m_pShovelLimitRotationBackward = new OzLimitSwitch(RobotMap::Shovel::shovelLimitRotationBackward);
+	m_pLimitRotationForward = new OzLimitSwitch(RobotMap::Shovel::shovelLimitRotationForward);
+	m_pLimitRotationBackward = new OzLimitSwitch(RobotMap::Shovel::shovelLimitRotationBackward);
 
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
@@ -31,8 +31,8 @@ ShovelRotation::~ShovelRotation()
 {
 	SAFE_DELETE(m_pMotor);
 	SAFE_DELETE(m_pPot);
-	SAFE_DELETE(m_pShovelLimitRotationForward);
-	SAFE_DELETE(m_pShovelLimitRotationBackward);
+	SAFE_DELETE(m_pLimitRotationForward);
+	SAFE_DELETE(m_pLimitRotationBackward);
 }
 
 double ShovelRotation::ReturnPIDInput()
@@ -48,13 +48,15 @@ void ShovelRotation::UsePIDOutput(double output)
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
 
+#ifndef COMP_BOT
 	//this only matters on the practice bot
-	if(m_pShovelLimitRotationBackward->Get() && output > 0.0f)
+	if(m_pLimitRotationBackward->Get() && output > 0.0f)
 		return;
 
 	//since rotating backwards is actually the forwards direction of the motor, change the inequality
-	if(m_pShovelLimitRotationForward->Get() && output < 0.0f)
+	if(m_pLimitRotationForward->Get() && output < 0.0f)
 		return;
+#endif
 
 	//since the potentiometer goes the opposite direction, invert this value
 	m_pMotor->Set(-output);
