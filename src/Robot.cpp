@@ -26,6 +26,8 @@ private:
 	SendableChooser *driveModeChooser;
 	Command* currentDriveMode;
 
+	PowerDistributionPanel pdp;
+
 	SendableChooser *operatorJoyControl;
 	Command* currentOperatorJoyMode;
 
@@ -74,6 +76,7 @@ private:
 	{
 		CommandBase::shovelRotation->TickPotentiometer();
 		CommandBase::rackRotation->TickPotentiometer();
+		pdp.ClearStickyFaults();
 	}
 
 	void DisabledPeriodic()

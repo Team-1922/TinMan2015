@@ -22,6 +22,7 @@ RackRotation::RackRotation() :
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-0.25, 0.25); // start with the motor range
+	SetAbsoluteTolerance(0.03);
 
 
 
@@ -84,7 +85,7 @@ void RackRotation::UsePIDOutput(double output)
 void RackRotation::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new RackJoyControlled());
+	//SetDefaultCommand(new RackJoyControlled());
 }
 
 float RackRotation::GetPotVoltage()

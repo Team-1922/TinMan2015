@@ -10,7 +10,7 @@ RackExtend::RackExtend()
 // Called just before this Command runs the first time
 void RackExtend::Initialize()
 {
-	rack->setExtendMotor(0.5f);
+	rack->setExtendMotor(-0.5f);
 }
 
 // Called repeatedly when this Command is scheduled to run

@@ -14,13 +14,13 @@
 
 #include "Commands/TestCommandGroup.h"
 //#include "Commands/TestPneumatics.h"
-#include "Commands/RackDeploy.h"
 #include "Commands/RackRetract.h"
 
 #include "Commands/SwitchJoyCombined.h"
 #include "Commands/SwitchJoyRack.h"
 #include "Commands/SwitchJoyShovel.h"
 
+#include "Commands/ShovelRotate.h"
 #include "Commands/ShovelToggleWidth.h"
 #include "Commands/RackToggleClaw.h"
 #include "Commands/ChassisToggleLift.h"
@@ -90,9 +90,11 @@ m_pDriverController(nullptr)
     JoystickButton* buttonRetractRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
 
 
-    buttonShovelJoy->WhenPressed(new SwitchJoyShovel());
+    buttonShovelJoy->WhenPressed(new ShovelRotate(4.0));
     buttonRackJoy->WhenPressed(new SwitchJoyRack());
     buttonBothJoy->WhenPressed(new SwitchJoyCombined());
+
+
     buttonToggleShovel->WhenPressed(new ShovelToggleWidth());
     buttonToggleClaw->WhenPressed(new RackToggleClaw());
     buttonToggleChassis->WhenPressed(new ChassisToggleLift());

@@ -1,4 +1,5 @@
 #include "ShovelJoyControlled.h"
+#include "Utilities.h"
 
 ShovelJoyControlled::ShovelJoyControlled()
 {
@@ -53,18 +54,13 @@ void ShovelJoyControlled::Execute()
 		//this is the SLAVE
 		//rackRotation->SetSetpointRelative(targetDelta);
 
-<<<<<<< HEAD
-		//flip the sign because the potentiometers are going opposite directions; to bring this from rack space to "shovel" space kind of invert the value
-		shovelRotation->SetSetpoint(4.5f - (rackRotation->GetPotVoltage() + RobotMap::Shovel::pot90DegreeVoltageFromRack));
-=======
-		double newLocation = rackRotation->GetPotVoltage() + RobotMap::Shovel::pot90DegreeVoltage;
+		double newLocation = rackRotation->GetPotVoltage() + RobotMap::Shovel::pot90DegreeVoltageFromRack;
 
 		if (RobotMap::Shovel::withinRotationRange(newLocation))
 		{
 			//flip the sign because the potentiometers are going opposite directions
 			shovelRotation->SetSetpoint(newLocation);
 		}
->>>>>>> origin/master
 	}
 }
 

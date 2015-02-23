@@ -9,7 +9,7 @@ RackRetract::RackRetract()
 // Called just before this Command runs the first time
 void RackRetract::Initialize()
 {
-	rack->setExtendMotor(-0.5);
+	rack->setExtendMotor(0.5);
 }
 
 // Called repeatedly when this Command is scheduled to run

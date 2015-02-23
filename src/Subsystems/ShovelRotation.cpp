@@ -72,7 +72,7 @@ void ShovelRotation::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//setDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new ShovelJoyControlled());
+	//SetDefaultCommand(new ShovelJoyControlled());
 }
 
 float ShovelRotation::GetPotVoltage()
