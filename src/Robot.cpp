@@ -53,7 +53,9 @@ private:
 		Chooser->AddObject("Other Autonomous", new AutonomousV2);
 		SmartDashboard::PutData("Autonomous Mode", Chooser);
 
+		//SmartDashboard Test code~~~
 		SmartDashboard::PutData("Shovel Width Toggle", new ShovelToggleWidth());
+
 
 		//this is for switchible drive modes
 		driveModeChooser = new SendableChooser();
@@ -99,6 +101,7 @@ private:
 		//update this BEFORE running commands
 		UniversalPeriodic();
 		Scheduler::GetInstance()->Run();
+		SmartDashboard::PutBoolean("Autonomous is working:", RobotMap::AutonomousEnabled);
 	}
 
 	void TeleopInit()

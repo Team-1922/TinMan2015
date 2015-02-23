@@ -195,6 +195,9 @@ namespace RobotMap
 	//polling rate of the potentiometer
 	extern const float minPollWait;//0.05 seconds
 
+	//Boolean for autonomous....
+	extern bool AutonomousEnabled;
+
 }
 
 #endif /* ROBOTMAP_H_ */

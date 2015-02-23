@@ -1,9 +1,8 @@
 #include "Autonomous.h"
-#include "RackDoNothing.h"
-
+#include "ShovelDoNothing.h"
 #include <iostream>
 
 Autonomous::Autonomous() : CommandGroup("Autonomous")
 {
-	AddSequential(new RackDoNothing());
+	AddSequential(new ShovelDoNothing());
 }

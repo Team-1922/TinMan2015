@@ -220,4 +220,7 @@ namespace RobotMap
 
 	//polling rate of the potentiometer
 	const float minPollWait = 0.025;//0.025 seconds
+
+	//Boolean for testing autonomous commands. True for on and false for off.
+	bool AutonomousEnabled = 0;
 }
