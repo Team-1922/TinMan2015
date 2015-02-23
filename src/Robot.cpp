@@ -76,7 +76,7 @@ private:
 	{
 		CommandBase::shovelRotation->TickPotentiometer();
 		CommandBase::rackRotation->TickPotentiometer();
-		pdp.ClearStickyFaults();
+		//pdp.ClearStickyFaults();
 	}
 
 	void DisabledPeriodic()
@@ -204,7 +204,7 @@ private:
 		lw->AddActuator("Shovel", "Solenoid", pShovelSolenoid);*/
 		lw->Run();
 
-		SmartDashboard::PutNumber("Rack Voltage", CommandBase::rackRotation->GetPotVoltage());
+		//SmartDashboard::PutNumber("Rack Voltage", CommandBase::rackRotation->GetPotVoltage());
 
 
 	}

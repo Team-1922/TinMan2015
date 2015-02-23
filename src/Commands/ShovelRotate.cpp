@@ -22,7 +22,7 @@ void ShovelRotate::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool ShovelRotate::IsFinished()
 {
-	return shovelRotation->OnTarget();
+	return false;
 //	return shovelRotation->onTarget();
 }
 
