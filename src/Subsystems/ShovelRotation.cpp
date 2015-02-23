@@ -53,7 +53,7 @@ void ShovelRotation::UsePIDOutput(double output)
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
 
-#ifndef COMP_BOT
+/*#ifndef COMP_BOT
 	//this only matters on the practice bot
 	if(m_pLimitRotationBackward->Get() && output > 0.0f)
 		return;
@@ -61,7 +61,7 @@ void ShovelRotation::UsePIDOutput(double output)
 	//since rotating backwards is actually the forwards direction of the motor, change the inequality
 	if(m_pLimitRotationForward->Get() && output < 0.0f)
 		return;
-#endif
+#endif*/
 
 
 	//since the potentiometer goes the opposite direction, invert this value

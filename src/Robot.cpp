@@ -31,8 +31,14 @@ private:
 	SendableChooser *operatorJoyControl;
 	Command* currentOperatorJoyMode;
 
+	Compressor* m_pComp;
+
 	void RobotInit()
 	{
+		m_pComp = new Compressor(0);
+		m_pComp->Start();//TODO: this is dangerous
+		//m_pSol = new Solenoid(0);
+
 		Utilities::startTimer();
 		CommandBase::init();
 
@@ -145,6 +151,12 @@ private:
 
 		SmartDashboard::PutNumber("Operator Control Mode", RobotMap::Controls::currOpMode);
 
+		/*
+		 * Compressor
+		 */
+
+		SmartDashboard::PutBoolean("Compressor State", m_pComp->Enabled());
+		SmartDashboard::PutBoolean("Pressure Switch", m_pComp->GetPressureSwitchValue());
 
 		/*
 		 * Drive Train information
