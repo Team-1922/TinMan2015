@@ -4,5 +4,8 @@
 
 Autonomous::Autonomous() : CommandGroup("Autonomous")
 {
-	AddSequential(new ShovelDoNothing());
+	AddSequential(new DriveStraight());
+
+
+
 }
