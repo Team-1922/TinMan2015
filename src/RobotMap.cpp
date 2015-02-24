@@ -121,8 +121,8 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
-		const float voltageDump 			= 1.45f + voltageOffset; // voltage for when the shovel is placing totes on the rack
-		const float voltageFlat 			= 2.75f + voltageOffset; // voltage for when the shovel is horizontal
+		const float voltageDump 			= 3.28f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltageFlat 			= 4.58f + voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
 
 
@@ -187,7 +187,7 @@ namespace RobotMap
 #else // Scarecrow
 		//TODO:
 		float voltageOffset 				= 0.0f + voltageOffset;//this is the voltage value when the rack is in store position
-		const float voltageDump 			= 3.77f + voltageOffset; // voltage for when the rack is placing totes on the rack
+		const float voltageDump 			= 3.79f + voltageOffset; // voltage for when the rack is placing totes on the rack
 		const float voltageStack 			= 2.65f + voltageOffset; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 

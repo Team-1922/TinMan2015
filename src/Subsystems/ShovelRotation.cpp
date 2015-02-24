@@ -20,7 +20,7 @@ ShovelRotation::ShovelRotation() :
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-0.6, 0.6); // start with the motor range
-	SetAbsoluteTolerance(.7);
+	SetAbsoluteTolerance(0.07);
 
 	// Use these to get going:
 	// SetSetpoint() -  Sets where the PID controller should move the system
@@ -30,7 +30,7 @@ ShovelRotation::ShovelRotation() :
 
 	Enable();
 
-	SetSetpointRelative(0);
+	SetSetpoint(GetPotVoltage());
 }
 
 ShovelRotation::~ShovelRotation()

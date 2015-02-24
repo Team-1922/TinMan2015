@@ -8,8 +8,9 @@ class RackRotate: public CommandBase
 {
 private:
 	double m_setPoint;
+	bool   m_holdPosition;
 public:
-	RackRotate(double setPoint);
+	RackRotate(double setPoint, bool holdPosition = true);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

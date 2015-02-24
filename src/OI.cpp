@@ -99,9 +99,9 @@ m_pDriverController(nullptr)
     //buttonRackJoy->WhenPressed(new SwitchJoyRack());
     //buttonBothJoy->WhenPressed(new SwitchJoyCombined());
 
-    buttonShovelFlat->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat));
+    buttonShovelFlat->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat, false));
     buttonShovelDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
-    buttonRackFlat->WhenPressed(new ShovelRotate(RobotMap::Rack::voltageDump));
+    buttonRackFlat->WhenPressed(new ShovelRotate(RobotMap::Rack::voltageDump, false));
     buttonRackVertical->WhenPressed(new ShovelRotate(RobotMap::Rack::voltageStack));
 
 

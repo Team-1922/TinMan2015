@@ -21,8 +21,8 @@ RackRotation::RackRotation() :
 #endif
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
-	SetOutputRange(-0.35, 0.35); // start with the motor range
-	SetAbsoluteTolerance(0.03);
+	SetOutputRange(-0.4, 0.4); // start with the motor range
+	SetAbsoluteTolerance(0.08);
 
 
 
@@ -36,6 +36,8 @@ RackRotation::RackRotation() :
 	LiveWindow::GetInstance()->AddActuator("Rack", "PID", GetPIDController());
 
 	Enable();
+
+	SetSetpoint(GetPotVoltage());
 }
 
 RackRotation::~RackRotation()

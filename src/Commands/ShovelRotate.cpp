@@ -1,7 +1,7 @@
 #include "ShovelRotate.h"
 
-ShovelRotate::ShovelRotate(double setPoint)
-: m_setPoint(setPoint)
+ShovelRotate::ShovelRotate(double setPoint, bool holdPosition)
+: m_setPoint(setPoint), m_holdPosition(holdPosition)
 {
 	Requires(shovelRotation);
 }
@@ -10,6 +10,7 @@ ShovelRotate::ShovelRotate(double setPoint)
 void ShovelRotate::Initialize()
 {
 	shovelRotation->SetSetpoint(m_setPoint);
+	shovelRotation->Enable();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -28,7 +29,9 @@ bool ShovelRotate::IsFinished()
 // Called once after isFinished returns true
 void ShovelRotate::End()
 {
-	//shovelRotation->SetSetpointRelative(0);
+	shovelRotation->SetSetpointRelative(0);
+	if(!m_holdPosition)
+		shovelRotation->Disable();
 }
 
 // Called when another command which requires one or more of the same
