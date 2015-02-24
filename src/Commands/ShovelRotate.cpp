@@ -28,7 +28,7 @@ bool ShovelRotate::IsFinished()
 // Called once after isFinished returns true
 void ShovelRotate::End()
 {
-	shovelRotation->SetSetpointRelative(0);
+	//shovelRotation->SetSetpointRelative(0);
 }
 
 // Called when another command which requires one or more of the same
