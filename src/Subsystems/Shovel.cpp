@@ -29,7 +29,7 @@ Shovel::~Shovel()
 void Shovel::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new ShovelJoyControlled());
+	//SetDefaultCommand(new ShovelJoyControlled());
 	//TODO: default command
 }
 

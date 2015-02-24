@@ -12,7 +12,7 @@ RackRotation::RackRotation() :
 {
 
 	m_pMotor = new Talon(RobotMap::Rack::rackPivotMotor);
-	m_pPot = new OzPotentiometer(
+	m_pPot = new AnalogPotentiometer(
 			RobotMap::Rack::potentiometer, 5.0f, 0.0f); // stick with voltage readout for right now
 
 #ifndef COMP_BOT
@@ -21,7 +21,7 @@ RackRotation::RackRotation() :
 #endif
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
-	SetOutputRange(-0.25, 0.25); // start with the motor range
+	SetOutputRange(-0.35, 0.35); // start with the motor range
 	SetAbsoluteTolerance(0.03);
 
 
@@ -34,6 +34,8 @@ RackRotation::RackRotation() :
 	//                  to
 	// Enable() - Enables the PID controller.
 	LiveWindow::GetInstance()->AddActuator("Rack", "PID", GetPIDController());
+
+	Enable();
 }
 
 RackRotation::~RackRotation()
@@ -97,5 +99,5 @@ float RackRotation::GetPotVoltage()
 
 void RackRotation::TickPotentiometer()
 {
-	m_pPot->Tick();
+	//m_pPot->Tick();
 }

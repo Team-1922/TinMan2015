@@ -10,7 +10,7 @@ class ShovelRotation: public PIDSubsystem
 {
 	//the motor that rotates the shovel
 	SpeedController* m_pMotor;
-	OzPotentiometer* m_pPot;
+	AnalogPotentiometer* m_pPot;
 	//OzLimitSwitch*   m_pShovelPivotLim;
 
 #ifndef COMP_BOT

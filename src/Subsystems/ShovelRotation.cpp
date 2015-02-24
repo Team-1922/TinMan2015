@@ -9,7 +9,7 @@ ShovelRotation::ShovelRotation() :
 		PIDSubsystem("ShovelRotation", 1.3, 0.0, 0.0)
 {
 	m_pMotor = new Talon(RobotMap::Shovel::shovelPivotMotor);
-	m_pPot = new OzPotentiometer(
+	m_pPot = new AnalogPotentiometer(
 			RobotMap::Shovel::potentiometer, 5.0, 0.0); // stick with voltage readout for right now
 	//m_pShovelPivotLim = new OzLimitSwitch(RobotMap::Shovel::shovelPivotLimSwitch);
 
@@ -19,13 +19,18 @@ ShovelRotation::ShovelRotation() :
 #endif
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
-	SetOutputRange(-0.4, 0.4); // start with the motor range
+	SetOutputRange(-0.6, 0.6); // start with the motor range
+	SetAbsoluteTolerance(.7);
 
 	// Use these to get going:
 	// SetSetpoint() -  Sets where the PID controller should move the system
 	//                  to
 	// Enable() - Enables the PID controller.
 	LiveWindow::GetInstance()->AddActuator("Shovel", "PID", GetPIDController());
+
+	Enable();
+
+	SetSetpointRelative(0);
 }
 
 ShovelRotation::~ShovelRotation()
@@ -82,5 +87,5 @@ float ShovelRotation::GetPotVoltage()
 
 void ShovelRotation::TickPotentiometer()
 {
-	m_pPot->Tick();
+	//m_pPot->Tick();
 }

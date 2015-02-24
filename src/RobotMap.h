@@ -46,6 +46,12 @@ namespace RobotMap
 		extern const int shovelJoyControlled;
 		extern const int rackShovelCombined;
 
+		//these are the controls for shovel and rack angles
+		extern const int shovelFlat;
+		extern const int shovelDump;
+		extern const int rackFlat;
+		extern const int rackVertical;
+
 		//controls for changing the width of the shovel and rack
 		extern const int shovelWidthToggle;
 		extern const int rackClawToggle;
@@ -163,7 +169,7 @@ namespace RobotMap
 		extern const int potTurnCount;
 		extern const int potDegree;
 		extern const float potDegreeOffset; //degrees off horizontal, aka all the way forwards
-		extern const float voltageDump; // voltage for when the rack is placing totes on the rack
+		extern const float voltageDump; // voltage for when the shovel is placing totes on the rack
 		extern const float voltageStack; // voltage for when the rack is in position for stacking
 		extern const float voltagePickContainer; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 

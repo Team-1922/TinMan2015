@@ -1,5 +1,4 @@
 #include "ShovelRotate.h"
-#include "Utilities.h"
 
 ShovelRotate::ShovelRotate(double setPoint)
 : m_setPoint(setPoint)
@@ -22,7 +21,7 @@ void ShovelRotate::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool ShovelRotate::IsFinished()
 {
-	return false;
+	return shovelRotation->OnTarget();
 //	return shovelRotation->onTarget();
 }
 

@@ -26,6 +26,12 @@ namespace RobotMap
 		const int shovelJoyControlled = 9;
 		const int rackShovelCombined = 11;
 
+		//these are the controls for shovel and rack angles
+		const int shovelFlat   = 3;
+		const int shovelDump   = 5;
+		const int rackFlat     = 7;
+		const int rackVertical = 9;
+
 		//controls for changing the width of the shovel and rack
 		const int shovelWidthToggle = 8;
 		const int rackClawToggle = 10;
@@ -115,8 +121,8 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
-		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
-		const float voltageFlat 			= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
+		const float voltageDump 			= 1.45f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltageFlat 			= 2.75f + voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
 
 
@@ -181,8 +187,8 @@ namespace RobotMap
 #else // Scarecrow
 		//TODO:
 		float voltageOffset 				= 0.0f + voltageOffset;//this is the voltage value when the rack is in store position
-		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the rack is placing totes on the rack
-		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the rack is in position for stacking
+		const float voltageDump 			= 3.77f + voltageOffset; // voltage for when the rack is placing totes on the rack
+		const float voltageStack 			= 2.65f + voltageOffset; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
 		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position

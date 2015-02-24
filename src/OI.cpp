@@ -75,9 +75,14 @@ m_pDriverController(nullptr)
     //buttonTest->WhenPressed(new TestPneumatics());
 
 	//the three operator modes
-    JoystickButton* buttonShovelJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelJoyControlled);
-    JoystickButton* buttonRackJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackJoyControlled);
-    JoystickButton* buttonBothJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackShovelCombined);
+    //JoystickButton* buttonShovelJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelJoyControlled);
+    //JoystickButton* buttonRackJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackJoyControlled);
+    //JoystickButton* buttonBothJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackShovelCombined);
+
+	JoystickButton* buttonShovelFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelFlat);
+	JoystickButton* buttonShovelDump = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelDump);
+	JoystickButton* buttonRackFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlat);
+	JoystickButton* buttonRackVertical = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackVertical);
 
 
     //the three solenoids
@@ -90,9 +95,14 @@ m_pDriverController(nullptr)
     JoystickButton* buttonRetractRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
 
 
-    buttonShovelJoy->WhenPressed(new ShovelRotate(4.0));
-    buttonRackJoy->WhenPressed(new SwitchJoyRack());
-    buttonBothJoy->WhenPressed(new SwitchJoyCombined());
+    //buttonShovelJoy->WhenPressed(new ShovelRotate(4.0));
+    //buttonRackJoy->WhenPressed(new SwitchJoyRack());
+    //buttonBothJoy->WhenPressed(new SwitchJoyCombined());
+
+    buttonShovelFlat->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat));
+    buttonShovelDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
+    buttonRackFlat->WhenPressed(new ShovelRotate(RobotMap::Rack::voltageDump));
+    buttonRackVertical->WhenPressed(new ShovelRotate(RobotMap::Rack::voltageStack));
 
 
     buttonToggleShovel->WhenPressed(new ShovelToggleWidth());

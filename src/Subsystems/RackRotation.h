@@ -12,7 +12,7 @@ class RackRotation: public PIDSubsystem
 private:
 	//the motor that rotates the rack
 	SpeedController* m_pMotor;
-	OzPotentiometer* m_pPot;
+	AnalogPotentiometer* m_pPot;
 	//OzLimitSwitch*   m_pLimitBackStop;
 
 #ifndef COMP_BOT

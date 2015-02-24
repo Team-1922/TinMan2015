@@ -15,7 +15,6 @@ void RackRotate::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void RackRotate::Execute()
 {
-	rackRotation->Enable();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -27,7 +26,7 @@ bool RackRotate::IsFinished()
 // Called once after isFinished returns true
 void RackRotate::End()
 {
-	rackRotation->Disable();
+	rackRotation->SetSetpointRelative(0);
 }
 
 // Called when another command which requires one or more of the same
