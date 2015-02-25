@@ -46,9 +46,9 @@ private:
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 
-		//CameraServer::GetInstance()->SetQuality(50);
+		CameraServer::GetInstance()->SetQuality(50);
 		//the camera name (ex "cam0") can be found through the roborio web interface
-		//CameraServer::GetInstance()->StartAutomaticCapture("cam0");
+		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 		//Initializes a chooser item in the SmartDashboard to select the Autonomous Mode for the round
 		Chooser = new SendableChooser();
 		Chooser->AddDefault("Default Program", new Autonomous);
