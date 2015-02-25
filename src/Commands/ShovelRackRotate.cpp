@@ -2,8 +2,8 @@
 #include "../subsystems/RackRotation.h"
 
 
-ShovelRackRotate::ShovelRackRotate(double setPoint)
-: m_setPoint(setPoint)
+ShovelRackRotate::ShovelRackRotate(double shovelSetpoint, double rackSetpoint)
+: m_shovelSetpoint(shovelSetpoint), m_rackSetpoint(rackSetpoint)
 {
 	Requires(shovelRotation);
 	Requires(rackRotation);
@@ -13,7 +13,8 @@ ShovelRackRotate::ShovelRackRotate(double setPoint)
 void ShovelRackRotate::Initialize()
 {
 	// assume that the shovel is already in the right position - if it is not bad things will happen
-	rackRotation->SetSetpoint(m_setPoint);
+	rackRotation->SetSetpoint(m_shovelSetpoint);
+	shovelRotation->SetSetpoint(m_rackSetpoint);
 	rackRotation->Enable();
 	shovelRotation->Enable();
 }
@@ -23,20 +24,25 @@ void ShovelRackRotate::Execute()
 {
 	// update the shovel position at this location whenever execute is called. this way we slave the shovel to the rack
 	// location - if we don't do it here then one could get ahead of the other
-	shovelRotation->SetSetpoint(rackRotation->GetPotVoltage() - RobotMap::Shovel::pot90DegreeVoltageFromRack);
+	//shovelRotation->SetSetpoint(rackRotation->GetPotVoltage() - RobotMap::Shovel::pot90DegreeVoltageFromRack);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ShovelRackRotate::IsFinished()
 {
-	return rackRotation->OnTarget();
+	return rackRotation->OnTarget() && shovelRotation->OnTarget();
 }
 
 // Called once after isFinished returns true
 void ShovelRackRotate::End()
 {
-	rackRotation->Disable();
-	shovelRotation->Disable();
+	//DON"T disable, because we DO want to keep both of the objects supported
+	//rackRotation->Disable();
+	//shovelRotation->Disable();
+
+	//if this is interrupted, then make sure it stops where it is
+	shovelRotation->SetSetpointRelative(0);
+	rackRotation->SetSetpointRelative(0);
 }
 
 // Called when another command which requires one or more of the same

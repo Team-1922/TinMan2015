@@ -106,7 +106,7 @@ namespace RobotMap
 		const float pot90DegreeVoltageFromRack = 1.15f;
 
 
-		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET
+		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET (NOT YET)
 #ifdef COMP_BOT // TinMan X
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
@@ -115,27 +115,30 @@ namespace RobotMap
 		const float voltageFlat 			= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
 
-
-
 #else // Scarecrow
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
 		const float voltageDump 			= 3.28f + voltageOffset; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= 4.58f + voltageOffset; // voltage for when the shovel is horizontal
-		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
-
-
-
+		const float voltageStack 			= 4.58f + voltageOffset; // voltage for when the shovel is in position for stacking
+		//TODO: fix voltage stack once we have pneumatics working
 #endif
 
 
 		namespace PID
 		{
+#ifdef COMP_BOT
 			const float P = 1.3f;
 			const float I = 0.0f;
 			const float D = 0.0f;
 			const float extremeMotorVal = 0.6;//the absolute value of the maximum motor value
+#else
+			const float P = 1.3f;
+			const float I = 0.0f;
+			const float D = -1.0f;
+			const float extremeMotorVal = 0.6;//the absolute value of the maximum motor value
+#endif
 		}
 
 		bool withinRotationRange(float voltage)
@@ -182,7 +185,7 @@ namespace RobotMap
 		const float potDegreeOffset = -180; //degrees off horizontal, aka all the way forwards
 
 
-		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET
+		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET (NOT YET)
 #ifdef COMP_BOT // TinMan X
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
@@ -207,10 +210,17 @@ namespace RobotMap
 
 		namespace PID
 		{
+#ifdef COMP_BOT
 			const float P = 16.0f;
 			const float I = 0.0f;
 			const float D = -8.0f;
-			const float extremeMotorVal = 0.4;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.25;//the absolute value of the maximum motor value
+#else
+			const float P = 16.0f;
+			const float I = 0.0f;
+			const float D = -8.0f;
+			const float extremeMotorVal = 0.75;//the absolute value of the maximum motor value
+#endif
 		}
 
 		bool withinRotationRange(float voltage)

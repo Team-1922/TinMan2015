@@ -1,24 +1,14 @@
 #include "PrepareHumanStation.h"
-#include "ShovelCloseWidth.h"
+#include "ShovelOpenWidth.h"
+#include "ShovelRotate.h"
+#include "RobotMap.h"
 
 PrepareHumanStation::PrepareHumanStation()
 {
-	// Add Commands here:
-	// e.g. AddSequential(new Command1());
-	//      AddSequential(new Command2());
-	// these will run in order.
 
-	// To run multiple commands at the same time,
-	// use AddParallel()
-	// e.g. AddParallel(new Command1());
-	//      AddSequential(new Command2());
-	// Command1 and Command2 will run in parallel.
+	//this doesn't assume anything, and closes the width before turning just in case it has to pass the rack
+	// even though that would probably never happen.
 
-	// A command group will require all of the subsystems that each member
-	// would require.
-	// e.g. if Command1 requires chassis, and Command2 requires arm,
-	// a CommandGroup containing them would require both the chassis and the
-	// arm.
-
-	AddSequential(new ShovelCloseWidth());
+	AddSequential(new ShovelOpenWidth());
+	AddSequential(new ShovelRotate(RobotMap::Shovel::voltageFlat));
 }

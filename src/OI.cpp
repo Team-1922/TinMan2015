@@ -27,6 +27,7 @@
 
 #include "Commands/RackExtend.h"
 #include "Commands/RackRetract.h"
+#include "Commands/RackRotate.h"
 
 
 #include "RobotMap.h"
@@ -101,8 +102,8 @@ m_pDriverController(nullptr)
 
     buttonShovelFlat->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat, false));
     buttonShovelDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
-    buttonRackFlat->WhenPressed(new ShovelRotate(RobotMap::Rack::voltageDump, false));
-    buttonRackVertical->WhenPressed(new ShovelRotate(RobotMap::Rack::voltageStack));
+    buttonRackFlat->WhenPressed(new RackRotate(RobotMap::Rack::voltageDump, false));
+    buttonRackVertical->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
 
 
     buttonToggleShovel->WhenPressed(new ShovelToggleWidth());

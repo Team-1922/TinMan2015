@@ -7,10 +7,11 @@
 class ShovelRackRotate: public CommandBase
 {
 private:
-	double m_setPoint;
+	double m_shovelSetpoint;
+	double m_rackSetpoint;
 
 public:
-	ShovelRackRotate(double setPoint);
+	ShovelRackRotate(double shovelSetpoint, double rackSetpoint);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

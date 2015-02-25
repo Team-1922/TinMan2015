@@ -6,6 +6,7 @@
 #include "../Utilities.h"
 #include "../OzLimitSwitch.h"
 
+#include <cmath>
 
 RackRotation::RackRotation() :
 		PIDSubsystem("RackRotation", RobotMap::Rack::PID::P, RobotMap::Rack::PID::I, RobotMap::Rack::PID::D)
@@ -84,6 +85,13 @@ void RackRotation::UsePIDOutput(double output)
 		// if it is past the dump location and that is where want to be don't try to drive the motors
 		return;
 	}*/
+
+
+	//give it less power as it reaches the top
+	float angle = GetPotVoltage() - RobotMap::Rack::voltageDump;
+
+	//TODO: if it is going down, make sure the cosine rule IS used, but by how much to BACKDRIVE the motor
+	output *= fabs(cosf(DEGREES_TO_RADIANS(angle))) + 0.03 /*Make sure it goes at least a little bit*/;
 
 	m_pMotor->Set(output);
 }
