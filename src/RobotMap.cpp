@@ -129,6 +129,15 @@ namespace RobotMap
 
 #endif
 
+
+		namespace PID
+		{
+			const float P = 1.3f;
+			const float I = 0.0f;
+			const float D = 0.0f;
+			const float extremeMotorVal = 0.6;//the absolute value of the maximum motor value
+		}
+
 		bool withinRotationRange(float voltage)
 		{
 			if (voltage > voltageOffset && voltage < voltageStack) {
@@ -187,13 +196,22 @@ namespace RobotMap
 #else // Scarecrow
 		//TODO:
 		float voltageOffset 				= 0.0f + voltageOffset;//this is the voltage value when the rack is in store position
-		const float voltageDump 			= 3.79f + voltageOffset; // voltage for when the rack is placing totes on the rack
-		const float voltageStack 			= 2.65f + voltageOffset; // voltage for when the rack is in position for stacking
+		const float voltageDump 			= 3.76f + voltageOffset; // voltage for when the rack is placing totes on the rack
+		const float voltageStack 			= 2.64f + voltageOffset; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
 		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
 
 #endif
+
+
+		namespace PID
+		{
+			const float P = 16.0f;
+			const float I = 0.0f;
+			const float D = -8.0f;
+			const float extremeMotorVal = 0.4;//the absolute value of the maximum motor value
+		}
 
 		bool withinRotationRange(float voltage)
 		{

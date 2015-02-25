@@ -6,8 +6,11 @@
 
 class DriveStraight: public CommandBase
 {
+private:
+	float m_time;
+	float m_throttle;
 public:
-	DriveStraight();
+	DriveStraight(float time, float throttle);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

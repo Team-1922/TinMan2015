@@ -1,24 +1,22 @@
 #include "DriveStraight.h"
 
-DriveStraight::DriveStraight()
+DriveStraight::DriveStraight(float time, float throttle):
+m_time(time), m_throttle(throttle)
 {
 	// Use Requires() here to declare subsystem dependencies
 	 Requires(driveTrain);
-	 SetTimeout(2);
+	 SetTimeout(time);
 }
 
 // Called just before this Command runs the first time
 void DriveStraight::Initialize()
 {
-
+	driveTrain->DriveStraight(m_throttle);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveStraight::Execute()
 {
-	driveTrain->DriveStraight(0.5);
-
-
 }
 
 // Make this return true when this Command no longer needs to run execute()

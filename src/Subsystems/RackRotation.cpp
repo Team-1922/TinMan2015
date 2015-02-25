@@ -8,7 +8,7 @@
 
 
 RackRotation::RackRotation() :
-		PIDSubsystem("RackRotation", 15.0, 0.0, 0.0)
+		PIDSubsystem("RackRotation", RobotMap::Rack::PID::P, RobotMap::Rack::PID::I, RobotMap::Rack::PID::D)
 {
 
 	m_pMotor = new Talon(RobotMap::Rack::rackPivotMotor);
@@ -21,7 +21,7 @@ RackRotation::RackRotation() :
 #endif
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
-	SetOutputRange(-0.4, 0.4); // start with the motor range
+	SetOutputRange(-RobotMap::Rack::PID::extremeMotorVal, RobotMap::Rack::PID::extremeMotorVal); // start with the motor range
 	SetAbsoluteTolerance(0.08);
 
 

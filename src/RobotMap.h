@@ -141,6 +141,15 @@ namespace RobotMap
 		//extern const int shovelMotorRPM;
 
 		//extern const int shovelMotorMaxSpeed;//degrees/s
+
+
+		namespace PID
+		{
+			extern const float P;
+			extern const float I;
+			extern const float D;
+			extern const float extremeMotorVal;//the absolute value of the maximum motor value
+		}
 	}
 
 	namespace Rack
@@ -193,6 +202,14 @@ namespace RobotMap
 			//This converts the pulses to degrees per second
 			const float distancePerPulse = 1.0f/float(gearing*pulsesPerRotation);
 		}*/
+
+		namespace PID
+		{
+			extern const float P;
+			extern const float I;
+			extern const float D;
+			extern const float extremeMotorVal;//the absolute value of the maximum motor value
+		}
 	}
 
 	//the maximum percentage change of the velocity of the rack or shovel in a cycle

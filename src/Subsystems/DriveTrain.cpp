@@ -125,8 +125,6 @@ void DriveTrain::StopMotors()
 
 void DriveTrain::DriveStraight(float motorVal)
 {
-	m_pFrontLeft->Set(motorVal);
-	m_pRearLeft->Set(motorVal);
-	m_pFrontRight->Set(motorVal);
-	m_pRearRight->Set(motorVal);
+	setLeft(-motorVal);
+	setRight(motorVal);
 }

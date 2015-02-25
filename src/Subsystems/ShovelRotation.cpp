@@ -6,7 +6,7 @@
 #include "../Utilities.h"
 
 ShovelRotation::ShovelRotation() :
-		PIDSubsystem("ShovelRotation", 1.3, 0.0, 0.0)
+		PIDSubsystem("ShovelRotation", RobotMap::Shovel::PID::P, RobotMap::Shovel::PID::I, RobotMap::Shovel::PID::D)
 {
 	m_pMotor = new Talon(RobotMap::Shovel::shovelPivotMotor);
 	m_pPot = new AnalogPotentiometer(
@@ -19,7 +19,8 @@ ShovelRotation::ShovelRotation() :
 #endif
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
-	SetOutputRange(-0.6, 0.6); // start with the motor range
+	SetOutputRange(-RobotMap::Shovel::PID::extremeMotorVal,
+			RobotMap::Shovel::PID::extremeMotorVal); // start with the motor range
 	SetAbsoluteTolerance(0.07);
 
 	// Use these to get going:
