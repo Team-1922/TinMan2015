@@ -6,7 +6,7 @@
 #include "Subsystems/RackRotation.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/Shovel.h"
-#include "Subsystems/Camera.h"
+//#include "Subsystems/Camera.h"
 #include "Subsystems/Chassis.h"
 #include "Subsystems/ShovelRotation.h"
 #include <string>
@@ -34,7 +34,7 @@ public:
 	static OI *oi;
 	static DriveTrain *driveTrain;
 	//static Pneumatics* pneumatics;
-	static Camera* camera;
+	//static Camera* camera;
 	static Chassis* chassis;
 	static RackRotation* rackRotation; // this is a PID system
 	static ShovelRotation* shovelRotation;
