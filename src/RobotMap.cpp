@@ -214,7 +214,7 @@ namespace RobotMap
 			const float P = 5.0f;
 			const float I = 0.0f;
 			const float D = -2.0f;
-			const float extremeMotorVal = 0.5;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.7;//the absolute value of the maximum motor value
 #else
 			const float P = 5.0f;
 			const float I = 0.0f;
