@@ -47,10 +47,10 @@ namespace RobotMap
 		extern const int rackShovelCombined;
 
 		//these are the controls for shovel and rack angles
-		extern const int shovelFlat;
-		extern const int shovelDump;
+		extern const int prepareHuman;
+		extern const int dumpTote;
 		extern const int rackFlat;
-		extern const int rackVertical;
+		extern const int stackTotes;
 
 		//controls for changing the width of the shovel and rack
 		extern const int shovelWidthToggle;

@@ -27,10 +27,10 @@ namespace RobotMap
 		const int rackShovelCombined = 11;
 
 		//these are the controls for shovel and rack angles
-		const int shovelFlat   = 3;
-		const int shovelDump   = 5;
+		const int prepareHuman = 3;
+		const int dumpTote     = 5;
 		const int rackFlat     = 7;
-		const int rackVertical = 9;
+		const int stackTotes   = 9;
 
 		//controls for changing the width of the shovel and rack
 		const int shovelWidthToggle = 8;
@@ -111,9 +111,9 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
-		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the shovel is placing totes on the rack
-		const float voltageFlat 			= 0.0f + voltageOffset; // voltage for when the shovel is horizontal
-		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the shovel is in position for stacking
+		const float voltageDump 			= 3.1f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltageFlat 			= 4.9f + voltageOffset; // voltage for when the shovel is horizontal
+		const float voltageStack 			= 4.9f + voltageOffset; // voltage for when the shovel is in position for stacking
 
 #else // Scarecrow
 		//TODO:
@@ -131,7 +131,7 @@ namespace RobotMap
 #ifdef COMP_BOT
 			const float P = 1.3f;
 			const float I = 0.0f;
-			const float D = 0.0f;
+			const float D = -1.0f;
 			const float extremeMotorVal = 0.6;//the absolute value of the maximum motor value
 #else
 			const float P = 1.3f;
@@ -189,8 +189,8 @@ namespace RobotMap
 #ifdef COMP_BOT // TinMan X
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
-		const float voltageDump 			= 0.0f + voltageOffset; // voltage for when the rack is placing totes on the rack
-		const float voltageStack 			= 0.0f + voltageOffset; // voltage for when the rack is in position for stacking
+		const float voltageDump 			= 2.37f + voltageOffset; // voltage for when the rack is placing totes on the rack
+		const float voltageStack 			= 1.05f + voltageOffset; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
 		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
@@ -199,8 +199,8 @@ namespace RobotMap
 #else // Scarecrow
 		//TODO:
 		float voltageOffset 				= 0.0f + voltageOffset;//this is the voltage value when the rack is in store position
-		const float voltageDump 			= 3.76f + voltageOffset; // voltage for when the rack is placing totes on the rack
-		const float voltageStack 			= 2.64f + voltageOffset; // voltage for when the rack is in position for stacking
+		const float voltageDump 			= 3.43f + voltageOffset; // voltage for when the rack is placing totes on the rack
+		const float voltageStack 			= 2.31f + voltageOffset; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
 		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
@@ -211,15 +211,15 @@ namespace RobotMap
 		namespace PID
 		{
 #ifdef COMP_BOT
-			const float P = 16.0f;
+			const float P = 5.0f;
 			const float I = 0.0f;
-			const float D = -8.0f;
-			const float extremeMotorVal = 0.25;//the absolute value of the maximum motor value
+			const float D = -2.0f;
+			const float extremeMotorVal = 0.5;//the absolute value of the maximum motor value
 #else
-			const float P = 16.0f;
+			const float P = 5.0f;
 			const float I = 0.0f;
-			const float D = -8.0f;
-			const float extremeMotorVal = 0.75;//the absolute value of the maximum motor value
+			const float D = -2.0f;
+			const float extremeMotorVal = 0.5;//the absolute value of the maximum motor value
 #endif
 		}
 

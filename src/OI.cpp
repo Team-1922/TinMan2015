@@ -29,6 +29,10 @@
 #include "Commands/RackRetract.h"
 #include "Commands/RackRotate.h"
 
+#include "Commands/PrepareHumanStation.h"
+#include "Commands/StoreTote.h"
+#include "Commands/StackTotes.h"
+
 
 #include "RobotMap.h"
 
@@ -80,13 +84,14 @@ m_pDriverController(nullptr)
     //JoystickButton* buttonRackJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackJoyControlled);
     //JoystickButton* buttonBothJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackShovelCombined);
 
-	JoystickButton* buttonShovelFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelFlat);
-	JoystickButton* buttonShovelDump = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelDump);
+	//the four different Command Groups
+	JoystickButton* buttonHumanStation = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHuman);
+	JoystickButton* buttonDumpTote = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpTote);
 	JoystickButton* buttonRackFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlat);
-	JoystickButton* buttonRackVertical = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackVertical);
+	JoystickButton* buttonStackTotes = new JoystickButton(m_pOperatorStick, RobotMap::Controls::stackTotes);
 
 
-    //the three solenoids
+    //the three solenoid toggle buttons
     JoystickButton* buttonToggleShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelWidthToggle);
     JoystickButton* buttonToggleClaw = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackClawToggle);
     JoystickButton* buttonToggleChassis = new JoystickButton(m_pOperatorStick, RobotMap::Controls::chassisLiftToggle);
@@ -100,10 +105,10 @@ m_pDriverController(nullptr)
     //buttonRackJoy->WhenPressed(new SwitchJoyRack());
     //buttonBothJoy->WhenPressed(new SwitchJoyCombined());
 
-    buttonShovelFlat->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat, false));
-    buttonShovelDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
+    buttonHumanStation->WhenPressed(new PrepareHumanStation());
+    buttonDumpTote->WhenPressed(new StoreTote());
     buttonRackFlat->WhenPressed(new RackRotate(RobotMap::Rack::voltageDump, false));
-    buttonRackVertical->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
+    buttonStackTotes->WhenPressed(new StackTotes());
 
 
     buttonToggleShovel->WhenPressed(new ShovelToggleWidth());

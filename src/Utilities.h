@@ -12,8 +12,8 @@
 
 #define SAFE_DELETE(x) {if(NULL != x){delete x; x = NULL;}}
 
-#define PI_S (3.1415)
-#define DEGREES_TO_RADIANS(x) (x * (PI_S / 180))
+#define PI_S (3.1415f)
+#define DEGREES_TO_RADIANS(__deg_val__) ((float)__deg_val__ * (PI_S / 180.0f))
 
 //Global utilities for use around robot code
 
