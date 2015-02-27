@@ -38,9 +38,10 @@ private:
 		Utilities::startTimer();
 		CommandBase::init();
 
+		//this is BAD (well its good, but we are not setup to use it yet)
 		//get the voltage offsets for the subsystems; NOTE: this is not really used in teleop, so we can put it here
-		RobotMap::Shovel::voltageOffset = CommandBase::rackRotation->GetPotVoltage();
-		RobotMap::Rack::voltageOffset   = CommandBase::shovelRotation->GetPotVoltage();
+		//RobotMap::Shovel::voltageOffset = CommandBase::rackRotation->GetPotVoltage();
+		//RobotMap::Rack::voltageOffset   = CommandBase::shovelRotation->GetPotVoltage();
 
 
 		//autonomousCommand = new ExampleCommand();
@@ -147,7 +148,7 @@ private:
 		 * Controls
 		 */
 
-		SmartDashboard::PutNumber("Operator Control Mode", RobotMap::Controls::currOpMode);
+		//SmartDashboard::PutNumber("Operator Control Mode", RobotMap::Controls::currOpMode);
 
 
 		/*
@@ -173,8 +174,7 @@ private:
 		SmartDashboard::PutNumber("Shovel Setpoint", CommandBase::shovelRotation->GetSetpoint());
 		SmartDashboard::PutNumber("Shovel Voltage", CommandBase::shovelRotation->GetPotVoltage());
 		SmartDashboard::PutNumber("Shovel Solenoid", CommandBase::shovel->getSolenoid());
-		SmartDashboard::PutBoolean("Shovel Wide Right", CommandBase::shovel->GetShovelWideRight());
-		SmartDashboard::PutBoolean("Shovel Wide Left", CommandBase::shovel->GetShovelWideLeft());
+		SmartDashboard::PutBoolean("Shovel Reed", CommandBase::shovelRotation->GetReed());
 
 		//this is only going to affect the practice bot
 #ifndef COMP_BOT
