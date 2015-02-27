@@ -6,6 +6,8 @@
 #include "../OzPotentiometer.h"
 #include "../OzLimitSwitch.h"
 
+#include "RobotMap.h"
+
 class RackRotation: public PIDSubsystem
 {
 

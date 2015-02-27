@@ -18,6 +18,9 @@ ShovelRotation::ShovelRotation() :
 	m_pLimitRotationBackward = new OzLimitSwitch(RobotMap::Shovel::shovelLimitRotationBackward);
 #endif
 
+	m_pReedLeft  = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
+	m_pReedRight = new DigitalInput(RobotMap::Shovel::shovelWideRight);
+
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-RobotMap::Shovel::PID::extremeMotorVal,
 			RobotMap::Shovel::PID::extremeMotorVal); // start with the motor range
@@ -38,6 +41,9 @@ ShovelRotation::~ShovelRotation()
 {
 	SAFE_DELETE(m_pMotor);
 	SAFE_DELETE(m_pPot);
+
+	SAFE_DELETE(m_pReedLeft);
+	SAFE_DELETE(m_pReedRight);
 
 #ifndef COMP_BOT
 	SAFE_DELETE(m_pLimitRotationForward);
@@ -70,6 +76,10 @@ void ShovelRotation::UsePIDOutput(double output)
 #endif*/
 
 
+	//if the rack SETPOINT OR VOLTAGE is further forwards than vertical, and the reed switches are triggered (shovel open), THEN GO TO FLAT
+	if(( (CommandBase::rackRotation->GetPotVoltage() < RobotMap::Rack::voltageStack + 0.15) || (CommandBase::rackRotation->GetSetpoint() < RobotMap::Rack::voltageStack + 0.15f) ) && GetReed())
+		SetSetpoint(RobotMap::Shovel::voltageFlat);//NOTE: shovel bends to the will of the rack
+
 	//since the potentiometer goes the opposite direction, invert this value
 	m_pMotor->Set(-output);
 }
@@ -89,4 +99,9 @@ float ShovelRotation::GetPotVoltage()
 void ShovelRotation::TickPotentiometer()
 {
 	//m_pPot->Tick();
+}
+
+bool ShovelRotation::GetReed()
+{
+	return (!m_pReedLeft || !m_pReedRight);
 }

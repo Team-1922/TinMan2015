@@ -85,10 +85,11 @@ m_pDriverController(nullptr)
     //JoystickButton* buttonBothJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackShovelCombined);
 
 	//the four different Command Groups
-	JoystickButton* buttonHumanStation = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHuman);
-	JoystickButton* buttonDumpTote = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpTote);
+	JoystickButton* buttonShovelFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHuman);
+	JoystickButton* buttonShovelDump = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpTote);
 	JoystickButton* buttonRackFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlat);
-	JoystickButton* buttonStackTotes = new JoystickButton(m_pOperatorStick, RobotMap::Controls::stackTotes);
+	JoystickButton* buttonRackStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::stackTotes);
+	JoystickButton* buttonRackPickContainer = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackContainer);
 
 
     //the three solenoid toggle buttons
@@ -105,10 +106,11 @@ m_pDriverController(nullptr)
     //buttonRackJoy->WhenPressed(new SwitchJoyRack());
     //buttonBothJoy->WhenPressed(new SwitchJoyCombined());
 
-    buttonHumanStation->WhenPressed(new PrepareHumanStation());
-    buttonDumpTote->WhenPressed(new StoreTote());
+    buttonShovelFlat->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat, false));
+    buttonShovelDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
     buttonRackFlat->WhenPressed(new RackRotate(RobotMap::Rack::voltageDump, false));
-    buttonStackTotes->WhenPressed(new StackTotes());
+    buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
+    buttonRackPickContainer->WhenPressed(new RackRotate(RobotMap::Rack::voltagePickContainer));
 
 
     buttonToggleShovel->WhenPressed(new ShovelToggleWidth());

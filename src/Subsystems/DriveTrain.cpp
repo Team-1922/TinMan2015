@@ -1,5 +1,6 @@
 
 #include "../Commands/RaceDrive.h"
+#include "../Commands/TankDrive.h"
 #include "DriveTrain.h"
 #include "../RobotMap.h"
 #include "../Utilities.h"
@@ -46,7 +47,7 @@ DriveTrain::~DriveTrain()
 void DriveTrain::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new RaceDrive());
+	SetDefaultCommand(new TankDrive());
 }
 
 // Put methods for controlling this subsystem

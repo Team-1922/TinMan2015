@@ -50,28 +50,28 @@ private:
 		//the camera name (ex "cam0") can be found through the roborio web interface
 		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 		//Initializes a chooser item in the SmartDashboard to select the Autonomous Mode for the round
-		Chooser = new SendableChooser();
+		/*Chooser = new SendableChooser();
 		Chooser->AddDefault("Default Program", new Autonomous);
 		Chooser->AddObject("Other Autonomous", new AutonomousV2);
 		SmartDashboard::PutData("Autonomous Mode", Chooser);
 
 		//SmartDashboard Test code~~~
-		SmartDashboard::PutData("Shovel Width Toggle", new ShovelToggleWidth());
+		SmartDashboard::PutData("Shovel Width Toggle", new ShovelToggleWidth());*/
 
 
 		//this is for switchible drive modes
-		driveModeChooser = new SendableChooser();
+		/*driveModeChooser = new SendableChooser();
 		driveModeChooser->AddDefault("Controller Drive", new RaceDrive);
 		driveModeChooser->AddObject("Arcade Drive", new ArcadeDrive);
 		driveModeChooser->AddObject("Tank Drive", new TankDrive);
-		SmartDashboard::PutData("Drive Mode", driveModeChooser);
+		SmartDashboard::PutData("Drive Mode", driveModeChooser);*/
 
 		//this is for switching which thing the joystick operator is controlling
-		operatorJoyControl = new SendableChooser();
+		/*operatorJoyControl = new SendableChooser();
 		operatorJoyControl->AddDefault("Control Rack", new SwitchJoyRack());
 		operatorJoyControl->AddObject("Control Shovel", new SwitchJoyShovel());
 		operatorJoyControl->AddObject("Control Both", new SwitchJoyCombined());
-		SmartDashboard::PutData("Operator Control Mode", operatorJoyControl);
+		SmartDashboard::PutData("Operator Control Mode", operatorJoyControl);*/
 
 
 	}
@@ -91,7 +91,7 @@ private:
 	void AutonomousInit()
 	{
 		//Retrieves selected Autonomous mode from SmartDashboard
-		autonomousCommand =(Command*) Chooser->GetSelected();
+		autonomousCommand = new Autonomous();
 		if(autonomousCommand)//just to be sure
 			autonomousCommand->Start();
 		//if (autonomousCommand != NULL)
@@ -122,21 +122,23 @@ private:
 		UniversalPeriodic();
 		Scheduler::GetInstance()->Run();
 
+		//ONLY ONE DRIVE MODE
 		//the drive and operator modes
-		Command* curDrive = (Command*)driveModeChooser->GetSelected();
+		/*Command* curDrive = (Command*)driveModeChooser->GetSelected();
 		if(curDrive != currentDriveMode)
 		{
 			currentDriveMode = curDrive;
 			currentDriveMode->Start();
-		}
+		}*/
 
+		//THIS IS NO LONGER BEING USED
 		//TODO: this will be changed with buttons, and will not reflect back upon this radio box
-		Command* curOp = (Command*)operatorJoyControl->GetSelected();
+		/*Command* curOp = (Command*)operatorJoyControl->GetSelected();
 		if(curOp != currentOperatorJoyMode)
 		{
 			currentOperatorJoyMode = curOp;
 			currentOperatorJoyMode->Start();
-		}
+		}*/
 
 
 		//display all potentially useful information to the user

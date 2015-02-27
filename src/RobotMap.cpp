@@ -27,10 +27,11 @@ namespace RobotMap
 		const int rackShovelCombined = 11;
 
 		//these are the controls for shovel and rack angles
-		const int prepareHuman = 3;
-		const int dumpTote     = 5;
-		const int rackFlat     = 7;
-		const int stackTotes   = 9;
+		const int prepareHuman  = 3;
+		const int dumpTote      = 5;
+		const int rackFlat      = 11;
+		const int stackTotes    = 9;
+		const int rackContainer = 7;
 
 		//controls for changing the width of the shovel and rack
 		const int shovelWidthToggle = 8;

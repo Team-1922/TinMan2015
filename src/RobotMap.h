@@ -11,7 +11,7 @@
 #include "WPILib.h"
 
 //TODO:uncomment this for competition bot
-// #define COMP_BOT
+ #define COMP_BOT
 
 enum OperatorMode
 {
@@ -51,6 +51,7 @@ namespace RobotMap
 		extern const int dumpTote;
 		extern const int rackFlat;
 		extern const int stackTotes;
+		extern const int rackContainer;
 
 		//controls for changing the width of the shovel and rack
 		extern const int shovelWidthToggle;

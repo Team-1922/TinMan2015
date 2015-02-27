@@ -86,24 +86,35 @@ void RackRotation::UsePIDOutput(double output)
 		return;
 	}*/
 
+	//if the shovel is past the dump position, and the reed switches are open, and the setpoint is past vertical, don't go
+	//if((CommandBase::shovelRotation->GetPotVoltage() < RobotMap::Shovel::voltageDump + 0.15f) && CommandBase::shovelRotation->GetReed() && GetSetpoint() < (RobotMap::Rack::voltageStack + 0.15f))
+	//	m_pMotor->Set(0);//stop the rack (this will
 
-	//give it less power as it reaches the top
-	float angle = (RobotMap::Rack::voltageDump - GetPotVoltage())*(360.0f/4.0f);//since there is about 90 degrees in one volt
+	//give it less power as it reaches the top; NOTE: this is not good math, but hey; it works
+	float badAngle = GetPotVoltage() - RobotMap::Rack::voltageDump;
+	float trueAngle = badAngle * 90.0f;
 
-	//if the direction is positive and the angle is below 90 degrees OR the direction is negative, and the angle is MORE than 90 degrees, then use this cosine
-	if((output < 0.0f && angle < 90.0f) || (output > 0.0f && angle > 90.0f))
-		output *= fabs(cosf(DEGREES_TO_RADIANS(angle))) + 0.03 /*Make sure it goes at least a little bit*/;
-	/*else//the direction is negative and the angle is less than 90 OR the direction is positive and the angle is more than 90
+	if((output < 0.0f && trueAngle < 90.0f) || (output > 0.0f && trueAngle > 90.0f))
+	{
+		output *= fabs(cosf(DEGREES_TO_RADIANS(badAngle))) + 0.03 /*Make sure it goes at least a little bit*/;
+	}
+	else
 	{
 #ifdef COMP_BOT
-		if(GetPotVoltage() > 2.0f || GetPotVoltage() < 0.5f)//it starts backdriving at 2.0 volts and 0.5 volts
-			output *= -0.1f * fabs(cosf(DEGREES_TO_RADIANS(angle))) + 0.03f;//we need to backdrive more as we get lower in order to keep a consistent speed, because gravity applies more force
-		//also, multiply by a very small number, because it is likely we only need a little power to keep it from crashing down completely, and negative so it does backdrive
+		//TODO: get these values
+		/*if(GetPotVoltage < 1.9f)
+		{
+			output = 0.1f;//backdrive a little bit
+		}
+		else if(GetPotVoltage() > 2.9)
+		{
+			output = -0.1f;
+		}*/
 #else
-		output *= 0.1f * fabs(cosf(DEGREES_TO_RADIANS(90.0f - angle))) + 0.03f;//use 90 degrees minus because it gravity does more work towards horizontal
-		//also, multiply it by a very small number, because scarecrow cannot backdrive itself, TIN MAN CAN
 #endif
-	}*/
+
+	}
+
 
 	m_pMotor->Set(output);
 }

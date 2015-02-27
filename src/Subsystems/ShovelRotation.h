@@ -6,12 +6,18 @@
 #include "../OzPotentiometer.h"
 #include "../OzLimitSwitch.h"
 
+#include "RobotMap.h"
+
+
 class ShovelRotation: public PIDSubsystem
 {
 	//the motor that rotates the shovel
 	SpeedController* m_pMotor;
 	AnalogPotentiometer* m_pPot;
 	//OzLimitSwitch*   m_pShovelPivotLim;
+
+	DigitalInput *m_pReedLeft;
+	DigitalInput *m_pReedRight;
 
 #ifndef COMP_BOT
 	OzLimitSwitch* m_pLimitRotationForward;
@@ -28,6 +34,8 @@ public:
 
 	// current Potentiometer reading
 	float GetPotVoltage();
+
+	bool GetReed();//returns true if EITHER are open (shovel is closed
 
 	//get the limit switch state for the practice bot
 	//bool GetBackLimSwitch(){return m_pShovelPivotLim->Get();}
