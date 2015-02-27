@@ -26,7 +26,7 @@ namespace RobotMap
 		const int shovelJoyControlled = 9;
 		const int rackShovelCombined = 11;
 
-		//these are the controls for shovel and rack angles
+		//these 0are the controls for shovel and rack angles
 		const int prepareHuman  = 3;
 		const int dumpTote      = 5;
 		const int rackFlat      = 11;
@@ -91,7 +91,11 @@ namespace RobotMap
 	namespace Shovel
 	{
 		const int potentiometer = 0;//potentiometer(AI)
-		const int shovelPivotMotor = 4;//(4)Motor (PWM)
+#ifdef COMP_BOT
+		const int shovelPivotMotor = 6;//(4)Motor (PWM)
+#else
+		const int shovelPivotMotor = 4;
+#endif
 		const int shovelWideRight = 8;//limit switch (DI)
 		const int shovelWideLeft = 9;//limit switch (DI)
 		const int shovelLimitRotationForward = 4;//(DI)
@@ -191,8 +195,14 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
 		const float voltageDump 			= 2.37f + voltageOffset; // voltage for when the rack is placing totes on the rack
-		const float voltageStack 			= 1.05f + voltageOffset; // voltage for when the rack is in position for stacking
-		const float voltagePickContainer 	= 0.0f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
+		const float voltageStack 			= 1.1f + voltageOffset; // voltage for when the rack is in position for stacking
+		const float voltagePickContainer 	= 0.5f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
+
+		const float voltageVertical = 1.22f;
+
+		//the two voltages to start giving power to keep from backdriving too quickly
+		const float voltageBackdriveFront = 0.82f;
+		const float voltageBackdriveRear = 2.2f;
 
 		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
 
@@ -215,7 +225,7 @@ namespace RobotMap
 			const float P = 5.0f;
 			const float I = 0.0f;
 			const float D = -2.0f;
-			const float extremeMotorVal = 0.7;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.85;//the absolute value of the maximum motor value
 #else
 			const float P = 5.0f;
 			const float I = 0.0f;

@@ -35,7 +35,7 @@ public:
 	// current Potentiometer reading
 	float GetPotVoltage();
 
-	bool GetReed();//returns true if EITHER are open (shovel is closed
+	bool GetReed();//returns true if EITHER are open (shovel is closed)
 
 	//get the limit switch state for the practice bot
 	//bool GetBackLimSwitch(){return m_pShovelPivotLim->Get();}

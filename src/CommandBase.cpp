@@ -47,8 +47,8 @@ void CommandBase::init()
 	shovel = new Shovel();
 	//camera = new Camera();
 	//pneumatics = new Pneumatics();
-	oi = new OI();
 	chassis = new Chassis();
 	rackRotation = new RackRotation();
 	shovelRotation = new ShovelRotation();
+	oi = new OI();
 }

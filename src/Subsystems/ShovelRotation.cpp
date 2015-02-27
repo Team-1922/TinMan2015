@@ -76,9 +76,10 @@ void ShovelRotation::UsePIDOutput(double output)
 #endif*/
 
 
+	//TODO: uncomment
 	//if the rack SETPOINT OR VOLTAGE is further forwards than vertical, and the reed switches are triggered (shovel open), THEN GO TO FLAT
-	if(( (CommandBase::rackRotation->GetPotVoltage() < RobotMap::Rack::voltageStack + 0.15) || (CommandBase::rackRotation->GetSetpoint() < RobotMap::Rack::voltageStack + 0.15f) ) && GetReed())
-		SetSetpoint(RobotMap::Shovel::voltageFlat);//NOTE: shovel bends to the will of the rack
+	//if(( (CommandBase::rackRotation->GetPotVoltage() < RobotMap::Rack::voltageStack + 0.15) || (CommandBase::rackRotation->GetSetpoint() < RobotMap::Rack::voltageStack + 0.15f) ) && GetReed())
+	//	SetSetpoint(RobotMap::Shovel::voltageFlat);//NOTE: shovel bends to the will of the rack
 
 	//since the potentiometer goes the opposite direction, invert this value
 	m_pMotor->Set(-output);

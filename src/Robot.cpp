@@ -47,9 +47,9 @@ private:
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 
-		CameraServer::GetInstance()->SetQuality(50);
+		//CameraServer::GetInstance()->SetQuality(50);
 		//the camera name (ex "cam0") can be found through the roborio web interface
-		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
+		//CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 		//Initializes a chooser item in the SmartDashboard to select the Autonomous Mode for the round
 		/*Chooser = new SendableChooser();
 		Chooser->AddDefault("Default Program", new Autonomous);
@@ -119,6 +119,7 @@ private:
 
 	void TeleopPeriodic()
 	{
+
 		//update this BEFORE running commands
 		UniversalPeriodic();
 		Scheduler::GetInstance()->Run();
@@ -164,6 +165,7 @@ private:
 				CommandBase::driveTrain->getLeft());
 		SmartDashboard::PutNumber("Right Motor (-1 to 1)",
 				CommandBase::driveTrain->getRight());
+		SmartDashboard::PutString("Drive Train Command", CommandBase::driveTrain->GetCurrentCommand()->GetName());
 
 		/*
 		 * Shovel Information

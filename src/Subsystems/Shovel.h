@@ -16,8 +16,8 @@ private:
 	//OzPotentiometer* m_pPotentiometer;
 	OzSolenoid* m_pWidthSolenoid;
 
-	DigitalInput* m_pShovelWideRight;
-	DigitalInput* m_pShovelWideLeft;
+	//DigitalInput* m_pShovelWideRight;
+	//DigitalInput* m_pShovelWideLeft;
 
 
 	// It's desirable that everything possible under private except
@@ -28,8 +28,8 @@ public:
 
 	void InitDefaultCommand();
 
-	bool GetShovelWideRight(){return m_pShovelWideRight->Get();}
-	bool GetShovelWideLeft(){return m_pShovelWideLeft->Get();}
+	//bool GetShovelWideRight(){return m_pShovelWideRight->Get();}
+	//bool GetShovelWideLeft(){return m_pShovelWideLeft->Get();}
 
 	/*
 	 * Potentiometer Control

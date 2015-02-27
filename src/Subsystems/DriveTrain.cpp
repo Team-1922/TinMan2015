@@ -96,8 +96,8 @@ void DriveTrain::RaceDrivePeriodic(Joystick* stick)
 void DriveTrain::TankDrivePeriodic(Joystick* stick1, Joystick* stick2)
 {
 	//TODO: these might not need to be inverted
-	float right = -stick1->GetY();
-	float left = stick2->GetY();
+	float left = stick1->GetY();
+	float right = -stick2->GetY();
 
 	setLeft(left);
 	setRight(right);
@@ -106,14 +106,24 @@ void DriveTrain::TankDrivePeriodic(Joystick* stick1, Joystick* stick2)
 
 void DriveTrain::setLeft(float val)
 {
+#ifdef COMP_BOT
+	m_pFrontLeft->Set(-val);
+	m_pRearLeft->Set(-val);
+#else
 	m_pFrontLeft->Set(val);
 	m_pRearLeft->Set(val);
+#endif
 }
 
 void DriveTrain::setRight(float val)
 {
+#ifdef COMP_BOT
+	m_pFrontRight->Set(-val);
+	m_pRearRight->Set(-val);
+#else
 	m_pFrontRight->Set(val);
 	m_pRearRight->Set(val);
+#endif
 }
 
 void DriveTrain::StopMotors()

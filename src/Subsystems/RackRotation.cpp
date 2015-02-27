@@ -92,24 +92,40 @@ void RackRotation::UsePIDOutput(double output)
 
 	//give it less power as it reaches the top; NOTE: this is not good math, but hey; it works
 	float badAngle = GetPotVoltage() - RobotMap::Rack::voltageDump;
-	float trueAngle = badAngle * 90.0f;
+	float potVoltage = GetPotVoltage();
+	float trueAngle = (RobotMap::Rack::voltageDump - potVoltage) * 90.0f;
 
-	if((output < 0.0f && trueAngle < 90.0f) || (output > 0.0f && trueAngle > 90.0f))
+	//if its within a certain threshold of vertical, then use the REAL angle to use cosine to mitigate oscillation
+	if(Utilities::isEqual(RobotMap::Rack::voltageVertical, potVoltage, 0.15))//hopefully this will keep it from shaking at top
+	{
+		output *= fabs(cosf(DEGREES_TO_RADIANS(trueAngle))) + 0.05;
+	}
+	if((output < 0.0f && potVoltage > RobotMap::Rack::voltageVertical) || (output > 0.0f && potVoltage < RobotMap::Rack::voltageVertical))
 	{
 		output *= fabs(cosf(DEGREES_TO_RADIANS(badAngle))) + 0.03 /*Make sure it goes at least a little bit*/;
+
+		//multiply by negative one to invert the throttle; add one to make this go from 0 to two, then divide by two to normalize the value
+		float throttle = (-1.0f * CommandBase::oi->GetOperatorJoystick()->GetRawAxis(3)+1.0f) / 2;
+
+		output *= throttle;
+
+		//if it is within a range from the bottom (negative, then just stop the rack)
+		if(throttle < 0.1)
+		{
+			SetSetpointRelative(0.0f);
+		}
 	}
 	else
 	{
 #ifdef COMP_BOT
-		//TODO: get these values
-		/*if(GetPotVoltage < 1.9f)
+		if(potVoltage < RobotMap::Rack::voltageBackdriveFront && output < 0.0f)
 		{
 			output = 0.1f;//backdrive a little bit
 		}
-		else if(GetPotVoltage() > 2.9)
+		else if(potVoltage > RobotMap::Rack::voltageBackdriveRear && output > 0.0f)
 		{
 			output = -0.1f;
-		}*/
+		}
 #else
 #endif
 

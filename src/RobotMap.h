@@ -182,6 +182,11 @@ namespace RobotMap
 		extern const float voltageDump; // voltage for when the shovel is placing totes on the rack
 		extern const float voltageStack; // voltage for when the rack is in position for stacking
 		extern const float voltagePickContainer; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
+		extern const float voltageVertical;
+
+		//the two voltages to start giving power to keep from backdriving too quickly
+		extern const float voltageBackdriveFront;
+		extern const float voltageBackdriveRear;
 
 		extern const float dumpEpsilon; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
 
