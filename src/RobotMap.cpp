@@ -195,15 +195,15 @@ namespace RobotMap
 #ifdef COMP_BOT // TinMan X
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
-		const float voltageDump 			= 2.37f + voltageOffset; // voltage for when the rack is placing totes on the rack
-		const float voltageStack 			= 1.15f + voltageOffset; // voltage for when the rack is in position for stacking
-		const float voltagePickContainer 	= 0.35f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
+		const float voltageDump 			= 4.93f + voltageOffset; // voltage for when the rack is placing totes on the rack
+		const float voltageStack 			= 3.71f + voltageOffset; // voltage for when the rack is in position for stacking
+		const float voltagePickContainer 	= 2.91f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
-		const float voltageVertical = 1.22f;
+		const float voltageVertical = 3.78f;
 
 		//the two voltages to start giving power to keep from backdriving too quickly
-		const float voltageBackdriveFront = 0.56f;
-		const float voltageBackdriveRear = 1.8f;
+		const float voltageBackdriveFront = 3.12f;
+		const float voltageBackdriveRear = 4.36f;
 
 		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
 
