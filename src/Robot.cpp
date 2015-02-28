@@ -16,6 +16,8 @@
 
 #include "Utilities.h"
 
+#include "Commands/RackSetpointHere.h"
+
 class Robot: public IterativeRobot
 {
 private:
@@ -31,12 +33,16 @@ private:
 	SendableChooser *operatorJoyControl;
 	Command* currentOperatorJoyMode;
 
+	RackSetpointHere* rackSetSetpointCurrentAngle;
+
 
 	void RobotInit()
 	{
 
 		Utilities::startTimer();
 		CommandBase::init();
+
+		rackSetSetpointCurrentAngle = new RackSetpointHere();
 
 		//this is BAD (well its good, but we are not setup to use it yet)
 		//get the voltage offsets for the subsystems; NOTE: this is not really used in teleop, so we can put it here
@@ -52,7 +58,7 @@ private:
 		//CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 		//Initializes a chooser item in the SmartDashboard to select the Autonomous Mode for the round
 		/*Chooser = new SendableChooser();
-		Chooser->AddDefault("Default Program", new Autonomous);
+		Chooser->AddDefault("Default Program", new Autonomous);/
 		Chooser->AddObject("Other Autonomous", new AutonomousV2);
 		SmartDashboard::PutData("Autonomous Mode", Chooser);
 
@@ -123,6 +129,11 @@ private:
 		//update this BEFORE running commands
 		UniversalPeriodic();
 		Scheduler::GetInstance()->Run();
+
+
+		//command for stopping the rack at its current position
+		if(Utilities::isEqual(CommandBase::oi->GetOperatorThrottle(), 0.0f, 0.15f))
+			rackSetSetpointCurrentAngle->Run();
 
 		//ONLY ONE DRIVE MODE
 		//the drive and operator modes

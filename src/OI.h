@@ -16,6 +16,9 @@ public:
 	Joystick* GetOperatorJoystick();
 	Joystick* GetDriverController();
 
+	//returns a value between 0 and 1
+	float GetOperatorThrottle();
+
 private:
 	Joystick* m_pDriverStick1;
 	Joystick* m_pDriverStick2;

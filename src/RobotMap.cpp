@@ -32,6 +32,7 @@ namespace RobotMap
 		const int rackFlat      = 11;
 		const int stackTotes    = 9;
 		const int rackContainer = 7;
+		const int stackRackShovelSame = 2;
 
 		//controls for changing the width of the shovel and rack
 		const int shovelWidthToggle = 8;
@@ -116,7 +117,7 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
-		const float voltageDump 			= 3.1f + voltageOffset; // voltage for when the shovel is placing totes on the rack
+		const float voltageDump 			= 3.35f + voltageOffset; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= 4.9f + voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= 4.9f + voltageOffset; // voltage for when the shovel is in position for stacking
 
@@ -195,14 +196,14 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 0.0f;//this is the voltage value when the rack is in store position
 		const float voltageDump 			= 2.37f + voltageOffset; // voltage for when the rack is placing totes on the rack
-		const float voltageStack 			= 1.1f + voltageOffset; // voltage for when the rack is in position for stacking
-		const float voltagePickContainer 	= 0.5f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
+		const float voltageStack 			= 1.15f + voltageOffset; // voltage for when the rack is in position for stacking
+		const float voltagePickContainer 	= 0.35f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
 		const float voltageVertical = 1.22f;
 
 		//the two voltages to start giving power to keep from backdriving too quickly
-		const float voltageBackdriveFront = 0.82f;
-		const float voltageBackdriveRear = 2.2f;
+		const float voltageBackdriveFront = 0.56f;
+		const float voltageBackdriveRear = 1.8f;
 
 		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
 
@@ -225,7 +226,7 @@ namespace RobotMap
 			const float P = 5.0f;
 			const float I = 0.0f;
 			const float D = -2.0f;
-			const float extremeMotorVal = 0.85;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.9;//the absolute value of the maximum motor value
 #else
 			const float P = 5.0f;
 			const float I = 0.0f;

@@ -52,6 +52,7 @@ namespace RobotMap
 		extern const int rackFlat;
 		extern const int stackTotes;
 		extern const int rackContainer;
+		extern const int stackRackShovelSame;
 
 		//controls for changing the width of the shovel and rack
 		extern const int shovelWidthToggle;

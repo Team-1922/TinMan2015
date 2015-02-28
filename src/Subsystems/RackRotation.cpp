@@ -105,31 +105,32 @@ void RackRotation::UsePIDOutput(double output)
 		output *= fabs(cosf(DEGREES_TO_RADIANS(badAngle))) + 0.03 /*Make sure it goes at least a little bit*/;
 
 		//multiply by negative one to invert the throttle; add one to make this go from 0 to two, then divide by two to normalize the value
-		float throttle = (-1.0f * CommandBase::oi->GetOperatorJoystick()->GetRawAxis(3)+1.0f) / 2;
+		float throttle = CommandBase::oi->GetOperatorThrottle();
 
 		output *= throttle;
 
 		//if it is within a range from the bottom (negative, then just stop the rack)
-		if(throttle < 0.1)
+		/*if(throttle < 0.1)
 		{
 			SetSetpointRelative(0.0f);
-		}
+		}*/
 	}
 	else
 	{
 #ifdef COMP_BOT
-		if(potVoltage < RobotMap::Rack::voltageBackdriveFront && output < 0.0f)
+		if((potVoltage < RobotMap::Rack::voltageBackdriveFront) && (output < 0.0f))
 		{
 			output = 0.1f;//backdrive a little bit
 		}
-		else if(potVoltage > RobotMap::Rack::voltageBackdriveRear && output > 0.0f)
+		else if((potVoltage > RobotMap::Rack::voltageBackdriveRear) && (output > 0.0f))
 		{
-			output = -0.1f;
+			output = -0.15f;
 		}
 #else
 #endif
 
 	}
+
 
 
 	m_pMotor->Set(output);

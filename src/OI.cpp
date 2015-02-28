@@ -145,5 +145,11 @@ Joystick* OI::GetDriverController()
 	return m_pDriverController;
 }
 
+float OI::GetOperatorThrottle()
+{
+	//multiply by negative one to invert; add one to change maximum range to 0-2; then divide by two to normalize
+	return (-1.0f * GetOperatorJoystick()->GetRawAxis(3)+1.0f) / 2;
+}
+
 
 
