@@ -1,9 +1,11 @@
 #include "ShovelRackRotate.h"
-#include "../subsystems/RackRotation.h"
+#include "Utilities.h"
+#include "../Subsystems/RackRotation.h"
+#include "../Subsystems/ShovelRotation.h"
 
 
-ShovelRackRotate::ShovelRackRotate(double shovelSetpoint, double rackSetpoint)
-: m_shovelSetpoint(shovelSetpoint), m_rackSetpoint(rackSetpoint)
+ShovelRackRotate::ShovelRackRotate(double rackSetpoint)
+: m_rackSetpoint(rackSetpoint)
 {
 	Requires(shovelRotation);
 	Requires(rackRotation);
@@ -13,8 +15,8 @@ ShovelRackRotate::ShovelRackRotate(double shovelSetpoint, double rackSetpoint)
 void ShovelRackRotate::Initialize()
 {
 	// assume that the shovel is already in the right position - if it is not bad things will happen
-	rackRotation->SetSetpoint(m_shovelSetpoint);
-	shovelRotation->SetSetpoint(m_rackSetpoint);
+	rackRotation->SetSetpoint(m_rackSetpoint);
+	//shovelRotation->SetSetpoint(m_shovelSetpoint);
 	rackRotation->Enable();
 	shovelRotation->Enable();
 }
@@ -24,7 +26,7 @@ void ShovelRackRotate::Execute()
 {
 	// update the shovel position at this location whenever execute is called. this way we slave the shovel to the rack
 	// location - if we don't do it here then one could get ahead of the other
-	//shovelRotation->SetSetpoint(rackRotation->GetPotVoltage() - RobotMap::Shovel::pot90DegreeVoltageFromRack);
+	shovelRotation->SetSetpoint(Utilities::getShovelSetpointFromRackVoltage(rackRotation->GetPotVoltage()));
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -41,8 +43,8 @@ void ShovelRackRotate::End()
 	//shovelRotation->Disable();
 
 	//if this is interrupted, then make sure it stops where it is
-	shovelRotation->SetSetpointRelative(0);
-	rackRotation->SetSetpointRelative(0);
+	shovelRotation->SetSetpoint(shovelRotation->GetPotVoltage());
+	rackRotation->SetSetpoint(shovelRotation->GetPotVoltage());
 }
 
 // Called when another command which requires one or more of the same

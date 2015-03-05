@@ -120,6 +120,7 @@ namespace RobotMap
 		const float voltageDump 			= 3.35f + voltageOffset; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= 4.9f + voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= 4.9f + voltageOffset; // voltage for when the shovel is in position for stacking
+		const float voltageVertical         = 3.9f;//voltage when the shovel is vertical
 
 #else // Scarecrow
 		//TODO:

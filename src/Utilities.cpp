@@ -83,4 +83,14 @@ float  motorConstSpeed(float rpmDesired, float rpmCurrent, float &rpmCompounded,
 }
 
 
+float getShovelSetpointFromRackVoltage(float rackVoltage)
+{
+	//this uses a linear function that I got using point slope form; the slope WILL be NEGATIVE one, because the poteontiometers have the same
+	// "gearing"  The negative one comes from the fact the as the rack voltage increases, the shovel voltage decreases
+	return -rackVoltage + RobotMap::Rack::voltageVertical + RobotMap::Shovel::voltageVertical;
+	//simplified form of this point slope equation:
+	//			retVal - RobotMap::Shovel::voltageVertical = -1(rackVoltage - RobotMap::Rack::voltageVertical)
+}
+
+
 }

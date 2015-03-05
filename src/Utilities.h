@@ -67,6 +67,11 @@ float getTime();
  */
 float  motorConstSpeed(float rpmDesired, float rpmCurrent, float &rpmCompounded, float gearingRatio, float maxMotorRPM);
 
+/*
+ * This takes the voltage of the rack and converts it to the voltage we want to give to the shovel PID
+ */
+float getShovelSetpointFromRackVoltage(float rackVoltage);
+
 }
 
 

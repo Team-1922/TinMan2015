@@ -42,9 +42,9 @@ namespace RobotMap
 		extern const int retractRack;
 
 		//these are for selecting which subsystem the joystick is controlling
-		extern const int rackJoyControlled;
-		extern const int shovelJoyControlled;
-		extern const int rackShovelCombined;
+		//extern const int rackJoyControlled;
+		//extern const int shovelJoyControlled;
+		//extern const int rackShovelCombined;
 
 		//these are the controls for shovel and rack angles
 		extern const int prepareHuman;
@@ -127,6 +127,7 @@ namespace RobotMap
 		extern const float voltageDump; // voltage for when the shovel is placing totes on the rack
 		extern const float voltageFlat; // voltage for when the shovel is horizontal
 		extern const float voltageStack; // voltage for when the shovel is in position for stacking
+		extern const float voltageVertical;//the voltage when the shovel is vertical (perpendicular to the rack while it is flat about)
 
 		bool withinRotationRange(float voltage);
 

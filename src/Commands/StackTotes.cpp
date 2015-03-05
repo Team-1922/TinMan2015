@@ -12,6 +12,7 @@
 #include "ShovelCloseWidth.h"
 #include "ShovelOpenWidth.h"
 #include "ShovelRackRotate.h"
+#include "RackRotate.h"
 
 #include <iostream>
 
@@ -28,21 +29,15 @@ StackTotes::StackTotes()
 	//TODO: undo this AddSequential(new ChassisLift(true));
 
 	// rotate the rack and the shovel
-	AddSequential(new ShovelRackRotate(RobotMap::Shovel::voltageStack, RobotMap::Rack::voltageStack));
+	AddSequential(new ShovelRackRotate(RobotMap::Rack::voltageStack));
 
 	// retract the shovel supports and drop the totes onto the platform
 	AddSequential(new ShovelOpenWidth());
 
 	// rotate the shovel back to horizontal, and the rack back to flat
-	AddSequential(new ShovelRackRotate(RobotMap::Shovel::voltageFlat, RobotMap::Rack::voltageDump));
+	AddSequential(new ShovelRotate(RobotMap::Shovel::voltageFlat));
+	AddSequential(new RackRotate(RobotMap::Rack::voltageDump));
 
 	// drop the bot
 	//AddSequential(new ChassisLift(false));
-
-
-
-
-
-
-
 }
