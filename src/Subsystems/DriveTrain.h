@@ -9,9 +9,9 @@ class DriveTrain: public Subsystem
 private:
 
 	SpeedController* m_pFrontLeft;
-	SpeedController* m_pRearLeft;
+	//SpeedController* m_pRearLeft;
 	SpeedController* m_pFrontRight;
-	SpeedController* m_pRearRight;
+	//SpeedController* m_pRearRight;
 
 	Encoder* m_pLeftEncoder;
 	Encoder* m_pRightEncoder;

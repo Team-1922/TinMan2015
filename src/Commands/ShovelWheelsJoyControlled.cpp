@@ -1,4 +1,5 @@
 #include "ShovelWheelsJoyControlled.h"
+#include "Utilities.h"
 
 ShovelWheelsJoyControlled::ShovelWheelsJoyControlled()
 {
@@ -15,7 +16,18 @@ void ShovelWheelsJoyControlled::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShovelWheelsJoyControlled::Execute()
 {
-	shovel->SetSuckWheels(oi->GetOperatorJoystick()->GetY());
+	//y axis movement takes priority over twist
+	float joyTwist = oi->GetOperatorJoystick()->GetTwist();
+	float joyYAxis = oi->GetOperatorJoystick()->GetY();
+
+	if(Utilities::isEqual(joyYAxis, 0.0f, 0.15f))
+	{
+		shovel->RotateTote(joyTwist);
+	}
+	else
+	{
+		shovel->SetSuckWheels(joyYAxis);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

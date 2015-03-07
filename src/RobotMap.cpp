@@ -51,9 +51,9 @@ namespace RobotMap
 
 		//the locations of the motors
 		const int frontLeft  = 0;
-		const int rearLeft   = 1;
+		//const int rearLeft   = 1;
 		const int frontRight = 2;
-		const int rearRight  = 3;
+		//const int rearRight  = 3;
 
 		//motor encoders
 		const int leftEncA = 0;
@@ -114,8 +114,8 @@ namespace RobotMap
 		const int shovelLimitRotationBackward = 5;//(DI)
 
 		//the two motor controllers for the shovel suck mechanism
-		const int suckWheelLeft = 0;//TODO: WHICH ONES ARE THESE
-		const int suckWheelRight = 2;
+		const int suckWheelLeft = 1;//TODO: WHICH ONES ARE THESE
+		const int suckWheelRight = 3;
 
 		const int shovelWidthSol[2] = {4,5};//solenoid (SOL)
 		//4: close; 5: open

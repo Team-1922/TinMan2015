@@ -62,6 +62,9 @@ public:
 	 * Suck Wheel Control
 	 */
 	void SetSuckWheels(float val);
+	void SetSuckWheelLeft(float val);
+	void SetSuckWheelRight(float val);
+	void RotateTote(float val);//this has the suck wheels go in different directions to rotate the tote
 
 
 	/*

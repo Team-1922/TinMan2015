@@ -9,9 +9,9 @@ DriveTrain::DriveTrain() :
 		Subsystem("DriveTrain")
 {
 	m_pFrontLeft = new Talon(RobotMap::DriveTrain::frontLeft);
-	m_pRearLeft = new Talon(RobotMap::DriveTrain::rearLeft);
+	//m_pRearLeft = new Talon(RobotMap::DriveTrain::rearLeft);
 	m_pFrontRight = new Talon(RobotMap::DriveTrain::frontRight);
-	m_pRearRight = new Talon(RobotMap::DriveTrain::rearRight);
+	//m_pRearRight = new Talon(RobotMap::DriveTrain::rearRight);
 	m_pLeftEncoder = new Encoder(
 			RobotMap::DriveTrain::leftEncA,
 			RobotMap::DriveTrain::leftEncB, true,
@@ -36,9 +36,9 @@ DriveTrain::~DriveTrain()
 	StopMotors();
 
 	SAFE_DELETE(m_pFrontLeft);
-	SAFE_DELETE(m_pRearLeft);
+	//SAFE_DELETE(m_pRearLeft);
 	SAFE_DELETE(m_pFrontRight);
-	SAFE_DELETE(m_pRearRight);
+	//SAFE_DELETE(m_pRearRight);
 
 	SAFE_DELETE(m_pLeftEncoder);
 	SAFE_DELETE(m_pRightEncoder);
@@ -108,10 +108,10 @@ void DriveTrain::setLeft(float val)
 {
 #ifdef COMP_BOT
 	m_pFrontLeft->Set(-val);
-	m_pRearLeft->Set(-val);
+	//m_pRearLeft->Set(-val);
 #else
 	m_pFrontLeft->Set(val);
-	m_pRearLeft->Set(val);
+	//m_pRearLeft->Set(val);
 #endif
 }
 
@@ -119,19 +119,19 @@ void DriveTrain::setRight(float val)
 {
 #ifdef COMP_BOT
 	m_pFrontRight->Set(-val);
-	m_pRearRight->Set(-val);
+	//m_pRearRight->Set(-val);
 #else
 	m_pFrontRight->Set(val);
-	m_pRearRight->Set(val);
+	//m_pRearRight->Set(val);
 #endif
 }
 
 void DriveTrain::StopMotors()
 {
 	m_pFrontLeft->Set(0);
-	m_pRearLeft->Set(0);
+	//m_pRearLeft->Set(0);
 	m_pFrontRight->Set(0);
-	m_pRearRight->Set(0);
+	//m_pRearRight->Set(0);
 }
 
 void DriveTrain::DriveStraight(float motorVal)

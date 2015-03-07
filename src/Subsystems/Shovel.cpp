@@ -42,8 +42,24 @@ void Shovel::InitDefaultCommand()
 
 void Shovel::SetSuckWheels(float val)
 {
+	SetSuckWheelLeft(val);
+	SetSuckWheelRight(val);
+}
+
+void Shovel::SetSuckWheelLeft(float val)
+{
 	m_pSuckWheelLeft->Set(val);
+}
+
+void Shovel::SetSuckWheelRight(float val)
+{
 	m_pSuckWheelRight->Set(val);
+}
+
+void Shovel::RotateTote(float val)
+{
+	SetSuckWheelLeft(val);
+	SetSuckWheelRight(-val);
 }
 
 bool Shovel::isOpen()

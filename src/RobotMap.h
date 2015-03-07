@@ -11,7 +11,7 @@
 #include "WPILib.h"
 
 //TODO:uncomment this for competition bot
-// #define COMP_BOT
+ #define COMP_BOT
 
 enum OperatorMode
 {
@@ -71,9 +71,9 @@ namespace RobotMap
 
 		//the locations of the motors
 		extern const int frontLeft;
-		extern const int rearLeft;
+		//extern const int rearLeft;
 		extern const int frontRight;
-		extern const int rearRight;
+		//extern const int rearRight;
 
 		//motor encoders
 		extern const int leftEncA;
