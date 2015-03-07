@@ -11,7 +11,7 @@
 #include "WPILib.h"
 
 //TODO:uncomment this for competition bot
- #define COMP_BOT
+// #define COMP_BOT
 
 enum OperatorMode
 {
@@ -106,6 +106,17 @@ namespace RobotMap
 	{
 		//solnoids for lifting the chassis up
 		extern const int chassisLiftSol[2];//SOL
+	}
+
+	namespace Camera
+	{
+		//the four points of the drawn overlay quad to tell the drive where to align the human station
+		extern const Point topLeft;
+		extern const Point topRight;
+		extern const Point bottomLeft;
+		extern const Point bottomRight;
+
+		extern const float rectColor;
 	}
 
 	namespace Shovel

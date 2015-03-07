@@ -87,7 +87,11 @@ float getShovelSetpointFromRackVoltage(float rackVoltage)
 {
 	//this uses a linear function that I got using point slope form; the slope WILL be NEGATIVE one, because the poteontiometers have the same
 	// "gearing"  The negative one comes from the fact the as the rack voltage increases, the shovel voltage decreases
+#ifdef COMP_BOT
 	return -rackVoltage + RobotMap::Rack::voltageVertical + RobotMap::Shovel::voltageVertical;
+#else
+	return 0.0f;
+#endif
 	//simplified form of this point slope equation:
 	//			retVal - RobotMap::Shovel::voltageVertical = -1(rackVoltage - RobotMap::Rack::voltageVertical)
 }

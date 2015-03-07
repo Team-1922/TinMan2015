@@ -53,7 +53,7 @@ private:
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 
-		//CameraServer::GetInstance()->SetQuality(50);
+		CameraServer::GetInstance()->SetQuality(75);
 		//the camera name (ex "cam0") can be found through the roborio web interface
 		//CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 		//Initializes a chooser item in the SmartDashboard to select the Autonomous Mode for the round
@@ -189,12 +189,6 @@ private:
 		SmartDashboard::PutNumber("Shovel Solenoid", CommandBase::shovel->getSolenoid());
 		SmartDashboard::PutBoolean("Shovel Reed", CommandBase::shovelRotation->GetReed());
 
-		//this is only going to affect the practice bot
-#ifndef COMP_BOT
-		SmartDashboard::PutBoolean("Shovel Rotate Stop Backward", CommandBase::shovelRotation->GetLimRotationBackward());
-		SmartDashboard::PutBoolean("Shovel Rotate Stop Forward", CommandBase::shovelRotation->GetLimRotationForward());
-#endif
-
 		/*
 		 * Rack Information
 		 */
@@ -205,10 +199,6 @@ private:
 		SmartDashboard::PutNumber("Rack Voltage", CommandBase::rackRotation->GetPotVoltage());
 		SmartDashboard::PutNumber("Claw Solenoid", CommandBase::rack->getClaw());
 		//this is only going to affect the practice bot
-#ifndef COMP_BOT
-		SmartDashboard::PutBoolean("Rack Rotate Stop Backward", CommandBase::rackRotation->GetLimRotationBackward());
-		SmartDashboard::PutBoolean("Rack Rotate Stop Forward", CommandBase::rackRotation->GetLimRotationForward());
-#endif
 
 
 		/*

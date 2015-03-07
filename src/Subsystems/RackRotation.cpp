@@ -91,7 +91,7 @@ void RackRotation::UsePIDOutput(double output)
 	//	m_pMotor->Set(0);//stop the rack (this will
 
 	//give it less power as it reaches the top; NOTE: this is not good math, but hey; it works
-	float badAngle = GetPotVoltage() - RobotMap::Rack::voltageDump;
+	/*float badAngle = GetPotVoltage() - RobotMap::Rack::voltageDump;
 	float potVoltage = GetPotVoltage();
 	float trueAngle = (RobotMap::Rack::voltageDump - potVoltage) * 90.0f;
 
@@ -102,7 +102,7 @@ void RackRotation::UsePIDOutput(double output)
 	}
 	if((output < 0.0f && potVoltage > RobotMap::Rack::voltageVertical) || (output > 0.0f && potVoltage < RobotMap::Rack::voltageVertical))
 	{
-		output *= fabs(cosf(DEGREES_TO_RADIANS(badAngle))) + 0.03 /*Make sure it goes at least a little bit*/;
+		output *= fabs(cosf(DEGREES_TO_RADIANS(badAngle))) + 0.03;
 
 		//multiply by negative one to invert the throttle; add one to make this go from 0 to two, then divide by two to normalize the value
 		float throttle = CommandBase::oi->GetOperatorThrottle();
@@ -110,10 +110,10 @@ void RackRotation::UsePIDOutput(double output)
 		output *= throttle;
 
 		//if it is within a range from the bottom (negative, then just stop the rack)
-		/*if(throttle < 0.1)
+		if(throttle < 0.1)
 		{
 			SetSetpointRelative(0.0f);
-		}*/
+		}
 	}
 	else
 	{
@@ -129,7 +129,7 @@ void RackRotation::UsePIDOutput(double output)
 #else
 #endif
 
-	}
+	}*/
 
 
 

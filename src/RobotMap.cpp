@@ -89,6 +89,17 @@ namespace RobotMap
 		//0: lift; 1:normal
 	}
 
+	namespace Camera
+	{
+		//the four points of the drawn overlay quad to tell the drive where to align the human station
+		const Point topLeft 	= {50,50};//x,y
+		const Point topRight 	= {250,50};
+		const Point bottomLeft 	= {50,250};
+		const Point bottomRight = {150,250};
+
+		const float rectColor = 0x0000FF;
+	}
+
 	namespace Shovel
 	{
 		const int potentiometer = 0;//potentiometer(AI)
