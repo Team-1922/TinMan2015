@@ -1,6 +1,6 @@
 #include "Shovel.h"
 #include "../RobotMap.h"
-#include "../Commands/ShovelJoyControlled.h"
+#include "../Commands/ShovelWheelsJoyControlled.h"
 #include "../Utilities.h"
 
 Shovel::Shovel():
@@ -15,6 +15,8 @@ Shovel::Shovel():
 	//m_pShovelWideRight = new DigitalInput(RobotMap::Shovel::shovelWideRight);
 	//m_pShovelWideLeft = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
 
+	m_pSuckWheelLeft = new Talon(RobotMap::Shovel::suckWheelLeft);
+	m_pSuckWheelRight = new Talon(RobotMap::Shovel::suckWheelRight);
 }
 
 Shovel::~Shovel()
@@ -24,17 +26,25 @@ Shovel::~Shovel()
 	SAFE_DELETE(m_pWidthSolenoid);
 	//SAFE_DELETE(m_pShovelWideRight);
 	//SAFE_DELETE(m_pShovelWideLeft);
+	SAFE_DELETE(m_pSuckWheelLeft);
+	SAFE_DELETE(m_pSuckWheelRight);
 }
 
 void Shovel::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new ShovelJoyControlled());
+	SetDefaultCommand(new ShovelWheelsJoyControlled());
 	//TODO: default command
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+
+void Shovel::SetSuckWheels(float val)
+{
+	m_pSuckWheelLeft->Set(val);
+	m_pSuckWheelRight->Set(val);
+}
 
 bool Shovel::isOpen()
 {

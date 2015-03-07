@@ -10,7 +10,7 @@ DriveTrain* CommandBase::driveTrain = NULL;
 Shovel* CommandBase::shovel = NULL;
 Camera* CommandBase::camera = NULL;
 //Pneumatics* CommandBase::pneumatics = NULL;
-Chassis* CommandBase::chassis = NULL;
+//Chassis* CommandBase::chassis = NULL;
 RackRotation* CommandBase::rackRotation = NULL;
 ShovelRotation* CommandBase::shovelRotation = NULL;
 
@@ -33,7 +33,7 @@ CommandBase::~CommandBase()
 	SAFE_DELETE(shovel);
 	SAFE_DELETE(camera);
 	//SAFE_DELETE(pneumatics);
-	SAFE_DELETE(chassis);
+	//SAFE_DELETE(chassis);
 	SAFE_DELETE(rackRotation);
 	SAFE_DELETE(shovelRotation);
 }
@@ -47,7 +47,7 @@ void CommandBase::init()
 	shovel = new Shovel();
 	camera = new Camera();
 	//pneumatics = new Pneumatics();
-	chassis = new Chassis();
+	//chassis = new Chassis();
 	rackRotation = new RackRotation();
 	shovelRotation = new ShovelRotation();
 	oi = new OI();

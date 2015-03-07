@@ -16,10 +16,10 @@ RackRotation::RackRotation() :
 	m_pPot = new AnalogPotentiometer(
 			RobotMap::Rack::potentiometer, 5.0f, 0.0f); // stick with voltage readout for right now
 
-#ifndef COMP_BOT
+/*#ifndef COMP_BOT
 	m_pLimitRotationForward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationForward);
 	m_pLimitRotationBackward = new OzLimitSwitch(RobotMap::Rack::rackLimitRotationBackward);
-#endif
+#endif*/
 
 	SetInputRange(0.0, 5.0); // range of values returned from the potentiometer
 	SetOutputRange(-RobotMap::Rack::PID::extremeMotorVal, RobotMap::Rack::PID::extremeMotorVal); // start with the motor range
@@ -46,10 +46,10 @@ RackRotation::~RackRotation()
 	SAFE_DELETE(m_pMotor);
 	SAFE_DELETE(m_pPot);
 
-#ifndef COMP_BOT
+/*#ifndef COMP_BOT
 	SAFE_DELETE(m_pLimitRotationForward);
 	SAFE_DELETE(m_pLimitRotationBackward);
-#endif
+#endif*/
 }
 
 double RackRotation::ReturnPIDInput()

@@ -1,15 +1,13 @@
-#ifndef ChassisLift_H
-#define ChassisLift_H
+#ifndef ShovelWheelsJoyControlled_H
+#define ShovelWheelsJoyControlled_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class ChassisLift: public CommandBase
+class ShovelWheelsJoyControlled: public CommandBase
 {
-private:
-	bool m_lift;
 public:
-	ChassisLift(bool lift);
+	ShovelWheelsJoyControlled();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

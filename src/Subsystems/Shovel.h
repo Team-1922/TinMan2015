@@ -16,6 +16,10 @@ private:
 	//OzPotentiometer* m_pPotentiometer;
 	OzSolenoid* m_pWidthSolenoid;
 
+	//the wheels to suck in the tote/container
+	SpeedController* m_pSuckWheelLeft;
+	SpeedController* m_pSuckWheelRight;
+
 	//DigitalInput* m_pShovelWideRight;
 	//DigitalInput* m_pShovelWideLeft;
 
@@ -53,6 +57,11 @@ public:
 	/*void  setMotor(float val);
 	void  setMotorRate(float degPerSecond);
 	float getMotor(){return m_pRotate->Get();}*/
+
+	/*
+	 * Suck Wheel Control
+	 */
+	void SetSuckWheels(float val);
 
 
 	/*

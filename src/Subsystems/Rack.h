@@ -15,7 +15,7 @@ private:
 	//the motor that extends and retracts the rack
 	SpeedController* m_pExtendRetract;
 
-	OzSolenoid*        m_pClaw;
+	//OzSolenoid*        m_pClaw;
 
 
 public:
@@ -36,8 +36,8 @@ public:
 	float getExtendMotor(){return m_pExtendRetract->Get();}
 
 
-	void setClaw(bool on){m_pClaw->Set(on);}
-	bool getClaw(){return m_pClaw->Get();}
+	void setClaw(bool on){/*m_pClaw->Set(on);*/}
+	bool getClaw(){return false;/*m_pClaw->Get();*/}
 
 };
 

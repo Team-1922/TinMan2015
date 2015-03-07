@@ -204,7 +204,7 @@ private:
 		/*
 		 * Chassis
 		 */
-		SmartDashboard::PutBoolean("Chassis Solenoid", CommandBase::chassis->getSolenoid());
+		//SmartDashboard::PutBoolean("Chassis Solenoid", CommandBase::chassis->getSolenoid());
 
 	}
 

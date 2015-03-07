@@ -102,11 +102,11 @@ namespace RobotMap
 
 	}
 
-	namespace Chassis
+	/*namespace Chassis
 	{
 		//solnoids for lifting the chassis up
 		extern const int chassisLiftSol[2];//SOL
-	}
+	}*/
 
 	namespace Camera
 	{
@@ -130,6 +130,10 @@ namespace RobotMap
 		extern const int shovelLimitRotationForward;//(DI)
 		extern const int shovelLimitRotationBackward;//(DI)
 		extern const int shovelWidthSol[2];//solenoid (SOL)
+
+		//the two motor controllers for the shovel suck mechanism
+		extern const int suckWheelLeft;
+		extern const int suckWheelRight;
 
 		extern const int potTurnCoun;
 		extern const int potDegree;

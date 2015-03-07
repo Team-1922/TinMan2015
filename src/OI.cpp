@@ -23,7 +23,7 @@
 #include "Commands/ShovelRotate.h"
 #include "Commands/ShovelToggleWidth.h"
 #include "Commands/RackToggleClaw.h"
-#include "Commands/ChassisToggleLift.h"
+//#include "Commands/ChassisToggleLift.h"
 
 #include "Commands/RackExtend.h"
 #include "Commands/RackRetract.h"
@@ -95,8 +95,8 @@ m_pDriverController(nullptr)
 
     //the three solenoid toggle buttons
     JoystickButton* buttonToggleShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelWidthToggle);
-    JoystickButton* buttonToggleClaw = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackClawToggle);
-    JoystickButton* buttonToggleChassis = new JoystickButton(m_pOperatorStick, RobotMap::Controls::chassisLiftToggle);
+    //JoystickButton* buttonToggleClaw = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackClawToggle);
+    //JoystickButton* buttonToggleChassis = new JoystickButton(m_pOperatorStick, RobotMap::Controls::chassisLiftToggle);
 
     //the two buttons for extending/retracting the rack
     JoystickButton* buttonExtendRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::extendRack);
@@ -115,8 +115,8 @@ m_pDriverController(nullptr)
     buttonRackShovelStack->WhenPressed(new ShovelRackRotate(RobotMap::Rack::voltageStack));
 
     buttonToggleShovel->WhenPressed(new ShovelToggleWidth());
-    buttonToggleClaw->WhenPressed(new RackToggleClaw());
-    buttonToggleChassis->WhenPressed(new ChassisToggleLift());
+    //buttonToggleClaw->WhenPressed(new RackToggleClaw());
+    //buttonToggleChassis->WhenPressed(new ChassisToggleLift());
 
     //have these call repeatedly when held down
     buttonExtendRack->WhileHeld(new RackExtend());

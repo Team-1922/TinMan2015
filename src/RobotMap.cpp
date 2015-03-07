@@ -82,12 +82,12 @@ namespace RobotMap
 
 	}
 
-	namespace Chassis
+	/*namespace Chassis
 	{
 		//solnoids for lifting the chassis up
 		const int chassisLiftSol[2] = {0,1};//SOL
 		//0: lift; 1:normal
-	}
+	}*/
 
 	namespace Camera
 	{
@@ -112,6 +112,10 @@ namespace RobotMap
 		const int shovelWideLeft = 9;//limit switch (DI)
 		const int shovelLimitRotationForward = 4;//(DI)
 		const int shovelLimitRotationBackward = 5;//(DI)
+
+		//the two motor controllers for the shovel suck mechanism
+		const int suckWheelLeft = 0;//TODO: WHICH ONES ARE THESE
+		const int suckWheelRight = 2;
 
 		const int shovelWidthSol[2] = {4,5};//solenoid (SOL)
 		//4: close; 5: open
