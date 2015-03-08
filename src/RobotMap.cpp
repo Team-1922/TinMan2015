@@ -109,13 +109,21 @@ namespace RobotMap
 	namespace Camera
 	{
 		//the four points of the drawn overlay quad to tell the drive where to align the human station
-		const Point topLeft 	= {50,50};//x,y
-		const Point topRight 	= {250,50};
-		const Point bottomLeft 	= {50,250};
-		const Point bottomRight = {150,250};
+		const Point topLeft 	= {137,53};//x,y
+		const Point topRight 	= {511,63};
+		const Point bottomLeft 	= {88,354};
+		const Point bottomRight = {542,366};
+
+
+		//the four points of the maxmimum overlay quad
+		const Point maxTopLeft 		= {120,35};//x,y
+		const Point maxTopRight 	= {520,35};
+		const Point maxBottomLeft 	= {60,365};
+		const Point maxBottomRight 	= {560,375};
 
 		//this is RED, because for some reason it is in BGR format
 		const float rectColor = 0x0000FF;
+		const float maxRectColor = 0x0000FF;
 	}
 
 	namespace Shovel

@@ -135,7 +135,14 @@ namespace RobotMap
 		extern const Point bottomLeft;
 		extern const Point bottomRight;
 
+		//the four points of the maxmimum overlay quad
+		extern const Point maxTopLeft;
+		extern const Point maxTopRight;
+		extern const Point maxBottomLeft;
+		extern const Point maxBottomRight;
+
 		extern const float rectColor;
+		extern const float maxRectColor;
 	}
 
 	namespace Shovel
