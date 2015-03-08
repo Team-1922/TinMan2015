@@ -4,7 +4,7 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class DriveTrain: public Subsystem
+class DriveTrain: public PIDSubsystem
 {
 private:
 
@@ -16,12 +16,21 @@ private:
 	Encoder* m_pLeftEncoder;
 	Encoder* m_pRightEncoder;
 
+	//this tells the drive train if it is rotating with the PID since i can only have 1 PID source
+	bool m_isRotating = false;
+
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
 	DriveTrain();
 	~DriveTrain();
 	void InitDefaultCommand();
+
+	double ReturnPIDInput();
+	void UsePIDOutput(double output);
+
+	bool getIsRotating(){return m_isRotating;}
+	void setIsRotating(bool rotating){m_isRotating = rotating;}
 
 	/*
 	 * Motor Accessors
@@ -54,7 +63,7 @@ public:
 	 * Encoder Accessor Functions
 	 */
 
-	//NOTE: to get the rotations, use getEncDistance, or getEncRate
+	//NOTE: getEncRate and getEncDistance will return in in/s and in. respectively
 
 	double	getEncCountLeft()		{return double(m_pLeftEncoder->Get());			}
 	int		getEncRawCountLeft()	{return m_pLeftEncoder->GetRaw();				}

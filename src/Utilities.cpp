@@ -2,6 +2,7 @@
 #include "RobotMap.h"
 #include <cmath>
 #include <time.h>
+#include <sys/time.h>
 
 namespace Utilities
 {
@@ -39,23 +40,30 @@ float weightAverage(std::vector<float> numbers, std::vector<float> weights)
 }
 
 
-//global values
-time_t g_Timer;
-
+//global values in seconds
+double g_Time;
 
 void startTimer()
 {
 	//get the time at when the application started
-	time(&g_Timer);
+	struct timeval  tv;
+	gettimeofday(&tv, NULL);
+
+	g_Time = (double)(tv.tv_sec) + (double)(tv.tv_usec) / (double)1000.0 ;
 }
 float getTime()
 {
 	//get the current time
-	time_t timer;
-	time(&timer);
+	//time_t timer;
+	//time(&timer);
 
 	//return the difference
-	return difftime(timer, g_Timer);
+	//return difftime(timer, g_Timer);
+
+	struct timeval  tv;
+	gettimeofday(&tv, NULL);
+
+	return ((double)(tv.tv_sec) + (double)(tv.tv_usec) / (double)1000.0) - g_Time;
 }
 
 float  motorConstSpeed(float rpmDesired, float rpmCurrent, float &rpmCompounded,

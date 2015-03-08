@@ -82,6 +82,24 @@ namespace RobotMap
 		extern const int rightEncA;
 		extern const int rightEncB;
 
+		//the length of the center wheel-set axle
+		extern const float driveAxleLength;
+
+		//the circumference of the circle that is created by the middle wheels when the robot spins in a circle
+		extern const float middleDriveRotateCircumference;
+
+		//wheel size in INCHES
+		extern const float wheelCircumference;
+
+		namespace PID
+		{
+			extern const float P;
+			extern const float I;
+			extern const float D;
+
+			extern const float extremeMotorVal;
+		}
+
 
 		namespace Encoder
 		{
@@ -245,6 +263,8 @@ namespace RobotMap
 
 	//Boolean for autonomous....
 	extern bool AutonomousEnabled;
+
+	extern bool Mode;//true = tele-op, false = autonomous
 
 }
 

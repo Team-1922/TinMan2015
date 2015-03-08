@@ -6,7 +6,7 @@
 #include "../Utilities.h"
 
 DriveTrain::DriveTrain() :
-		Subsystem("DriveTrain")
+		PIDSubsystem("DriveTrain", RobotMap::DriveTrain::PID::P, RobotMap::DriveTrain::PID::I, RobotMap::DriveTrain::PID::D)
 {
 	m_pFrontLeft = new Talon(RobotMap::DriveTrain::frontLeft);
 	//m_pRearLeft = new Talon(RobotMap::DriveTrain::rearLeft);
@@ -23,11 +23,27 @@ DriveTrain::DriveTrain() :
 
 	//setup the left encoder
 	m_pLeftEncoder->SetDistancePerPulse(RobotMap::DriveTrain::Encoder::distancePerPulse);
-	m_pLeftEncoder->SetMinRate(0.1);//0.1 RPM's
+	m_pLeftEncoder->SetMinRate(0.1);//0.1 in/s
 
 	//setup the right encoder
 	m_pRightEncoder->SetDistancePerPulse(RobotMap::DriveTrain::Encoder::distancePerPulse);
-	m_pRightEncoder->SetMinRate(0.1);//0.1 RPM's
+	m_pRightEncoder->SetMinRate(0.1);//0.1 in/s
+
+	//configure the PID system (NOTE: i use 1000 inches as the maximum because there should be no limit, but autonomous is not that long
+	SetInputRange(0.0, 1000.0f); // range of values returned from the potentiometer
+	SetOutputRange(-RobotMap::DriveTrain::PID::extremeMotorVal,
+			RobotMap::DriveTrain::PID::extremeMotorVal); // start with the motor range
+	SetAbsoluteTolerance(2.0f);//tolerance of about 2 inches
+
+	// Use these to get going:
+	// SetSetpoint() -  Sets where the PID controller should move the system
+	//                  to
+	// Enable() - Enables the PID controller.
+	LiveWindow::GetInstance()->AddActuator("Drive Train", "PID", GetPIDController());
+
+	//setup to stay still by default, HOWEVER PID doesn't do anything in teleop mode
+	Enable();
+	SetSetpoint(ReturnPIDInput());
 }
 
 DriveTrain::~DriveTrain()
@@ -138,4 +154,28 @@ void DriveTrain::DriveStraight(float motorVal)
 {
 	setLeft(-motorVal);
 	setRight(motorVal);
+}
+
+double DriveTrain::ReturnPIDInput()
+{
+	//rely on the left encoder for distence, i need to figure out how turning will work with only one input
+	return getEncDistanceLeft();
+}
+
+void DriveTrain::UsePIDOutput(double output)
+{
+	//don't follow PID in Teleop mode
+	if(RobotMap::Mode)
+		return;
+
+	if(m_isRotating)
+	{
+		//when rotating, the output is for the left motors, but to turn in place, set the right motor to the opposite
+		setLeft(output);
+		setRight(-output);
+	}
+	else
+	{
+		DriveStraight(output);
+	}
 }

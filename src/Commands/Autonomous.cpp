@@ -1,10 +1,11 @@
 #include "Autonomous.h"
-//#include "DriveStraight.h"
+#include "DriveDistance.h"
 #include <iostream>
 #include "WasteTime.h"
 #include "ShovelSetGrab.h"
 #include "ShovelSuckWheels.h"
 #include "ShovelSetCollect.h"
+#include "DriveRotate.h"
 #include "Drive.h"
 
 Autonomous::Autonomous() : CommandGroup("Autonomous")
@@ -21,9 +22,10 @@ Autonomous::Autonomous() : CommandGroup("Autonomous")
 	//apply solenoid pressure
 	AddSequential(new ShovelSetGrab(true));
 
-	//turn clockwise
-	AddSequential(new Drive(0.5f, 0.3f, -0.3f));
+	//turn 90 degrees clockwise
+	AddSequential(new DriveRotate(-90.0f));
 
 	//drive forwards a little
-	AddSequential(new Drive(0.6f, 0.75f));
+	//AddSequential(new Drive(0.6f, 0.75f));
+	AddSequential(new DriveDistance(60.0f));//drive 5 feet
 }

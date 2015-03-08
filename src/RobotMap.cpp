@@ -1,5 +1,5 @@
 #include "RobotMap.h"
-
+#include "Utilities.h"
 
 namespace RobotMap
 {
@@ -62,6 +62,22 @@ namespace RobotMap
 		const int rightEncA = 2;
 		const int rightEncB = 3;
 
+		//the length of the center wheel-set axle in inches
+		const float driveAxleLength = 24.0f;
+
+		//the circumference of the circle that is created by the middle wheels when the robot spins in a circle
+		const float middleDriveRotateCircumference = PI_S * driveAxleLength;
+
+		//wheel size
+		const float wheelCircumference = 6.0f;
+
+		namespace PID
+		{
+			const float P = 1.0f;
+			const float I = 0.0f;
+			const float D = 0.0f;
+			extern const float extremeMotorVal = 0.75f;
+		}
 
 		namespace Encoder
 		{
@@ -76,9 +92,9 @@ namespace RobotMap
 			//GEARING
 			const int gearing = 1;//this is if the encoder is attached to the wheel axle
 
-			//the gearing of the encoders (I will assume both gearings are the same), converts pulses to RPM
+			//the gearing of the encoders (I will assume both gearings are the same), converts pulses to INCHES
 			//GEARING IS AS FOLLOWED
-			const float distancePerPulse = 1.0f/float(pulsesPerRotation*gearing);
+			const float distancePerPulse = wheelCircumference/float(pulsesPerRotation*gearing);
 		}
 
 	}
@@ -98,6 +114,7 @@ namespace RobotMap
 		const Point bottomLeft 	= {50,250};
 		const Point bottomRight = {150,250};
 
+		//this is RED, because for some reason it is in BGR format
 		const float rectColor = 0x0000FF;
 	}
 
@@ -287,4 +304,6 @@ namespace RobotMap
 
 	//Boolean for testing autonomous commands. True for on and false for off.
 	bool AutonomousEnabled = 0;
+
+	bool Mode = 0;
 }

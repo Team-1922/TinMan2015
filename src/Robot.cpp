@@ -97,6 +97,8 @@ private:
 
 	void AutonomousInit()
 	{
+		RobotMap::Mode = false;
+
 		//Retrieves selected Autonomous mode from SmartDashboard
 		autonomousCommand = new Autonomous();
 		if(autonomousCommand)//just to be sure
@@ -115,6 +117,7 @@ private:
 
 	void TeleopInit()
 	{
+		RobotMap::Mode = true;
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
