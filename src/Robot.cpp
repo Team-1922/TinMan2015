@@ -11,7 +11,7 @@
 #include "Commands/SwitchJoyRack.h"
 #include "Commands/SwitchJoyShovel.h"
 
-#include "Commands/ShovelToggleWidth.h"
+#include "Commands/ShovelToggleGrab.h"
 #include "Subsystems/RackRotation.h"
 
 #include "Utilities.h"
@@ -186,7 +186,8 @@ private:
 		//SmartDashboard::PutNumber("Shovel Motor (-1 to 1)", CommandBase::shovel->getMotor());
 		SmartDashboard::PutNumber("Shovel Setpoint", CommandBase::shovelRotation->GetSetpoint());
 		SmartDashboard::PutNumber("Shovel Voltage", CommandBase::shovelRotation->GetPotVoltage());
-		SmartDashboard::PutNumber("Shovel Solenoid", CommandBase::shovel->getSolenoid());
+		SmartDashboard::PutNumber("Shovel Grab Solenoid", CommandBase::shovel->getGrabSolenoid());
+		SmartDashboard::PutNumber("Shovel Collect Solenoid", CommandBase::shovel->getCollectSolenoid());
 		SmartDashboard::PutBoolean("Shovel Reed", CommandBase::shovelRotation->GetReed());
 
 		/*

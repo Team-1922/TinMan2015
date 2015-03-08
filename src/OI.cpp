@@ -21,8 +21,9 @@
 #include "Commands/SwitchJoyShovel.h"
 
 #include "Commands/ShovelRotate.h"
-#include "Commands/ShovelToggleWidth.h"
+#include "Commands/ShovelToggleGrab.h"
 #include "Commands/RackToggleClaw.h"
+#include "Commands/ShovelToggleCollect.h"
 //#include "Commands/ChassisToggleLift.h"
 
 #include "Commands/RackExtend.h"
@@ -94,7 +95,8 @@ m_pDriverController(nullptr)
 	JoystickButton* buttonRackShovelStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::stackRackShovelSame);
 
     //the three solenoid toggle buttons
-    JoystickButton* buttonToggleShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelWidthToggle);
+    JoystickButton* buttonToggleShovelGrab = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelGrabToggle);
+    JoystickButton* buttonToggleShovelCollect = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelCollectToggle);
     //JoystickButton* buttonToggleClaw = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackClawToggle);
     //JoystickButton* buttonToggleChassis = new JoystickButton(m_pOperatorStick, RobotMap::Controls::chassisLiftToggle);
 
@@ -114,7 +116,8 @@ m_pDriverController(nullptr)
     buttonRackPickContainer->WhenPressed(new RackRotate(RobotMap::Rack::voltagePickContainer));
     buttonRackShovelStack->WhenPressed(new ShovelRackRotate(RobotMap::Rack::voltageStack));
 
-    buttonToggleShovel->WhenPressed(new ShovelToggleWidth());
+    buttonToggleShovelGrab->WhenPressed(new ShovelToggleGrab());
+    buttonToggleShovelCollect->WhenPressed(new ShovelToggleCollect());
     //buttonToggleClaw->WhenPressed(new RackToggleClaw());
     //buttonToggleChassis->WhenPressed(new ChassisToggleLift());
 

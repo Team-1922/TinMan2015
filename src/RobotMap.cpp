@@ -35,7 +35,8 @@ namespace RobotMap
 		const int stackRackShovelSame = 2;
 
 		//controls for changing the width of the shovel and rack
-		const int shovelWidthToggle = 8;
+		const int shovelGrabToggle = 8;
+		const int shovelCollectToggle = 10;
 		const int rackClawToggle = 10;
 		const int chassisLiftToggle = 12;
 
@@ -117,8 +118,9 @@ namespace RobotMap
 		const int suckWheelLeft = 1;//TODO: WHICH ONES ARE THESE
 		const int suckWheelRight = 3;
 
-		const int shovelWidthSol[2] = {4,5};//solenoid (SOL)
+		const int shovelGrabSol[2] = {4,5};//solenoid (SOL)
 		//4: close; 5: open
+		const int shovelCollectSol[2] = {0,1};//solenoid
 
 		const int potDegree = 360;
 		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards

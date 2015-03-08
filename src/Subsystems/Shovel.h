@@ -15,6 +15,7 @@ private:
 	//SpeedController* m_pRotate;
 	//OzPotentiometer* m_pPotentiometer;
 	OzSolenoid* m_pWidthSolenoid;
+	OzSolenoid* m_pCollectSolenoid;
 
 	//the wheels to suck in the tote/container
 	SpeedController* m_pSuckWheelLeft;
@@ -71,10 +72,11 @@ public:
 	 * Solenoid Control
 	 */
 
-	bool getSolenoid() {return m_pWidthSolenoid->Get();}
-	void setSolenoid(bool on);
+	bool getGrabSolenoid() {return m_pWidthSolenoid->Get();}
+	void setGrabSolenoid(bool on);
 
-	bool isOpen();
+	bool getCollectSolenoid(){return m_pCollectSolenoid->Get();}
+	void setCollectSolenoid(bool on){m_pCollectSolenoid->Set(on);}
 
 private:
 

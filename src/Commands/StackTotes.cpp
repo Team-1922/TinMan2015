@@ -5,12 +5,12 @@
 
 #include "ShovelRotate.h"
 //#include "ChassisToggleLift.h"
-#include "ShovelToggleWidth.h"
+#include "ShovelToggleGrab.h"
 #include "ShovelRackRotate.h"
 #include "StackTotes.h"
 //#include "ChassisLift.h"
-#include "ShovelCloseWidth.h"
-#include "ShovelOpenWidth.h"
+#include "ShovelSetGrab.h"
+#include "ShovelSetCollect.h"
 #include "ShovelRackRotate.h"
 #include "RackRotate.h"
 
@@ -20,7 +20,7 @@
 StackTotes::StackTotes()
 {
 	// rotate the shovel to the storage position
-	AddSequential(new ShovelCloseWidth());
+	AddSequential(new ShovelSetGrab(true));
 
 	// rotate the shovel to the storage position
 	AddSequential(new ShovelRotate(RobotMap::Shovel::voltageDump));
@@ -32,7 +32,7 @@ StackTotes::StackTotes()
 	AddSequential(new ShovelRackRotate(RobotMap::Rack::voltageStack));
 
 	// retract the shovel supports and drop the totes onto the platform
-	AddSequential(new ShovelOpenWidth());
+	AddSequential(new ShovelSetGrab(false));
 
 	// rotate the shovel back to horizontal, and the rack back to flat
 	AddSequential(new ShovelRotate(RobotMap::Shovel::voltageFlat));

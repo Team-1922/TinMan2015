@@ -55,7 +55,8 @@ namespace RobotMap
 		extern const int stackRackShovelSame;
 
 		//controls for changing the width of the shovel and rack
-		extern const int shovelWidthToggle;
+		extern const int shovelGrabToggle;
+		extern const int shovelCollectToggle;
 		extern const int rackClawToggle;
 		extern const int chassisLiftToggle;
 
@@ -129,7 +130,8 @@ namespace RobotMap
 
 		extern const int shovelLimitRotationForward;//(DI)
 		extern const int shovelLimitRotationBackward;//(DI)
-		extern const int shovelWidthSol[2];//solenoid (SOL)
+		extern const int shovelGrabSol[2];//solenoid (SOL)
+		extern const int shovelCollectSol[2];//solenoid
 
 		//the two motor controllers for the shovel suck mechanism
 		extern const int suckWheelLeft;

@@ -1,13 +1,14 @@
-#ifndef ShovelCloseWidth_H
-#define ShovelCloseWidth_H
+#ifndef ShovelSetGrab_H
+#define ShovelSetGrab_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class ShovelCloseWidth: public CommandBase
+class ShovelSetGrab: public CommandBase
 {
+	bool m_on;
 public:
-	ShovelCloseWidth();
+	ShovelSetGrab(bool on);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

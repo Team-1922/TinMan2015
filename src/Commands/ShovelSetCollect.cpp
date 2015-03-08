@@ -1,41 +1,38 @@
-#include "ShovelToggleWidth.h"
+#include "ShovelSetCollect.h"
 
-ShovelToggleWidth::ShovelToggleWidth()
+ShovelSetCollect::ShovelSetCollect(bool on) : m_on(on)
 {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(shovel);
 }
 
 // Called just before this Command runs the first time
-void ShovelToggleWidth::Initialize()
+void ShovelSetCollect::Initialize()
 {
-	if(shovel->getSolenoid())
-		shovel->setSolenoid(false);
-	else
-		shovel->setSolenoid(true);
+	shovel->setCollectSolenoid(m_on);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShovelToggleWidth::Execute()
+void ShovelSetCollect::Execute()
 {
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShovelToggleWidth::IsFinished()
+bool ShovelSetCollect::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void ShovelToggleWidth::End()
+void ShovelSetCollect::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShovelToggleWidth::Interrupted()
+void ShovelSetCollect::Interrupted()
 {
 
 }

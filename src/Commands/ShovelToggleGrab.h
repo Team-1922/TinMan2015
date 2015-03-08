@@ -1,13 +1,13 @@
-#ifndef ShovelToggleWidth_H
-#define ShovelToggleWidth_H
+#ifndef ShovelToggleGrab_H
+#define ShovelToggleGrab_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class ShovelToggleWidth: public CommandBase
+class ShovelToggleGrab: public CommandBase
 {
 public:
-	ShovelToggleWidth();
+	ShovelToggleGrab();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

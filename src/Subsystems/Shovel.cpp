@@ -11,7 +11,8 @@ Shovel::Shovel():
 			RobotMap::Shovel::potentiometer,
 			RobotMap::Shovel::potDegree,
 		    RobotMap::Shovel::potDegreeOffset);*/
-	m_pWidthSolenoid = new OzSolenoid(RobotMap::Shovel::shovelWidthSol[0], RobotMap::Shovel::shovelWidthSol[1]);
+	m_pWidthSolenoid = new OzSolenoid(RobotMap::Shovel::shovelGrabSol[0], RobotMap::Shovel::shovelGrabSol[1]);
+	m_pCollectSolenoid = new OzSolenoid(RobotMap::Shovel::shovelCollectSol[0], RobotMap::Shovel::shovelCollectSol[1]);
 	//m_pShovelWideRight = new DigitalInput(RobotMap::Shovel::shovelWideRight);
 	//m_pShovelWideLeft = new DigitalInput(RobotMap::Shovel::shovelWideLeft);
 
@@ -62,13 +63,9 @@ void Shovel::RotateTote(float val)
 	SetSuckWheelRight(-val);
 }
 
-bool Shovel::isOpen()
-{
-	return m_pWidthSolenoid->Get();
-}
 
 
-void Shovel::setSolenoid(bool setting)
+void Shovel::setGrabSolenoid(bool setting)
 {
 	if (!m_pWidthSolenoid->IsBlackListed()) {  // isBlackListed() == true means that the solenoid is shorted/not working properly
 		m_pWidthSolenoid->Set(setting);

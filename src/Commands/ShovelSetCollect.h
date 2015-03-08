@@ -1,13 +1,14 @@
-#ifndef ShovelOpenWidth_H
-#define ShovelOpenWidth_H
+#ifndef ShovelSetCollect_H
+#define ShovelSetCollect_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class ShovelOpenWidth: public CommandBase
+class ShovelSetCollect: public CommandBase
 {
+	bool m_on;
 public:
-	ShovelOpenWidth();
+	ShovelSetCollect(bool on);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
