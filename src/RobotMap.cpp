@@ -242,11 +242,11 @@ namespace RobotMap
 		const float voltageStack 			= voltageOffset - 1.22f; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= voltageOffset - 2.02f; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
-		const float voltageVertical = 3.78f + voltageOffset;
+		const float voltageVertical = voltageOffset - 1.15f;
 
 		//the two voltages to start giving power to keep from backdriving too quickly
-		const float voltageBackdriveFront = 3.12f + voltageOffset;
-		const float voltageBackdriveRear = 4.36f + voltageOffset;
+		const float voltageBackdriveFront = voltageOffset - 1.81f;
+		const float voltageBackdriveRear = voltageOffset - 0.57f;
 
 		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
 
