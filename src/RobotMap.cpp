@@ -157,7 +157,7 @@ namespace RobotMap
 		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET (NOT YET)
 #ifdef COMP_BOT // TinMan X
 		//TODO:
-		float voltageOffset 				= 4.95f;//this is the voltage value when shovel is in the flat forwards position
+		float voltageOffset 				= 4.90f;//this is the voltage value when shovel is in the flat forwards position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
 		const float voltageDump 			= voltageOffset - 1.6f; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= voltageOffset; // voltage for when the shovel is horizontal
@@ -237,8 +237,8 @@ namespace RobotMap
 		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET (NOT YET)
 #ifdef COMP_BOT // TinMan X
 		//TODO:
-		float voltageOffset 				= 4.93f;//this is the voltage value when the rack is in store position
-		const float voltageDump 			= voltageOffset; // voltage for when the rack is placing totes on the rack
+		float voltageOffset 				= 4.97f;//this is the voltage value when the rack is in store position
+		const float voltageDump 			= voltageOffset - 0.09f; // voltage for when the rack is placing totes on the rack
 		const float voltageStack 			= voltageOffset - 1.22f; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= voltageOffset - 2.02f; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
