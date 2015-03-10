@@ -32,7 +32,7 @@ namespace RobotMap
 		const int rackFlat      = 11;
 		const int stackTotes    = 9;
 		const int rackContainer = 7;
-		const int stackRackShovelSame = 2;
+		const int stackRackShovelSame = 7;
 
 		//controls for changing the width of the shovel and rack
 		const int shovelGrabToggle = 8;
@@ -51,9 +51,9 @@ namespace RobotMap
 	{
 
 		//the locations of the motors
-		const int frontLeft  = 0;
+		const int frontLeft  = 1;
 		//const int rearLeft   = 1;
-		const int frontRight = 2;
+		const int frontRight = 3;
 		//const int rearRight  = 3;
 
 		//motor encoders
@@ -140,8 +140,8 @@ namespace RobotMap
 		const int shovelLimitRotationBackward = 5;//(DI)
 
 		//the two motor controllers for the shovel suck mechanism
-		const int suckWheelLeft = 1;//TODO: WHICH ONES ARE THESE
-		const int suckWheelRight = 3;
+		const int suckWheelLeft = 0;//TODO: WHICH ONES ARE THESE
+		const int suckWheelRight = 2;
 
 		const int shovelGrabSol[2] = {4,5};//solenoid (SOL)
 		//4: close; 5: open
@@ -162,7 +162,7 @@ namespace RobotMap
 		const float voltageDump 			= 3.35f + voltageOffset; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= 4.9f + voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= 4.9f + voltageOffset; // voltage for when the shovel is in position for stacking
-		const float voltageVertical         = 3.9f;//voltage when the shovel is vertical
+		const float voltageVertical         = 3.9f + voltageOffset;//voltage when the shovel is vertical
 
 #else // Scarecrow
 		//TODO:
@@ -242,11 +242,11 @@ namespace RobotMap
 		const float voltageStack 			= 3.71f + voltageOffset; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= 2.91f + voltageOffset; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
-		const float voltageVertical = 3.78f;
+		const float voltageVertical = 3.78f + voltageOffset;
 
 		//the two voltages to start giving power to keep from backdriving too quickly
-		const float voltageBackdriveFront = 3.12f;
-		const float voltageBackdriveRear = 4.36f;
+		const float voltageBackdriveFront = 3.12f + voltageOffset;
+		const float voltageBackdriveRear = 4.36f + voltageOffset;
 
 		const float dumpEpsilon 			= 5.0f * 0.03; // range for which we consider it to be the same as Zero when comparing the target location to see if it is in the dump position
 

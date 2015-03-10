@@ -35,6 +35,8 @@
 #include "Commands/StoreTote.h"
 #include "Commands/StackTotes.h"
 
+#include "Commands/DriveDistance.h"
+
 
 #include "RobotMap.h"
 
@@ -91,8 +93,10 @@ m_pDriverController(nullptr)
 	JoystickButton* buttonShovelDump = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpTote);
 	JoystickButton* buttonRackFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlat);
 	JoystickButton* buttonRackStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::stackTotes);
-	JoystickButton* buttonRackPickContainer = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackContainer);
+	//JoystickButton* buttonRackPickContainer = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackContainer);
 	JoystickButton* buttonRackShovelStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::stackRackShovelSame);
+
+	JoystickButton* buttonTestDriveDistance = new JoystickButton(m_pOperatorStick, 1);//trigger
 
     //the three solenoid toggle buttons
     JoystickButton* buttonToggleShovelGrab = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelGrabToggle);
@@ -113,7 +117,7 @@ m_pDriverController(nullptr)
     buttonShovelDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
     buttonRackFlat->WhenPressed(new RackRotate(RobotMap::Rack::voltageDump, false));
     buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
-    buttonRackPickContainer->WhenPressed(new RackRotate(RobotMap::Rack::voltagePickContainer));
+    //buttonRackPickContainer->WhenPressed(new RackRotate(RobotMap::Rack::voltagePickContainer));
     buttonRackShovelStack->WhenPressed(new ShovelRackRotate(RobotMap::Rack::voltageStack));
 
     buttonToggleShovelGrab->WhenPressed(new ShovelToggleGrab());
@@ -124,6 +128,8 @@ m_pDriverController(nullptr)
     //have these call repeatedly when held down
     buttonExtendRack->WhileHeld(new RackExtend());
     buttonRetractRack->WhileHeld(new RackRetract());
+
+    buttonTestDriveDistance->WhenPressed(new DriveDistance(12));
 
     //TODO: setup all of the commands that take controls
 }
