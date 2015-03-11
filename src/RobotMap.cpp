@@ -151,7 +151,7 @@ namespace RobotMap
 		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
 
 		//the voltage difference in a 90 degree region; used in slave control TODO
-		const float pot90DegreeVoltageFromRack = 1.15f;
+		const float pot90DegreeVoltageFromRack = 1.0f;
 
 
 		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET (NOT YET)
@@ -159,7 +159,7 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 4.95f;//this is the voltage value when shovel is in the flat forwards position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
-		const float voltageDump 			= voltageOffset - 1.6f; // voltage for when the shovel is placing totes on the rack
+		const float voltageDump 			= voltageOffset - 1.1f; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= voltageOffset; // voltage for when the shovel is in position for stacking
 		const float voltageVertical         = voltageOffset - 1.05f;//voltage when the shovel is vertical
@@ -269,7 +269,7 @@ namespace RobotMap
 			const float P = 3.0f;
 			const float I = 0.0f;
 			const float D = -5.25f;
-			const float extremeMotorVal = 0.9f;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.85f;//the absolute value of the maximum motor value
 			//this value is a bit higher than it used to because of a dampener that keeps the rack from going too fast
 #else
 			const float P = 5.0f;

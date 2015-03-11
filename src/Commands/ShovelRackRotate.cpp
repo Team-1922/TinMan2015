@@ -25,8 +25,8 @@ void ShovelRackRotate::Initialize()
 void ShovelRackRotate::Execute()
 {
 	// update the shovel position at this location whenever execute is called. this way we slave the shovel to the rack
-	// location - if we don't do it here then one could get ahead of the other
-	shovelRotation->SetSetpoint(Utilities::getShovelSetpointFromRackVoltage(rackRotation->GetPotVoltage()));
+	// location - if we don't do it here then one could get ahead of the other; HA: REMEMBER THE 90 degree offset (i.e. 1 volt), subtract, because we are entering the RACK angle
+	shovelRotation->SetSetpoint(Utilities::getShovelSetpointFromRackVoltage(rackRotation->GetPotVoltage() - RobotMap::Shovel::pot90DegreeVoltageFromRack));
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -44,7 +44,7 @@ void ShovelRackRotate::End()
 
 	//if this is interrupted, then make sure it stops where it is
 	shovelRotation->SetSetpoint(shovelRotation->GetPotVoltage());
-	rackRotation->SetSetpoint(shovelRotation->GetPotVoltage());
+	rackRotation->SetSetpoint(rackRotation->GetPotVoltage());
 }
 
 // Called when another command which requires one or more of the same
