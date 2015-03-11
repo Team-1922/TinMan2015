@@ -131,6 +131,16 @@ void RackRotation::UsePIDOutput(double output)
 
 	}*/
 
+	//this makes the operator have control over the max speed of the rack; this is better because all the way down still gives power
+
+	float val = CommandBase::oi->GetOperatorThrottle();
+
+	//change it so the output is between half and full extreme power (0.666667f <= val <= 1.0f)
+	val /= 3.0f;
+	val += 0.666667f;
+
+	//between min and max load
+	output *= val;
 
 
 	m_pMotor->Set(output);

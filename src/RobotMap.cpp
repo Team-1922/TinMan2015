@@ -145,7 +145,7 @@ namespace RobotMap
 
 		const int shovelGrabSol[2] = {4,5};//solenoid (SOL)
 		//4: close; 5: open
-		const int shovelCollectSol[2] = {0,1};//solenoid
+		const int shovelCollectSol[2] = {2,3};//solenoid
 
 		const int potDegree = 360;
 		const float potDegreeOffset = 0; //degrees off horizontal, aka all the way forwards
@@ -157,7 +157,7 @@ namespace RobotMap
 		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET (NOT YET)
 #ifdef COMP_BOT // TinMan X
 		//TODO:
-		float voltageOffset 				= 4.90f;//this is the voltage value when shovel is in the flat forwards position
+		float voltageOffset 				= 4.95f;//this is the voltage value when shovel is in the flat forwards position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
 		const float voltageDump 			= voltageOffset - 1.6f; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= voltageOffset; // voltage for when the shovel is horizontal
@@ -239,7 +239,7 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 4.97f;//this is the voltage value when the rack is in store position
 		const float voltageDump 			= voltageOffset - 0.09f; // voltage for when the rack is placing totes on the rack
-		const float voltageStack 			= voltageOffset - 1.22f; // voltage for when the rack is in position for stacking
+		const float voltageStack 			= voltageOffset - 1.15f; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= voltageOffset - 2.02f; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
 		const float voltageVertical = voltageOffset - 1.15f;
@@ -266,10 +266,11 @@ namespace RobotMap
 		namespace PID
 		{
 #ifdef COMP_BOT
-			const float P = 3.2f;
+			const float P = 3.0f;
 			const float I = 0.0f;
 			const float D = -5.25f;
-			const float extremeMotorVal = 0.75;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.9f;//the absolute value of the maximum motor value
+			//this value is a bit higher than it used to because of a dampener that keeps the rack from going too fast
 #else
 			const float P = 5.0f;
 			const float I = 0.0f;
