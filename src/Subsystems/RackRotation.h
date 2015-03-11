@@ -30,6 +30,14 @@ public:
 	void UsePIDOutput(double output);
 	void InitDefaultCommand();
 
+	float GetP() {return GetPIDController()->GetP();}
+	float GetI() {return GetPIDController()->GetI();}
+	float GetD() {return GetPIDController()->GetD();}
+
+	void SetP(float v){return GetPIDController()->SetPID(v, GetI(), GetD());}
+	void SetI(float v){return GetPIDController()->SetPID(GetP(), v, GetD());}
+	void SetD(float v){return GetPIDController()->SetPID(GetP(), GetI(), v);}
+
 
 	// current Potentiometer reading
 	float GetPotVoltage();

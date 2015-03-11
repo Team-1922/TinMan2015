@@ -37,6 +37,8 @@
 
 #include "Commands/DriveDistance.h"
 
+#include "Commands/RackPIDTune.h"
+
 
 #include "RobotMap.h"
 
@@ -130,6 +132,27 @@ m_pDriverController(nullptr)
     buttonRetractRack->WhileHeld(new RackRetract());
 
     buttonTestDriveDistance->WhenPressed(new DriveDistance(12));
+
+
+    /*
+     * for tuning PID
+     */
+    /*JoystickButton* m_ButtonIncrementP = new JoystickButton(m_pDriverStick2, 8);
+    JoystickButton* m_ButtonIncrementI = new JoystickButton(m_pDriverStick2, 10);
+    JoystickButton* m_ButtonIncrementD = new JoystickButton(m_pDriverStick2, 12);
+
+    JoystickButton* m_ButtonDecrementP = new JoystickButton(m_pDriverStick2, 7);
+    JoystickButton* m_ButtonDecrementI = new JoystickButton(m_pDriverStick2, 9);
+    JoystickButton* m_ButtonDecrementD = new JoystickButton(m_pDriverStick2, 11);
+
+
+    m_ButtonIncrementP->WhenPressed(new RackPIDTune('P', 0.1f));
+    m_ButtonIncrementI->WhenPressed(new RackPIDTune('I', 0.1f));
+    m_ButtonIncrementD->WhenPressed(new RackPIDTune('D', 0.1f));
+
+    m_ButtonDecrementP->WhenPressed(new RackPIDTune('P', -0.1f));
+    m_ButtonDecrementI->WhenPressed(new RackPIDTune('I', -0.1f));
+    m_ButtonDecrementD->WhenPressed(new RackPIDTune('D', -0.1f));*/
 
     //TODO: setup all of the commands that take controls
 }

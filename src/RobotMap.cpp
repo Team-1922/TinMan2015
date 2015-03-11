@@ -266,10 +266,10 @@ namespace RobotMap
 		namespace PID
 		{
 #ifdef COMP_BOT
-			const float P = 5.0f;
+			const float P = 3.2f;
 			const float I = 0.0f;
-			const float D = -2.0f;
-			const float extremeMotorVal = 0.9;//the absolute value of the maximum motor value
+			const float D = -5.25f;
+			const float extremeMotorVal = 0.75;//the absolute value of the maximum motor value
 #else
 			const float P = 5.0f;
 			const float I = 0.0f;

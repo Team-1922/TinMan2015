@@ -49,7 +49,7 @@ void Shovel::SetSuckWheels(float val)
 
 void Shovel::SetSuckWheelLeft(float val)
 {
-	m_pSuckWheelLeft->Set(val);
+	m_pSuckWheelLeft->Set(-val);
 }
 
 void Shovel::SetSuckWheelRight(float val)

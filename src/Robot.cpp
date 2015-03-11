@@ -191,6 +191,8 @@ private:
 		SmartDashboard::PutNumber("Shovel Voltage", CommandBase::shovelRotation->GetPotVoltage());
 		SmartDashboard::PutNumber("Shovel Grab Solenoid", CommandBase::shovel->getGrabSolenoid());
 		SmartDashboard::PutNumber("Shovel Collect Solenoid", CommandBase::shovel->getCollectSolenoid());
+		SmartDashboard::PutNumber("Shovel Collect Left", CommandBase::shovel->GetSuckWheelLeft());
+		SmartDashboard::PutNumber("Shovel Collect Right", CommandBase::shovel->GetSuckWheelRight());
 		SmartDashboard::PutBoolean("Shovel Reed", CommandBase::shovelRotation->GetReed());
 
 		/*
@@ -203,6 +205,10 @@ private:
 		SmartDashboard::PutNumber("Rack Voltage", CommandBase::rackRotation->GetPotVoltage());
 		SmartDashboard::PutNumber("Claw Solenoid", CommandBase::rack->getClaw());
 		//this is only going to affect the practice bot
+
+		SmartDashboard::PutNumber("Rack P", CommandBase::rackRotation->GetP());
+		SmartDashboard::PutNumber("Rack I", CommandBase::rackRotation->GetI());
+		SmartDashboard::PutNumber("Rack D", CommandBase::rackRotation->GetD());
 
 
 		/*

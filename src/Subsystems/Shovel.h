@@ -17,7 +17,7 @@ private:
 	OzSolenoid* m_pWidthSolenoid;
 	OzSolenoid* m_pCollectSolenoid;
 
-	//the wheels to suck in the tote/container
+	//the wheels to suck in the tote/container; POSITIVE IS: TODO:
 	SpeedController* m_pSuckWheelLeft;
 	SpeedController* m_pSuckWheelRight;
 
@@ -62,6 +62,8 @@ public:
 	/*
 	 * Suck Wheel Control
 	 */
+	float GetSuckWheelLeft(){return m_pSuckWheelLeft->Get();}
+	float GetSuckWheelRight(){return m_pSuckWheelRight->Get();}
 	void SetSuckWheels(float val);
 	void SetSuckWheelLeft(float val);
 	void SetSuckWheelRight(float val);

@@ -20,9 +20,12 @@ void ShovelWheelsJoyControlled::Execute()
 	float joyTwist = oi->GetOperatorJoystick()->GetTwist();
 	float joyYAxis = oi->GetOperatorJoystick()->GetY();
 
-	if(Utilities::isEqual(joyYAxis, 0.0f, 0.15f))
+	if(Utilities::isEqual(joyYAxis, 0.0f, 0.25f))
 	{
-		shovel->RotateTote(joyTwist);
+		if(!Utilities::isEqual(joyTwist, 0.0f, 0.75f))
+			shovel->RotateTote(joyTwist);
+		else
+			shovel->SetSuckWheels(0);
 	}
 	else
 	{
