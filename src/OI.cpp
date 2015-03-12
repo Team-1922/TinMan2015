@@ -90,48 +90,37 @@ m_pDriverController(nullptr)
     //JoystickButton* buttonRackJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackJoyControlled);
     //JoystickButton* buttonBothJoy = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackShovelCombined);
 
-	//the four different Command Groups
-	JoystickButton* buttonShovelFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHuman);
-	JoystickButton* buttonShovelDump = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpTote);
+
+	//the operator controls
+	JoystickButton* buttonToggleCollectSol = new JoystickButton(m_pOperatorStick, RobotMap::Controls::toggleCollectWheelSolenoid);
+	JoystickButton* buttonToggleGrabSol = new JoystickButton(m_pOperatorStick, RobotMap::Controls::toggleGrabSolenoid);
+	JoystickButton* buttonDumpGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpToteGroup);
+	JoystickButton* buttonDump = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpTote);
+	JoystickButton* buttonPrepareHumanGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHumanGroup);
+	JoystickButton* buttonPrepareHuman = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHuman);
+	JoystickButton* buttonRackStackGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackStackGroup);
+	JoystickButton* buttonRackStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackStack);
+	JoystickButton* buttonRackFlatGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlatGroup);
 	JoystickButton* buttonRackFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlat);
-	JoystickButton* buttonRackStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::stackTotes);
-	//JoystickButton* buttonRackPickContainer = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackContainer);
-	JoystickButton* buttonRackShovelStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::stackRackShovelSame);
-
-	JoystickButton* buttonTestDriveDistance = new JoystickButton(m_pOperatorStick, 1);//trigger
-
-    //the three solenoid toggle buttons
-    JoystickButton* buttonToggleShovelGrab = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelGrabToggle);
-    JoystickButton* buttonToggleShovelCollect = new JoystickButton(m_pOperatorStick, RobotMap::Controls::shovelCollectToggle);
-    //JoystickButton* buttonToggleClaw = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackClawToggle);
-    //JoystickButton* buttonToggleChassis = new JoystickButton(m_pOperatorStick, RobotMap::Controls::chassisLiftToggle);
-
-    //the two buttons for extending/retracting the rack
-    JoystickButton* buttonExtendRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::extendRack);
-    JoystickButton* buttonRetractRack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::retractRack);
 
 
-    //buttonShovelJoy->WhenPressed(new ShovelRotate(4.0));
-    //buttonRackJoy->WhenPressed(new SwitchJoyRack());
-    //buttonBothJoy->WhenPressed(new SwitchJoyCombined());
+	buttonToggleCollectSol->WhenPressed(new ShovelToggleCollect());
+	buttonToggleGrabSol->WhenPressed(new ShovelToggleGrab());
+	buttonDumpGroup->WhenPressed(new StoreTote());
+	buttonDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
+	buttonPrepareHumanGroup->WhenPressed(new PrepareHumanStation());
+	buttonPrepareHuman->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat));
+	buttonRackStackGroup->WhenPressed(new StackTotes());
+	buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
+	buttonRackFlatGroup->WhenPressed(new ShovelRackRotate(RobotMap::Rack::voltageDump));
+	buttonRackFlat->WhenPressed(new RackRotate(RobotMap::Rack::voltageDump));
 
-    buttonShovelFlat->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat, false));
-    buttonShovelDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
-    buttonRackFlat->WhenPressed(new RackRotate(RobotMap::Rack::voltageDump, false));
-    buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
-    //buttonRackPickContainer->WhenPressed(new RackRotate(RobotMap::Rack::voltagePickContainer));
-    buttonRackShovelStack->WhenPressed(new ShovelRackRotate(RobotMap::Rack::voltageStack));
+	//the drive controls
+	JoystickButton* buttonExtendRack = new JoystickButton(m_pDriverStick1, 1);
+	JoystickButton* buttonRetractRack = new JoystickButton(m_pDriverStick2, 1);
 
-    buttonToggleShovelGrab->WhenPressed(new ShovelToggleGrab());
-    buttonToggleShovelCollect->WhenPressed(new ShovelToggleCollect());
-    //buttonToggleClaw->WhenPressed(new RackToggleClaw());
-    //buttonToggleChassis->WhenPressed(new ChassisToggleLift());
-
-    //have these call repeatedly when held down
-    buttonExtendRack->WhileHeld(new RackExtend());
-    buttonRetractRack->WhileHeld(new RackRetract());
-
-    buttonTestDriveDistance->WhenPressed(new DriveDistance(12));
+	buttonExtendRack->WhileHeld(new RackExtend());
+	buttonRetractRack->WhileHeld(new RackRetract());
 
 
     /*

@@ -35,30 +35,17 @@ namespace RobotMap
 		extern const float stearingFactor;//how much stearing direction affects speed
 
 		//the controls on the operator joystick
-		//TODO: get these optimal positions
 
-		//these extend or retract the rack, NOTE: these are to be held to adjust the rack
-		extern const int extendRack;
-		extern const int retractRack;
-
-		//these are for selecting which subsystem the joystick is controlling
-		//extern const int rackJoyControlled;
-		//extern const int shovelJoyControlled;
-		//extern const int rackShovelCombined;
-
-		//these are the controls for shovel and rack angles
-		extern const int prepareHuman;
-		extern const int dumpTote;
-		extern const int rackFlat;
-		extern const int stackTotes;
-		extern const int rackContainer;
-		extern const int stackRackShovelSame;
-
-		//controls for changing the width of the shovel and rack
-		extern const int shovelGrabToggle;
-		extern const int shovelCollectToggle;
-		extern const int rackClawToggle;
-		extern const int chassisLiftToggle;
+		extern const float toggleCollectWheelSolenoid;
+		extern const float toggleGrabSolenoid;
+		extern const float dumpToteGroup;
+		extern const float dumpTote;
+		extern const float prepareHumanGroup;
+		extern const float prepareHuman;
+		extern const float rackStackGroup;
+		extern const float rackStack;
+		extern const float rackFlatGroup;
+		extern const float rackFlat;
 
 		//the current mode
 		extern OperatorMode currOpMode;// = kRack;
