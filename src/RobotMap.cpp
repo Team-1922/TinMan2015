@@ -27,6 +27,7 @@ namespace RobotMap
 		const float rackStack = 8;
 		const float rackFlatGroup = 9;
 		const float rackFlat = 10;
+		const float interruptRackShovel = 11;
 
 		//the current mode
 		OperatorMode currOpMode = kRack;
@@ -147,7 +148,7 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 4.99f;//this is the voltage value when shovel is in the flat forwards position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
-		const float voltageDump 			= voltageOffset - 1.3f; // voltage for when the shovel is placing totes on the rack
+		const float voltageDump 			= voltageOffset - 1.5f; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= voltageOffset; // voltage for when the shovel is in position for stacking
 		const float voltageVertical         = voltageOffset - 1.05f;//voltage when the shovel is vertical
@@ -169,7 +170,7 @@ namespace RobotMap
 			const float P = 1.3f;
 			const float I = 0.0f;
 			const float D = -1.0f;
-			const float extremeMotorVal = 0.8;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.9;//the absolute value of the maximum motor value
 #else
 			const float P = 1.3f;
 			const float I = 0.0f;

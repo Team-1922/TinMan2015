@@ -36,6 +36,7 @@
 #include "Commands/StackTotes.h"
 #include "Commands/LowerRack.h"
 #include "Commands/LowerRackPaired.h"
+#include "Commands/InterruptRackShovel.h"
 
 #include "Commands/DriveDistance.h"
 
@@ -104,6 +105,7 @@ m_pDriverController(nullptr)
 	JoystickButton* buttonRackStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackStack);
 	JoystickButton* buttonRackFlatGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlatGroup);
 	JoystickButton* buttonRackFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlat);
+	JoystickButton* buttonInterruptRackShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::interruptRackShovel);
 
 
 	buttonToggleCollectSol->WhenPressed(new ShovelToggleCollect());
@@ -116,6 +118,7 @@ m_pDriverController(nullptr)
 	buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
 	buttonRackFlatGroup->WhenPressed(new LowerRackPaired());
 	buttonRackFlat->WhenPressed(new LowerRack());
+	//buttonInterruptRackShovel->WhenPressed(new InterruptRackShovel());
 
 	//the drive controls
 	JoystickButton* buttonExtendRack = new JoystickButton(m_pDriverStick1, 1);

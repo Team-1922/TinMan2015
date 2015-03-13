@@ -46,6 +46,7 @@ namespace RobotMap
 		extern const float rackStack;
 		extern const float rackFlatGroup;
 		extern const float rackFlat;
+		extern const float interruptRackShovel;
 
 		//the current mode
 		extern OperatorMode currOpMode;// = kRack;

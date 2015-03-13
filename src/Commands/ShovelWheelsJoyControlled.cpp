@@ -20,7 +20,7 @@ void ShovelWheelsJoyControlled::Execute()
 	float joyTwist = oi->GetOperatorJoystick()->GetTwist();
 	float joyYAxis = oi->GetOperatorJoystick()->GetY();
 
-	if(Utilities::isEqual(joyYAxis, 0.0f, 0.75f))
+	if(Utilities::isEqual(joyYAxis, 0.0f, 0.55f))
 	{
 		if(!Utilities::isEqual(joyTwist, 0.0f, 0.90f))
 			shovel->RotateTote(joyTwist);

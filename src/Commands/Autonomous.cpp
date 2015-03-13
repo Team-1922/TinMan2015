@@ -11,7 +11,7 @@
 Autonomous::Autonomous() : CommandGroup("Autonomous")
 {
 	//KEEP THIS; THIS IS THE MAGIC AUTONOMOUS
-	AddSequential(new Drive(0.55f, 0.75f));
+	AddSequential(new Drive(0.5f/*0.5*/, 0.75f/*0.75f*/));
 
 	//have the collect wheels grab the tote
 	/*AddSequential(new ShovelSetCollect(true));
