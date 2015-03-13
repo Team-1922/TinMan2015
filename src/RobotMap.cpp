@@ -145,9 +145,9 @@ namespace RobotMap
 		//THESE ARE RELATIVE TO THE VOLTAGE OFFSET (NOT YET)
 #ifdef COMP_BOT // TinMan X
 		//TODO:
-		float voltageOffset 				= 4.95f;//this is the voltage value when shovel is in the flat forwards position
+		float voltageOffset 				= 4.99f;//this is the voltage value when shovel is in the flat forwards position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
-		const float voltageDump 			= voltageOffset - 1.1f; // voltage for when the shovel is placing totes on the rack
+		const float voltageDump 			= voltageOffset - 1.3f; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= voltageOffset; // voltage for when the shovel is in position for stacking
 		const float voltageVertical         = voltageOffset - 1.05f;//voltage when the shovel is vertical
@@ -169,7 +169,7 @@ namespace RobotMap
 			const float P = 1.3f;
 			const float I = 0.0f;
 			const float D = -1.0f;
-			const float extremeMotorVal = 0.6;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.8;//the absolute value of the maximum motor value
 #else
 			const float P = 1.3f;
 			const float I = 0.0f;
@@ -227,7 +227,7 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 4.97f;//this is the voltage value when the rack is in store position
 		const float voltageDump 			= voltageOffset - 0.09f; // voltage for when the rack is placing totes on the rack
-		const float voltageStack 			= voltageOffset - 1.15f; // voltage for when the rack is in position for stacking
+		const float voltageStack 			= voltageOffset - 1.10f; // voltage for when the rack is in position for stacking
 		const float voltagePickContainer 	= voltageOffset - 2.02f; // voltage for when the rack is in the stored position (all the way forward to pick up a container)
 
 		const float voltageVertical = voltageOffset - 1.15f;

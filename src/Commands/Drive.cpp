@@ -20,7 +20,7 @@ Drive::Drive(float time, float mag)
 // Called just before this Command runs the first time
 void Drive::Initialize()
 {
-	driveTrain->setLeft(m_magnitudeLeft);
+	driveTrain->setLeft(-m_magnitudeLeft);//this needs to be negative for reasons I forget
 	driveTrain->setRight(m_magnitudeRight);
 }
 

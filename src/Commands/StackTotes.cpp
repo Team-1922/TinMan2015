@@ -36,6 +36,9 @@ StackTotes::StackTotes()
 	// retract the shovel supports and drop the totes onto the platform
 	AddSequential(new ShovelSetGrab(false));
 
+	//rotate the rack back a little to prevent occelation
+	AddSequential(new RackRotate(RobotMap::Rack::voltageStack + 0.25));
+
 	// rotate the shovel back to horizontal, and the rack back to flat
 	//AddSequential(new ShovelRotate(RobotMap::Shovel::voltageFlat));
 	//AddSequential(new RackRotate(RobotMap::Rack::voltageDump));

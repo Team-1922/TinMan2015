@@ -165,7 +165,7 @@ double DriveTrain::ReturnPIDInput()
 void DriveTrain::UsePIDOutput(double output)
 {
 	//don't follow PID in Teleop mode
-	if(RobotMap::Mode)
+	//if(RobotMap::Mode) since there are no encoders, NEVER use PID output
 		return;
 
 	if(m_isRotating)

@@ -7,7 +7,11 @@ Camera::Camera() :
 {
 	frame = imaqCreateImage(IMAQ_IMAGE_RGB, 0);
 	//the camera name (ex "cam0") can be found through the roborio web interface
+#ifdef COMP_BOT
+	imaqError = IMAQdxOpenCamera("cam1", IMAQdxCameraControlModeController, &session);
+#else
 	imaqError = IMAQdxOpenCamera("cam0", IMAQdxCameraControlModeController, &session);
+#endif
 	if(imaqError != IMAQdxErrorSuccess) {
 		DriverStation::ReportError("IMAQdxOpenCamera error: " + std::to_string((long)imaqError) + "\n");
 	}

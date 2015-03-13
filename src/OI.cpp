@@ -34,6 +34,8 @@
 #include "Commands/PrepareHumanStation.h"
 #include "Commands/StoreTote.h"
 #include "Commands/StackTotes.h"
+#include "Commands/LowerRack.h"
+#include "Commands/LowerRackPaired.h"
 
 #include "Commands/DriveDistance.h"
 
@@ -112,8 +114,8 @@ m_pDriverController(nullptr)
 	buttonPrepareHuman->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat));
 	buttonRackStackGroup->WhenPressed(new StackTotes());
 	buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
-	buttonRackFlatGroup->WhenPressed(new ShovelRackRotate(RobotMap::Rack::voltageDump));
-	buttonRackFlat->WhenPressed(new RackRotate(RobotMap::Rack::voltageDump));
+	buttonRackFlatGroup->WhenPressed(new LowerRackPaired());
+	buttonRackFlat->WhenPressed(new LowerRack());
 
 	//the drive controls
 	JoystickButton* buttonExtendRack = new JoystickButton(m_pDriverStick1, 1);
