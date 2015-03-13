@@ -2,6 +2,7 @@
 #include "ShovelRotate.h"
 #include "RobotMap.h"
 #include "ShovelSetGrab.h"
+#include "ShovelSetCollect.h"
 
 PrepareHumanStation::PrepareHumanStation()
 {
@@ -10,5 +11,6 @@ PrepareHumanStation::PrepareHumanStation()
 	// even though that would probably never happen.
 
 	AddSequential(new ShovelSetGrab(false));
+	AddSequential(new ShovelSetCollect(false));
 	AddSequential(new ShovelRotate(RobotMap::Shovel::voltageFlat));
 }
