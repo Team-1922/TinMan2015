@@ -9,7 +9,9 @@ ShovelToggleCollect::ShovelToggleCollect()
 // Called just before this Command runs the first time
 void ShovelToggleCollect::Initialize()
 {
-	shovel->setCollectSolenoid(!shovel->getCollectSolenoid());
+	bool val = !shovel->getCollectSolenoid();
+	shovel->setCollectSolenoid(val);
+	shovel->setGrabSolenoid(val);
 }
 
 // Called repeatedly when this Command is scheduled to run

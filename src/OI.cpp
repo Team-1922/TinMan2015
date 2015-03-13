@@ -96,7 +96,7 @@ m_pDriverController(nullptr)
 
 	//the operator controls
 	JoystickButton* buttonToggleCollectSol = new JoystickButton(m_pOperatorStick, RobotMap::Controls::toggleCollectWheelSolenoid);
-	JoystickButton* buttonToggleGrabSol = new JoystickButton(m_pOperatorStick, RobotMap::Controls::toggleGrabSolenoid);
+	//JoystickButton* buttonToggleGrabSol = new JoystickButton(m_pOperatorStick, RobotMap::Controls::toggleGrabSolenoid);
 	JoystickButton* buttonDumpGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpToteGroup);
 	JoystickButton* buttonDump = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpTote);
 	JoystickButton* buttonPrepareHumanGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHumanGroup);
@@ -109,7 +109,7 @@ m_pDriverController(nullptr)
 
 
 	buttonToggleCollectSol->WhenPressed(new ShovelToggleCollect());
-	buttonToggleGrabSol->WhenPressed(new ShovelToggleGrab());
+	//buttonToggleGrabSol->WhenPressed(new ShovelToggleGrab());
 	buttonDumpGroup->WhenPressed(new StoreTote());
 	buttonDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
 	buttonPrepareHumanGroup->WhenPressed(new PrepareHumanStation());

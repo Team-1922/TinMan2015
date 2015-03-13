@@ -35,6 +35,8 @@ private:
 
 	RackSetpointHere* rackSetSetpointCurrentAngle;
 
+	long counter = 0;
+
 
 	void RobotInit()
 	{
@@ -98,6 +100,7 @@ private:
 	void AutonomousInit()
 	{
 		RobotMap::Mode = false;
+		counter = 0;
 
 		CommandBase::driveTrain->Disable();
 
@@ -111,14 +114,19 @@ private:
 
 	void AutonomousPeriodic()
 	{
+		++counter;
+
 		//update this BEFORE running commands
 		UniversalPeriodic();
 		Scheduler::GetInstance()->Run();
 		//SmartDashboard::PutBoolean("Autonomous is working:", RobotMap::AutonomousEnabled);
+
+		SmartDashboard::PutNumber("Counter", counter);
 	}
 
 	void TeleopInit()
 	{
+		counter = 0;
 		RobotMap::Mode = true;
 		CommandBase::driveTrain->Disable();
 		// This makes sure that the autonomous stops running when
@@ -131,6 +139,8 @@ private:
 
 	void TeleopPeriodic()
 	{
+
+		++counter;
 
 		//update this BEFORE running commands
 		UniversalPeriodic();
@@ -212,6 +222,12 @@ private:
 		SmartDashboard::PutNumber("Rack P", CommandBase::rackRotation->GetP());
 		SmartDashboard::PutNumber("Rack I", CommandBase::rackRotation->GetI());
 		SmartDashboard::PutNumber("Rack D", CommandBase::rackRotation->GetD());
+
+
+
+
+		SmartDashboard::PutNumber("Counter", counter);
+
 
 
 		/*

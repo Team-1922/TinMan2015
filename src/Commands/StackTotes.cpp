@@ -22,10 +22,10 @@ StackTotes::StackTotes()
 	// rotate the shovel to the storage position
 	AddSequential(new ShovelSetGrab(true));
 
-	AddSequential(new ShovelSetCollect(false));
+	AddSequential(new ShovelSetCollect(true));
 
 	// rotate the shovel to the storage position
-	AddSequential(new ShovelRotate(RobotMap::Shovel::voltageDump));
+	AddSequential(new ShovelRotate(RobotMap::Shovel::voltageDump + 0.1f));
 
 	// lift the bot  IMPORTANT - need to lift the bot first because the shovel will be rotated past flat
 	//TODO: undo this AddSequential(new ChassisLift(true));
