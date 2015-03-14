@@ -10,7 +10,7 @@
 #include "StackTotes.h"
 //#include "ChassisLift.h"
 #include "ShovelSetGrab.h"
-#include "ShovelSetCollect.h"
+//#include "ShovelSetCollect.h"
 #include "ShovelRackRotate.h"
 #include "RackRotate.h"
 
@@ -22,7 +22,7 @@ StackTotes::StackTotes()
 	// rotate the shovel to the storage position
 	AddSequential(new ShovelSetGrab(true));
 
-	AddSequential(new ShovelSetCollect(true));
+	//AddSequential(new ShovelSetCollect(true));
 
 	// rotate the shovel to the storage position
 	AddSequential(new ShovelRotate(RobotMap::Shovel::voltageDump + 0.1f));

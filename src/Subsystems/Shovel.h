@@ -14,12 +14,12 @@ private:
 
 	//SpeedController* m_pRotate;
 	//OzPotentiometer* m_pPotentiometer;
-	OzSolenoid* m_pWidthSolenoid;
-	OzSolenoid* m_pCollectSolenoid;
+	OzSolenoid* m_pWidthSolenoid0;
+	//OzSolenoid* m_pWidthSolenoid1;
 
 	//the wheels to suck in the tote/container; POSITIVE IS: TODO:
-	SpeedController* m_pSuckWheelLeft;
-	SpeedController* m_pSuckWheelRight;
+	//SpeedController* m_pSuckWheelLeft;
+	//SpeedController* m_pSuckWheelRight;
 
 	//DigitalInput* m_pShovelWideRight;
 	//DigitalInput* m_pShovelWideLeft;
@@ -62,23 +62,20 @@ public:
 	/*
 	 * Suck Wheel Control
 	 */
-	float GetSuckWheelLeft(){return m_pSuckWheelLeft->Get();}
+	/*float GetSuckWheelLeft(){return m_pSuckWheelLeft->Get();}
 	float GetSuckWheelRight(){return m_pSuckWheelRight->Get();}
 	void SetSuckWheels(float val);
 	void SetSuckWheelLeft(float val);
 	void SetSuckWheelRight(float val);
-	void RotateTote(float val);//this has the suck wheels go in different directions to rotate the tote
+	void RotateTote(float val);*///this has the suck wheels go in different directions to rotate the tote
 
 
 	/*
 	 * Solenoid Control
 	 */
 
-	bool getGrabSolenoid() {return m_pWidthSolenoid->Get();}
-	void setGrabSolenoid(bool on);
-
-	bool getCollectSolenoid(){return m_pCollectSolenoid->Get();}
-	void setCollectSolenoid(bool on){m_pCollectSolenoid->Set(on);}
+	bool getGrabSolenoid(){return m_pWidthSolenoid0->Get();}
+	void setGrabSolenoid(bool on){m_pWidthSolenoid0->Set(on);}
 
 private:
 

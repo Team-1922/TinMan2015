@@ -3,8 +3,8 @@
 #include <iostream>
 #include "WasteTime.h"
 #include "ShovelSetGrab.h"
-#include "ShovelSuckWheels.h"
-#include "ShovelSetCollect.h"
+//#include "ShovelSuckWheels.h"
+//#include "ShovelSetCollect.h"
 #include "DriveRotate.h"
 #include "Drive.h"
 
@@ -14,10 +14,10 @@ Autonomous::Autonomous() : CommandGroup("Autonomous")
 	AddSequential(new Drive(0.6f/*0.55*/, 0.75f/*0.75f*/));
 
 	//have the collect wheels grab the tote
-	/*AddSequential(new ShovelSetCollect(true));
+	/*//AddSequential(new ShovelSetCollect(true));
 
 	//starting with the back pointing the human station, and the shovel has a tote basically already in it, but not touching
-	AddSequential(new ShovelSuckWheels(0.4f, -0.75f, -0.75f));//Apparently this function with only two floats in "ambiguous"
+	//AddSequential(new ShovelSuckWheels(0.4f, -0.75f, -0.75f));//Apparently this function with only two floats in "ambiguous"
 
 	//apply solenoid pressure
 	AddSequential(new ShovelSetGrab(true));

@@ -23,7 +23,7 @@
 #include "Commands/ShovelRotate.h"
 #include "Commands/ShovelToggleGrab.h"
 #include "Commands/RackToggleClaw.h"
-#include "Commands/ShovelToggleCollect.h"
+#include "Commands/ShovelToggleGrab.h"
 //#include "Commands/ChassisToggleLift.h"
 
 #include "Commands/RackExtend.h"
@@ -108,7 +108,7 @@ m_pDriverController(nullptr)
 	JoystickButton* buttonInterruptRackShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::interruptRackShovel);
 
 
-	buttonToggleCollectSol->WhenPressed(new ShovelToggleCollect());
+	buttonToggleCollectSol->WhenPressed(new ShovelToggleGrab());
 	//buttonToggleGrabSol->WhenPressed(new ShovelToggleGrab());
 	buttonDumpGroup->WhenPressed(new StoreTote());
 	buttonDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
@@ -118,7 +118,7 @@ m_pDriverController(nullptr)
 	buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
 	buttonRackFlatGroup->WhenPressed(new LowerRackPaired());
 	buttonRackFlat->WhenPressed(new LowerRack());
-	//buttonInterruptRackShovel->WhenPressed(new InterruptRackShovel());
+	buttonInterruptRackShovel->WhenPressed(new InterruptRackShovel());
 
 	//the drive controls
 	JoystickButton* buttonExtendRack = new JoystickButton(m_pDriverStick1, 1);
