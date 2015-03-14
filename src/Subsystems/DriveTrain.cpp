@@ -6,7 +6,7 @@
 #include "../Utilities.h"
 
 DriveTrain::DriveTrain() :
-		PIDSubsystem("DriveTrain", RobotMap::DriveTrain::PID::P, RobotMap::DriveTrain::PID::I, RobotMap::DriveTrain::PID::D)
+		Subsystem("DriveTrain")
 {
 	m_pFrontLeft = new Talon(RobotMap::DriveTrain::frontLeft);
 	//m_pRearLeft = new Talon(RobotMap::DriveTrain::rearLeft);
@@ -30,7 +30,7 @@ DriveTrain::DriveTrain() :
 	m_pRightEncoder->SetMinRate(0.1);//0.1 in/s
 
 	//configure the PID system (NOTE: i use 1000 inches as the maximum because there should be no limit, but autonomous is not that long
-	SetInputRange(0.0, 1000.0f); // range of values returned from the potentiometer
+	/*SetInputRange(0.0, 1000.0f); // range of values returned from the potentiometer
 	SetOutputRange(-RobotMap::DriveTrain::PID::extremeMotorVal,
 			RobotMap::DriveTrain::PID::extremeMotorVal); // start with the motor range
 	SetAbsoluteTolerance(2.0f);//tolerance of about 2 inches
@@ -43,7 +43,7 @@ DriveTrain::DriveTrain() :
 
 	//setup to stay still by default, HOWEVER PID doesn't do anything in teleop mode
 	Enable();
-	SetSetpoint(ReturnPIDInput());
+	SetSetpoint(ReturnPIDInput());*/
 }
 
 DriveTrain::~DriveTrain()

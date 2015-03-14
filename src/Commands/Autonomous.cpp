@@ -29,4 +29,7 @@ Autonomous::Autonomous() : CommandGroup("Autonomous")
 	//AddSequential(new Drive(0.6f, 0.75f));
 	AddSequential(new DriveDistance(60.0f));//drive 5 feet
 	*/
+
+	//TEST AUTONOMOUS
+	//AddSequential(new ShovelSetGrab(true));
 }

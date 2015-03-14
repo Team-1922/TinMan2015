@@ -55,7 +55,7 @@ private:
 		//autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
 
-		CameraServer::GetInstance()->SetQuality(75);
+		//CameraServer::GetInstance()->SetQuality(75);
 		//the camera name (ex "cam0") can be found through the roborio web interface
 		//CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 		//Initializes a chooser item in the SmartDashboard to select the Autonomous Mode for the round
@@ -102,7 +102,7 @@ private:
 		RobotMap::Mode = false;
 		counter = 0;
 
-		CommandBase::driveTrain->Disable();
+		//CommandBase::driveTrain->Disable();
 
 		//Retrieves selected Autonomous mode from SmartDashboard
 		autonomousCommand = new Autonomous();
@@ -128,7 +128,7 @@ private:
 	{
 		counter = 0;
 		RobotMap::Mode = true;
-		CommandBase::driveTrain->Disable();
+		//CommandBase::driveTrain->Disable();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove

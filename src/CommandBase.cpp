@@ -45,7 +45,7 @@ void CommandBase::init()
 	rack = new Rack();
 	driveTrain = new DriveTrain();
 	shovel = new Shovel();
-	camera = new Camera();
+	//camera = new Camera();
 	//pneumatics = new Pneumatics();
 	//chassis = new Chassis();
 	rackRotation = new RackRotation();

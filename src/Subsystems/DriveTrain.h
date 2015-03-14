@@ -4,7 +4,7 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class DriveTrain: public PIDSubsystem
+class DriveTrain: public Subsystem
 {
 private:
 

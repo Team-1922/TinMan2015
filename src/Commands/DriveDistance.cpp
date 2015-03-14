@@ -12,7 +12,7 @@ DriveDistance::DriveDistance(float distance)
 void DriveDistance::Initialize()
 {
 	//set the setpoint to the distance relative to the current position
-	driveTrain->SetSetpoint(driveTrain->getEncDistanceLeft() + m_distanceInches);
+	//driveTrain->SetSetpoint(driveTrain->getEncDistanceLeft() + m_distanceInches);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -24,13 +24,13 @@ void DriveDistance::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool DriveDistance::IsFinished()
 {
-	return driveTrain->OnTarget();
+	return true;//driveTrain->OnTarget();
 }
 
 // Called once after isFinished returns true
 void DriveDistance::End()
 {
-	driveTrain->SetSetpoint(driveTrain->ReturnPIDInput());
+	//driveTrain->SetSetpoint(driveTrain->ReturnPIDInput());
 }
 
 // Called when another command which requires one or more of the same
