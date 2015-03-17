@@ -18,8 +18,13 @@ class PIDSource;
 class Notifier;
 
 
-//where OzPIDSetpointChain[n] = (d^ny)/(dx^n) * PIDInput
-typedef std::vector<double> OzPIDSetpointChain;
+//where OzPIDSetpointChain[n] = (d^nx)/(dt^n) * PIDInput; NOTE: if PIDInput is position, then velocity is PIDInput units per second
+typedef std::vector<float> OzPIDSetpointChain;
+
+//used to determine if the setpoint chain is valid
+#define ASSERT_SETPOINT_CHAIN(__chain__) (__chain__.size() != 0)
+
+#define INFINITE_INPUT (float)0xFFFFFFFF
 
 /**
  * Class implements a PID Control Loop.
@@ -47,8 +52,12 @@ public:
 	virtual float GetD();
 	virtual float GetF();
 
-	virtual void SetSetpoint(float setpoint);
-	virtual float GetSetpoint();
+	virtual void SetSetpointChain(OzPIDSetpointChain setpointChain);
+	virtual OzPIDSetpointChain GetSetpointChain();
+
+	virtual float GetCurrentSetpoint();
+
+	virtual float GetCurrentPIDInput();
 
 	virtual float GetError();
 
@@ -79,6 +88,7 @@ private:
 	bool m_destruct; // should the calculate thread stop running
 	float m_prevError;	// the prior sensor input (used to compute velocity)
 	double m_totalError; //the sum of the errors for use in the integral calc
+	unsigned char m_currentSetpointIndex; //the index of the setpoint vector that is currently in use
 	enum
 	{
 		kAbsoluteTolerance,
@@ -86,10 +96,12 @@ private:
 		kNoTolerance
 	} m_toleranceType;
 	float m_tolerance;	//the percetage or absolute error that is considered on target
-	float m_setpoint;
+	OzPIDSetpointChain m_setpoint;
 	float m_error;
 	float m_result;
 	float m_period;
+
+	std::vector<float> m_pidInputCalc; //the calculated input derivatives, where 0 is 0th derivative of the input
 
 	MUTEX_ID m_semaphore;
 

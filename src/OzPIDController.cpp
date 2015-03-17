@@ -82,7 +82,7 @@ void OzPIDController::Initialize(float Kp, float Ki, float Kd, float Kf,
 
 	m_continuous = false;
 	m_enabled = false;
-	m_setpoint = 0;
+	//m_setpoint = 0;
 
 	m_prevError = 0;
 	m_totalError = 0;
@@ -353,7 +353,7 @@ void OzPIDController::SetInputRange(float minimumInput, float maximumInput)
 	}
 	END_REGION;
 
-	SetSetpoint(m_setpoint);
+	SetSetpointChain(m_setpoint);
 }
 
 /**
@@ -376,38 +376,40 @@ void OzPIDController::SetOutputRange(float minimumOutput, float maximumOutput)
  * Set the setpoint for the OzPIDController
  * @param setpoint the desired setpoint
  */
-void OzPIDController::SetSetpoint(float setpoint)
+void OzPIDController::SetSetpointChain(OzPIDSetpointChain setpointChain)
 {
+	//do nothing if the setpoint chain is empty
+	if(!ASSERT_SETPOINT_CHAIN(setpointChain))
+		return;
+
 	CRITICAL_REGION(m_semaphore)
 	{
+		m_setpoint = setpointChain;
+		//for maximumInput and minimumInput, only do testing on the 0th derivative field
 		if (m_maximumInput > m_minimumInput)
 		{
-			if (setpoint > m_maximumInput)
-				m_setpoint = m_maximumInput;
-			else if (setpoint < m_minimumInput)
-				m_setpoint = m_minimumInput;
-			else
-				m_setpoint = setpoint;
-		}
-		else
-		{
-			m_setpoint = setpoint;
+			if (setpointChain[0] > m_maximumInput)
+				m_setpoint[0] = m_maximumInput;
+			else if (setpointChain[0] < m_minimumInput)
+				m_setpoint[0] = m_minimumInput;
 		}
 	}
 	END_REGION;
 
-	if (m_table != NULL) {
-		m_table->PutNumber("setpoint", m_setpoint);
+	if (m_table != NULL)
+	{
+		for(unsigned char i = 0; i < setpointChain.size(); ++i)
+			m_table->PutNumber("setpoint " + std::to_string(i), m_setpoint[i]);
 	}
 }
 
 /**
- * Returns the current setpoint of the OzPIDController
- * @return the current setpoint
+ * Returns the current setpoint chain of the OzPIDController
+ * @return the current setpoint chain
  */
-float OzPIDController::GetSetpoint()
+OzPIDSetpointChain OzPIDController::GetSetpointChain()
 {
-	float setpoint;
+	OzPIDSetpointChain setpoint;
 	CRITICAL_REGION(m_semaphore)
 	{
 		setpoint = m_setpoint;
@@ -417,19 +419,42 @@ float OzPIDController::GetSetpoint()
 }
 
 /**
+ * Returns the current setpoint of the OzPIDController
+ * @return the current setpoint
+ */
+float OzPIDController::GetCurrentSetpoint()
+{
+	float setpoint;
+	CRITICAL_REGION(m_semaphore)
+	{
+		setpoint = m_setpoint[m_currentSetpointIndex];
+	}
+	END_REGION
+	return setpoint;
+}
+
+/**
+ * Returns the current PID input derivative (i.e. position velocity acceleration) depending on current derivative
+ */
+float OzPIDController::GetCurrentPIDInput()
+{
+
+}
+
+/**
  * Retruns the current difference of the input from the setpoint
  * @return the current error
  */
 float OzPIDController::GetError()
 {
 	float error;
-  double pidInput;
+	double pidInput;
 	CRITICAL_REGION(m_semaphore)
 	{
-    pidInput = m_pidInput->PIDGet();
+		pidInput = m_pidInput->PIDGet();
 	}
 	END_REGION;
-  error = GetSetpoint() - pidInput;
+	error = GetSetpoint() - pidInput;
 	return error;
 }
 
