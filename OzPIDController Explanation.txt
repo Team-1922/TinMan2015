@@ -1,0 +1,13 @@
+The Oz PID Controller was created to use PID to control heavy objects, or objects that have a lot of play in the drive mechanism/
+
+///////////////////////////////////////////////////////////////////
+The Function of the OzPIDController:
+///
+//
+/
+
+The OzPIDController is designed to take the PID input, and a timer, and create a vector of rate information.  This data has a staircase effect
+with a stair length of the update period, but it should not be too noticeable with reasonably small update periods (i.e. <50ms).  The LiveWindow
+has been updated to accept the different setpoint derivatives according to construction.  While it is not useful, the controller is fully capable
+to change the maximum derivative level after construction.  If the user changes the derivative to a lower number, than the setpoint, and rate data is
+lost for that derivative level. TODO: THIS IS UNFINISHED

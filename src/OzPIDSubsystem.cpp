@@ -12,41 +12,29 @@
 
  // XXX max and min are not used?
 
-OzPIDSubsystem::OzPIDSubsystem(const char *name, double p, double i, double d) :
+OzPIDSubsystem::OzPIDSubsystem(const char *name, OzPIDDerivLevelVector pidf, unsigned char nDeriv) :
   Subsystem(name)
 {
-	m_controller = new OzPIDController(p, i, d, this, this);
+	m_controller = new OzPIDController(pidf, this, this, 0.05f, nDeriv);
 }
 
-OzPIDSubsystem::OzPIDSubsystem(const char *name, double p, double i, double d, double f) :
- Subsystem(name)
-{
-	m_controller = new OzPIDController(p, i, d, f, this, this);
-}
-
-OzPIDSubsystem::OzPIDSubsystem(const char *name, double p, double i, double d, double f,
-  double period) :
+OzPIDSubsystem::OzPIDSubsystem(const char *name, OzPIDDerivLevelVector pidf,
+  double period, unsigned char nDeriv) :
   Subsystem(name)
 {
-	m_controller = new OzPIDController(p, i, d, f, this, this, period);
+	m_controller = new OzPIDController(pidf, this, this, period, nDeriv);
 }
 
-OzPIDSubsystem::OzPIDSubsystem(double p, double i, double d) :
+OzPIDSubsystem::OzPIDSubsystem(OzPIDDerivLevelVector pidf, unsigned char nDeriv) :
   Subsystem("OzPIDSubsystem")
 {
-	m_controller = new OzPIDController(p, i, d, this, this);
+	m_controller = new OzPIDController(pidf, this, this, 0.05f, nDeriv);
 }
 
-OzPIDSubsystem::OzPIDSubsystem(double p, double i, double d, double f) :
-  Subsystem("OzPIDSubsystem")
-{
-	m_controller = new OzPIDController(p, i, d, f, this, this);
-}
-
-OzPIDSubsystem::OzPIDSubsystem(double p, double i, double d, double f, double period) :
+OzPIDSubsystem::OzPIDSubsystem(OzPIDDerivLevelVector pidf, double period, unsigned char nDeriv) :
 		Subsystem("OzPIDSubsystem")
 {
-	m_controller = new OzPIDController(p, i, d, f, this, this, period);
+	m_controller = new OzPIDController(pidf, this, this, period, nDeriv);
 }
 
 OzPIDSubsystem::~OzPIDSubsystem()
@@ -72,17 +60,26 @@ OzPIDController *OzPIDSubsystem::GetPIDController()
 
 void OzPIDSubsystem::SetSetpointChain(OzPIDSetpointChain setpointChain)
 {
-	m_controller->SetSetpoint(setpoint);
+	m_controller->SetSetpointChain(setpointChain);
 }
 
-void OzPIDSubsystem::SetSetpointRelative(double deltaSetpoint)
+float OzPIDSubsystem::GetPosition()
 {
-	SetSetpoint(GetSetpoint() + deltaSetpoint);
+	return ReturnPIDInput();
 }
 
-double OzPIDSubsystem::GetSetpoint()
+float OzPIDSubsystem::GetnPosition(unsigned char n)
 {
-	return m_controller->GetSetpoint();
+	return m_controller->GetnPosition(n);
+}
+
+float OzPIDSubsystem::GetnSetpoint(unsigned char n)
+{
+	//don't lock the OzPIDController more than we have to
+	if(n == 0)
+		return GetPosition();
+
+	return m_controller->GetnSetpoint(n);
 }
 
 void OzPIDSubsystem::SetInputRange(float minimumInput, float maximumInput)
@@ -95,8 +92,9 @@ void OzPIDSubsystem::SetInputRange(float minimumInput, float maximumInput)
   * OnTarget.
   * @param percentage error which is tolerable
   */
-void OzPIDSubsystem::SetAbsoluteTolerance(float absValue) {
- m_controller->SetAbsoluteTolerance(absValue);
+void OzPIDSubsystem::SetAbsolutenTolerance(float absValue, unsigned char n)
+{
+	m_controller->SetAbsolutenTolerance(absValue, n);
 }
 
  /*
@@ -104,9 +102,9 @@ void OzPIDSubsystem::SetAbsoluteTolerance(float absValue) {
   * OnTarget.
   * @param percentage error which is tolerable
   */
-void OzPIDSubsystem::SetPercentTolerance(float percent)
+void OzPIDSubsystem::SetPercentnTolerance(float percent, unsigned char n)
 {
-	m_controller->SetPercentTolerance(percent);
+	m_controller->SetPercentnTolerance(percent, n);
 }
 
  /*
@@ -123,11 +121,6 @@ void OzPIDSubsystem::SetPercentTolerance(float percent)
 bool OzPIDSubsystem::OnTarget()
 {
 	return m_controller->OnTarget();
-}
-
-double OzPIDSubsystem::GetPosition()
-{
-	return ReturnPIDInput();
 }
 
 void OzPIDSubsystem::PIDWrite(float output)

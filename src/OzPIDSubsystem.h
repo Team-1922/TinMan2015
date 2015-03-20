@@ -28,36 +28,41 @@
 class OzPIDSubsystem : public Subsystem, public PIDOutput, public PIDSource
 {
 public:
-	OzPIDSubsystem(const char *name, double p, double i, double d);
-	OzPIDSubsystem(const char *name, double p, double i, double d, double f);
-	OzPIDSubsystem(const char *name, double p, double i, double d, double f, double period);
-	OzPIDSubsystem(double p, double i, double d);
-	OzPIDSubsystem(double p, double i, double d, double f);
-	OzPIDSubsystem(double p, double i, double d, double f, double period);
+	OzPIDSubsystem(const char *name, OzPIDDerivLevelVector pidf, unsigned char nDeriv);
+	OzPIDSubsystem(const char *name, OzPIDDerivLevelVector pidf, double period, unsigned char nDeriv);
+	OzPIDSubsystem(OzPIDDerivLevelVector pidf, unsigned char nDeriv);
+	OzPIDSubsystem(OzPIDDerivLevelVector pidf, double period, unsigned char nDeriv);
 	virtual ~OzPIDSubsystem();
 
 	void Enable();
 	void Disable();
 
-	// PIDOutput interface
-	virtual void PIDWrite(float output);
-
-	// PIDSource interface
-	virtual double PIDGet();
 	void SetSetpointChain(OzPIDSetpointChain setpointChain);
 	//void SetSetpointRelative(double deltaSetpoint);
 	void SetInputRange(float minimumInput, float maximumInput);
 	void SetOutputRange(float minimumOutput, float maximumOutput);
 	OzPIDSetpointChain GetSetpointChain();
 
-	//gets the current "position" of the nth Derivative, where 0 is just the PID source, and 3 is the third derivative of the PID source
-	double GetPosition(unsigned char nDeriv);
+	//gets the current "position" of the nth Derivative, where 0 is just the PID source,
+	//and 3 is the third derivative of the PID source
+	float GetPosition();
 
-	virtual void SetAbsoluteTolerance(float absValue);
-	virtual void SetPercentTolerance(float percent);
+	float GetnPosition(unsigned char n);
+	float GetnSetpoint(unsigned char n);
+
+	virtual void SetAbsolutenTolerance(float absValue, unsigned char n = 0);
+	virtual void SetPercentnTolerance(float percent, unsigned char n = 0);
 	virtual bool OnTarget();
 
 protected:
+	friend OzPIDController;
+
+	// PIDOutput interface
+	virtual void PIDWrite(float output);
+
+	// PIDSource interface
+	virtual double PIDGet();
+
 	OzPIDController *GetPIDController();
 
 	virtual double ReturnPIDInput() = 0;
