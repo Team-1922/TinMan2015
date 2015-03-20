@@ -229,7 +229,7 @@ void OzPIDController::Calculate()
 			CalcDeriv(pidInputDerivOld, pidInputDerivNew, pidInput->PIDGet(), currUpdateTime - prevUpdateTime);
 
 			//is the speed/acceleration/whatever within the threshold to lower the PID derivative?
-			for(unsigned int i = 0; i < pidInputDerivOld.size() - 1; ++i)
+			for(unsigned int i = 0; i < pidInputDerivOld.size(); ++i)
 			{
 				if (OnnTarget_tunsafe(i))
 				{
@@ -237,6 +237,20 @@ void OzPIDController::Calculate()
 					m_currentSetpointIndex = i;
 					m_totalError = 0.0f;
 					m_prevError = 0.0f;
+				}
+
+				//finally, if none of the values are close enough, resort to the n order derivative
+				if(i == pidInputDerivOld.size() - 1)
+				{
+					//if the current setpoint is not the last order setpoint, then reset these values
+					if(m_currentSetpointIndex != i)
+					{
+						m_totalError = 0.0f;
+						m_prevError = 0.0f;
+					}
+
+					//if the current setpoint index is highest order derivative, then do NOT reset the error values
+					m_currentSetpointIndex = i;
 				}
 			}
 

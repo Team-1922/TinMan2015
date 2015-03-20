@@ -10,4 +10,32 @@ The OzPIDController is designed to take the PID input, and a timer, and create a
 with a stair length of the update period, but it should not be too noticeable with reasonably small update periods (i.e. <50ms).  The LiveWindow
 has been updated to accept the different setpoint derivatives according to construction.  While it is not useful, the controller is fully capable
 to change the maximum derivative level after construction.  If the user changes the derivative to a lower number, than the setpoint, and rate data is
-lost for that derivative level. TODO: THIS IS UNFINISHED
+lost for that derivative level.  PIDF values are specific to each derivative level, as well as the setpoints.  The setpoint is used to create smooth
+movement of the pid output.  Starting at the 0 derivative setpoint, if it is within the tolerance of the 0 derivative threshold, then it controls the
+position.  To determine which PIDF values and which setpoint to go off, the controller loops through all of the setpoints, starting at 0 order, going
+to the n order.  Once either one derivative order reaches the threshold, or the n order is reached, then the PID controller starts using that setpoint.
+Setpoints that are NOT position, must be positive quantities; if unsure, use the VALIDATE_SETPOINT_CHAIN macro.  This will convert all order
+derivatives greater than 0 to a scalar quantity.  The reasoning behind this is to determine the sign of the speed, acceleration, etc. based on 
+which side of the setpoint the current position is.
+
+
+//////////////////
+The OzPIDDerivLevelVector
+//
+/
+
+Since there will be different P, I, D, and F values for each derivative level, there is a convenient data structure for that; the OzPIDDerivLevelVector.
+The syntax for this structure is as followed:
+
+DECLARE_OZ_PID_DERIV_LEVEL_VECTOR(structureName,
+			MACRO_ARRAY({OzPIDStruct(p, i, d, f), OzPIDStruct(p, i, d, f), OzPIDStruct(p, i, d, f)}))
+			
+This creates a OzPIDDerivLevelVector with name "structureName", and will be filled with the 3 OzPIDStructs.  The first struct is the 0 order derivative
+pidf values;  The second struct is the first order derivative pidf values and so on.  This is directly passed to the constructor of the controller, but
+the individual pidf values of each derivative are modifiable.
+
+For easy use of the OzPIDDerivLevelVector, use the methods in the OzPID namespace.  
+
+TODO: this documentation is not finished
+
+

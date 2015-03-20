@@ -114,12 +114,12 @@ public:
 
 //macro to help make this OzPIDDerivLevelVector; NOTE: ONLY DEFINE THIS IN SOURCES FILES; IT CREATES JIBBERISH NAMESPACES
 #define DECLARE_OZ_PID_DERIV_LEVEL_VECTOR(__NAME__, __DATA__) const OzPIDStruct __NAME__##__RAW__DATA__[] = __DATA__;OzPIDDerivLevelVector __NAME__ = __NAME__##__RAW__DATA__;
-#define CREATE_DATA_FROM_ARRAY(...) __VA_ARGS__
+#define MACRO_ARRAY(...) __VA_ARGS__
 //EXAMPLE:
 /*
  *
  * DECLARE_OZ_PID_DERIV_LEVEL_VECTOR(TestData,
-		CREATE_DATA_FROM_ARRAY({OzPIDStruct(0.0f, 0.0f, 0.0f, 0.0f), OzPIDStruct(0.0f, 0.0f, 0.0f, 0.0f), OzPIDStruct(0.0f, 0.0f, 0.0f, 0.0f)}));
+		MACRO_ARRAY({OzPIDStruct(0.0f, 0.0f, 0.0f, 0.0f), OzPIDStruct(0.0f, 0.0f, 0.0f, 0.0f), OzPIDStruct(0.0f, 0.0f, 0.0f, 0.0f)}));
  *
  */
 
