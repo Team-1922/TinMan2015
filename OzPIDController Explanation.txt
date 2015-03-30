@@ -18,6 +18,8 @@ Setpoints that are NOT position, must be positive quantities; if unsure, use the
 derivatives greater than 0 to a scalar quantity.  The reasoning behind this is to determine the sign of the speed, acceleration, etc. based on 
 which side of the setpoint the current position is.
 
+Higher PID deriv values will be somewhat oscillatory in motion, because update periods are somewhat long; compensate with large D values.
+
 
 //////////////////
 The OzPIDDerivLevelVector
