@@ -27,6 +27,17 @@ class Notifier;
 //where OzPIDSetpointChain[n] = (d^nx)/(dt^n) * PIDInput; NOTE: if PIDInput is position, then velocity is PIDInput units per second
 typedef std::vector<float> OzPIDSetpointChain;
 
+//a utility for converting arrays to vectors
+template<typename T>
+std::vector<T> arrToVec(T* arr)
+{
+	//if the size is 0
+	if(!arr)
+		return std::vector<T>();
+
+	return std::vector<T>(arr, arr + sizeof(arr) / sizeof(arr[0]));
+}
+
 struct OzPIDStruct
 {
 public:
@@ -112,16 +123,19 @@ public:
 	}
 };
 
-//macro to help make this OzPIDDerivLevelVector; NOTE: ONLY DEFINE THIS IN SOURCES FILES; IT CREATES JIBBERISH NAMESPACES
-#define DECLARE_OZ_PID_DERIV_LEVEL_VECTOR(__NAME__, __DATA__) const OzPIDStruct __NAME__##__RAW__DATA__[] = __DATA__;OzPIDDerivLevelVector __NAME__ = __NAME__##__RAW__DATA__;
+//macro to help make this OzPIDDerivLevelVector; ONLY USE THIS IN SOURCE FILES
+#define DEFINE_OZ_PID_DERIV_LEVEL_VECTOR(__NAME__, __DATA__) const OzPIDStruct __NAME__##__RAW__DATA__[] = __DATA__;OzPIDDerivLevelVector __NAME__ = __NAME__##__RAW__DATA__;
 #define MACRO_ARRAY(...) __VA_ARGS__
 //EXAMPLE:
 /*
  *
- * DECLARE_OZ_PID_DERIV_LEVEL_VECTOR(TestData,
+ * DEFINE_OZ_PID_DERIV_LEVEL_VECTOR(TestData,
 		MACRO_ARRAY({OzPIDStruct(0.0f, 0.0f, 0.0f, 0.0f), OzPIDStruct(0.0f, 0.0f, 0.0f, 0.0f), OzPIDStruct(0.0f, 0.0f, 0.0f, 0.0f)}));
  *
  */
+
+//same as above, except for setpoints instead of PID and F values; ONLY USE THIS IN SOURCE FILES
+#define DEFINE_OZ_PID_SETPOINT_CHAIN(__NAME__, __DATA__) float __NAME__##__RAW__DATA__[] = __DATA__; OzPIDSetpointChain __NAME__ = arrToVec<float>(__NAME__##__RAW__DATA__)
 
 namespace OzPID
 {
