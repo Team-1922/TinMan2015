@@ -148,7 +148,7 @@ namespace RobotMap
 		//TODO:
 		float voltageOffset 				= 4.99f;//this is the voltage value when shovel is in the flat forwards position
 		const float voltageStore 			= 0.0f + voltageOffset; // voltage for when the shovel is in the stored position (all the way back)
-		const float voltageDump 			= voltageOffset - 1.4f; // voltage for when the shovel is placing totes on the rack
+		const float voltageDump 			= voltageOffset - 1.45f; // voltage for when the shovel is placing totes on the rack
 		const float voltageFlat 			= voltageOffset; // voltage for when the shovel is horizontal
 		const float voltageStack 			= voltageOffset; // voltage for when the shovel is in position for stacking
 		const float voltageVertical         = voltageOffset - 1.05f;//voltage when the shovel is vertical
@@ -170,7 +170,7 @@ namespace RobotMap
 			const float P = 1.35f;
 			const float I = 0.0f;//TODO: get a better value for this
 			const float D = -1.0f;
-			const float extremeMotorVal = 0.85f;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.95f;//the absolute value of the maximum motor value
 #else
 			const float P = 1.3f;
 			const float I = 0.0f;
