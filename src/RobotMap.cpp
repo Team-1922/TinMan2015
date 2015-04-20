@@ -170,7 +170,7 @@ namespace RobotMap
 			const float P = 1.35f;
 			const float I = 0.0f;//TODO: get a better value for this
 			const float D = -1.0f;
-			const float extremeMotorVal = 0.95f;//the absolute value of the maximum motor value
+			const float extremeMotorVal = 0.85f;//the absolute value of the maximum motor value
 #else
 			const float P = 1.3f;
 			const float I = 0.0f;

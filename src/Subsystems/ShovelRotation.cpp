@@ -82,6 +82,11 @@ void ShovelRotation::UsePIDOutput(double output)
 	//	SetSetpoint(RobotMap::Shovel::voltageFlat);//NOTE: shovel bends to the will of the rack
 
 	//since the potentiometer goes the opposite direction, invert this value
+	float angle = 90.0f * (5.0f - m_pPot->PIDGet());
+	if(angle < 1.0f)
+	{
+		output *= std::max(0.75f, fabsf(cosf(DEGREES_TO_RADIANS(angle))));
+	}
 	m_pMotor->Set(-output);
 }
 
