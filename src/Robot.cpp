@@ -202,7 +202,7 @@ private:
 		//SmartDashboard::PutNumber("Shovel Motor (-1 to 1)", CommandBase::shovel->getMotor());
 		SmartDashboard::PutNumber("Shovel Setpoint", CommandBase::shovelRotation->GetSetpoint());
 		SmartDashboard::PutNumber("Shovel Voltage", CommandBase::shovelRotation->GetPotVoltage());
-		SmartDashboard::PutNumber("Shovel Grab Solenoid", CommandBase::shovel->getGrabSolenoid());
+		SmartDashboard::PutBoolean("Shovel Grab Solenoid", CommandBase::shovel->getGrabSolenoid());
 		//SmartDashboard::PutNumber("Shovel Collect Solenoid", CommandBase::shovel->getCollectSolenoid());
 		//SmartDashboard::PutNumber("Shovel Collect Left", CommandBase::shovel->GetSuckWheelLeft());
 		//SmartDashboard::PutNumber("Shovel Collect Right", CommandBase::shovel->GetSuckWheelRight());
