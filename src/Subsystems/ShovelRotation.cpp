@@ -57,7 +57,10 @@ double ShovelRotation::ReturnPIDInput()
 	// Return your input value for the PID loop
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;	
-	return m_pPot->PIDGet();
+	float newTime = Utilities::getTime();
+	float deltaTime = newTime - m_OldTime;
+	m_OldTime = newTime;
+	return m_pPot->PIDGet() / deltaTime;
 }
 
 void ShovelRotation::UsePIDOutput(double output)

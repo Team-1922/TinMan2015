@@ -19,6 +19,8 @@ class ShovelRotation: public PIDSubsystem
 	DigitalInput *m_pReedLeft;
 	DigitalInput *m_pReedRight;
 
+	float m_OldTime = 0.0f;
+
 #ifndef COMP_BOT
 	OzLimitSwitch* m_pLimitRotationForward;
 	OzLimitSwitch* m_pLimitRotationBackward;

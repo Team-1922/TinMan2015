@@ -112,7 +112,7 @@ m_pDriverController(nullptr)
 	//buttonToggleGrabSol->WhenPressed(new ShovelToggleGrab());
 	buttonDumpGroup->WhenPressed(new StoreTote());
 	buttonDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
-	buttonPrepareHumanGroup->WhenPressed(new PrepareHumanStation());
+	//buttonPrepareHumanGroup->WhenPressed(new PrepareHumanStation());
 	buttonPrepareHuman->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat));
 	buttonRackStackGroup->WhenPressed(new StackTotes());
 	buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
