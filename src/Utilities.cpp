@@ -1,7 +1,7 @@
 #include "Utilities.h"
 #include "RobotMap.h"
 #include <cmath>
-#include <time.h>
+#include <chrono>
 #include <sys/time.h>
 
 namespace Utilities
@@ -41,29 +41,23 @@ float weightAverage(std::vector<float> numbers, std::vector<float> weights)
 
 
 //global values in seconds
-double g_Time;
+std::chrono::high_resolution_clock::time_point g_StartTime;
 
 void startTimer()
 {
 	//get the time at when the application started
-	struct timeval  tv;
-	gettimeofday(&tv, NULL);
-
-	g_Time = (double)(tv.tv_sec) + (double)(tv.tv_usec) / (double)1000.0 ;
+	g_StartTime = std::chrono::high_resolution_clock::now();
 }
+
 float getTime()
 {
 	//get the current time
-	//time_t timer;
-	//time(&timer);
+	auto timeNow = std::chrono::high_resolution_clock::now();
 
-	//return the difference
-	//return difftime(timer, g_Timer);
+	//difference from the beginning of the application
+	auto timeDiff = std::chrono::duration_cast<std::chrono::duration<float>>(timeNow - g_StartTime);
 
-	struct timeval  tv;
-	gettimeofday(&tv, NULL);
-
-	return ((double)(tv.tv_sec) + (double)(tv.tv_usec) / (double)1000.0) - g_Time;
+	return timeDiff.count();
 }
 
 float  motorConstSpeed(float rpmDesired, float rpmCurrent, float &rpmCompounded,

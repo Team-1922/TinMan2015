@@ -65,31 +65,12 @@ double ShovelRotation::ReturnPIDInput()
 
 void ShovelRotation::UsePIDOutput(double output)
 {
-	// Use output to drive your system, like a motor
-	// e.g. yourMotor->Set(output);
-
-/*#ifndef COMP_BOT
-	//this only matters on the practice bot
-	if(m_pLimitRotationBackward->Get() && output > 0.0f)
-		return;
-
-	//since rotating backwards is actually the forwards direction of the motor, change the inequality
-	if(m_pLimitRotationForward->Get() && output < 0.0f)
-		return;
-#endif*/
-
-
-	//TODO: uncomment
-	//if the rack SETPOINT OR VOLTAGE is further forwards than vertical, and the reed switches are triggered (shovel open), THEN GO TO FLAT
-	//if(( (CommandBase::rackRotation->GetPotVoltage() < RobotMap::Rack::voltageStack + 0.15) || (CommandBase::rackRotation->GetSetpoint() < RobotMap::Rack::voltageStack + 0.15f) ) && GetReed())
-	//	SetSetpoint(RobotMap::Shovel::voltageFlat);//NOTE: shovel bends to the will of the rack
-
 	//since the potentiometer goes the opposite direction, invert this value
-	float angle = 90.0f * (5.0f - m_pPot->PIDGet());
+	/*float angle = 90.0f * (5.0f - m_pPot->PIDGet());
 	if(angle < 1.0f)
 	{
 		output *= std::max(0.75f, fabsf(cosf(DEGREES_TO_RADIANS(angle))));
-	}
+	}*/
 	m_pMotor->Set(-output);
 }
 
@@ -97,7 +78,7 @@ void ShovelRotation::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//setDefaultCommand(new MySpecialCommand());
-	//SetDefaultCommand(new ShovelJoyControlled());
+	SetDefaultCommand(new ShovelJoyControlled());
 }
 
 float ShovelRotation::GetPotVoltage()

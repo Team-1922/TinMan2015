@@ -97,26 +97,26 @@ m_pDriverController(nullptr)
 	//the operator controls
 	JoystickButton* buttonToggleCollectSol = new JoystickButton(m_pOperatorStick, RobotMap::Controls::toggleCollectWheelSolenoid);
 	//JoystickButton* buttonToggleGrabSol = new JoystickButton(m_pOperatorStick, RobotMap::Controls::toggleGrabSolenoid);
-	JoystickButton* buttonDumpGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpToteGroup);
-	JoystickButton* buttonDump = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpTote);
-	JoystickButton* buttonPrepareHumanGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHumanGroup);
-	JoystickButton* buttonPrepareHuman = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHuman);
+	//JoystickButton* buttonDumpGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpToteGroup);
+	//JoystickButton* buttonDump = new JoystickButton(m_pOperatorStick, RobotMap::Controls::dumpTote);
+	//JoystickButton* buttonPrepareHumanGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHumanGroup);
+	//JoystickButton* buttonPrepareHuman = new JoystickButton(m_pOperatorStick, RobotMap::Controls::prepareHuman);
 	JoystickButton* buttonRackStackGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackStackGroup);
-	JoystickButton* buttonRackStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackStack);
-	JoystickButton* buttonRackFlatGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlatGroup);
+	//JoystickButton* buttonRackStack = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackStack);
+	//JoystickButton* buttonRackFlatGroup = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlatGroup);
 	JoystickButton* buttonRackFlat = new JoystickButton(m_pOperatorStick, RobotMap::Controls::rackFlat);
 	JoystickButton* buttonInterruptRackShovel = new JoystickButton(m_pOperatorStick, RobotMap::Controls::interruptRackShovel);
 
 
 	buttonToggleCollectSol->WhenPressed(new ShovelToggleGrab());
 	//buttonToggleGrabSol->WhenPressed(new ShovelToggleGrab());
-	buttonDumpGroup->WhenPressed(new StoreTote());
-	buttonDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
+	//buttonDumpGroup->WhenPressed(new StoreTote());
+	//buttonDump->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageDump));
 	//buttonPrepareHumanGroup->WhenPressed(new PrepareHumanStation());
-	buttonPrepareHuman->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat));
+	//buttonPrepareHuman->WhenPressed(new ShovelRotate(RobotMap::Shovel::voltageFlat));
 	buttonRackStackGroup->WhenPressed(new StackTotes());
-	buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
-	buttonRackFlatGroup->WhenPressed(new LowerRackPaired());
+	//buttonRackStack->WhenPressed(new RackRotate(RobotMap::Rack::voltageStack));
+	//buttonRackFlatGroup->WhenPressed(new LowerRackPaired());
 	buttonRackFlat->WhenPressed(new LowerRack());
 	buttonInterruptRackShovel->WhenPressed(new InterruptRackShovel());
 
